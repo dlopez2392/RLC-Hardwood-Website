@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RLC Hardwood Lumber | Walnut River Slab Detail</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                colors: {
+                    "primary": "#0bda50",
+                    "background-light": "#f5f8f6",
+                    "background-dark": "#102216",
+                },
+                fontFamily: {
+                    "display": ["Inter"]
+                },
+                borderRadius: {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+                },
+            },
+        },
+    }
+</script>
+<style>
+    body { font-family: 'Inter', sans-serif; }
+    .scrollbar-hide::-webkit-scrollbar { display: none; }
+</style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display transition-colors duration-300">
+
+<!-- Navigation -->
+<nav class="sticky top-0 z-50 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-primary/10">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-20 items-center">
+        <a href="index.html" class="flex items-center gap-2">
+            <div class="bg-primary p-1.5 rounded-lg">
+                <span class="material-icons text-white">forest</span>
+            </div>
+            <span class="text-2xl font-bold tracking-tight">RLC <span class="text-primary">HARDWOOD</span></span>
+        </a>
+        <div class="hidden md:flex space-x-8 items-center font-medium">
+            <a class="hover:text-primary transition-colors" href="index.html#inventory">Inventory</a>
+            <a class="hover:text-primary transition-colors" href="index.html">Species</a>
+            <a class="hover:text-primary transition-colors" href="calculator.html">Calculator</a>
+            <a class="hover:text-primary transition-colors" href="index.html#about">About</a>
+            <button id="quote-btn" class="bg-primary text-white px-6 py-2.5 rounded-lg font-semibold hover:brightness-110 transition-all flex items-center gap-2 relative">
+                <span class="material-icons text-sm">request_quote</span>
+                My Quote
+                <span id="quote-count" class="absolute -top-2 -right-2 bg-white text-primary text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center shadow hidden">0</span>
+            </button>
+        </div>
+        <!-- Mobile menu button -->
+        <button id="mobile-menu-btn" class="md:hidden p-2 hover:bg-primary/10 rounded-full transition-colors">
+            <span class="material-icons text-xl">menu</span>
+        </button>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden pb-4 space-y-2">
+        <a class="block px-4 py-2 text-sm font-medium hover:bg-primary/10 rounded-lg" href="index.html#inventory">Inventory</a>
+        <a class="block px-4 py-2 text-sm font-medium hover:bg-primary/10 rounded-lg" href="index.html">Species</a>
+        <a class="block px-4 py-2 text-sm font-medium hover:bg-primary/10 rounded-lg" href="calculator.html">Calculator</a>
+        <a class="block px-4 py-2 text-sm font-medium hover:bg-primary/10 rounded-lg" href="index.html#about">About</a>
+    </div>
+</div>
+</nav>
+
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+<!-- Breadcrumbs -->
+<nav class="flex mb-8 text-sm font-medium text-slate-500 dark:text-slate-400">
+    <a class="hover:text-primary" href="index.html#inventory">Inventory</a>
+    <span class="mx-2">/</span>
+    <a class="hover:text-primary" href="index.html#inventory">Black Walnut</a>
+    <span class="mx-2">/</span>
+    <span class="text-slate-900 dark:text-white">WS-104 Walnut River Slab</span>
+</nav>
+
+<div class="grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-8">
+<!-- Left Column: Visuals & Story -->
+<div class="space-y-12">
+    <!-- Main Gallery -->
+    <section>
+        <div class="relative group aspect-[16/10] overflow-hidden rounded-xl bg-slate-200 mb-4">
+            <img id="main-image" class="w-full h-full object-cover transition-all duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCf68JdMCBGA8wZx_zZC2nmed2PXpMbUwqKI4Jf1yzRoZbO8qVSEWODawxc0YLj-evtomiZeVOU1k8xOqxlxmA6vSqsjP4V1umpAHuMpAezRJVHhjT4QLzR1O4d17zaM4ntOeqIpclrFfHzvwD3QXgGU4Hpll0jFlU9IdmItNhgMcuBZd8uUUaXA-v8EYOmzShgICIqTXMa1tbdAKT_VrZBUfLmh6S3wvKM8E9jV6mMDZNjcv0ZWZcMUum0zoNtYPcfGkIEKuxLSOE" alt="Main view of walnut river slab"/>
+            <div class="absolute top-4 left-4 bg-white/90 dark:bg-background-dark/90 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-primary border border-primary/20 shadow-sm">
+                Unique ID: WS-104
+            </div>
+            <button id="zoom-btn" class="absolute bottom-4 right-4 bg-white/90 dark:bg-background-dark/90 p-2 rounded-lg shadow-lg hover:text-primary transition-colors">
+                <span class="material-icons">zoom_in</span>
+            </button>
+        </div>
+        <div class="grid grid-cols-4 gap-4" id="thumbnail-grid">
+            <button class="thumb-btn aspect-square rounded-lg overflow-hidden border-2 border-primary" data-index="0">
+                <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpYTWH5XGqNRG1MOAHJ5wyj0PyybZLw8Nji6GShT877-Ons_48DGDvkR3EHcAGoguDTHpIRbkJ1GM99S14HYH79foSUePoy5A4nQsDywyf59fkFq9-axsowwqePTY8p86hA3sPGhN9huq0VO_Plig8RIhLizQg_GOWvgoNJZFaaTU3GHvpyLjoSF5KRHmUUd1p5Bh0kngBVQD_0Gf7_3Vd0-OSdPSPHI0ZCCGrMQX2r3vQ3h04p3i26GODGcJosUGP0iqebmRRuDk" alt="Primary angle"/>
+            </button>
+            <button class="thumb-btn aspect-square rounded-lg overflow-hidden border border-slate-200 dark:border-slate-800 opacity-70 hover:opacity-100 cursor-pointer transition-opacity" data-index="1">
+                <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLHWkBLOP9goBv_FOY9sNaEUPTtrYZ8WMSU1x1d47Ve-CZtIW2bNh1CQBgRmcwuEQ1JldBHpuWHhwVXZhIHOiHVpfhWfFXqUE-wssLrETMNRK1fLpILiWM_cxfbS0nqhnuamfJy4ihWJuqGw-3-IhI_3g0Y6iMV9KEvv1hxJADOcQ39NIeXS2wQ0KOZbEcJDw-use8_QXoyUKgZcsL-tBQTIKLuUBFatDWPv5RiwhFNmNdiFQTkRFz9_iJfie422SZ0I2s5Pxvvag" alt="Grain detail"/>
+            </button>
+            <button class="thumb-btn aspect-square rounded-lg overflow-hidden border border-slate-200 dark:border-slate-800 opacity-70 hover:opacity-100 cursor-pointer transition-opacity" data-index="2">
+                <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAHPsJqPaQA7YE4lOeZdfpvSo6gy8XpyrgmkgB-LSER_RrSDUoR3bxZxfZxwOY0Ct7xiimNSkFpCwSxKrFrIkuGlarF0FTX5UOwFltu92Ypvj_jDn1jGY7njqdagqOOZQS5xtnjQ8uWTkscFJjIyECBu_Ug8hr5gTz6JvDvX-QWHAy8OMAFJY-iDw4WWITDy8H4_ZOvuqSBGMoReQbNuN8BW7F1Kw_HYniub_c260oEEOkkqS4DM-yn3RW5pOABog6U7jW54eUeac" alt="Live edge detail"/>
+            </button>
+            <button class="thumb-btn aspect-square rounded-lg overflow-hidden border border-slate-200 dark:border-slate-800 opacity-70 hover:opacity-100 cursor-pointer transition-opacity" data-index="3">
+                <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0863pjWWxaGSjuj617J9Lvz7kFM81VgVWxQuIaWid_9MDk_UHjcE0llLXequTB-zpYgVUPXl-x2ij00vRHmsbfcGH2jlpKqHDKmQzAgPdwmh2dcFj_p-qJk8se3QZjLAU6lwaJkjy4hk2KkPk6MukRThism8S2NNN-jaCdLn_56xiWUyDGOVtU0KHzWAQiswBSPftFtzShHiIvUF5Go4Zxq2F5Nl0nUFtKsCD8VIb3s9AWP5BSPbpReHTSAE0EHi942Pjr_vw9gE" alt="Dimensions view"/>
+            </button>
+        </div>
+    </section>
+
+    <!-- Specifications Grid -->
+    <section class="bg-white dark:bg-slate-900/50 p-8 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+        <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+            <span class="material-icons text-primary">analytics</span>
+            Slab Specifications
+        </h3>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+            <div>
+                <p class="text-sm text-slate-500 dark:text-slate-400 uppercase tracking-wide font-semibold mb-1">Dimensions</p>
+                <p class="text-lg font-medium">96"L x 34-42"W x 2.25"T</p>
+            </div>
+            <div>
+                <p class="text-sm text-slate-500 dark:text-slate-400 uppercase tracking-wide font-semibold mb-1">Board Feet</p>
+                <p class="text-lg font-medium">54.0 BF</p>
+            </div>
+            <div>
+                <p class="text-sm text-slate-500 dark:text-slate-400 uppercase tracking-wide font-semibold mb-1">Moisture Content</p>
+                <p class="text-lg font-medium text-primary">7.2% (Kiln Dried)</p>
+            </div>
+            <div>
+                <p class="text-sm text-slate-500 dark:text-slate-400 uppercase tracking-wide font-semibold mb-1">Weight</p>
+                <p class="text-lg font-medium">215 lbs</p>
+            </div>
+            <div>
+                <p class="text-sm text-slate-500 dark:text-slate-400 uppercase tracking-wide font-semibold mb-1">Species</p>
+                <p class="text-lg font-medium">Black Walnut</p>
+            </div>
+            <div>
+                <p class="text-sm text-slate-500 dark:text-slate-400 uppercase tracking-wide font-semibold mb-1">Surface</p>
+                <p class="text-lg font-medium">Flattened both sides</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Story of This Tree -->
+    <section class="relative overflow-hidden rounded-xl bg-slate-900 text-white p-10">
+        <div class="absolute top-0 right-0 opacity-20 pointer-events-none">
+            <span class="material-icons text-[200px] -mr-20 -mt-10">eco</span>
+        </div>
+        <div class="relative z-10 max-w-2xl">
+            <span class="inline-block px-3 py-1 rounded-full bg-primary/20 text-primary text-xs font-bold uppercase tracking-widest mb-4">Origin Story</span>
+            <h3 class="text-3xl font-bold mb-6">The Story of This Tree</h3>
+            <p class="text-slate-300 leading-relaxed mb-6 text-lg">
+                Harvested from the banks of the Susquehanna River Valley, this Black Walnut stood for over 120 years before naturally succumbing to a storm in 2022. The "River" character in this slab comes from the deep, swirling grain patterns formed where the trunk navigated a split near the base.
+            </p>
+            <p class="text-slate-300 leading-relaxed italic border-l-2 border-primary pl-6">
+                "Every slab we dry carries the heritage of the Appalachian forest. WS-104 is particularly rare for its consistent thickness and lack of structural checking across such a wide span."
+            </p>
+        </div>
+    </section>
+</div>
+
+<!-- Right Column: Sidebar -->
+<aside>
+<div class="sticky top-28 space-y-6">
+    <div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-xl">
+        <div class="flex justify-between items-start mb-4">
+            <div>
+                <h1 class="text-3xl font-black mb-1">Walnut River Slab</h1>
+                <p class="text-slate-500 font-medium">Black Walnut | Live Edge</p>
+            </div>
+            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-bold">In Stock</span>
+        </div>
+        <div class="py-6 border-y border-slate-100 dark:border-slate-800 mb-6">
+            <div class="flex items-baseline gap-2">
+                <span class="text-4xl font-black text-slate-900 dark:text-white">$2,850</span>
+                <span class="text-slate-500 text-sm">USD</span>
+            </div>
+            <p class="text-slate-400 text-sm mt-1">Calculated at $52.77 per board foot</p>
+        </div>
+
+        <!-- Board Foot Calculator Widget -->
+        <div class="bg-background-light dark:bg-slate-800/50 p-4 rounded-lg mb-8 border border-primary/5">
+            <h4 class="text-sm font-bold uppercase tracking-wider mb-4 flex items-center gap-2">
+                <span class="material-icons text-primary text-base">calculate</span>
+                Slab Calculator
+            </h4>
+            <div class="space-y-4">
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="space-y-1">
+                        <label class="text-[10px] font-bold text-slate-500 uppercase">Length (in)</label>
+                        <input id="detail-length" class="w-full bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-primary focus:border-primary" type="number" value="96"/>
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-[10px] font-bold text-slate-500 uppercase">Avg Width (in)</label>
+                        <input id="detail-width" class="w-full bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-primary focus:border-primary" type="number" value="38"/>
+                    </div>
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[10px] font-bold text-slate-500 uppercase">Thickness (in)</label>
+                    <input id="detail-thickness" class="w-full bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-primary focus:border-primary" step="0.25" type="number" value="2.25"/>
+                </div>
+                <div class="pt-2 flex justify-between items-center">
+                    <span class="text-sm font-semibold">Total Board Feet:</span>
+                    <span id="detail-bf" class="text-lg font-bold text-primary">57.00 BF</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="space-y-3">
+            <button id="add-quote-btn" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:shadow-lg hover:shadow-primary/30 transition-all flex justify-center items-center gap-2">
+                <span class="material-icons">add_shopping_cart</span>
+                Add to Quote
+            </button>
+            <a href="mailto:sales@rlclumber.com?subject=Schedule Viewing - WS-104 Walnut River Slab" class="w-full border-2 border-slate-200 dark:border-slate-700 py-4 rounded-xl font-bold text-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-all flex justify-center items-center gap-2">
+                <span class="material-icons">calendar_today</span>
+                Schedule Viewing
+            </a>
+        </div>
+    </div>
+
+    <!-- Trust Signals -->
+    <div class="grid grid-cols-1 gap-4">
+        <div class="flex items-center gap-4 p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+            <div class="bg-primary/10 p-2 rounded-lg">
+                <span class="material-icons text-primary">local_shipping</span>
+            </div>
+            <div>
+                <h5 class="text-sm font-bold">Lumber Freight Shipping</h5>
+                <p class="text-xs text-slate-500">Nationwide flatbed or crate delivery</p>
+            </div>
+        </div>
+        <div class="flex items-center gap-4 p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+            <div class="bg-primary/10 p-2 rounded-lg">
+                <span class="material-icons text-primary">verified</span>
+            </div>
+            <div>
+                <h5 class="text-sm font-bold">Flat-Surface Guarantee</h5>
+                <p class="text-xs text-slate-500">Precision CNC flattened &amp; surfaced</p>
+            </div>
+        </div>
+    </div>
+</div>
+</aside>
+</div>
+
+<!-- Testimonials Section -->
+<section class="mt-24 pt-16 border-t border-slate-200 dark:border-slate-800">
+<div class="text-center max-w-3xl mx-auto mb-16">
+    <h2 class="text-3xl font-black mb-4">Trusted by Craftsmen</h2>
+    <p class="text-slate-500 font-medium">See why professional furniture makers and homeowners choose RLC for their centerpiece slabs.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
+        <div class="flex gap-1 text-primary mb-6">
+            <span class="material-icons">star</span>
+            <span class="material-icons">star</span>
+            <span class="material-icons">star</span>
+            <span class="material-icons">star</span>
+            <span class="material-icons">star</span>
+        </div>
+        <p class="text-slate-600 dark:text-slate-400 italic mb-8 leading-relaxed">
+            "The Walnut slab I received was even more beautiful than the photos. The moisture content was exactly 7% as promised, which is critical for my dining table builds."
+        </p>
+        <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full bg-slate-200 overflow-hidden">
+                <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFBR7ABrmLnFntB8zCglvmS0Th6ybGijQwnRYNEDVIB9Q4sC3OMRuH7EY7KSOxxH02rIYMM3gTxsTAVh3uRZeYLLHxI0GBfZe7TH8-6Sy_76UGFtPiGGZv8bNlm16RMytAEkSyjv3xX8B-uerAz8Lcd6jyZSmCOxxa_TiBdKK02b15bjKr4sMAiWIdb5Nv7WeFmMx8scvcDwXsBKiUptBWmrJyv3Y1tushHcy2Rz8Qu7HuNF-q5edsUFxCAougvs5QF1QaLkL4qNM" alt="David Richardson"/>
+            </div>
+            <div>
+                <p class="font-bold">David Richardson</p>
+                <p class="text-xs text-slate-500 font-medium uppercase tracking-wider">Custom Furniture Maker</p>
+            </div>
+        </div>
+    </div>
+    <div class="bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm relative">
+        <div class="absolute -top-4 left-8 bg-primary text-white text-[10px] px-2 py-1 rounded font-bold uppercase">Verified Buyer</div>
+        <div class="flex gap-1 text-primary mb-6">
+            <span class="material-icons">star</span>
+            <span class="material-icons">star</span>
+            <span class="material-icons">star</span>
+            <span class="material-icons">star</span>
+            <span class="material-icons">star</span>
+        </div>
+        <p class="text-slate-600 dark:text-slate-400 italic mb-8 leading-relaxed">
+            "RLC handled the shipping perfectly. Crating was robust and the driver was extremely helpful. The 'Story of the Tree' document added so much value for my client."
+        </p>
+        <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full bg-slate-200 overflow-hidden">
+                <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8AcY5aiKoX-IgkxS0EIHgfkU9vm1GkcDNQ6hRpBGWvpdHpIxRQb3rwDeOoOsOU2OKa-uC_C2gjOnHJ6u9nmEYX_nOugF1w3aokhxkXT23y-biZEPJvb-GzmIY0JIrc886DLLbVdiWdcf_Iq1ZjfOU3YOnjGnsuM-rqbQRAWYWv20t94s0WQrTdL7t1vulvpOKasMZvD6OQ_7TDw6_6aJtC81trnOpQwEsnpYKELY9dWmJYq8HFJczoL6xAvlJF43hDz0CNEb5-Ng" alt="Elena Vance"/>
+            </div>
+            <div>
+                <p class="font-bold">Elena Vance</p>
+                <p class="text-xs text-slate-500 font-medium uppercase tracking-wider">Interior Architect</p>
+            </div>
+        </div>
+    </div>
+    <div class="bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
+        <div class="flex gap-1 text-primary mb-6">
+            <span class="material-icons">star</span>
+            <span class="material-icons">star</span>
+            <span class="material-icons">star</span>
+            <span class="material-icons">star</span>
+            <span class="material-icons">star</span>
+        </div>
+        <p class="text-slate-600 dark:text-slate-400 italic mb-8 leading-relaxed">
+            "Used their calculator to plan my desktop build. The dimensions were spot on. One of the cleanest slabs I've ever worked with. Highly recommend RLC."
+        </p>
+        <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full bg-slate-200 overflow-hidden">
+                <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzKEnZWBePVKwI6La63VgZlP00vXJ6T8i_LV0XpwEr1c2pNZSI2kCXQJliSTuWC_SaQcbNng4MbjODsJlu9K-xen2ugjZVXs22HrkyjRjOeyZIuaHETiOaTTSJeZM8GIq0XoKoR2iVgzNPr4201LIZcA10rh04zGgIzIUZjj0mTEOerjhWgJdHB-csD-FzXF4p92ln4v6UjzXe9dQxQ2iU8l0YR5TNZiB4M09EhCKS6aijwpqXRAChzCT1H7pMxwMT1aH2pUeImls" alt="Mark Thompson"/>
+            </div>
+            <div>
+                <p class="font-bold">Mark Thompson</p>
+                <p class="text-xs text-slate-500 font-medium uppercase tracking-wider">Hobbyist Builder</p>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+</main>
+
+<!-- Toast Notification -->
+<div id="toast" class="fixed bottom-8 right-8 bg-slate-900 text-white px-6 py-4 rounded-xl shadow-2xl transform translate-y-24 opacity-0 transition-all duration-300 z-50 flex items-center gap-3">
+    <span class="material-icons text-primary">check_circle</span>
+    <span id="toast-message">Added to quote!</span>
+</div>
+
+<!-- Image Lightbox -->
+<div id="lightbox" class="fixed inset-0 z-[60] bg-black/90 hidden flex items-center justify-center">
+    <button id="lightbox-close" class="absolute top-6 right-6 text-white hover:text-primary transition-colors">
+        <span class="material-icons text-4xl">close</span>
+    </button>
+    <button id="lightbox-prev" class="absolute left-6 text-white hover:text-primary transition-colors">
+        <span class="material-icons text-4xl">chevron_left</span>
+    </button>
+    <button id="lightbox-next" class="absolute right-6 text-white hover:text-primary transition-colors">
+        <span class="material-icons text-4xl">chevron_right</span>
+    </button>
+    <img id="lightbox-img" class="max-w-[90vw] max-h-[85vh] object-contain rounded-xl" src="" alt="Enlarged view"/>
+</div>
+
+<footer class="bg-slate-900 text-slate-400 py-16 mt-24">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-12">
+    <div class="col-span-1 md:col-span-1">
+        <a href="index.html" class="flex items-center gap-2 mb-6">
+            <div class="bg-primary p-1.5 rounded-lg">
+                <span class="material-icons text-white">forest</span>
+            </div>
+            <span class="text-2xl font-bold tracking-tight text-white">RLC <span class="text-primary">HARDWOOD</span></span>
+        </a>
+        <p class="text-sm leading-relaxed">
+            Premium hardwood slabs sustainably harvested and kiln-dried for longevity and beauty.
+        </p>
+    </div>
+    <div>
+        <h6 class="text-white font-bold mb-6 uppercase text-xs tracking-widest">Shop</h6>
+        <ul class="space-y-4 text-sm">
+            <li><a class="hover:text-primary" href="index.html#inventory">Black Walnut</a></li>
+            <li><a class="hover:text-primary" href="index.html#inventory">White Oak</a></li>
+            <li><a class="hover:text-primary" href="index.html#inventory">Cherry Slabs</a></li>
+            <li><a class="hover:text-primary" href="index.html#inventory">Maple Burls</a></li>
+        </ul>
+    </div>
+    <div>
+        <h6 class="text-white font-bold mb-6 uppercase text-xs tracking-widest">Company</h6>
+        <ul class="space-y-4 text-sm">
+            <li><a class="hover:text-primary" href="index.html#about">Our Process</a></li>
+            <li><a class="hover:text-primary" href="#">Sustainability</a></li>
+            <li><a class="hover:text-primary" href="#">Shipping Policy</a></li>
+            <li><a class="hover:text-primary" href="mailto:sales@rlclumber.com">Contact Us</a></li>
+        </ul>
+    </div>
+    <div>
+        <h6 class="text-white font-bold mb-6 uppercase text-xs tracking-widest">Newsletter</h6>
+        <p class="text-xs mb-4">Get notified when new slabs are listed.</p>
+        <form id="newsletter-form" class="flex">
+            <input id="newsletter-email" class="bg-slate-800 border-none rounded-l-lg text-sm w-full focus:ring-primary" placeholder="Email address" type="email" required/>
+            <button type="submit" class="bg-primary text-white px-4 rounded-r-lg hover:brightness-110 transition-all">
+                <span class="material-icons">send</span>
+            </button>
+        </form>
+        <p id="newsletter-msg" class="text-xs text-primary mt-2 hidden">Thanks for subscribing!</p>
+    </div>
+</div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center text-xs gap-4">
+    <p>&copy; 2025 RLC Hardwood Lumber Co. All rights reserved.</p>
+    <div class="flex gap-6">
+        <a class="hover:text-white" href="#">Privacy</a>
+        <a class="hover:text-white" href="#">Terms</a>
+    </div>
+</div>
+</footer>
+
+<script>
+// ===== Mobile Menu =====
+document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+    document.getElementById('mobile-menu').classList.toggle('hidden');
+});
+
+// ===== Image Gallery =====
+const images = [
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuDpYTWH5XGqNRG1MOAHJ5wyj0PyybZLw8Nji6GShT877-Ons_48DGDvkR3EHcAGoguDTHpIRbkJ1GM99S14HYH79foSUePoy5A4nQsDywyf59fkFq9-axsowwqePTY8p86hA3sPGhN9huq0VO_Plig8RIhLizQg_GOWvgoNJZFaaTU3GHvpyLjoSF5KRHmUUd1p5Bh0kngBVQD_0Gf7_3Vd0-OSdPSPHI0ZCCGrMQX2r3vQ3h04p3i26GODGcJosUGP0iqebmRRuDk',
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuCLHWkBLOP9goBv_FOY9sNaEUPTtrYZ8WMSU1x1d47Ve-CZtIW2bNh1CQBgRmcwuEQ1JldBHpuWHhwVXZhIHOiHVpfhWfFXqUE-wssLrETMNRK1fLpILiWM_cxfbS0nqhnuamfJy4ihWJuqGw-3-IhI_3g0Y6iMV9KEvv1hxJADOcQ39NIeXS2wQ0KOZbEcJDw-use8_QXoyUKgZcsL-tBQTIKLuUBFatDWPv5RiwhFNmNdiFQTkRFz9_iJfie422SZ0I2s5Pxvvag',
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuBAHPsJqPaQA7YE4lOeZdfpvSo6gy8XpyrgmkgB-LSER_RrSDUoR3bxZxfZxwOY0Ct7xiimNSkFpCwSxKrFrIkuGlarF0FTX5UOwFltu92Ypvj_jDn1jGY7njqdagqOOZQS5xtnjQ8uWTkscFJjIyECBu_Ug8hr5gTz6JvDvX-QWHAy8OMAFJY-iDw4WWITDy8H4_ZOvuqSBGMoReQbNuN8BW7F1Kw_HYniub_c260oEEOkkqS4DM-yn3RW5pOABog6U7jW54eUeac',
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuD0863pjWWxaGSjuj617J9Lvz7kFM81VgVWxQuIaWid_9MDk_UHjcE0llLXequTB-zpYgVUPXl-x2ij00vRHmsbfcGH2jlpKqHDKmQzAgPdwmh2dcFj_p-qJk8se3QZjLAU6lwaJkjy4hk2KkPk6MukRThism8S2NNN-jaCdLn_56xiWUyDGOVtU0KHzWAQiswBSPftFtzShHiIvUF5Go4Zxq2F5Nl0nUFtKsCD8VIb3s9AWP5BSPbpReHTSAE0EHi942Pjr_vw9gE',
+];
+let currentImage = 0;
+const mainImg = document.getElementById('main-image');
+const thumbs = document.querySelectorAll('.thumb-btn');
+
+function selectImage(index) {
+    currentImage = index;
+    mainImg.src = images[index];
+    thumbs.forEach((t, i) => {
+        if (i === index) {
+            t.classList.add('border-primary', 'border-2');
+            t.classList.remove('border-slate-200', 'dark:border-slate-800', 'opacity-70');
+        } else {
+            t.classList.remove('border-primary', 'border-2');
+            t.classList.add('border-slate-200', 'dark:border-slate-800', 'opacity-70');
+        }
+    });
+}
+
+thumbs.forEach(thumb => {
+    thumb.addEventListener('click', () => selectImage(parseInt(thumb.dataset.index)));
+});
+
+// ===== Lightbox =====
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+
+document.getElementById('zoom-btn').addEventListener('click', () => {
+    lightboxImg.src = images[currentImage];
+    lightbox.classList.remove('hidden');
+    lightbox.classList.add('flex');
+});
+
+mainImg.addEventListener('click', () => {
+    lightboxImg.src = images[currentImage];
+    lightbox.classList.remove('hidden');
+    lightbox.classList.add('flex');
+});
+
+document.getElementById('lightbox-close').addEventListener('click', () => {
+    lightbox.classList.add('hidden');
+    lightbox.classList.remove('flex');
+});
+
+lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+        lightbox.classList.add('hidden');
+        lightbox.classList.remove('flex');
+    }
+});
+
+document.getElementById('lightbox-prev').addEventListener('click', () => {
+    currentImage = (currentImage - 1 + images.length) % images.length;
+    lightboxImg.src = images[currentImage];
+    selectImage(currentImage);
+});
+
+document.getElementById('lightbox-next').addEventListener('click', () => {
+    currentImage = (currentImage + 1) % images.length;
+    lightboxImg.src = images[currentImage];
+    selectImage(currentImage);
+});
+
+document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('hidden')) {
+        if (e.key === 'Escape') { lightbox.classList.add('hidden'); lightbox.classList.remove('flex'); }
+        if (e.key === 'ArrowLeft') { document.getElementById('lightbox-prev').click(); }
+        if (e.key === 'ArrowRight') { document.getElementById('lightbox-next').click(); }
+    }
+});
+
+// ===== Slab Calculator =====
+function calcDetailBF() {
+    const l = parseFloat(document.getElementById('detail-length').value) || 0;
+    const w = parseFloat(document.getElementById('detail-width').value) || 0;
+    const t = parseFloat(document.getElementById('detail-thickness').value) || 0;
+    const bf = (l * w * t) / 144;
+    document.getElementById('detail-bf').textContent = bf.toFixed(2) + ' BF';
+}
+
+document.getElementById('detail-length').addEventListener('input', calcDetailBF);
+document.getElementById('detail-width').addEventListener('input', calcDetailBF);
+document.getElementById('detail-thickness').addEventListener('input', calcDetailBF);
+calcDetailBF();
+
+// ===== Add to Quote =====
+function showToast(msg) {
+    const toast = document.getElementById('toast');
+    document.getElementById('toast-message').textContent = msg;
+    toast.classList.remove('translate-y-24', 'opacity-0');
+    setTimeout(() => toast.classList.add('translate-y-24', 'opacity-0'), 3000);
+}
+
+let quoteCount = 0;
+document.getElementById('add-quote-btn').addEventListener('click', () => {
+    quoteCount++;
+    const countEl = document.getElementById('quote-count');
+    countEl.textContent = quoteCount;
+    countEl.classList.remove('hidden');
+    showToast('WS-104 Walnut River Slab added to quote!');
+
+    // Button feedback
+    const btn = document.getElementById('add-quote-btn');
+    btn.innerHTML = '<span class="material-icons">check</span> Added!';
+    btn.classList.add('bg-green-600');
+    setTimeout(() => {
+        btn.innerHTML = '<span class="material-icons">add_shopping_cart</span> Add to Quote';
+        btn.classList.remove('bg-green-600');
+    }, 2000);
+});
+
+// ===== Newsletter =====
+document.getElementById('newsletter-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    document.getElementById('newsletter-msg').classList.remove('hidden');
+    document.getElementById('newsletter-email').value = '';
+    setTimeout(() => document.getElementById('newsletter-msg').classList.add('hidden'), 4000);
+});
+</script>
+</body>
+</html>
