@@ -535,6 +535,8 @@
 </footer>
 
 <script>
+document.addEventListener('DOMContentLoaded', function() {
+
 // ===== Mobile Menu =====
 document.getElementById('mobile-menu-btn').addEventListener('click', () => {
     document.getElementById('mobile-menu').classList.toggle('hidden');
@@ -621,13 +623,18 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
 });
 
 // ===== Hero Calculator =====
-document.getElementById('hero-calc-btn').addEventListener('click', () => {
+function heroCalc() {
     const l = parseFloat(document.getElementById('hero-length').value) || 0;
     const w = parseFloat(document.getElementById('hero-width').value) || 0;
     const t = parseFloat(document.getElementById('hero-thickness').value) || 0;
     const q = parseFloat(document.getElementById('hero-qty').value) || 1;
     const bf = (l * w * t / 144) * q;
     document.getElementById('hero-result').innerHTML = `${bf.toFixed(2)} <span class="text-sm font-normal">bd/ft</span>`;
+}
+document.getElementById('hero-calc-btn').addEventListener('click', heroCalc);
+// Auto-calculate on input
+['hero-length', 'hero-width', 'hero-thickness', 'hero-qty'].forEach(id => {
+    document.getElementById(id).addEventListener('input', heroCalc);
 });
 
 // ===== Testimonial Slider =====
@@ -686,6 +693,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
+}); // end DOMContentLoaded
 </script>
 
 <style>

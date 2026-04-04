@@ -321,6 +321,8 @@
 </footer>
 
 <script>
+document.addEventListener('DOMContentLoaded', function() {
+
 // ===== Length unit toggle =====
 let lengthInFeet = false;
 const unitIn = document.getElementById('unit-in');
@@ -433,11 +435,19 @@ document.getElementById('calc-form').addEventListener('keydown', (e) => {
     if (e.key === 'Enter') { e.preventDefault(); calculate(); }
 });
 
+// Auto-calculate on any input change
+document.querySelectorAll('#calc-form input, #calc-form select').forEach(el => {
+    el.addEventListener('input', calculate);
+    el.addEventListener('change', calculate);
+});
+
 // Clear history
 document.getElementById('clear-history').addEventListener('click', () => {
     calcHistory.length = 0;
     renderHistory();
 });
+
+}); // end DOMContentLoaded
 </script>
 
 <style>
