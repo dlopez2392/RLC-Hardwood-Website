@@ -14,9 +14,10 @@
         theme: {
             extend: {
                 colors: {
-                    "primary": "#0bda50",
-                    "background-light": "#f5f8f6",
-                    "background-dark": "#102216",
+                    "primary": "#8B5A2B",
+                    "primary-light": "#A97C50",
+                    "background-light": "#FAF6F0",
+                    "background-dark": "#2C1E12",
                 },
                 fontFamily: {
                     "display": ["Inter"]
@@ -34,7 +35,7 @@
 <style>
     body { font-family: 'Inter', sans-serif; }
     .wood-gradient {
-        background: linear-gradient(135deg, rgba(11, 218, 80, 0.05) 0%, rgba(16, 34, 22, 0.02) 100%);
+        background: linear-gradient(135deg, rgba(139, 90, 43, 0.05) 0%, rgba(44, 30, 18, 0.02) 100%);
     }
 </style>
 </head>
@@ -43,11 +44,12 @@
 <!-- Header / Navigation -->
 <header class="border-b border-primary/10 bg-white dark:bg-background-dark sticky top-0 z-50">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-    <a href="index.html" class="flex items-center gap-2">
-        <div class="bg-primary p-2 rounded-lg">
-            <span class="material-icons text-white">architecture</span>
+    <a href="index.html" class="flex items-center gap-3">
+        <img src="logo.png" alt="RLC Lumber" class="h-14 w-14 rounded-full object-cover"/>
+        <div class="flex flex-col">
+            <span class="text-2xl font-bold tracking-tighter text-primary">RLC</span>
+            <span class="text-[10px] uppercase tracking-widest font-semibold opacity-60 leading-tight">Hardwood Lumber</span>
         </div>
-        <span class="text-2xl font-bold tracking-tight">RLC <span class="text-primary">Hardwood</span></span>
     </a>
     <nav class="hidden md:flex gap-8 font-medium text-sm uppercase tracking-wider">
         <a class="hover:text-primary transition-colors" href="index.html">Slabs</a>
@@ -276,11 +278,12 @@
 <footer class="mt-20 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 py-12">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-12">
     <div class="col-span-1 md:col-span-2">
-        <a href="index.html" class="flex items-center gap-2 mb-6">
-            <div class="bg-primary p-1.5 rounded">
-                <span class="material-icons text-white text-sm">architecture</span>
+        <a href="index.html" class="flex items-center gap-3 mb-6">
+            <img src="logo.png" alt="RLC Lumber" class="h-10 w-10 rounded-full object-cover"/>
+            <div class="flex flex-col">
+                <span class="text-xl font-bold tracking-tighter text-primary">RLC</span>
+                <span class="text-[9px] uppercase tracking-widest font-semibold opacity-60 leading-tight">Hardwood Lumber</span>
             </div>
-            <span class="text-xl font-bold tracking-tight">RLC <span class="text-primary">Hardwood</span></span>
         </a>
         <p class="text-slate-500 dark:text-slate-400 max-w-sm mb-6">
             Premium kiln-dried hardwood slabs and dimensional lumber for the modern craftsman. Locally sourced and sustainably milled.

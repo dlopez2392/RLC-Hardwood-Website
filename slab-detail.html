@@ -14,9 +14,10 @@
         theme: {
             extend: {
                 colors: {
-                    "primary": "#0bda50",
-                    "background-light": "#f5f8f6",
-                    "background-dark": "#102216",
+                    "primary": "#8B5A2B",
+                    "primary-light": "#A97C50",
+                    "background-light": "#FAF6F0",
+                    "background-dark": "#2C1E12",
                 },
                 fontFamily: {
                     "display": ["Inter"]
@@ -42,11 +43,12 @@
 <nav class="sticky top-0 z-50 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-primary/10">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between h-20 items-center">
-        <a href="index.html" class="flex items-center gap-2">
-            <div class="bg-primary p-1.5 rounded-lg">
-                <span class="material-icons text-white">forest</span>
+        <a href="index.html" class="flex items-center gap-3">
+            <img src="logo.png" alt="RLC Lumber" class="h-14 w-14 rounded-full object-cover"/>
+            <div class="flex flex-col">
+                <span class="text-2xl font-bold tracking-tighter text-primary">RLC</span>
+                <span class="text-[10px] uppercase tracking-widest font-semibold opacity-60 leading-tight">Hardwood Lumber</span>
             </div>
-            <span class="text-2xl font-bold tracking-tight">RLC <span class="text-primary">HARDWOOD</span></span>
         </a>
         <div class="hidden md:flex space-x-8 items-center font-medium">
             <a class="hover:text-primary transition-colors" href="index.html#inventory">Inventory</a>
@@ -348,11 +350,12 @@
 <footer class="bg-slate-900 text-slate-400 py-16 mt-24">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-12">
     <div class="col-span-1 md:col-span-1">
-        <a href="index.html" class="flex items-center gap-2 mb-6">
-            <div class="bg-primary p-1.5 rounded-lg">
-                <span class="material-icons text-white">forest</span>
+        <a href="index.html" class="flex items-center gap-3 mb-6">
+            <img src="logo.png" alt="RLC Lumber" class="h-10 w-10 rounded-full object-cover"/>
+            <div class="flex flex-col">
+                <span class="text-xl font-bold tracking-tighter text-primary">RLC</span>
+                <span class="text-[9px] uppercase tracking-widest font-semibold opacity-60 leading-tight">Hardwood Lumber</span>
             </div>
-            <span class="text-2xl font-bold tracking-tight text-white">RLC <span class="text-primary">HARDWOOD</span></span>
         </a>
         <p class="text-sm leading-relaxed">
             Premium hardwood slabs sustainably harvested and kiln-dried for longevity and beauty.
