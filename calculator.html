@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>RLC Lumber | Milling Estimate Calculator</title>
-<meta name="description" content="Estimate the cost of RLC Lumber sawmilling services — drop-off milling, on-site portable milling, and solar kiln drying."/>
+<title>RLC Lumber | Log Board Foot &amp; Milling Estimate Calculators</title>
+<meta name="description" content="Estimate board feet in a log with Doyle, Scribner, and International 1/4-inch log scales, and price RLC Lumber sawmilling services."/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
@@ -37,6 +37,7 @@
 </script>
 <style>
     body { font-family: 'Inter', sans-serif; }
+    input[type="range"] { accent-color: #8B5A2B; }
 </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display transition-colors duration-300 overflow-x-hidden">
@@ -69,18 +70,197 @@
 
 <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 <!-- Page Title -->
-<div class="mb-10">
-    <h1 class="text-4xl font-bold mb-4">Milling Estimate Calculator</h1>
+<div class="mb-8">
+    <h1 class="text-3xl sm:text-4xl font-bold mb-4">Lumber Calculators</h1>
     <div class="h-1.5 w-24 bg-primary rounded-full mb-4"></div>
     <p class="text-slate-500 dark:text-slate-400 max-w-2xl text-lg">
-        Get a ballpark price for our sawmilling services — drop-off milling, on-site portable milling, and solar kiln drying.
+        Estimate the board feet in a log with the Doyle, Scribner, and International 1/4&quot; scales — then price out our milling services.
     </p>
 </div>
 
-<div id="panel-milling">
+<!-- Tabs -->
+<div class="flex flex-wrap gap-2 mb-8 border-b border-primary/10">
+    <button data-tab="log" class="calc-tab flex items-center gap-2 px-5 sm:px-6 py-3 font-semibold text-sm border-b-2 transition-colors">
+        <span class="material-icons text-base">straighten</span>
+        Board Foot Calculator
+    </button>
+    <button data-tab="milling" class="calc-tab flex items-center gap-2 px-5 sm:px-6 py-3 font-semibold text-sm border-b-2 transition-colors">
+        <span class="material-icons text-base">request_quote</span>
+        Milling Estimate
+    </button>
+</div>
+
+<!-- ============ PANEL 1: LOG BOARD FOOT CALCULATOR ============ -->
+<div id="panel-log" class="calc-panel">
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
     <div class="lg:col-span-8">
-        <div class="bg-white dark:bg-slate-900/50 p-8 rounded-xl border border-primary/10 shadow-xl shadow-primary/5">
+        <div class="bg-white dark:bg-slate-900/50 p-6 sm:p-8 rounded-xl border border-primary/10 shadow-xl shadow-primary/5">
+            <h2 class="text-xl font-bold mb-1">Log Board Foot Calculator</h2>
+            <p class="text-sm text-slate-500 dark:text-slate-400 mb-8">Enter the small-end diameter (inside bark) and log length to estimate board feet.</p>
+
+            <!-- Diameter -->
+            <div class="space-y-3 mb-8">
+                <div class="flex justify-between items-center">
+                    <label for="log-d" class="text-sm font-semibold text-slate-600 dark:text-slate-300">Diameter (DIB)</label>
+                    <div class="relative w-28">
+                        <input id="log-d" type="number" min="1" max="60" step="1" value="12" class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-lg p-2.5 pr-9 text-right focus:ring-2 focus:ring-primary text-lg font-bold"/>
+                        <span class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">in</span>
+                    </div>
+                </div>
+                <input id="log-d-slider" type="range" min="6" max="48" step="1" value="12" class="w-full cursor-pointer"/>
+                <p class="text-xs text-slate-400">Measure at the small end, inside the bark.</p>
+            </div>
+
+            <!-- Length -->
+            <div class="space-y-3 mb-8">
+                <div class="flex justify-between items-center">
+                    <label for="log-l" class="text-sm font-semibold text-slate-600 dark:text-slate-300">Length</label>
+                    <div class="relative w-28">
+                        <input id="log-l" type="number" min="1" max="40" step="1" value="16" class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-lg p-2.5 pr-9 text-right focus:ring-2 focus:ring-primary text-lg font-bold"/>
+                        <span class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">ft</span>
+                    </div>
+                </div>
+                <div class="flex gap-2 flex-wrap" id="length-presets">
+                    <button type="button" class="length-preset text-sm px-3 py-1.5 bg-slate-100 dark:bg-slate-800 rounded-lg hover:bg-primary hover:text-white transition-colors font-medium" data-val="8">8'</button>
+                    <button type="button" class="length-preset text-sm px-3 py-1.5 bg-slate-100 dark:bg-slate-800 rounded-lg hover:bg-primary hover:text-white transition-colors font-medium" data-val="10">10'</button>
+                    <button type="button" class="length-preset text-sm px-3 py-1.5 bg-slate-100 dark:bg-slate-800 rounded-lg hover:bg-primary hover:text-white transition-colors font-medium" data-val="12">12'</button>
+                    <button type="button" class="length-preset text-sm px-3 py-1.5 bg-slate-100 dark:bg-slate-800 rounded-lg hover:bg-primary hover:text-white transition-colors font-medium" data-val="14">14'</button>
+                    <button type="button" class="length-preset text-sm px-3 py-1.5 bg-slate-100 dark:bg-slate-800 rounded-lg hover:bg-primary hover:text-white transition-colors font-medium" data-val="16">16'</button>
+                    <button type="button" class="length-preset text-sm px-3 py-1.5 bg-slate-100 dark:bg-slate-800 rounded-lg hover:bg-primary hover:text-white transition-colors font-medium" data-val="20">20'</button>
+                </div>
+            </div>
+
+            <!-- Log rule -->
+            <div class="space-y-3 mb-6">
+                <label class="text-sm font-semibold text-slate-600 dark:text-slate-300">Log Rule</label>
+                <div class="grid grid-cols-3 gap-2 sm:gap-3">
+                    <button type="button" data-rule="doyle" class="rule-btn p-3 rounded-lg border-2 text-center transition-all">
+                        <span class="block font-bold text-sm">Doyle</span>
+                        <span class="block text-[11px] text-slate-500 dark:text-slate-400">Eastern U.S.</span>
+                    </button>
+                    <button type="button" data-rule="scribner" class="rule-btn p-3 rounded-lg border-2 text-center transition-all">
+                        <span class="block font-bold text-sm">Scribner</span>
+                        <span class="block text-[11px] text-slate-500 dark:text-slate-400">Mid-range</span>
+                    </button>
+                    <button type="button" data-rule="international" class="rule-btn p-3 rounded-lg border-2 text-center transition-all">
+                        <span class="block font-bold text-sm">Int'l 1/4&quot;</span>
+                        <span class="block text-[11px] text-slate-500 dark:text-slate-400">Most consistent</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Comparison toggle -->
+            <label class="flex items-center gap-3 mb-8 cursor-pointer select-none">
+                <input id="log-compare" type="checkbox" class="rounded text-primary focus:ring-primary"/>
+                <span class="text-sm">
+                    <span class="font-semibold">Show rule comparison</span>
+                    <span class="block text-xs text-slate-500 dark:text-slate-400">See Doyle, Scribner, and International results side by side.</span>
+                </span>
+            </label>
+
+            <!-- Result -->
+            <div class="p-8 bg-primary/5 dark:bg-primary/10 rounded-xl border border-primary/20 relative overflow-hidden">
+                <div class="absolute -right-8 -bottom-8 opacity-10">
+                    <span class="material-icons text-[120px] text-primary">forest</span>
+                </div>
+                <div class="relative z-10">
+                    <p class="text-xs font-bold uppercase tracking-widest text-primary mb-1">Estimated Yield</p>
+                    <div class="flex items-baseline gap-2">
+                        <span id="log-result" class="text-5xl sm:text-6xl font-black text-slate-900 dark:text-white">64.00</span>
+                        <span class="text-xl font-medium text-slate-500">Board Feet</span>
+                    </div>
+                    <p id="log-caption" class="text-sm text-slate-500 dark:text-slate-400 mt-2">12&quot; DIB · 16' length · Doyle</p>
+                </div>
+            </div>
+
+            <!-- Comparison panel -->
+            <div id="log-comparison" class="mt-4 hidden">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
+                        <p class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Doyle</p>
+                        <p class="text-2xl font-black"><span id="cmp-doyle">64.00</span><span class="text-sm font-medium text-slate-400"> BF</span></p>
+                        <p class="text-xs text-slate-400 mt-1">baseline</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
+                        <p class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Scribner</p>
+                        <p class="text-2xl font-black"><span id="cmp-scribner">85.76</span><span class="text-sm font-medium text-slate-400"> BF</span></p>
+                        <p id="cmp-scribner-pct" class="text-xs text-primary font-semibold mt-1">+34.0% vs Doyle</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
+                        <p class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">International 1/4&quot;</p>
+                        <p class="text-2xl font-black"><span id="cmp-international">96.92</span><span class="text-sm font-medium text-slate-400"> BF</span></p>
+                        <p id="cmp-international-pct" class="text-xs text-primary font-semibold mt-1">+51.4% vs Doyle</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tally actions -->
+            <div class="flex gap-3 mt-6">
+                <button id="log-add-tally" type="button" class="flex-1 bg-primary hover:bg-primary/90 text-white font-bold py-3.5 rounded-xl flex items-center justify-center gap-2 transition-all shadow-lg shadow-primary/20">
+                    <span class="material-icons text-base">add</span>
+                    Add to Tally
+                </button>
+                <button id="log-reset" type="button" class="px-5 py-3.5 rounded-xl border border-slate-300 dark:border-slate-700 font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                    Reset
+                </button>
+            </div>
+
+            <!-- Tally list -->
+            <div id="tally-section" class="mt-8 hidden">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="font-bold text-lg flex items-center gap-2">
+                        <span class="material-icons text-primary">list_alt</span>
+                        Log Tally
+                    </h3>
+                    <button id="tally-clear" class="text-sm text-red-500 hover:text-red-700 font-medium">Clear All</button>
+                </div>
+                <div id="tally-list" class="space-y-2 mb-4"></div>
+                <div class="flex justify-between items-baseline p-4 rounded-xl bg-primary/5 dark:bg-primary/10 border border-primary/20">
+                    <span class="text-sm font-bold uppercase tracking-widest text-primary">Total Board Feet</span>
+                    <span id="tally-total" class="text-3xl font-black text-slate-900 dark:text-white">0.00</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="lg:col-span-4 space-y-8">
+        <div class="bg-white dark:bg-slate-900/30 border border-slate-200 dark:border-slate-800 rounded-xl p-6">
+            <div class="flex items-center gap-2 mb-6">
+                <span class="material-icons text-primary">menu_book</span>
+                <h3 class="font-bold text-lg">About the Log Rules</h3>
+            </div>
+            <ul class="space-y-5 text-sm">
+                <li>
+                    <strong class="text-slate-900 dark:text-white block mb-1">Doyle</strong>
+                    <span class="text-slate-600 dark:text-slate-400">BF = (D − 4)² × L ÷ 16. Standard across eastern &amp; southern U.S. hardwood markets. Tends to under-estimate small logs.</span>
+                </li>
+                <li>
+                    <strong class="text-slate-900 dark:text-white block mb-1">Scribner</strong>
+                    <span class="text-slate-600 dark:text-slate-400">A board-drawing rule used on U.S. National Forest sales. Usually a mid-range estimate.</span>
+                </li>
+                <li>
+                    <strong class="text-slate-900 dark:text-white block mb-1">International 1/4&quot;</strong>
+                    <span class="text-slate-600 dark:text-slate-400">Includes taper and kerf assumptions, so it's generally the most consistent with actual mill yield.</span>
+                </li>
+            </ul>
+            <p class="text-xs text-slate-400 mt-6">Estimates only — the &quot;right&quot; rule is the one your buyer or region uses.</p>
+        </div>
+
+        <div class="bg-primary p-6 rounded-xl text-white shadow-lg shadow-primary/20">
+            <h4 class="font-bold text-lg mb-2">Ready to mill these logs?</h4>
+            <p class="text-white/80 text-sm mb-4">Switch to the Milling Estimate tab to price drop-off milling, on-site milling, or kiln drying.</p>
+            <button type="button" data-goto-tab="milling" class="inline-block bg-white text-primary px-6 py-2 rounded-lg font-bold text-sm hover:shadow-lg transition-all">Get a Milling Estimate</button>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- ============ PANEL 2: MILLING ESTIMATE CALCULATOR ============ -->
+<div id="panel-milling" class="calc-panel hidden">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+    <div class="lg:col-span-8">
+        <div class="bg-white dark:bg-slate-900/50 p-6 sm:p-8 rounded-xl border border-primary/10 shadow-xl shadow-primary/5">
             <!-- Service selector -->
             <div class="space-y-2 mb-8">
                 <label class="text-sm font-semibold text-slate-600 dark:text-slate-300">Choose a Service</label>
@@ -110,7 +290,7 @@
                     <input id="mill-bf" class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-lg p-4 focus:ring-2 focus:ring-primary text-lg" placeholder="e.g. 250" type="number" min="0" step="1"/>
                     <span class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm">bd ft</span>
                 </div>
-                <p class="text-xs text-slate-400">Board feet = (Thickness&quot; × Width&quot; × Length&quot;) ÷ 144 per piece.</p>
+                <p class="text-xs text-slate-400">Not sure? Use the Board Foot Calculator tab to estimate your logs first.</p>
             </div>
 
             <!-- On-site inputs -->
@@ -280,6 +460,162 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
 
+/* ===================== TABS ===================== */
+const tabs = document.querySelectorAll('.calc-tab');
+const panels = document.querySelectorAll('.calc-panel');
+
+function activateTab(name) {
+    tabs.forEach(t => {
+        const active = t.dataset.tab === name;
+        t.classList.toggle('border-primary', active);
+        t.classList.toggle('text-primary', active);
+        t.classList.toggle('border-transparent', !active);
+        t.classList.toggle('text-slate-400', !active);
+    });
+    panels.forEach(p => p.classList.toggle('hidden', p.id !== 'panel-' + name));
+}
+
+tabs.forEach(t => t.addEventListener('click', () => {
+    activateTab(t.dataset.tab);
+    history.replaceState(null, '', t.dataset.tab === 'milling' ? '#milling' : '#calculator');
+}));
+
+document.querySelectorAll('[data-goto-tab]').forEach(btn => {
+    btn.addEventListener('click', () => {
+        activateTab(btn.dataset.gotoTab);
+        history.replaceState(null, '', '#' + (btn.dataset.gotoTab === 'milling' ? 'milling' : 'calculator'));
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+});
+
+activateTab(location.hash === '#milling' ? 'milling' : 'log');
+
+/* ============ LOG BOARD FOOT CALCULATOR ============ */
+const RULE_NAMES = { doyle: 'Doyle', scribner: 'Scribner', international: "International 1/4\"" };
+let activeRule = 'doyle';
+
+const dInput = document.getElementById('log-d');
+const dSlider = document.getElementById('log-d-slider');
+const lInput = document.getElementById('log-l');
+const compareToggle = document.getElementById('log-compare');
+
+function doyle(D, L)       { return Math.max(0, Math.pow(D - 4, 2) * L / 16); }
+function scribner(D, L)    { return Math.max(0, (0.79 * D * D - 2 * D - 4) * L / 16); }
+function international(D, L){
+    return Math.max(0,
+        0.04976191 * D * D * L
+      + 0.006220239 * D * L * L
+      - 0.1854762 * D * L
+      + 0.0002591767 * L * L * L
+      - 0.01159620 * L * L
+      + 0.04222222 * L);
+}
+const RULES = { doyle, scribner, international };
+
+function readDims() {
+    const D = parseFloat(dInput.value) || 0;
+    const L = parseFloat(lInput.value) || 0;
+    return { D, L };
+}
+
+function selectRule(rule) {
+    activeRule = rule;
+    document.querySelectorAll('.rule-btn').forEach(b => {
+        const active = b.dataset.rule === rule;
+        b.classList.toggle('border-primary', active);
+        b.classList.toggle('bg-primary/5', active);
+        b.classList.toggle('border-slate-200', !active);
+        b.classList.toggle('dark:border-slate-700', !active);
+    });
+    renderLog();
+}
+
+function renderLog() {
+    const { D, L } = readDims();
+    const bf = RULES[activeRule](D, L);
+    document.getElementById('log-result').textContent = bf.toFixed(2);
+    document.getElementById('log-caption').textContent = `${D || 0}" DIB · ${L || 0}' length · ${RULE_NAMES[activeRule]}`;
+
+    // Comparison
+    const dy = doyle(D, L), sc = scribner(D, L), it = international(D, L);
+    document.getElementById('cmp-doyle').textContent = dy.toFixed(2);
+    document.getElementById('cmp-scribner').textContent = sc.toFixed(2);
+    document.getElementById('cmp-international').textContent = it.toFixed(2);
+    const pct = (v) => dy > 0 ? `${v >= dy ? '+' : ''}${((v / dy - 1) * 100).toFixed(1)}% vs Doyle` : '—';
+    document.getElementById('cmp-scribner-pct').textContent = pct(sc);
+    document.getElementById('cmp-international-pct').textContent = pct(it);
+}
+
+// Sync diameter number <-> slider
+dInput.addEventListener('input', () => {
+    const v = parseFloat(dInput.value);
+    if (!isNaN(v)) dSlider.value = Math.min(48, Math.max(6, v));
+    renderLog();
+});
+dSlider.addEventListener('input', () => {
+    dInput.value = dSlider.value;
+    renderLog();
+});
+lInput.addEventListener('input', renderLog);
+
+document.querySelectorAll('.length-preset').forEach(btn => {
+    btn.addEventListener('click', () => { lInput.value = btn.dataset.val; renderLog(); });
+});
+
+document.querySelectorAll('.rule-btn').forEach(btn => {
+    btn.addEventListener('click', () => selectRule(btn.dataset.rule));
+});
+
+compareToggle.addEventListener('change', () => {
+    document.getElementById('log-comparison').classList.toggle('hidden', !compareToggle.checked);
+});
+
+// Tally
+const tally = [];
+function renderTally() {
+    const section = document.getElementById('tally-section');
+    const list = document.getElementById('tally-list');
+    if (tally.length === 0) { section.classList.add('hidden'); return; }
+    section.classList.remove('hidden');
+    list.innerHTML = tally.map((t, i) => `
+        <div class="flex justify-between items-center p-3 rounded-lg bg-slate-50 dark:bg-slate-800/50 text-sm">
+            <div>
+                <span class="font-semibold">${t.D}" × ${t.L}'</span>
+                <span class="text-slate-400 ml-2">${t.ruleName}</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <span class="font-bold">${t.bf.toFixed(2)} BF</span>
+                <button data-i="${i}" class="tally-remove text-slate-400 hover:text-red-500" aria-label="Remove">
+                    <span class="material-icons text-base">close</span>
+                </button>
+            </div>
+        </div>
+    `).join('');
+    const total = tally.reduce((s, t) => s + t.bf, 0);
+    document.getElementById('tally-total').textContent = total.toFixed(2);
+    list.querySelectorAll('.tally-remove').forEach(btn => {
+        btn.addEventListener('click', () => { tally.splice(parseInt(btn.dataset.i), 1); renderTally(); });
+    });
+}
+
+document.getElementById('log-add-tally').addEventListener('click', () => {
+    const { D, L } = readDims();
+    if (D <= 0 || L <= 0) return;
+    tally.push({ D, L, rule: activeRule, ruleName: RULE_NAMES[activeRule], bf: RULES[activeRule](D, L) });
+    renderTally();
+});
+document.getElementById('tally-clear').addEventListener('click', () => { tally.length = 0; renderTally(); });
+
+document.getElementById('log-reset').addEventListener('click', () => {
+    dInput.value = 12; dSlider.value = 12; lInput.value = 16;
+    compareToggle.checked = false;
+    document.getElementById('log-comparison').classList.add('hidden');
+    selectRule('doyle');
+});
+
+// init log calculator
+selectRule('doyle');
+
 /* ============ MILLING ESTIMATE CALCULATOR ============ */
 const RATES = { dropoff: 0.65, kiln: 0.70, hourly: 85, mile: 1.25, setup: 100 };
 let activeService = 'dropoff';
@@ -300,11 +636,8 @@ function selectService(service) {
         b.classList.toggle('border-slate-200', !active);
         b.classList.toggle('dark:border-slate-700', !active);
     });
-    // Board-foot input: shown for drop-off and kiln
     millBfRow.classList.toggle('hidden', service === 'onsite');
-    // On-site inputs
     millOnsiteRows.classList.toggle('hidden', service !== 'onsite');
-    // Kiln add-on: only for milling services (not when kiln is the main service)
     millKilnAddon.classList.toggle('hidden', service === 'kiln');
     if (service === 'kiln') {
         addKilnCheckbox.checked = false;
@@ -313,7 +646,6 @@ function selectService(service) {
 }
 
 serviceBtns.forEach(b => b.addEventListener('click', () => selectService(b.dataset.service)));
-
 addKilnCheckbox.addEventListener('change', () => {
     kilnBfRow.classList.toggle('hidden', !addKilnCheckbox.checked);
 });
@@ -322,7 +654,6 @@ function money(n) { return '$' + n.toFixed(2); }
 
 function calcMilling() {
     const items = [];
-
     if (activeService === 'dropoff') {
         const bf = parseFloat(document.getElementById('mill-bf').value) || 0;
         items.push({ label: `Drop-off milling — ${bf} bd ft × $0.65`, amount: bf * RATES.dropoff });
@@ -336,15 +667,11 @@ function calcMilling() {
         items.push({ label: `Milling labor — ${hours} hr × $85`, amount: hours * RATES.hourly });
         items.push({ label: `Travel — ${miles} mi × $1.25 (one-way)`, amount: miles * RATES.mile });
     }
-
-    // Optional kiln add-on for milling services
     if (activeService !== 'kiln' && addKilnCheckbox.checked) {
         const kbf = parseFloat(document.getElementById('mill-kiln-bf').value) || 0;
         items.push({ label: `Solar kiln drying — ${kbf} bd ft × $0.70`, amount: kbf * RATES.kiln });
     }
-
     const total = items.reduce((sum, i) => sum + i.amount, 0);
-
     document.getElementById('mill-line-items').innerHTML = items.map(i => `
         <div class="flex justify-between items-baseline gap-4 text-sm">
             <span class="text-slate-600 dark:text-slate-400">${i.label}</span>
@@ -362,7 +689,6 @@ document.querySelectorAll('#panel-milling input').forEach(el => {
     });
 });
 
-// default selected service
 selectService('dropoff');
 
 }); // end DOMContentLoaded
