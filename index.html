@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>RLC Hardwood Lumber | Premium Slab Gallery</title>
+<title>RLC Lumber | Local &amp; Portable Sawmilling Services</title>
+<meta name="description" content="RLC Lumber LLC — local and portable sawmilling services in Chatfield, MN. Drop-off milling, on-site portable milling, and solar kiln drying for Southern Minnesota & Northern Iowa."/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script>
     tailwind.config = {
         darkMode: "class",
@@ -16,6 +16,7 @@
                 colors: {
                     "primary": "#8B5A2B",
                     "primary-light": "#A97C50",
+                    "honey": "#F0B45A",
                     "background-light": "#FAF6F0",
                     "background-dark": "#2C1E12",
                     "wood-dark": "#2d241e",
@@ -40,264 +41,163 @@
 <!-- Sticky Header -->
 <header class="sticky top-0 z-50 bg-white/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-primary/10">
 <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="flex justify-between h-20 items-center">
-    <a href="index.html" class="flex items-center gap-3">
-        <img src="logo.png" alt="RLC Lumber" class="h-14 w-14 rounded-full object-cover"/>
-        <div class="flex flex-col">
-            <span class="text-2xl font-bold tracking-tighter text-primary">RLC</span>
-            <span class="text-[10px] uppercase tracking-widest font-semibold opacity-60 leading-tight">Hardwood Lumber</span>
+<div class="flex h-20 items-center gap-6">
+    <a href="index.html" class="flex items-center gap-3 flex-shrink-0">
+        <img src="logo.png" alt="RLC Lumber LLC" class="h-12 w-12 rounded-full object-cover"/>
+        <div class="flex flex-col leading-none">
+            <span class="text-2xl font-bold tracking-tight text-primary whitespace-nowrap">RLC</span>
+            <span class="text-[10px] uppercase tracking-[0.18em] font-semibold opacity-60 whitespace-nowrap mt-0.5">Sawmilling Services</span>
         </div>
     </a>
-    <div class="hidden md:flex space-x-8 items-center">
-        <a class="text-sm font-medium hover:text-primary transition-colors text-primary" href="index.html">Shop Slabs</a>
-        <a class="text-sm font-medium hover:text-primary transition-colors" href="slab-detail.html">Slab Detail</a>
+    <div class="hidden md:flex flex-1 justify-center items-center gap-9">
+        <a class="text-sm font-medium hover:text-primary transition-colors" href="#services">Services</a>
         <a class="text-sm font-medium hover:text-primary transition-colors" href="calculator.html">Calculator</a>
-        <a class="text-sm font-medium hover:text-primary transition-colors" href="#about">About</a>
+        <a class="text-sm font-medium hover:text-primary transition-colors" href="#equipment">Equipment</a>
+        <a class="text-sm font-medium hover:text-primary transition-colors" href="#contact">Contact</a>
     </div>
+    <a href="calculator.html#milling" class="hidden md:inline-flex flex-shrink-0 bg-primary text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:brightness-110 transition-all shadow-lg shadow-primary/20 whitespace-nowrap">
+        Get an Estimate
+    </a>
     <!-- Mobile menu button -->
-    <button id="mobile-menu-btn" class="md:hidden p-2 hover:bg-primary/10 rounded-full transition-colors">
+    <button id="mobile-menu-btn" class="md:hidden ml-auto p-2 hover:bg-primary/10 rounded-full transition-colors" aria-label="Open menu">
         <span class="material-icons text-xl">menu</span>
     </button>
-    <div class="hidden md:flex items-center gap-4">
-        <button id="search-btn" class="p-2 hover:bg-primary/10 rounded-full transition-colors">
-            <span class="material-icons text-xl">search</span>
-        </button>
-        <a href="mailto:sales@rlclumber.com" class="bg-primary text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:brightness-110 transition-all shadow-lg shadow-primary/20">
-            Contact Us
-        </a>
-    </div>
 </div>
 <!-- Mobile menu -->
 <div id="mobile-menu" class="hidden md:hidden pb-4 space-y-2">
-    <a class="block px-4 py-2 text-sm font-medium hover:bg-primary/10 rounded-lg text-primary" href="index.html">Shop Slabs</a>
-    <a class="block px-4 py-2 text-sm font-medium hover:bg-primary/10 rounded-lg" href="slab-detail.html">Slab Detail</a>
+    <a class="block px-4 py-2 text-sm font-medium hover:bg-primary/10 rounded-lg" href="#services">Services</a>
     <a class="block px-4 py-2 text-sm font-medium hover:bg-primary/10 rounded-lg" href="calculator.html">Calculator</a>
-    <a class="block px-4 py-2 text-sm font-medium hover:bg-primary/10 rounded-lg" href="#about">About</a>
-    <a href="mailto:sales@rlclumber.com" class="block px-4 py-2 bg-primary text-white rounded-lg font-semibold text-sm text-center">Contact Us</a>
+    <a class="block px-4 py-2 text-sm font-medium hover:bg-primary/10 rounded-lg" href="#equipment">Equipment</a>
+    <a class="block px-4 py-2 text-sm font-medium hover:bg-primary/10 rounded-lg" href="#contact">Contact</a>
+    <a class="flex items-center gap-2 px-4 py-2 text-sm font-semibold hover:bg-primary/10 rounded-lg" href="tel:9562023455"><span class="material-icons text-base text-primary">call</span>(956) 202-3455</a>
+    <a href="calculator.html#milling" class="block px-4 py-2 bg-primary text-white rounded-lg font-semibold text-sm text-center">Get an Estimate</a>
 </div>
 </nav>
 </header>
 
-<!-- Search Overlay -->
-<div id="search-overlay" class="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm hidden">
-<div class="max-w-2xl mx-auto mt-32 px-4">
-    <div class="bg-white dark:bg-background-dark rounded-2xl shadow-2xl p-6">
-        <div class="flex items-center gap-4 mb-4">
-            <span class="material-icons text-primary">search</span>
-            <input id="search-input" type="text" placeholder="Search slabs by species, size, or ID..." class="w-full text-lg border-none focus:ring-0 bg-transparent" autofocus/>
-            <button id="search-close" class="p-2 hover:bg-gray-100 rounded-full">
-                <span class="material-icons">close</span>
-            </button>
-        </div>
-        <div id="search-results" class="border-t border-gray-100 pt-4 space-y-2">
-            <p class="text-sm text-gray-400">Type to search our inventory...</p>
-        </div>
-    </div>
-</div>
-</div>
-
 <main>
 <!-- Hero Section -->
-<section class="relative h-[85vh] overflow-hidden">
+<section id="home" class="relative h-[85vh] overflow-hidden">
 <div class="absolute inset-0">
-    <img alt="Large live edge slab" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjqufJmeuPTzcYUhqIiwJFay2uFjOfuzhoIw-jUokAtFhz_-SY2g-CmdieyxyDIfIat5zn_WZg2tOl7RcdXLiqT-AUE7Ce_0EcVv3ZMrxM7wZBJ5PugYR9SbQsXPZbBhdP1T0l8NVPZQKCpk5YISeuD0aeiXPb7yR6Id9myjWEZ0qnL7a6_fkbS67LPmtzpnXT49rRuqUA1CltXLgfPOC5XGpcQq8YBRp-6GtmALpSbZNLE9ktkBMqjRI0_YJeyLSB_6KpVitDZbI"/>
-    <div class="absolute inset-0 bg-gradient-to-r from-wood-dark/80 via-wood-dark/40 to-transparent"></div>
+    <img alt="Portable sawmill cutting a hardwood log" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjqufJmeuPTzcYUhqIiwJFay2uFjOfuzhoIw-jUokAtFhz_-SY2g-CmdieyxyDIfIat5zn_WZg2tOl7RcdXLiqT-AUE7Ce_0EcVv3ZMrxM7wZBJ5PugYR9SbQsXPZbBhdP1T0l8NVPZQKCpk5YISeuD0aeiXPb7yR6Id9myjWEZ0qnL7a6_fkbS67LPmtzpnXT49rRuqUA1CltXLgfPOC5XGpcQq8YBRp-6GtmALpSbZNLE9ktkBMqjRI0_YJeyLSB_6KpVitDZbI"/>
+    <div class="absolute inset-0 bg-gradient-to-r from-wood-dark/85 via-wood-dark/50 to-transparent"></div>
 </div>
 <div class="relative max-w-7xl mx-auto px-4 h-full flex flex-col justify-center">
-    <div class="max-w-2xl text-white">
-        <span class="inline-block px-3 py-1 bg-primary/20 backdrop-blur-sm border border-primary/30 text-primary rounded-full text-xs font-bold uppercase tracking-widest mb-6">
-            Locally Milled &amp; Kiln Dried
+    <div class="max-w-2xl text-white [text-shadow:0_2px_16px_rgba(0,0,0,0.55)]">
+        <span class="inline-block px-3 py-1 bg-black/30 backdrop-blur-sm border border-honey/40 text-honey rounded-full text-xs font-bold uppercase tracking-widest mb-6 [text-shadow:none]">
+            Serving Southern Minnesota &amp; Northern Iowa
         </span>
         <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6">
-            Premium Hardwood Slabs for the <span class="text-primary">Master Craftsman.</span>
+            Local &amp; Portable <span class="text-honey">Sawmilling</span> Services.
         </h1>
-        <p class="text-xl text-gray-300 mb-10 leading-relaxed">
-            Ethically sourced, precision milled, and dried to perfection. Discover unique live-edge inventory for your next heirloom project.
+        <p class="text-xl text-gray-100/95 mb-10 leading-relaxed">
+            Turn your logs into custom lumber. We bring the mill to you or process your logs at our shop — plus eco-friendly solar kiln drying to get your wood project-ready.
         </p>
         <div class="flex flex-wrap gap-4">
-            <a href="#inventory" class="bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-xl font-bold transition-all transform hover:scale-105 inline-block">
-                Shop Our Inventory
+            <a href="calculator.html#milling" class="bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-xl font-bold transition-all transform hover:scale-105 inline-flex items-center gap-2">
+                <span class="material-icons">calculate</span>
+                Get an Estimate
             </a>
-            <a href="#about" class="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white px-8 py-4 rounded-xl font-bold transition-all inline-block">
-                View Services
+            <a href="tel:9562023455" class="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white px-8 py-4 rounded-xl font-bold transition-all inline-flex items-center gap-2">
+                <span class="material-icons">call</span>
+                Call (956) 202-3455
             </a>
         </div>
     </div>
 </div>
 </section>
 
-<!-- Slab Gallery Grid -->
-<section id="inventory" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-    <div>
-        <h2 class="text-3xl font-bold mb-4">Current Slab Inventory</h2>
-        <p class="text-wood-muted dark:text-gray-400">Filter by species, size, or moisture content.</p>
-    </div>
-    <div class="flex gap-2 flex-wrap" id="species-filters">
-        <button class="filter-btn active px-4 py-2 bg-primary text-white rounded-lg text-sm font-medium transition-colors" data-species="all">All Species</button>
-        <button class="filter-btn px-4 py-2 bg-white dark:bg-background-dark border border-primary/20 hover:border-primary rounded-lg text-sm font-medium transition-colors" data-species="walnut">Walnut</button>
-        <button class="filter-btn px-4 py-2 bg-white dark:bg-background-dark border border-primary/20 hover:border-primary rounded-lg text-sm font-medium transition-colors" data-species="oak">White Oak</button>
-        <button class="filter-btn px-4 py-2 bg-white dark:bg-background-dark border border-primary/20 hover:border-primary rounded-lg text-sm font-medium transition-colors" data-species="maple">Maple</button>
-    </div>
+<!-- Services Section -->
+<section id="services" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16">
+    <h2 class="text-4xl font-bold mb-4">Our Sawmilling Services</h2>
+    <p class="max-w-2xl mx-auto text-wood-muted dark:text-gray-400 text-lg">
+        Whether you bring the logs to us or we bring the mill to you, we mill accurately and stack your lumber ready to dry.
+    </p>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="slab-grid">
-    <!-- Slab Item 1 -->
-    <div class="slab-card group bg-white dark:bg-background-dark border border-primary/5 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all" data-species="walnut">
-        <a href="slab-detail.html" class="block">
-        <div class="aspect-[4/3] relative overflow-hidden">
-            <img alt="Black Walnut Slab" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDve6qaYArHnAWkupYuul-ypq3GJzUfi6iQlJtGtgcJ3re2iFYkL6TadcWGmszJ_WfmsaaSnvjkQKauygpeY2U3l4UFlnmLo7iTC1RIw2u5mt96g7dUQm8ZexkfOE3JbMQbHfoamUMbgzLmPPkx2A5tF2jBtLdYqyO8Tv_s1JCci3I8e_2I2CACFMqnuoTMO_cTX7hpuC6axsdAS1d0ljZJWkeB_kHTxBODIj926pmTf9Pgj6DiXeLQpEI-AGaIVz4YHyqKN2IQd5Y"/>
-            <div class="absolute top-4 right-4 bg-primary text-white px-3 py-1 rounded-full text-xs font-bold">New Arrival</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <!-- Drop-Off Milling -->
+    <div class="flex flex-col bg-white dark:bg-wood-dark border border-primary/10 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all">
+        <div class="p-8 flex-1">
+            <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+                <span class="material-icons text-primary text-3xl">forest</span>
+            </div>
+            <h3 class="text-2xl font-bold mb-2">Drop-Off Milling</h3>
+            <div class="flex items-baseline gap-1 mb-4">
+                <span class="text-4xl font-black text-primary">$0.65</span>
+                <span class="text-wood-muted dark:text-gray-400 font-medium">/ board foot</span>
+            </div>
+            <p class="text-wood-muted dark:text-gray-400 mb-6 leading-relaxed">
+                Bring your logs to our shop and we'll mill them to your specs. A detailed cut list is required so every log is milled exactly the way you need it.
+            </p>
+            <ul class="space-y-3 text-sm">
+                <li class="flex items-start gap-3"><span class="material-icons text-primary text-base mt-0.5">check_circle</span><span>Detailed cut list required</span></li>
+                <li class="flex items-start gap-3"><span class="material-icons text-primary text-base mt-0.5">check_circle</span><span>Lumber stickered &amp; stacked for you</span></li>
+                <li class="flex items-start gap-3"><span class="material-icons text-primary text-base mt-0.5">check_circle</span><span>We call you when the job is complete</span></li>
+            </ul>
         </div>
-        </a>
-        <div class="p-6">
-            <div class="flex justify-between items-start mb-2">
-                <a href="slab-detail.html" class="text-xl font-bold hover:text-primary transition-colors">Black Walnut #4021</a>
-                <span class="text-primary font-bold">$1,250</span>
-            </div>
-            <p class="text-sm text-wood-muted dark:text-gray-400 mb-4 font-medium uppercase tracking-wide">Live Edge &bull; Kiln Dried</p>
-            <div class="flex items-center justify-between pt-4 border-t border-primary/5">
-                <div class="flex flex-col">
-                    <span class="text-[10px] uppercase font-bold text-gray-400">Dimensions</span>
-                    <span class="font-semibold text-sm">96"L x 34"W x 2.25"T</span>
-                </div>
-                <button class="add-to-quote p-2 bg-primary/10 hover:bg-primary text-primary hover:text-white rounded-lg transition-colors" data-name="Black Walnut #4021" data-price="1250">
-                    <span class="material-icons">shopping_cart</span>
-                </button>
-            </div>
-        </div>
-    </div>
-    <!-- Slab Item 2 -->
-    <div class="slab-card group bg-white dark:bg-background-dark border border-primary/5 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all" data-species="oak">
-        <a href="slab-detail.html" class="block">
-        <div class="aspect-[4/3] relative overflow-hidden">
-            <img alt="White Oak Slab" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2jiSdnvksq4qYbwqpv9Kr0gqm-lFivA_Cr32NoEHVWqyygZaaX-NQXiNzmAX4otLtfNSxCieS4z56w-ZnXwVmJ0G4cmpYNuYz2WccIukgWPLK0C2cLMORPs3F1a6oQEPcBL4OIxs4VkhyV_R6C5ecfiPPYDNYl0oFjNCFcCyoTc_SAhZIyu2NojwP4J8v08sumIHJ14NpC_hIHIdzKDbE9ITNWK3pTWsngUsB_XJm7esuGIlwzKfHuqdxyxV7p9WZK4cOEccp5vw"/>
-        </div>
-        </a>
-        <div class="p-6">
-            <div class="flex justify-between items-start mb-2">
-                <a href="slab-detail.html" class="text-xl font-bold hover:text-primary transition-colors">Rift Sawn White Oak</a>
-                <span class="text-primary font-bold">$840</span>
-            </div>
-            <p class="text-sm text-wood-muted dark:text-gray-400 mb-4 font-medium uppercase tracking-wide">Select Grade &bull; 8% MC</p>
-            <div class="flex items-center justify-between pt-4 border-t border-primary/5">
-                <div class="flex flex-col">
-                    <span class="text-[10px] uppercase font-bold text-gray-400">Dimensions</span>
-                    <span class="font-semibold text-sm">120"L x 12"W x 1.75"T</span>
-                </div>
-                <button class="add-to-quote p-2 bg-primary/10 hover:bg-primary text-primary hover:text-white rounded-lg transition-colors" data-name="Rift Sawn White Oak" data-price="840">
-                    <span class="material-icons">shopping_cart</span>
-                </button>
-            </div>
+        <div class="px-8 pb-8">
+            <a href="calculator.html#milling" class="block text-center bg-primary/10 hover:bg-primary hover:text-white text-primary font-bold py-3 rounded-lg transition-colors">Estimate this service</a>
         </div>
     </div>
-    <!-- Slab Item 3 -->
-    <div class="slab-card group bg-white dark:bg-background-dark border border-primary/5 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all" data-species="maple">
-        <a href="slab-detail.html" class="block">
-        <div class="aspect-[4/3] relative overflow-hidden">
-            <img alt="Ambrosia Maple Slab" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzSO6zPY-xlD7cG0COwi3zFyza1ux71IB2n9G-F-2Hg5rx9bVZYSkCoF0T7oBqs8UOr6y-7PjKmCFBiVsOUoY5QqNk7BKgkviMW_G_b-mbYPcZwATI0lhKpWRvRzaAVhTgx7EiW4CbhDZQGj3hUaQiKkWGVhW8lTvc7ViqqBdNB8cdlzOiNtS4qubiI0Gie0iV1YLi2X8rKK6R0UO47E2-xgcYewz7B8YkulGtkrpBito-qMuW0fTlB5q46pPbSC9WCu9s0Ys9-zY"/>
+    <!-- On-Site Portable Milling -->
+    <div class="flex flex-col bg-white dark:bg-wood-dark border-2 border-primary rounded-2xl overflow-hidden shadow-lg relative">
+        <div class="absolute top-0 right-0 bg-primary text-white px-4 py-1 rounded-bl-lg text-xs font-bold uppercase tracking-widest">Most Popular</div>
+        <div class="p-8 flex-1">
+            <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+                <span class="material-icons text-primary text-3xl">local_shipping</span>
+            </div>
+            <h3 class="text-2xl font-bold mb-2">On-Site Portable Milling</h3>
+            <div class="flex items-baseline gap-1 mb-4">
+                <span class="text-4xl font-black text-primary">$85</span>
+                <span class="text-wood-muted dark:text-gray-400 font-medium">/ hour</span>
+            </div>
+            <p class="text-wood-muted dark:text-gray-400 mb-6 leading-relaxed">
+                Have logs that are tough to move? We bring our Norwood portable sawmill to your property and mill on location. Averages about 20–30 minutes per log.
+            </p>
+            <ul class="space-y-3 text-sm">
+                <li class="flex items-start gap-3"><span class="material-icons text-primary text-base mt-0.5">check_circle</span><span>$1.25 / mile travel (one-way from shop)</span></li>
+                <li class="flex items-start gap-3"><span class="material-icons text-primary text-base mt-0.5">check_circle</span><span>$100 setup fee</span></li>
+                <li class="flex items-start gap-3"><span class="material-icons text-primary text-base mt-0.5">check_circle</span><span>$30 per broken blade if metal is in the log</span></li>
+                <li class="flex items-start gap-3"><span class="material-icons text-primary text-base mt-0.5">savings</span><span>Move logs &amp; stack lumber yourself to cut cost</span></li>
+            </ul>
         </div>
-        </a>
-        <div class="p-6">
-            <div class="flex justify-between items-start mb-2">
-                <a href="slab-detail.html" class="text-xl font-bold hover:text-primary transition-colors">Ambrosia Maple #112</a>
-                <span class="text-primary font-bold">$550</span>
-            </div>
-            <p class="text-sm text-wood-muted dark:text-gray-400 mb-4 font-medium uppercase tracking-wide">Highly Figured &bull; Raw</p>
-            <div class="flex items-center justify-between pt-4 border-t border-primary/5">
-                <div class="flex flex-col">
-                    <span class="text-[10px] uppercase font-bold text-gray-400">Dimensions</span>
-                    <span class="font-semibold text-sm">72"L x 28"W x 2.0"T</span>
-                </div>
-                <button class="add-to-quote p-2 bg-primary/10 hover:bg-primary text-primary hover:text-white rounded-lg transition-colors" data-name="Ambrosia Maple #112" data-price="550">
-                    <span class="material-icons">shopping_cart</span>
-                </button>
-            </div>
-        </div>
-    </div>
-    <!-- Slab Item 4 -->
-    <div class="slab-card group bg-white dark:bg-background-dark border border-primary/5 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all" data-species="walnut">
-        <a href="slab-detail.html" class="block">
-        <div class="aspect-[4/3] relative overflow-hidden">
-            <img alt="Walnut Crotch Slab" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCf68JdMCBGA8wZx_zZC2nmed2PXpMbUwqKI4Jf1yzRoZbO8qVSEWODawxc0YLj-evtomiZeVOU1k8xOqxlxmA6vSqsjP4V1umpAHuMpAezRJVHhjT4QLzR1O4d17zaM4ntOeqIpclrFfHzvwD3QXgGU4Hpll0jFlU9IdmItNhgMcuBZd8uUUaXA-v8EYOmzShgICIqTXMa1tbdAKT_VrZBUfLmh6S3wvKM8E9jV6mMDZNjcv0ZWZcMUum0zoNtYPcfGkIEKuxLSOE"/>
-            <div class="absolute top-4 right-4 bg-yellow-500 text-white px-3 py-1 rounded-full text-xs font-bold">Popular</div>
-        </div>
-        </a>
-        <div class="p-6">
-            <div class="flex justify-between items-start mb-2">
-                <a href="slab-detail.html" class="text-xl font-bold hover:text-primary transition-colors">Walnut Crotch #308</a>
-                <span class="text-primary font-bold">$1,875</span>
-            </div>
-            <p class="text-sm text-wood-muted dark:text-gray-400 mb-4 font-medium uppercase tracking-wide">Figured Crotch &bull; Kiln Dried</p>
-            <div class="flex items-center justify-between pt-4 border-t border-primary/5">
-                <div class="flex flex-col">
-                    <span class="text-[10px] uppercase font-bold text-gray-400">Dimensions</span>
-                    <span class="font-semibold text-sm">84"L x 40"W x 2.5"T</span>
-                </div>
-                <button class="add-to-quote p-2 bg-primary/10 hover:bg-primary text-primary hover:text-white rounded-lg transition-colors" data-name="Walnut Crotch #308" data-price="1875">
-                    <span class="material-icons">shopping_cart</span>
-                </button>
-            </div>
+        <div class="px-8 pb-8">
+            <a href="calculator.html#milling" class="block text-center bg-primary hover:brightness-110 text-white font-bold py-3 rounded-lg transition-all shadow-lg shadow-primary/20">Estimate this service</a>
         </div>
     </div>
-    <!-- Slab Item 5 -->
-    <div class="slab-card group bg-white dark:bg-background-dark border border-primary/5 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all" data-species="oak">
-        <a href="slab-detail.html" class="block">
-        <div class="aspect-[4/3] relative overflow-hidden">
-            <img alt="Quarter Sawn White Oak" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtUNnpULOzL45giXWFkc9KBaBMHiymwgzjc-7XBzjVJTsKWVgAqWlxkCWxX26dC7mKsPBtS0qyR1F3rMv1tx22Od8xSVlOmwuI-ZKeOsVfoUAnGnnCjZIJ40Ad7Qj8poikAAMrk8QvCMNJaYaU6UMDI9XzoIw7FPSnuynqLGwrShyCVwrwdyJ-fiBPUyPfXSnbwymr4dJNzl0zqG1GqikusRcu5SPBXbn6bRhgZ5Ktf6CJ7r8WNkqPNZu0pShqEvyN0spmVq72mag"/>
+    <!-- Solar Kiln Drying -->
+    <div class="flex flex-col bg-white dark:bg-wood-dark border border-primary/10 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all">
+        <div class="p-8 flex-1">
+            <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+                <span class="material-icons text-primary text-3xl">wb_sunny</span>
+            </div>
+            <h3 class="text-2xl font-bold mb-2">Solar Kiln Drying</h3>
+            <div class="flex items-baseline gap-1 mb-4">
+                <span class="text-4xl font-black text-primary">$0.70</span>
+                <span class="text-wood-muted dark:text-gray-400 font-medium">/ board foot</span>
+            </div>
+            <p class="text-wood-muted dark:text-gray-400 mb-6 leading-relaxed">
+                Dry your freshly milled lumber in our eco-friendly solar kiln. We target a stable moisture content so your wood is ready for fine woodworking.
+            </p>
+            <ul class="space-y-3 text-sm">
+                <li class="flex items-start gap-3"><span class="material-icons text-primary text-base mt-0.5">check_circle</span><span>Target moisture content 8–12%</span></li>
+                <li class="flex items-start gap-3"><span class="material-icons text-primary text-base mt-0.5">check_circle</span><span>Handles lumber up to 12' long</span></li>
+                <li class="flex items-start gap-3"><span class="material-icons text-primary text-base mt-0.5">check_circle</span><span>1,600 board foot total capacity</span></li>
+            </ul>
         </div>
-        </a>
-        <div class="p-6">
-            <div class="flex justify-between items-start mb-2">
-                <a href="slab-detail.html" class="text-xl font-bold hover:text-primary transition-colors">QS White Oak #217</a>
-                <span class="text-primary font-bold">$960</span>
-            </div>
-            <p class="text-sm text-wood-muted dark:text-gray-400 mb-4 font-medium uppercase tracking-wide">Quarter Sawn &bull; 7% MC</p>
-            <div class="flex items-center justify-between pt-4 border-t border-primary/5">
-                <div class="flex flex-col">
-                    <span class="text-[10px] uppercase font-bold text-gray-400">Dimensions</span>
-                    <span class="font-semibold text-sm">108"L x 16"W x 2.0"T</span>
-                </div>
-                <button class="add-to-quote p-2 bg-primary/10 hover:bg-primary text-primary hover:text-white rounded-lg transition-colors" data-name="QS White Oak #217" data-price="960">
-                    <span class="material-icons">shopping_cart</span>
-                </button>
-            </div>
-        </div>
-    </div>
-    <!-- Slab Item 6 -->
-    <div class="slab-card group bg-white dark:bg-background-dark border border-primary/5 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all" data-species="maple">
-        <a href="slab-detail.html" class="block">
-        <div class="aspect-[4/3] relative overflow-hidden">
-            <img alt="Curly Maple Slab" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlu6IukBRkNjakXNYR5ZC61r4mKCXUmudAKCr78Mx0CeKylhMiVM1kSUR6MiJVyOmgQgvI7IZvaPsYO3PRLNSCeU4ZxpY3GwMO0tmQZ1VFpvXl9KMs-CIwGsCa5Ras6njqXdkiLE5nk48AvcVI2pEWBUM2n0iLg26UOXc2ZRY6rayxJ64tIgmWCjbhVOtIZaNw3Ww1C6A615mHbUqI81wJwETI0BwVmdbvL3oMqUDegv8uPekmK9UQ4_qNUMlaEroqlNjgKdWrPXo"/>
-        </div>
-        </a>
-        <div class="p-6">
-            <div class="flex justify-between items-start mb-2">
-                <a href="slab-detail.html" class="text-xl font-bold hover:text-primary transition-colors">Curly Maple #445</a>
-                <span class="text-primary font-bold">$720</span>
-            </div>
-            <p class="text-sm text-wood-muted dark:text-gray-400 mb-4 font-medium uppercase tracking-wide">Tiger Curly &bull; Surfaced</p>
-            <div class="flex items-center justify-between pt-4 border-t border-primary/5">
-                <div class="flex flex-col">
-                    <span class="text-[10px] uppercase font-bold text-gray-400">Dimensions</span>
-                    <span class="font-semibold text-sm">80"L x 24"W x 1.75"T</span>
-                </div>
-                <button class="add-to-quote p-2 bg-primary/10 hover:bg-primary text-primary hover:text-white rounded-lg transition-colors" data-name="Curly Maple #445" data-price="720">
-                    <span class="material-icons">shopping_cart</span>
-                </button>
-            </div>
+        <div class="px-8 pb-8">
+            <a href="calculator.html#milling" class="block text-center bg-primary/10 hover:bg-primary hover:text-white text-primary font-bold py-3 rounded-lg transition-colors">Estimate this service</a>
         </div>
     </div>
 </div>
-<div class="mt-16 text-center">
-    <button class="inline-flex items-center gap-2 text-wood-dark dark:text-white font-bold hover:text-primary transition-colors underline underline-offset-8 decoration-primary decoration-2">
-        Explore All 150+ Slabs
-        <span class="material-icons">arrow_forward</span>
-    </button>
-</div>
+<p class="text-center text-sm text-wood-muted dark:text-gray-400 mt-8">
+    Prices shown are standard rates. Use our <a href="calculator.html#milling" class="text-primary font-semibold underline underline-offset-2">Milling Estimate Calculator</a> for a project estimate.
+</p>
 </section>
 
-<!-- Board Foot Calculator -->
-<section id="calculator" class="bg-wood-dark py-24 text-white relative overflow-hidden">
+<!-- Equipment & Capabilities -->
+<section id="equipment" class="bg-wood-dark py-24 text-white relative overflow-hidden">
 <div class="absolute top-0 right-0 w-1/3 h-full opacity-10 pointer-events-none">
     <svg class="w-full h-full fill-white" viewBox="0 0 100 100">
         <path d="M0 0 L100 0 L100 100 L0 100 Z" fill="url(#wood-grain)"></path>
@@ -309,104 +209,154 @@
     </svg>
 </div>
 <div class="max-w-7xl mx-auto px-4 relative z-10">
-    <div class="grid lg:grid-cols-2 gap-16 items-center">
-        <div>
-            <h2 class="text-4xl font-bold mb-6">Pro Board Foot Calculator</h2>
-            <p class="text-gray-400 text-lg mb-8 leading-relaxed">
-                Need to know exactly how much lumber your project requires? Use our precision tool to calculate board footage and estimate project costs instantly.
-            </p>
-            <ul class="space-y-4">
-                <li class="flex items-center gap-3 text-gray-300">
-                    <span class="material-icons text-primary">check_circle</span>
-                    Accurate to the nearest 1/16th inch
-                </li>
-                <li class="flex items-center gap-3 text-gray-300">
-                    <span class="material-icons text-primary">check_circle</span>
-                    Built-in waste percentage factor
-                </li>
-                <li class="flex items-center gap-3 text-gray-300">
-                    <span class="material-icons text-primary">check_circle</span>
-                    Export results for quoting
-                </li>
-            </ul>
-            <a href="calculator.html" class="inline-block mt-8 text-primary font-bold underline underline-offset-4 hover:text-white transition-colors">
-                Open Full Calculator &rarr;
-            </a>
-        </div>
-        <div class="bg-white/5 backdrop-blur-xl p-8 rounded-3xl border border-white/10 shadow-2xl">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
-                <div class="space-y-2">
-                    <label class="text-xs font-bold uppercase tracking-widest text-gray-400">Length (Inches)</label>
-                    <input id="hero-length" class="w-full bg-white/10 border-white/20 rounded-xl focus:ring-primary focus:border-primary text-white" placeholder="e.g. 96" type="number"/>
-                </div>
-                <div class="space-y-2">
-                    <label class="text-xs font-bold uppercase tracking-widest text-gray-400">Width (Inches)</label>
-                    <input id="hero-width" class="w-full bg-white/10 border-white/20 rounded-xl focus:ring-primary focus:border-primary text-white" placeholder="e.g. 12" type="number"/>
-                </div>
-                <div class="space-y-2">
-                    <label class="text-xs font-bold uppercase tracking-widest text-gray-400">Thickness (Inches)</label>
-                    <input id="hero-thickness" class="w-full bg-white/10 border-white/20 rounded-xl focus:ring-primary focus:border-primary text-white" placeholder="e.g. 1.75" step="0.25" type="number"/>
-                </div>
-                <div class="space-y-2">
-                    <label class="text-xs font-bold uppercase tracking-widest text-gray-400">Quantity</label>
-                    <input id="hero-qty" class="w-full bg-white/10 border-white/20 rounded-xl focus:ring-primary focus:border-primary text-white" placeholder="1" type="number" value="1"/>
-                </div>
-            </div>
-            <button id="hero-calc-btn" class="w-full bg-primary hover:bg-primary/90 text-white py-4 rounded-xl font-bold text-lg shadow-xl shadow-primary/20 transition-all mb-4">
-                Calculate Board Footage
-            </button>
-            <div class="p-4 rounded-xl bg-primary/10 border border-primary/20 flex justify-between items-center">
-                <span class="text-sm font-medium text-gray-300 uppercase">Total Result:</span>
-                <span id="hero-result" class="text-2xl font-bold text-primary">0.00 <span class="text-sm font-normal">bd/ft</span></span>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
-<!-- The Mill Section -->
-<section id="about" class="py-24 bg-background-light dark:bg-background-dark">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-16">
-        <h2 class="text-3xl font-bold mb-4">The Mill at RLC</h2>
-        <p class="max-w-2xl mx-auto text-wood-muted dark:text-gray-400">From standing timber to the final plane, we control every step of the process to ensure the highest quality results.</p>
+        <h2 class="text-4xl font-bold mb-4">Equipment &amp; Capabilities</h2>
+        <p class="max-w-2xl mx-auto text-gray-400 text-lg">Professional-grade equipment that handles big logs and dries lumber the eco-friendly way.</p>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div class="relative group h-96 overflow-hidden rounded-2xl">
-            <img alt="Logging" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCN1-D27djykNu4CHWgqd4QVPar6fVztGloRR2VabCs0vX4TBRKFDriWeszJHgootRMiNucaT_oogUlFVdetYtHNzzbKSQrWedrbBK7zYzSQnK5U9zkmVGfQUDPTD4NkWqmTkhi2DcMGu4X-EfWdUmAu6wvGhSVciE3XBxE6g8oGV6FRJYmi9cybmycrunSr3FVjQ447bFHoOKY5nhw5iDGz5S81SNDA8h9pNwO2tblqhYNefwc54WEkVAh-lDj_38bAlYFw7s9ofA"/>
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-6">
-                <h4 class="text-white font-bold text-xl">Sourcing</h4>
-                <p class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity">Local sustainable timber from the Appalachian region.</p>
+    <div class="grid lg:grid-cols-2 gap-8">
+        <!-- Sawmill -->
+        <div class="bg-white/5 backdrop-blur-xl p-8 rounded-3xl border border-white/10">
+            <div class="flex items-center gap-3 mb-6">
+                <span class="material-icons text-primary text-3xl">precision_manufacturing</span>
+                <h3 class="text-2xl font-bold">Norwood HD36V2 Portable Sawmill</h3>
+            </div>
+            <p class="text-gray-400 mb-8 leading-relaxed">A heavy-duty portable band sawmill built to take on large-diameter hardwood logs with accurate, consistent cuts.</p>
+            <div class="grid grid-cols-3 gap-4">
+                <div class="bg-white/5 rounded-xl p-4 text-center">
+                    <div class="text-3xl font-black text-primary">36"</div>
+                    <div class="text-xs uppercase tracking-widest text-gray-400 mt-1">Log Diameter</div>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 text-center">
+                    <div class="text-3xl font-black text-primary">31"</div>
+                    <div class="text-xs uppercase tracking-widest text-gray-400 mt-1">Cut Width</div>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 text-center">
+                    <div class="text-3xl font-black text-primary">13'</div>
+                    <div class="text-xs uppercase tracking-widest text-gray-400 mt-1">Log Length</div>
+                </div>
             </div>
         </div>
-        <div class="relative group h-96 overflow-hidden rounded-2xl lg:translate-y-8">
-            <img alt="Milling" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUk3_xq6k4CZNSSRXvrmjCz8JSOudcHQEJelUOSKUnJ8EqKeoCyKUOVQIZmcsY8eI83Nh6NBWJ6cBNGsQfitQMZIKRX6oJgSbLPi9PJjH3ykAy7pJ0AuVv4b1yT30Rs1OXwtw3KEP5YvpiJOBwqsBsDTjbXLYKysk-ZjV_HdL24lGzM2Jwc3IoC1-1ULNCYZ90KEJqKCh35xrSe1VeQl5FxHIKNwIZmiAUUaPG7TrwrNqjpGWxIOpbXD0LhmFJLDZHf1XRkxp3MUg"/>
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-6">
-                <h4 class="text-white font-bold text-xl">Milling</h4>
-                <p class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity">Precision bandsaw cutting for maximum yield.</p>
+        <!-- Solar Kiln -->
+        <div class="bg-white/5 backdrop-blur-xl p-8 rounded-3xl border border-white/10">
+            <div class="flex items-center gap-3 mb-6">
+                <span class="material-icons text-primary text-3xl">wb_sunny</span>
+                <h3 class="text-2xl font-bold">Eco-Friendly Solar Kiln</h3>
             </div>
-        </div>
-        <div class="relative group h-96 overflow-hidden rounded-2xl">
-            <img alt="Kiln" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpaK_XZZCP5jxmVsE69ahctMZhooWBrsqZGKcVDXH-sbv4vEnj7nNZ6bUtDU0yACoY1C0RmCtt-eRYn60rVZMm1ov2UHuRbJrtG-xOGSN9NRHGZRXxaIZZWIE1Zs8TJBHzWaa1yz43-RTUq1ik32xY3aECAxpFmPve8u5j3tTV45AZAJFiSy4Hfh8rq4n8uwEcrfkOAPeJtBc_kKGMxJgnaD3jHMVB9TRoNjjaE2lSchEfBykI0scmjz0P_QgiEUF4YUk84h8t_kI"/>
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-6">
-                <h4 class="text-white font-bold text-xl">Drying</h4>
-                <p class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity">Dehumidification kiln cycle to 6-8% MC.</p>
-            </div>
-        </div>
-        <div class="relative group h-96 overflow-hidden rounded-2xl lg:translate-y-8">
-            <img alt="Planing" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmID9PVw7r1ZU6PnolCAXzI9im2Hayfo3s-g945IGoyLrNzUubJKXRqNH8b8OdWjEd8QWB2RTFruDIGA_JmSZy3WhCX9ILrB6kothy1DVBFk418Kdy6uoaxsPH17bTTSsC6kLMY_tuUp5u9mn1OYth2peSjGmtV4vqL58IiQ41GDhZyCp-YeyXALU6ugkY2iegkQHYgn9VaLZP1sXjq_bxCTV77H-RZneUpccyHet4eIsDRUtqM0gJ_0oulrTvHE2RuGPgYgue4eQ"/>
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-6">
-                <h4 class="text-white font-bold text-xl">Surfacing</h4>
-                <p class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity">CNC flattening and hand planing to perfection.</p>
+            <p class="text-gray-400 mb-8 leading-relaxed">A solar-powered drying kiln that gently brings lumber down to a stable, workable moisture content — without high energy costs.</p>
+            <div class="grid grid-cols-3 gap-4">
+                <div class="bg-white/5 rounded-xl p-4 text-center">
+                    <div class="text-3xl font-black text-primary">8–12%</div>
+                    <div class="text-xs uppercase tracking-widest text-gray-400 mt-1">Target MC</div>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 text-center">
+                    <div class="text-3xl font-black text-primary">12'</div>
+                    <div class="text-xs uppercase tracking-widest text-gray-400 mt-1">Max Length</div>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 text-center">
+                    <div class="text-3xl font-black text-primary">1,600</div>
+                    <div class="text-xs uppercase tracking-widest text-gray-400 mt-1">Board Feet</div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 </section>
 
-<!-- Testimonial Section -->
-<section class="py-24 border-t border-primary/10">
+<!-- Service Area & Hours -->
+<section id="area" class="py-24 bg-background-light dark:bg-background-dark">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <div>
+            <h2 class="text-3xl font-bold mb-4">Service Area &amp; Hours</h2>
+            <p class="text-wood-muted dark:text-gray-400 mb-8 leading-relaxed">
+                Based in Chatfield, Minnesota, we provide drop-off milling at our shop and travel for on-site portable milling throughout <strong class="text-wood-dark dark:text-white">Southern Minnesota &amp; Northern Iowa</strong>.
+            </p>
+            <div class="space-y-6">
+                <div class="flex items-start gap-4">
+                    <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                        <span class="material-icons text-primary">location_on</span>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-1">Our Shop</h4>
+                        <p class="text-wood-muted dark:text-gray-400">17490 Co Rd 2, Chatfield, MN 55923</p>
+                        <a href="https://www.google.com/maps/search/?api=1&query=17490+Co+Rd+2+Chatfield+MN+55923" target="_blank" rel="noopener" class="text-primary text-sm font-semibold hover:underline">Open in Google Maps &rarr;</a>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                        <span class="material-icons text-primary">map</span>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-1">Service Region</h4>
+                        <p class="text-wood-muted dark:text-gray-400">Southern Minnesota &amp; Northern Iowa</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg-white dark:bg-wood-dark border border-primary/10 rounded-2xl p-8 shadow-sm">
+            <div class="flex items-center gap-3 mb-6">
+                <span class="material-icons text-primary">schedule</span>
+                <h3 class="text-xl font-bold">Hours of Operation</h3>
+            </div>
+            <table class="w-full text-left">
+                <tbody class="divide-y divide-primary/10">
+                    <tr>
+                        <td class="py-3 font-semibold">Monday – Friday</td>
+                        <td class="py-3 text-right text-wood-muted dark:text-gray-400">7:00 AM – 7:00 PM</td>
+                    </tr>
+                    <tr>
+                        <td class="py-3 font-semibold">Saturday</td>
+                        <td class="py-3 text-right text-wood-muted dark:text-gray-400">7:00 AM – 2:00 PM</td>
+                    </tr>
+                    <tr>
+                        <td class="py-3 font-semibold">Sunday</td>
+                        <td class="py-3 text-right text-wood-muted dark:text-gray-400">Closed</td>
+                    </tr>
+                </tbody>
+            </table>
+            <a href="calculator.html#milling" class="mt-8 block text-center bg-primary text-white font-bold py-3 rounded-lg hover:brightness-110 transition-all shadow-lg shadow-primary/20">Get a Milling Estimate</a>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- Our Work -->
+<section id="work" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16">
+    <h2 class="text-3xl font-bold mb-4">Our Work</h2>
+    <p class="max-w-2xl mx-auto text-wood-muted dark:text-gray-400">A look at logs milled, lumber stacked, and projects in progress. Photo gallery coming soon — check our Facebook page for the latest.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <!-- Photo placeholders — owner to supply real job photos -->
+    <div class="aspect-square rounded-2xl bg-primary/5 border border-dashed border-primary/30 flex flex-col items-center justify-center text-primary/60">
+        <span class="material-icons text-4xl mb-2">photo_camera</span>
+        <span class="text-xs uppercase tracking-widest font-bold">Photo Coming Soon</span>
+    </div>
+    <div class="aspect-square rounded-2xl bg-primary/5 border border-dashed border-primary/30 flex flex-col items-center justify-center text-primary/60 md:translate-y-6">
+        <span class="material-icons text-4xl mb-2">photo_camera</span>
+        <span class="text-xs uppercase tracking-widest font-bold">Photo Coming Soon</span>
+    </div>
+    <div class="aspect-square rounded-2xl bg-primary/5 border border-dashed border-primary/30 flex flex-col items-center justify-center text-primary/60">
+        <span class="material-icons text-4xl mb-2">photo_camera</span>
+        <span class="text-xs uppercase tracking-widest font-bold">Photo Coming Soon</span>
+    </div>
+    <div class="aspect-square rounded-2xl bg-primary/5 border border-dashed border-primary/30 flex flex-col items-center justify-center text-primary/60 md:translate-y-6">
+        <span class="material-icons text-4xl mb-2">photo_camera</span>
+        <span class="text-xs uppercase tracking-widest font-bold">Photo Coming Soon</span>
+    </div>
+</div>
+<div class="mt-12 text-center">
+    <a href="https://www.facebook.com/profile.php?id=100089117444800" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-wood-dark dark:text-white font-bold hover:text-primary transition-colors underline underline-offset-8 decoration-primary decoration-2">
+        See more on Facebook
+        <span class="material-icons">arrow_forward</span>
+    </a>
+</div>
+</section>
+
+<!-- Testimonials -->
+<section class="py-24 border-t border-primary/10 bg-white dark:bg-wood-dark">
 <div class="max-w-4xl mx-auto px-4 text-center">
+    <span class="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-bold uppercase tracking-widest mb-6">What customers say</span>
     <div class="flex justify-center mb-8">
         <div class="flex text-primary">
             <span class="material-icons">star</span>
@@ -419,123 +369,99 @@
     <div id="testimonial-slider">
         <div class="testimonial-slide">
             <p class="text-2xl md:text-3xl italic font-medium leading-snug mb-8">
-                "The quality of the walnut slabs I received from RLC was beyond expectations. Perfect moisture content and the figuring was exactly as shown in the photos. They are my go-to for high-end commissions."
+                "Reviews from our Google and Facebook pages will appear here soon. We're proud of the work we do for furniture makers, builders, and hobbyists across the region."
             </p>
             <div class="flex flex-col items-center">
-                <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-primary mb-4">
-                    <img alt="Marcus Holloway" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBh_x3BX4agYXvAaXQwiyp30sztCaMU_dyYZJgnvmJoiAxSAASKnGFN5o9wurhwTUA4UJevgXfwVrkIe0XeuarJap6mSDUCD_F_NMbTAnmbEEL3j-iKeZlOHAjXTIKzKRq3B0kpo5Jp_GrtR8Va06m9nKwjwr4K9E6ey6rdpGT9Jm7PMGS0gwqR_kY9j91h8Z21O9CF3Zf2OEiA-ofDTFuRKjR1NpREP05u4JOb5pN1uPhuFJdqZq2IKYHSjVwIrf0dFL70n4Vevgk"/>
+                <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-primary mb-4 bg-primary/20 flex items-center justify-center">
+                    <span class="material-icons text-primary text-2xl">rate_review</span>
                 </div>
-                <h5 class="font-bold">Marcus Holloway</h5>
-                <span class="text-xs uppercase tracking-widest text-primary font-bold">Custom Furniture Maker</span>
+                <h5 class="font-bold">Customer Reviews</h5>
+                <span class="text-xs uppercase tracking-widest text-primary font-bold">Google &amp; Facebook</span>
             </div>
         </div>
         <div class="testimonial-slide hidden">
             <p class="text-2xl md:text-3xl italic font-medium leading-snug mb-8">
-                "RLC handled the shipping perfectly. Crating was robust and the driver was extremely helpful. The 'Story of the Tree' document added so much value for my client."
+                "On-site milling saved us from hauling several big walnut logs. The cuts were accurate and the lumber was stacked and ready to dry."
             </p>
             <div class="flex flex-col items-center">
                 <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-primary mb-4 bg-primary/20 flex items-center justify-center">
                     <span class="material-icons text-primary text-2xl">person</span>
                 </div>
-                <h5 class="font-bold">Elena Vance</h5>
-                <span class="text-xs uppercase tracking-widest text-primary font-bold">Interior Architect</span>
-            </div>
-        </div>
-        <div class="testimonial-slide hidden">
-            <p class="text-2xl md:text-3xl italic font-medium leading-snug mb-8">
-                "Used their calculator to plan my desktop build. The dimensions were spot on. One of the cleanest slabs I've ever worked with. Highly recommend RLC."
-            </p>
-            <div class="flex flex-col items-center">
-                <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-primary mb-4 bg-primary/20 flex items-center justify-center">
-                    <span class="material-icons text-primary text-2xl">person</span>
-                </div>
-                <h5 class="font-bold">Mark Thompson</h5>
-                <span class="text-xs uppercase tracking-widest text-primary font-bold">Hobbyist Builder</span>
+                <h5 class="font-bold">Sample Testimonial</h5>
+                <span class="text-xs uppercase tracking-widest text-primary font-bold">Placeholder</span>
             </div>
         </div>
     </div>
     <div class="flex justify-center gap-2 mt-12" id="testimonial-dots">
-        <button class="testimonial-dot w-2 h-2 rounded-full bg-primary" data-index="0"></button>
-        <button class="testimonial-dot w-2 h-2 rounded-full bg-primary/20" data-index="1"></button>
-        <button class="testimonial-dot w-2 h-2 rounded-full bg-primary/20" data-index="2"></button>
+        <button class="testimonial-dot w-2 h-2 rounded-full bg-primary" data-index="0" aria-label="Testimonial 1"></button>
+        <button class="testimonial-dot w-2 h-2 rounded-full bg-primary/20" data-index="1" aria-label="Testimonial 2"></button>
     </div>
 </div>
 </section>
 </main>
 
-<!-- Toast Notification -->
-<div id="toast" class="fixed bottom-8 right-8 bg-wood-dark text-white px-6 py-4 rounded-xl shadow-2xl transform translate-y-24 opacity-0 transition-all duration-300 z-50 flex items-center gap-3">
-    <span class="material-icons text-primary">check_circle</span>
-    <span id="toast-message">Item added to quote!</span>
-</div>
-
-<!-- Footer -->
-<footer class="bg-wood-dark text-white pt-20 pb-10 border-t border-white/5">
+<!-- Footer / Contact -->
+<footer id="contact" class="bg-wood-dark text-white pt-20 pb-10 border-t border-white/5">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
         <div class="col-span-1 lg:col-span-1">
             <a href="index.html" class="flex items-center gap-3 mb-6">
-                <img src="logo.png" alt="RLC Lumber" class="h-12 w-12 rounded-full object-cover"/>
+                <img src="logo.png" alt="RLC Lumber LLC" class="h-12 w-12 rounded-full object-cover"/>
                 <div class="flex flex-col">
-                    <span class="text-2xl font-bold tracking-tighter text-primary">RLC</span>
-                    <span class="text-[10px] uppercase tracking-widest font-semibold opacity-60 leading-tight">Hardwood Lumber</span>
+                    <span class="text-2xl font-bold tracking-tighter text-primary">RLC Lumber</span>
+                    <span class="text-[10px] uppercase tracking-widest font-semibold opacity-60 leading-tight">Sawmilling Services</span>
                 </div>
             </a>
             <p class="text-gray-400 mb-6 leading-relaxed">
-                Dedicated to providing furniture makers and craftspeople with the finest domestic hardwood slabs in the country.
+                Local &amp; portable sawmilling services for furniture makers, designers, builders, and hobbyists across Southern Minnesota &amp; Northern Iowa.
             </p>
             <div class="flex gap-4">
-                <a class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-colors" href="#">
-                    <i class="material-icons text-xl">facebook</i>
-                </a>
-                <a class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-colors" href="#">
-                    <i class="material-icons text-xl">camera_alt</i>
+                <a class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-colors" href="https://www.facebook.com/profile.php?id=100089117444800" target="_blank" rel="noopener" aria-label="Facebook">
+                    <span class="material-icons text-xl">facebook</span>
                 </a>
             </div>
         </div>
         <div>
-            <h4 class="font-bold mb-6 text-lg">Quick Links</h4>
+            <h4 class="font-bold mb-6 text-lg">Services</h4>
             <ul class="space-y-4 text-gray-400">
-                <li><a class="hover:text-primary transition-colors" href="#inventory">Current Slab Inventory</a></li>
-                <li><a class="hover:text-primary transition-colors" href="slab-detail.html">Custom Milling Services</a></li>
-                <li><a class="hover:text-primary transition-colors" href="calculator.html">Board Foot Calculator</a></li>
-                <li><a class="hover:text-primary transition-colors" href="#">Shipping &amp; Returns</a></li>
+                <li><a class="hover:text-primary transition-colors" href="#services">Drop-Off Milling</a></li>
+                <li><a class="hover:text-primary transition-colors" href="#services">On-Site Portable Milling</a></li>
+                <li><a class="hover:text-primary transition-colors" href="#services">Solar Kiln Drying</a></li>
+                <li><a class="hover:text-primary transition-colors" href="calculator.html">Calculator</a></li>
             </ul>
         </div>
         <div>
             <h4 class="font-bold mb-6 text-lg">Contact Us</h4>
             <ul class="space-y-4 text-gray-400">
-                <li class="flex items-center gap-3">
-                    <span class="material-icons text-primary text-sm">location_on</span>
-                    1284 Industrial Way, Portland, OR
+                <li class="flex items-start gap-3">
+                    <span class="material-icons text-primary text-sm mt-1">location_on</span>
+                    <span>17490 Co Rd 2,<br/>Chatfield, MN 55923</span>
                 </li>
                 <li class="flex items-center gap-3">
                     <span class="material-icons text-primary text-sm">phone</span>
-                    <a href="tel:5551234567" class="hover:text-primary transition-colors">(555) 123-4567</a>
+                    <a href="tel:9562023455" class="hover:text-primary transition-colors">(956) 202-3455</a>
                 </li>
                 <li class="flex items-center gap-3">
                     <span class="material-icons text-primary text-sm">email</span>
-                    <a href="mailto:sales@rlclumber.com" class="hover:text-primary transition-colors">sales@rlclumber.com</a>
+                    <a href="mailto:rlclumber17@gmail.com" class="hover:text-primary transition-colors">rlclumber17@gmail.com</a>
                 </li>
             </ul>
         </div>
         <div>
-            <h4 class="font-bold mb-6 text-lg">Newsletter</h4>
-            <p class="text-sm text-gray-400 mb-4">Get notified when we unload new kiln batches.</p>
-            <form id="newsletter-form" class="relative">
-                <input id="newsletter-email" class="w-full bg-white/5 border-white/10 rounded-xl px-4 py-3 text-sm focus:ring-primary focus:border-primary" placeholder="Your email address" type="email" required/>
-                <button type="submit" class="absolute right-2 top-2 p-1.5 bg-primary rounded-lg text-white hover:brightness-110 transition-all">
-                    <span class="material-icons text-sm">send</span>
-                </button>
-            </form>
-            <p id="newsletter-msg" class="text-xs text-primary mt-2 hidden">Thanks for subscribing!</p>
+            <h4 class="font-bold mb-6 text-lg">Hours</h4>
+            <ul class="space-y-2 text-gray-400 text-sm">
+                <li class="flex justify-between gap-4"><span>Mon – Fri</span><span>7am – 7pm</span></li>
+                <li class="flex justify-between gap-4"><span>Saturday</span><span>7am – 2pm</span></li>
+                <li class="flex justify-between gap-4"><span>Sunday</span><span>Closed</span></li>
+            </ul>
+            <a href="calculator.html#milling" class="inline-block mt-6 bg-primary text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:brightness-110 transition-all">Get an Estimate</a>
         </div>
     </div>
     <div class="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500 uppercase tracking-widest font-bold">
-        <p>&copy; 2025 RLC Hardwood Lumber Co. All Rights Reserved.</p>
+        <p>&copy; 2026 RLC Lumber LLC. All Rights Reserved.</p>
         <div class="flex gap-8">
-            <a class="hover:text-white transition-colors" href="#">Privacy Policy</a>
-            <a class="hover:text-white transition-colors" href="#">Terms of Service</a>
+            <a class="hover:text-white transition-colors" href="#services">Services</a>
+            <a class="hover:text-white transition-colors" href="calculator.html">Calculator</a>
         </div>
     </div>
 </div>
@@ -545,104 +471,12 @@
 document.addEventListener('DOMContentLoaded', function() {
 
 // ===== Mobile Menu =====
+const mobileMenu = document.getElementById('mobile-menu');
 document.getElementById('mobile-menu-btn').addEventListener('click', () => {
-    document.getElementById('mobile-menu').classList.toggle('hidden');
+    mobileMenu.classList.toggle('hidden');
 });
-
-// ===== Search Overlay =====
-const searchOverlay = document.getElementById('search-overlay');
-const searchInput = document.getElementById('search-input');
-const searchResults = document.getElementById('search-results');
-const slabData = [
-    { name: 'Black Walnut #4021', species: 'walnut', dims: '96"L x 34"W x 2.25"T', price: '$1,250' },
-    { name: 'Rift Sawn White Oak', species: 'oak', dims: '120"L x 12"W x 1.75"T', price: '$840' },
-    { name: 'Ambrosia Maple #112', species: 'maple', dims: '72"L x 28"W x 2.0"T', price: '$550' },
-    { name: 'Walnut Crotch #308', species: 'walnut', dims: '84"L x 40"W x 2.5"T', price: '$1,875' },
-    { name: 'QS White Oak #217', species: 'oak', dims: '108"L x 16"W x 2.0"T', price: '$960' },
-    { name: 'Curly Maple #445', species: 'maple', dims: '80"L x 24"W x 1.75"T', price: '$720' },
-];
-
-document.getElementById('search-btn').addEventListener('click', () => {
-    searchOverlay.classList.remove('hidden');
-    searchInput.focus();
-});
-document.getElementById('search-close').addEventListener('click', () => {
-    searchOverlay.classList.add('hidden');
-    searchInput.value = '';
-});
-searchOverlay.addEventListener('click', (e) => {
-    if (e.target === searchOverlay) {
-        searchOverlay.classList.add('hidden');
-        searchInput.value = '';
-    }
-});
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') searchOverlay.classList.add('hidden');
-    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-        e.preventDefault();
-        searchOverlay.classList.remove('hidden');
-        searchInput.focus();
-    }
-});
-
-searchInput.addEventListener('input', () => {
-    const q = searchInput.value.toLowerCase().trim();
-    if (!q) {
-        searchResults.innerHTML = '<p class="text-sm text-gray-400">Type to search our inventory...</p>';
-        return;
-    }
-    const matches = slabData.filter(s => s.name.toLowerCase().includes(q) || s.species.includes(q) || s.dims.toLowerCase().includes(q));
-    if (matches.length === 0) {
-        searchResults.innerHTML = '<p class="text-sm text-gray-400">No slabs found matching your search.</p>';
-        return;
-    }
-    searchResults.innerHTML = matches.map(s => `
-        <a href="slab-detail.html" class="flex justify-between items-center p-3 rounded-lg hover:bg-primary/5 transition-colors">
-            <div>
-                <p class="font-semibold">${s.name}</p>
-                <p class="text-sm text-gray-400">${s.dims}</p>
-            </div>
-            <span class="text-primary font-bold">${s.price}</span>
-        </a>
-    `).join('');
-});
-
-// ===== Species Filter =====
-document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-        document.querySelectorAll('.filter-btn').forEach(b => {
-            b.classList.remove('bg-primary', 'text-white', 'active');
-            b.classList.add('bg-white', 'dark:bg-background-dark', 'border', 'border-primary/20');
-        });
-        btn.classList.add('bg-primary', 'text-white', 'active');
-        btn.classList.remove('bg-white', 'dark:bg-background-dark', 'border', 'border-primary/20');
-
-        const species = btn.dataset.species;
-        document.querySelectorAll('.slab-card').forEach(card => {
-            if (species === 'all' || card.dataset.species === species) {
-                card.style.display = '';
-                card.style.animation = 'fadeIn 0.3s ease';
-            } else {
-                card.style.display = 'none';
-            }
-        });
-    });
-});
-
-// ===== Hero Calculator =====
-function heroCalc() {
-    const l = parseFloat(document.getElementById('hero-length').value) || 0;
-    const w = parseFloat(document.getElementById('hero-width').value) || 0;
-    const t = parseFloat(document.getElementById('hero-thickness').value) || 0;
-    const q = parseFloat(document.getElementById('hero-qty').value) || 1;
-    const bf = (l * w * t / 144) * q;
-    document.getElementById('hero-result').innerHTML = `${bf.toFixed(2)} <span class="text-sm font-normal">bd/ft</span>`;
-}
-document.getElementById('hero-calc-btn').addEventListener('click', heroCalc);
-// Auto-calculate on input
-['hero-length', 'hero-width', 'hero-thickness', 'hero-qty'].forEach(id => {
-    document.getElementById(id).addEventListener('input', heroCalc);
-});
+// Close mobile menu on link click
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
 
 // ===== Testimonial Slider =====
 let currentSlide = 0;
@@ -662,38 +496,18 @@ dots.forEach(dot => {
     dot.addEventListener('click', () => showSlide(parseInt(dot.dataset.index)));
 });
 
-setInterval(() => {
-    showSlide((currentSlide + 1) % slides.length);
-}, 5000);
-
-// ===== Add to Quote / Toast =====
-function showToast(msg) {
-    const toast = document.getElementById('toast');
-    document.getElementById('toast-message').textContent = msg;
-    toast.classList.remove('translate-y-24', 'opacity-0');
-    setTimeout(() => toast.classList.add('translate-y-24', 'opacity-0'), 3000);
+if (slides.length > 1) {
+    setInterval(() => {
+        showSlide((currentSlide + 1) % slides.length);
+    }, 6000);
 }
 
-document.querySelectorAll('.add-to-quote').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const name = btn.dataset.name;
-        showToast(`${name} added to quote!`);
-    });
-});
-
-// ===== Newsletter =====
-document.getElementById('newsletter-form').addEventListener('submit', (e) => {
-    e.preventDefault();
-    document.getElementById('newsletter-msg').classList.remove('hidden');
-    document.getElementById('newsletter-email').value = '';
-    setTimeout(() => document.getElementById('newsletter-msg').classList.add('hidden'), 4000);
-});
-
-// ===== Smooth scroll =====
+// ===== Smooth scroll for in-page anchors =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-        const target = document.querySelector(this.getAttribute('href'));
+        const id = this.getAttribute('href');
+        if (id === '#') return;
+        const target = document.querySelector(id);
         if (target) {
             e.preventDefault();
             target.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -703,12 +517,5 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 }); // end DOMContentLoaded
 </script>
-
-<style>
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-</style>
 </body>
 </html>

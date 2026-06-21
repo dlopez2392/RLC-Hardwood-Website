@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>RLC Board Foot Calculator | Hardwood Lumber Tools</title>
+<title>RLC Lumber | Milling Estimate Calculator</title>
+<meta name="description" content="Estimate the cost of RLC Lumber sawmilling services — drop-off milling, on-site portable milling, and solar kiln drying."/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script>
     tailwind.config = {
         darkMode: "class",
@@ -16,8 +16,11 @@
                 colors: {
                     "primary": "#8B5A2B",
                     "primary-light": "#A97C50",
+                    "honey": "#F0B45A",
                     "background-light": "#FAF6F0",
                     "background-dark": "#2C1E12",
+                    "wood-dark": "#2d241e",
+                    "wood-muted": "#4a3f35",
                 },
                 fontFamily: {
                     "display": ["Inter"]
@@ -34,241 +37,195 @@
 </script>
 <style>
     body { font-family: 'Inter', sans-serif; }
-    .wood-gradient {
-        background: linear-gradient(135deg, rgba(139, 90, 43, 0.05) 0%, rgba(44, 30, 18, 0.02) 100%);
-    }
 </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display transition-colors duration-300">
 
 <!-- Header / Navigation -->
 <header class="border-b border-primary/10 bg-white dark:bg-background-dark sticky top-0 z-50">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-    <a href="index.html" class="flex items-center gap-3">
-        <img src="logo.png" alt="RLC Lumber" class="h-14 w-14 rounded-full object-cover"/>
-        <div class="flex flex-col">
-            <span class="text-2xl font-bold tracking-tighter text-primary">RLC</span>
-            <span class="text-[10px] uppercase tracking-widest font-semibold opacity-60 leading-tight">Hardwood Lumber</span>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center gap-6">
+    <a href="index.html" class="flex items-center gap-3 flex-shrink-0">
+        <img src="logo.png" alt="RLC Lumber LLC" class="h-12 w-12 rounded-full object-cover"/>
+        <div class="flex flex-col leading-none">
+            <span class="text-2xl font-bold tracking-tight text-primary whitespace-nowrap">RLC</span>
+            <span class="text-[10px] uppercase tracking-[0.18em] font-semibold opacity-60 whitespace-nowrap mt-0.5">Sawmilling Services</span>
         </div>
     </a>
-    <nav class="hidden md:flex gap-8 font-medium text-sm uppercase tracking-wider">
-        <a class="hover:text-primary transition-colors" href="index.html">Slabs</a>
-        <a class="hover:text-primary transition-colors" href="index.html#inventory">Inventory</a>
-        <a class="text-primary" href="calculator.html">Calculator</a>
-        <a class="hover:text-primary transition-colors" href="mailto:sales@rlclumber.com">Contact</a>
-    </nav>
-    <a href="index.html#inventory" class="bg-primary text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:opacity-90 transition-opacity">
-        Shop Inventory
+    <div class="hidden md:flex flex-1 justify-center items-center gap-9">
+        <a class="text-sm font-medium hover:text-primary transition-colors" href="index.html#services">Services</a>
+        <a class="text-sm font-medium text-primary" href="calculator.html">Calculator</a>
+        <a class="text-sm font-medium hover:text-primary transition-colors" href="index.html#equipment">Equipment</a>
+        <a class="text-sm font-medium hover:text-primary transition-colors" href="index.html#contact">Contact</a>
+    </div>
+    <a href="tel:9562023455" class="hidden md:inline-flex flex-shrink-0 bg-primary text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:brightness-110 transition-all shadow-lg shadow-primary/20 whitespace-nowrap items-center gap-2">
+        <span class="material-icons text-base">call</span>
+        (956) 202-3455
+    </a>
+    <a href="tel:9562023455" class="md:hidden ml-auto flex items-center gap-2 text-sm font-semibold text-primary" aria-label="Call us">
+        <span class="material-icons text-base">call</span>
     </a>
 </div>
 </header>
 
 <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 <!-- Page Title -->
-<div class="mb-12">
-    <h1 class="text-4xl font-bold mb-4">Board Foot Calculator</h1>
+<div class="mb-10">
+    <h1 class="text-4xl font-bold mb-4">Milling Estimate Calculator</h1>
     <div class="h-1.5 w-24 bg-primary rounded-full mb-4"></div>
     <p class="text-slate-500 dark:text-slate-400 max-w-2xl text-lg">
-        Quickly estimate the volume and cost of your lumber project. Accurate calculations for slabs, dimensional lumber, and custom hardwood cuts.
+        Get a ballpark price for our sawmilling services — drop-off milling, on-site portable milling, and solar kiln drying.
     </p>
 </div>
 
+<div id="panel-milling">
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-<!-- Main Calculator Section -->
-<div class="lg:col-span-8">
-    <div class="bg-white dark:bg-slate-900/50 p-8 rounded-xl border border-primary/10 shadow-xl shadow-primary/5">
-        <form id="calc-form" class="space-y-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Thickness -->
-                <div class="space-y-2">
-                    <label class="text-sm font-semibold text-slate-600 dark:text-slate-300">Thickness (Inches)</label>
-                    <div class="relative">
-                        <input id="calc-thickness" class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-lg p-4 focus:ring-2 focus:ring-primary text-lg" placeholder="1.0" type="number" step="0.0625" min="0"/>
-                        <span class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm">in</span>
-                    </div>
-                    <!-- Common thickness presets -->
-                    <div class="flex gap-1 flex-wrap">
-                        <button type="button" class="thickness-preset text-xs px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded hover:bg-primary hover:text-white transition-colors" data-val="1">4/4</button>
-                        <button type="button" class="thickness-preset text-xs px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded hover:bg-primary hover:text-white transition-colors" data-val="1.25">5/4</button>
-                        <button type="button" class="thickness-preset text-xs px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded hover:bg-primary hover:text-white transition-colors" data-val="1.5">6/4</button>
-                        <button type="button" class="thickness-preset text-xs px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded hover:bg-primary hover:text-white transition-colors" data-val="2">8/4</button>
-                        <button type="button" class="thickness-preset text-xs px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded hover:bg-primary hover:text-white transition-colors" data-val="3">12/4</button>
-                    </div>
+    <div class="lg:col-span-8">
+        <div class="bg-white dark:bg-slate-900/50 p-8 rounded-xl border border-primary/10 shadow-xl shadow-primary/5">
+            <!-- Service selector -->
+            <div class="space-y-2 mb-8">
+                <label class="text-sm font-semibold text-slate-600 dark:text-slate-300">Choose a Service</label>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <button type="button" data-service="dropoff" class="service-btn text-left p-4 rounded-lg border-2 transition-all">
+                        <span class="material-icons text-primary mb-1">forest</span>
+                        <span class="block font-bold text-sm">Drop-Off Milling</span>
+                        <span class="block text-xs text-slate-500 dark:text-slate-400">$0.65 / bd ft</span>
+                    </button>
+                    <button type="button" data-service="onsite" class="service-btn text-left p-4 rounded-lg border-2 transition-all">
+                        <span class="material-icons text-primary mb-1">local_shipping</span>
+                        <span class="block font-bold text-sm">On-Site Portable</span>
+                        <span class="block text-xs text-slate-500 dark:text-slate-400">$85 / hour</span>
+                    </button>
+                    <button type="button" data-service="kiln" class="service-btn text-left p-4 rounded-lg border-2 transition-all">
+                        <span class="material-icons text-primary mb-1">wb_sunny</span>
+                        <span class="block font-bold text-sm">Solar Kiln Drying</span>
+                        <span class="block text-xs text-slate-500 dark:text-slate-400">$0.70 / bd ft</span>
+                    </button>
                 </div>
-                <!-- Width -->
-                <div class="space-y-2">
-                    <label class="text-sm font-semibold text-slate-600 dark:text-slate-300">Width (Inches)</label>
-                    <div class="relative">
-                        <input id="calc-width" class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-lg p-4 focus:ring-2 focus:ring-primary text-lg" placeholder="6.0" type="number" step="0.0625" min="0"/>
-                        <span class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm">in</span>
-                    </div>
+            </div>
+
+            <!-- Board-foot input (drop-off / kiln) -->
+            <div id="mill-bf-row" class="space-y-2 mb-6">
+                <label class="text-sm font-semibold text-slate-600 dark:text-slate-300">Total Board Feet</label>
+                <div class="relative">
+                    <input id="mill-bf" class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-lg p-4 focus:ring-2 focus:ring-primary text-lg" placeholder="e.g. 250" type="number" min="0" step="1"/>
+                    <span class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm">bd ft</span>
                 </div>
-                <!-- Length -->
-                <div class="space-y-2">
-                    <div class="flex justify-between items-center">
-                        <label class="text-sm font-semibold text-slate-600 dark:text-slate-300">Length</label>
-                        <div class="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-md text-[10px] font-bold">
-                            <button id="unit-in" class="bg-white dark:bg-slate-700 px-2 py-0.5 rounded shadow-sm transition-colors" type="button">IN</button>
-                            <button id="unit-ft" class="px-2 py-0.5 text-slate-400 transition-colors" type="button">FT</button>
+                <p class="text-xs text-slate-400">Board feet = (Thickness&quot; × Width&quot; × Length&quot;) ÷ 144 per piece.</p>
+            </div>
+
+            <!-- On-site inputs -->
+            <div id="mill-onsite-rows" class="hidden space-y-6 mb-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label class="text-sm font-semibold text-slate-600 dark:text-slate-300">Distance from Shop (one-way)</label>
+                        <div class="relative">
+                            <input id="mill-miles" class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-lg p-4 focus:ring-2 focus:ring-primary text-lg" placeholder="e.g. 25" type="number" min="0" step="1"/>
+                            <span class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm">mi</span>
                         </div>
                     </div>
+                    <div class="space-y-2">
+                        <label class="text-sm font-semibold text-slate-600 dark:text-slate-300">Estimated Milling Time</label>
+                        <div class="relative">
+                            <input id="mill-hours" class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-lg p-4 focus:ring-2 focus:ring-primary text-lg" placeholder="e.g. 4" type="number" min="0" step="0.5"/>
+                            <span class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm">hrs</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3 p-4 rounded-lg bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800/40">
+                    <span class="material-icons text-amber-600 dark:text-amber-400 text-base mt-0.5">info</span>
+                    <p class="text-xs text-amber-800 dark:text-amber-300">
+                        Each log averages about 20–30 minutes. Moving logs and stacking lumber yourself reduces time and cost. A <strong>$30 broken-blade fee</strong> applies per blade if metal (nails, fencing) is found in a log.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Optional kiln add-on (drop-off / on-site only) -->
+            <div id="mill-kiln-addon" class="hidden mb-6">
+                <label class="flex items-center gap-3 p-4 rounded-lg border border-primary/20 cursor-pointer hover:bg-primary/5 transition-colors">
+                    <input id="mill-add-kiln" type="checkbox" class="rounded text-primary focus:ring-primary"/>
+                    <span class="flex-1">
+                        <span class="block font-semibold text-sm">Add Solar Kiln Drying</span>
+                        <span class="block text-xs text-slate-500 dark:text-slate-400">Dry your milled lumber to 8–12% MC — $0.70 / bd ft</span>
+                    </span>
+                </label>
+                <div id="mill-kiln-bf-row" class="hidden space-y-2 mt-3">
+                    <label class="text-sm font-semibold text-slate-600 dark:text-slate-300">Board Feet to Dry</label>
                     <div class="relative">
-                        <input id="calc-length" class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-lg p-4 focus:ring-2 focus:ring-primary text-lg" placeholder="96.0" type="number" step="0.0625" min="0"/>
-                        <span id="length-unit-label" class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm">in</span>
+                        <input id="mill-kiln-bf" class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-lg p-4 focus:ring-2 focus:ring-primary text-lg" placeholder="e.g. 250" type="number" min="0" step="1"/>
+                        <span class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm">bd ft</span>
+                    </div>
+                    <p class="text-xs text-slate-400">Kiln capacity is 1,600 bd ft and up to 12' lengths per batch.</p>
+                </div>
+            </div>
+
+            <button id="mill-calc-btn" type="button" class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-5 rounded-xl text-lg flex items-center justify-center gap-2 transition-all shadow-lg shadow-primary/20">
+                <span class="material-icons">request_quote</span>
+                Calculate Estimate
+            </button>
+
+            <!-- Itemized estimate -->
+            <div id="mill-results" class="mt-10 hidden">
+                <div class="p-8 bg-primary/5 dark:bg-primary/10 rounded-xl border border-primary/20">
+                    <h3 class="font-bold text-lg mb-6 flex items-center gap-2">
+                        <span class="material-icons text-primary">receipt_long</span>
+                        Estimated Cost
+                    </h3>
+                    <div id="mill-line-items" class="space-y-3 mb-6"></div>
+                    <div class="flex justify-between items-baseline pt-6 border-t border-primary/20">
+                        <span class="text-sm font-bold uppercase tracking-widest text-primary">Estimated Total</span>
+                        <span id="mill-total" class="text-4xl font-black text-slate-900 dark:text-white">$0.00</span>
                     </div>
                 </div>
-            </div>
-
-            <!-- Quantity & Waste -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="space-y-2">
-                    <label class="text-sm font-semibold text-slate-600 dark:text-slate-300">Quantity</label>
-                    <input id="calc-qty" class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-lg p-4 focus:ring-2 focus:ring-primary text-lg" placeholder="1" type="number" min="1" value="1"/>
-                </div>
-                <div class="space-y-2">
-                    <label class="text-sm font-semibold text-slate-600 dark:text-slate-300">Waste Factor (%)</label>
-                    <input id="calc-waste" class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-lg p-4 focus:ring-2 focus:ring-primary text-lg" placeholder="10" type="number" min="0" max="50" value="0"/>
+                <div class="flex items-start gap-3 mt-4 p-4 rounded-lg bg-slate-100 dark:bg-slate-800/50">
+                    <span class="material-icons text-slate-400 text-base mt-0.5">gavel</span>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">
+                        This is an <strong>estimate, not a quote.</strong> Final pricing depends on your logs, cut list, and on-site conditions. <a href="mailto:rlclumber17@gmail.com" class="text-primary font-semibold underline underline-offset-2">Email us</a> or call <a href="tel:9562023455" class="text-primary font-semibold underline underline-offset-2">(956) 202-3455</a> to confirm your job.
+                    </p>
                 </div>
             </div>
-
-            <!-- Species Selection -->
-            <div class="space-y-2">
-                <label class="text-sm font-semibold text-slate-600 dark:text-slate-300">Wood Species</label>
-                <select id="calc-species" class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-lg p-4 focus:ring-2 focus:ring-primary text-lg appearance-none">
-                    <option value="14.50">Black Walnut ($14.50/bf)</option>
-                    <option value="12.00">White Oak ($12.00/bf)</option>
-                    <option value="8.75">Cherry ($8.75/bf)</option>
-                    <option value="9.25">Hard Maple ($9.25/bf)</option>
-                    <option value="7.50">Reclaimed Pine ($7.50/bf)</option>
-                    <option value="custom">Custom (Enter Manual Price)</option>
-                </select>
-            </div>
-
-            <!-- Custom price input -->
-            <div id="custom-price-row" class="space-y-2 hidden">
-                <label class="text-sm font-semibold text-slate-600 dark:text-slate-300">Custom Price per Board Foot ($)</label>
-                <input id="calc-custom-price" class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-lg p-4 focus:ring-2 focus:ring-primary text-lg" placeholder="10.00" type="number" step="0.01" min="0"/>
-            </div>
-
-            <div class="pt-4">
-                <button id="calc-btn" class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-5 rounded-xl text-lg flex items-center justify-center gap-2 transition-all shadow-lg shadow-primary/20" type="button">
-                    <span class="material-icons">calculate</span>
-                    Calculate Board Feet
-                </button>
-            </div>
-        </form>
-
-        <!-- Results Area -->
-        <div id="results-area" class="mt-12 p-8 bg-primary/5 dark:bg-primary/10 rounded-xl border border-primary/20 relative overflow-hidden">
-            <div class="absolute -right-8 -bottom-8 opacity-10">
-                <span class="material-icons text-[120px] text-primary">straighten</span>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="relative z-10">
-                    <p class="text-xs font-bold uppercase tracking-widest text-primary mb-1">Total Volume</p>
-                    <div class="flex items-baseline gap-2">
-                        <span id="result-bf" class="text-5xl font-black text-slate-900 dark:text-white">0.00</span>
-                        <span class="text-xl font-medium text-slate-500">BF</span>
-                    </div>
-                </div>
-                <div class="relative z-10 border-l-0 md:border-l border-primary/20 md:pl-8">
-                    <p class="text-xs font-bold uppercase tracking-widest text-primary mb-1">With Waste</p>
-                    <div class="flex items-baseline gap-2">
-                        <span id="result-bf-waste" class="text-5xl font-black text-slate-900 dark:text-white">0.00</span>
-                        <span class="text-xl font-medium text-slate-500">BF</span>
-                    </div>
-                </div>
-                <div class="relative z-10 border-l-0 md:border-l border-primary/20 md:pl-8">
-                    <p class="text-xs font-bold uppercase tracking-widest text-primary mb-1">Estimated Cost</p>
-                    <div class="flex items-baseline gap-2">
-                        <span id="result-cost" class="text-5xl font-black text-slate-900 dark:text-white">$0.00</span>
-                        <span class="text-xl font-medium text-slate-500">USD</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Calculation History -->
-        <div id="history-section" class="mt-8 hidden">
-            <div class="flex justify-between items-center mb-4">
-                <h3 class="font-bold text-lg flex items-center gap-2">
-                    <span class="material-icons text-primary">history</span>
-                    Calculation History
-                </h3>
-                <button id="clear-history" class="text-sm text-red-500 hover:text-red-700 font-medium">Clear All</button>
-            </div>
-            <div id="history-list" class="space-y-2"></div>
-        </div>
-    </div>
-</div>
-
-<!-- Sidebar Info Section -->
-<div class="lg:col-span-4 space-y-8">
-    <!-- Wood Math Tips -->
-    <div class="bg-white dark:bg-slate-900/30 border border-slate-200 dark:border-slate-800 rounded-xl p-6">
-        <div class="flex items-center gap-2 mb-6">
-            <span class="material-icons text-primary">lightbulb</span>
-            <h3 class="font-bold text-lg">Wood Math Tips</h3>
-        </div>
-        <ul class="space-y-5">
-            <li class="flex gap-4">
-                <div class="mt-1">
-                    <div class="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-xs">1</div>
-                </div>
-                <p class="text-sm text-slate-600 dark:text-slate-400">
-                    <strong class="text-slate-900 dark:text-white block">The Basic Formula</strong>
-                    (T&quot; x W&quot; x L&quot;) / 144 = Board Feet. Ensure all dimensions are in inches for this calculation.
-                </p>
-            </li>
-            <li class="flex gap-4">
-                <div class="mt-1">
-                    <div class="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-xs">2</div>
-                </div>
-                <p class="text-sm text-slate-600 dark:text-slate-400">
-                    <strong class="text-slate-900 dark:text-white block">Wastage Factor</strong>
-                    Always add 10-15% to your final BF count to account for knots, sapwood, and milling losses.
-                </p>
-            </li>
-            <li class="flex gap-4">
-                <div class="mt-1">
-                    <div class="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-xs">3</div>
-                </div>
-                <p class="text-sm text-slate-600 dark:text-slate-400">
-                    <strong class="text-slate-900 dark:text-white block">Quarter Rules</strong>
-                    Remember that 4/4 is 1&quot; thick, 8/4 is 2&quot; thick, and so on. Rough-sawn is usually thicker than surfaced wood.
-                </p>
-            </li>
-        </ul>
-    </div>
-
-    <!-- Lumber Visuals Card -->
-    <div class="space-y-4">
-        <h3 class="font-bold text-lg px-2">Current Batch Selection</h3>
-        <div class="grid grid-cols-2 gap-3">
-            <a href="index.html#inventory" class="aspect-square rounded-lg overflow-hidden relative group">
-                <img alt="Lumber stacks" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtUNnpULOzL45giXWFkc9KBaBMHiymwgzjc-7XBzjVJTsKWVgAqWlxkCWxX26dC7mKsPBtS0qyR1F3rMv1tx22Od8xSVlOmwuI-ZKeOsVfoUAnGnnCjZIJ40Ad7Qj8poikAAMrk8QvCMNJaYaU6UMDI9XzoIw7FPSnuynqLGwrShyCVwrwdyJ-fiBPUyPfXSnbwymr4dJNzl0zqG1GqikusRcu5SPBXbn6bRhgZ5Ktf6CJ7r8WNkqPNZu0pShqEvyN0spmVq72mag"/>
-                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
-            </a>
-            <a href="index.html#inventory" class="aspect-square rounded-lg overflow-hidden relative group">
-                <img alt="Live edge wood" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNBz17qj7eB2uNJqWFkPmWNUfGvClPJTgGKuXz23eadg308gBeSPHDcerZVbztok7Sr8jrvvX1McdBIm6QFTaBLiRhaY-b6nimN0c-tllAHJGrqkp63Af22yIAMoy21x0gad0erCy2RUQpLmDR_k49nFm_XtQxfgqoAnYU1tPjfuhp5k_1t6R1BmfTebocN2mvu9a0TLr7-ewZJL1PMKyrG4rMfkyJNtwOGRj4qc0h3skEBHwMUB-Yo9v_wDvN6Kl6CP7cybpkMbk"/>
-                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
-            </a>
-            <a href="index.html#inventory" class="aspect-square rounded-lg overflow-hidden relative group">
-                <img alt="Sawmill wood" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0dn3H1_5hjD77vC5f5lRFCfOjf4Ljzhi3Ydo5N3JoqlQ0M-GcB5ZmJSfBjEDc0Xs_lxCwcsByKMvHTkvtAoYY_7_LyKr4AwmaYcPTJEJaYm4A-sUJNOS4uJk8vhtDxGrgTNNcfPkdiHeSH4sYxbwDlyj2z6P1IJEM5n9HnXidi-grME3oz6jmaNvkOOGdNaHLRJtffQ9UOOxnupMAKxZHDobFzEyIB_J0ipUew7i7yNu89gAoOeSUiAQ0hlg8c1i245YXG1miNJU"/>
-                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
-            </a>
-            <a href="index.html#inventory" class="aspect-square rounded-lg overflow-hidden relative group">
-                <img alt="Wood grain texture" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlu6IukBRkNjakXNYR5ZC61r4mKCXUmudAKCr78Mx0CeKylhMiVM1kSUR6MiJVyOmgQgvI7IZvaPsYO3PRLNSCeU4ZxpY3GwMO0tmQZ1VFpvXl9KMs-CIwGsCa5Ras6njqXdkiLE5nk48AvcVI2pEWBUM2n0iLg26UOXc2ZRY6rayxJ64tIgmWCjbhVOtIZaNw3Ww1C6A615mHbUqI81wJwETI0BwVmdbvL3oMqUDegv8uPekmK9UQ4_qNUMlaEroqlNjgKdWrPXo"/>
-                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
-            </a>
         </div>
     </div>
 
-    <!-- CTA -->
-    <div class="bg-primary p-6 rounded-xl text-white shadow-lg shadow-primary/20">
-        <h4 class="font-bold text-lg mb-2">Need a custom quote?</h4>
-        <p class="text-white/80 text-sm mb-4">Send us your cut list and we'll hand-select the best pieces for your project.</p>
-        <a class="inline-block bg-white text-primary px-6 py-2 rounded-lg font-bold text-sm hover:shadow-lg transition-all" href="mailto:sales@rlclumber.com">Email Us</a>
+    <!-- Sidebar -->
+    <div class="lg:col-span-4 space-y-8">
+        <div class="bg-white dark:bg-slate-900/30 border border-slate-200 dark:border-slate-800 rounded-xl p-6">
+            <div class="flex items-center gap-2 mb-6">
+                <span class="material-icons text-primary">payments</span>
+                <h3 class="font-bold text-lg">Our Rates</h3>
+            </div>
+            <ul class="space-y-4 text-sm">
+                <li class="flex justify-between gap-4 pb-4 border-b border-slate-100 dark:border-slate-800">
+                    <span class="text-slate-600 dark:text-slate-400">Drop-Off Milling</span>
+                    <span class="font-bold whitespace-nowrap">$0.65 / bd ft</span>
+                </li>
+                <li class="flex justify-between gap-4 pb-4 border-b border-slate-100 dark:border-slate-800">
+                    <span class="text-slate-600 dark:text-slate-400">On-Site Milling</span>
+                    <span class="font-bold whitespace-nowrap">$85 / hr</span>
+                </li>
+                <li class="flex justify-between gap-4 pb-4 border-b border-slate-100 dark:border-slate-800">
+                    <span class="text-slate-600 dark:text-slate-400">Travel</span>
+                    <span class="font-bold whitespace-nowrap">$1.25 / mi</span>
+                </li>
+                <li class="flex justify-between gap-4 pb-4 border-b border-slate-100 dark:border-slate-800">
+                    <span class="text-slate-600 dark:text-slate-400">On-Site Setup</span>
+                    <span class="font-bold whitespace-nowrap">$100 flat</span>
+                </li>
+                <li class="flex justify-between gap-4 pb-4 border-b border-slate-100 dark:border-slate-800">
+                    <span class="text-slate-600 dark:text-slate-400">Solar Kiln Drying</span>
+                    <span class="font-bold whitespace-nowrap">$0.70 / bd ft</span>
+                </li>
+                <li class="flex justify-between gap-4">
+                    <span class="text-slate-600 dark:text-slate-400">Broken Blade (metal)</span>
+                    <span class="font-bold whitespace-nowrap">$30 / blade</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="bg-primary p-6 rounded-xl text-white shadow-lg shadow-primary/20">
+            <h4 class="font-bold text-lg mb-2">Have a cut list?</h4>
+            <p class="text-white/80 text-sm mb-4">Send us your project details and we'll confirm a price for your logs.</p>
+            <a class="inline-block bg-white text-primary px-6 py-2 rounded-lg font-bold text-sm hover:shadow-lg transition-all" href="mailto:rlclumber17@gmail.com">Email Us</a>
+        </div>
     </div>
 </div>
 </div>
@@ -279,46 +236,43 @@
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-12">
     <div class="col-span-1 md:col-span-2">
         <a href="index.html" class="flex items-center gap-3 mb-6">
-            <img src="logo.png" alt="RLC Lumber" class="h-10 w-10 rounded-full object-cover"/>
-            <div class="flex flex-col">
-                <span class="text-xl font-bold tracking-tighter text-primary">RLC</span>
-                <span class="text-[9px] uppercase tracking-widest font-semibold opacity-60 leading-tight">Hardwood Lumber</span>
+            <img src="logo.png" alt="RLC Lumber LLC" class="h-10 w-10 rounded-full object-cover"/>
+            <div class="flex flex-col leading-none">
+                <span class="text-xl font-bold tracking-tight text-primary">RLC</span>
+                <span class="text-[9px] uppercase tracking-[0.18em] font-semibold opacity-60 mt-0.5">Sawmilling Services</span>
             </div>
         </a>
         <p class="text-slate-500 dark:text-slate-400 max-w-sm mb-6">
-            Premium kiln-dried hardwood slabs and dimensional lumber for the modern craftsman. Locally sourced and sustainably milled.
+            Local &amp; portable sawmilling services — drop-off milling, on-site portable milling, and solar kiln drying across Southern Minnesota &amp; Northern Iowa.
         </p>
         <div class="flex gap-4">
-            <a class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-primary hover:text-white transition-colors" href="#">
+            <a class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-primary hover:text-white transition-colors" href="https://www.facebook.com/profile.php?id=100089117444800" target="_blank" rel="noopener" aria-label="Facebook">
                 <span class="material-icons text-sm">facebook</span>
-            </a>
-            <a class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-primary hover:text-white transition-colors" href="#">
-                <span class="material-icons text-sm">camera_alt</span>
             </a>
         </div>
     </div>
     <div>
-        <h5 class="font-bold mb-6">Quick Links</h5>
+        <h5 class="font-bold mb-6">Services</h5>
         <ul class="space-y-3 text-slate-500 dark:text-slate-400 text-sm">
-            <li><a class="hover:text-primary" href="index.html#inventory">Shop All Slabs</a></li>
-            <li><a class="hover:text-primary" href="index.html">New Arrivals</a></li>
-            <li><a class="hover:text-primary" href="slab-detail.html">Slab Details</a></li>
-            <li><a class="hover:text-primary" href="#">Shipping Policy</a></li>
+            <li><a class="hover:text-primary" href="index.html#services">Drop-Off Milling</a></li>
+            <li><a class="hover:text-primary" href="index.html#services">On-Site Portable Milling</a></li>
+            <li><a class="hover:text-primary" href="index.html#services">Solar Kiln Drying</a></li>
+            <li><a class="hover:text-primary" href="calculator.html">Calculator</a></li>
         </ul>
     </div>
     <div>
-        <h5 class="font-bold mb-6">Visit Shop</h5>
-        <p class="text-slate-500 dark:text-slate-400 text-sm mb-1">1284 Industrial Way</p>
-        <p class="text-slate-500 dark:text-slate-400 text-sm mb-4">Portland, OR 97201</p>
-        <p class="text-slate-500 dark:text-slate-400 text-sm">Mon-Fri: 8am - 5pm</p>
-        <p class="text-slate-500 dark:text-slate-400 text-sm">Sat: 9am - 1pm</p>
+        <h5 class="font-bold mb-6">Contact</h5>
+        <p class="text-slate-500 dark:text-slate-400 text-sm mb-1">17490 Co Rd 2</p>
+        <p class="text-slate-500 dark:text-slate-400 text-sm mb-4">Chatfield, MN 55923</p>
+        <p class="text-slate-500 dark:text-slate-400 text-sm"><a class="hover:text-primary" href="tel:9562023455">(956) 202-3455</a></p>
+        <p class="text-slate-500 dark:text-slate-400 text-sm"><a class="hover:text-primary" href="mailto:rlclumber17@gmail.com">rlclumber17@gmail.com</a></p>
     </div>
 </div>
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-slate-100 dark:border-slate-900 flex flex-col md:flex-row justify-between gap-4 text-xs text-slate-400 font-medium">
-    <p>&copy; 2025 RLC Hardwood Lumber Co. All rights reserved.</p>
+    <p>&copy; 2026 RLC Lumber LLC. All rights reserved.</p>
     <div class="flex gap-6">
-        <a class="hover:text-primary" href="#">Privacy Policy</a>
-        <a class="hover:text-primary" href="#">Terms of Service</a>
+        <a class="hover:text-primary" href="index.html#services">Services</a>
+        <a class="hover:text-primary" href="index.html#contact">Contact</a>
     </div>
 </div>
 </footer>
@@ -326,139 +280,92 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
 
-// ===== Length unit toggle =====
-let lengthInFeet = false;
-const unitIn = document.getElementById('unit-in');
-const unitFt = document.getElementById('unit-ft');
-const lengthLabel = document.getElementById('length-unit-label');
+/* ============ MILLING ESTIMATE CALCULATOR ============ */
+const RATES = { dropoff: 0.65, kiln: 0.70, hourly: 85, mile: 1.25, setup: 100 };
+let activeService = 'dropoff';
 
-unitIn.addEventListener('click', () => {
-    lengthInFeet = false;
-    unitIn.classList.add('bg-white', 'dark:bg-slate-700', 'shadow-sm');
-    unitIn.classList.remove('text-slate-400');
-    unitFt.classList.remove('bg-white', 'dark:bg-slate-700', 'shadow-sm');
-    unitFt.classList.add('text-slate-400');
-    lengthLabel.textContent = 'in';
+const serviceBtns = document.querySelectorAll('.service-btn');
+const millBfRow = document.getElementById('mill-bf-row');
+const millOnsiteRows = document.getElementById('mill-onsite-rows');
+const millKilnAddon = document.getElementById('mill-kiln-addon');
+const addKilnCheckbox = document.getElementById('mill-add-kiln');
+const kilnBfRow = document.getElementById('mill-kiln-bf-row');
+
+function selectService(service) {
+    activeService = service;
+    serviceBtns.forEach(b => {
+        const active = b.dataset.service === service;
+        b.classList.toggle('border-primary', active);
+        b.classList.toggle('bg-primary/5', active);
+        b.classList.toggle('border-slate-200', !active);
+        b.classList.toggle('dark:border-slate-700', !active);
+    });
+    // Board-foot input: shown for drop-off and kiln
+    millBfRow.classList.toggle('hidden', service === 'onsite');
+    // On-site inputs
+    millOnsiteRows.classList.toggle('hidden', service !== 'onsite');
+    // Kiln add-on: only for milling services (not when kiln is the main service)
+    millKilnAddon.classList.toggle('hidden', service === 'kiln');
+    if (service === 'kiln') {
+        addKilnCheckbox.checked = false;
+        kilnBfRow.classList.add('hidden');
+    }
+}
+
+serviceBtns.forEach(b => b.addEventListener('click', () => selectService(b.dataset.service)));
+
+addKilnCheckbox.addEventListener('change', () => {
+    kilnBfRow.classList.toggle('hidden', !addKilnCheckbox.checked);
 });
 
-unitFt.addEventListener('click', () => {
-    lengthInFeet = true;
-    unitFt.classList.add('bg-white', 'dark:bg-slate-700', 'shadow-sm');
-    unitFt.classList.remove('text-slate-400');
-    unitIn.classList.remove('bg-white', 'dark:bg-slate-700', 'shadow-sm');
-    unitIn.classList.add('text-slate-400');
-    lengthLabel.textContent = 'ft';
-});
+function money(n) { return '$' + n.toFixed(2); }
 
-// ===== Thickness presets =====
-document.querySelectorAll('.thickness-preset').forEach(btn => {
-    btn.addEventListener('click', () => {
-        document.getElementById('calc-thickness').value = btn.dataset.val;
+function calcMilling() {
+    const items = [];
+
+    if (activeService === 'dropoff') {
+        const bf = parseFloat(document.getElementById('mill-bf').value) || 0;
+        items.push({ label: `Drop-off milling — ${bf} bd ft × $0.65`, amount: bf * RATES.dropoff });
+    } else if (activeService === 'kiln') {
+        const bf = parseFloat(document.getElementById('mill-bf').value) || 0;
+        items.push({ label: `Solar kiln drying — ${bf} bd ft × $0.70`, amount: bf * RATES.kiln });
+    } else if (activeService === 'onsite') {
+        const miles = parseFloat(document.getElementById('mill-miles').value) || 0;
+        const hours = parseFloat(document.getElementById('mill-hours').value) || 0;
+        items.push({ label: 'On-site setup fee', amount: RATES.setup });
+        items.push({ label: `Milling labor — ${hours} hr × $85`, amount: hours * RATES.hourly });
+        items.push({ label: `Travel — ${miles} mi × $1.25 (one-way)`, amount: miles * RATES.mile });
+    }
+
+    // Optional kiln add-on for milling services
+    if (activeService !== 'kiln' && addKilnCheckbox.checked) {
+        const kbf = parseFloat(document.getElementById('mill-kiln-bf').value) || 0;
+        items.push({ label: `Solar kiln drying — ${kbf} bd ft × $0.70`, amount: kbf * RATES.kiln });
+    }
+
+    const total = items.reduce((sum, i) => sum + i.amount, 0);
+
+    document.getElementById('mill-line-items').innerHTML = items.map(i => `
+        <div class="flex justify-between items-baseline gap-4 text-sm">
+            <span class="text-slate-600 dark:text-slate-400">${i.label}</span>
+            <span class="font-semibold whitespace-nowrap">${money(i.amount)}</span>
+        </div>
+    `).join('');
+    document.getElementById('mill-total').textContent = money(total);
+    document.getElementById('mill-results').classList.remove('hidden');
+}
+
+document.getElementById('mill-calc-btn').addEventListener('click', calcMilling);
+document.querySelectorAll('#panel-milling input').forEach(el => {
+    el.addEventListener('input', () => {
+        if (!document.getElementById('mill-results').classList.contains('hidden')) calcMilling();
     });
 });
 
-// ===== Custom species price =====
-document.getElementById('calc-species').addEventListener('change', (e) => {
-    document.getElementById('custom-price-row').classList.toggle('hidden', e.target.value !== 'custom');
-});
-
-// ===== Calculator =====
-const calcHistory = [];
-
-function calculate() {
-    const thickness = parseFloat(document.getElementById('calc-thickness').value) || 0;
-    const width = parseFloat(document.getElementById('calc-width').value) || 0;
-    let length = parseFloat(document.getElementById('calc-length').value) || 0;
-    const qty = parseInt(document.getElementById('calc-qty').value) || 1;
-    const waste = parseFloat(document.getElementById('calc-waste').value) || 0;
-    const speciesSelect = document.getElementById('calc-species');
-
-    if (lengthInFeet) length = length * 12;
-
-    let pricePerBF;
-    if (speciesSelect.value === 'custom') {
-        pricePerBF = parseFloat(document.getElementById('calc-custom-price').value) || 0;
-    } else {
-        pricePerBF = parseFloat(speciesSelect.value);
-    }
-
-    const bf = (thickness * width * length / 144) * qty;
-    const bfWithWaste = bf * (1 + waste / 100);
-    const cost = bfWithWaste * pricePerBF;
-
-    document.getElementById('result-bf').textContent = bf.toFixed(2);
-    document.getElementById('result-bf-waste').textContent = bfWithWaste.toFixed(2);
-    document.getElementById('result-cost').textContent = '$' + cost.toFixed(2);
-
-    // Animate results
-    document.getElementById('results-area').style.animation = 'pulse 0.3s ease';
-    setTimeout(() => document.getElementById('results-area').style.animation = '', 300);
-
-    // Add to history
-    if (bf > 0) {
-        const speciesName = speciesSelect.value === 'custom' ? 'Custom' : speciesSelect.options[speciesSelect.selectedIndex].text.split('(')[0].trim();
-        calcHistory.unshift({
-            species: speciesName,
-            dims: `${thickness}" x ${width}" x ${lengthInFeet ? (length/12).toFixed(1) + 'ft' : length + '"'}`,
-            qty: qty,
-            bf: bf.toFixed(2),
-            cost: '$' + cost.toFixed(2),
-        });
-        if (calcHistory.length > 10) calcHistory.pop();
-        renderHistory();
-    }
-}
-
-function renderHistory() {
-    const section = document.getElementById('history-section');
-    const list = document.getElementById('history-list');
-    if (calcHistory.length === 0) {
-        section.classList.add('hidden');
-        return;
-    }
-    section.classList.remove('hidden');
-    list.innerHTML = calcHistory.map((h, i) => `
-        <div class="flex justify-between items-center p-3 rounded-lg bg-slate-50 dark:bg-slate-800/50 text-sm ${i === 0 ? 'ring-1 ring-primary/30' : ''}">
-            <div>
-                <span class="font-semibold">${h.species}</span>
-                <span class="text-slate-400 ml-2">${h.dims} x${h.qty}</span>
-            </div>
-            <div class="text-right">
-                <span class="font-bold">${h.bf} BF</span>
-                <span class="text-primary font-bold ml-3">${h.cost}</span>
-            </div>
-        </div>
-    `).join('');
-}
-
-document.getElementById('calc-btn').addEventListener('click', calculate);
-
-// Also calculate on Enter key
-document.getElementById('calc-form').addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') { e.preventDefault(); calculate(); }
-});
-
-// Auto-calculate on any input change
-document.querySelectorAll('#calc-form input, #calc-form select').forEach(el => {
-    el.addEventListener('input', calculate);
-    el.addEventListener('change', calculate);
-});
-
-// Clear history
-document.getElementById('clear-history').addEventListener('click', () => {
-    calcHistory.length = 0;
-    renderHistory();
-});
+// default selected service
+selectService('dropoff');
 
 }); // end DOMContentLoaded
 </script>
-
-<style>
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.01); }
-    100% { transform: scale(1); }
-}
-</style>
 </body>
 </html>
