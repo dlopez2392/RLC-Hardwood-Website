@@ -1,0 +1,6 @@
+{
+  "redirects": [
+    { "source": "/slab-detail.html", "destination": "/", "permanent": false },
+    { "source": "/logo.png", "destination": "/images/logo-512.png", "permanent": true }
+  ]
+}

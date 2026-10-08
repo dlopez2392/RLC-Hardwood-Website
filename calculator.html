@@ -3,8 +3,22 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>RLC Lumber | Log Board Foot &amp; Milling Estimate Calculators</title>
-<meta name="description" content="Estimate board feet in a log with Doyle, Scribner, and International 1/4-inch log scales, and price RLC Lumber sawmilling services."/>
+<title>Log Board Foot &amp; Sawmilling Cost Calculator | RLC Lumber</title>
+<meta name="description" content="Free log board foot calculator (Doyle, Scribner, International 1/4&quot;) and instant sawmilling cost estimate for portable, drop-off, and solar kiln services in Southern MN &amp; Northern Iowa."/>
+<link rel="canonical" href="https://rlc-hardwood-website.vercel.app/calculator.html"/>
+<meta name="theme-color" content="#2d241e"/>
+<link rel="icon" href="favicon.ico" sizes="48x48"/>
+<link rel="icon" href="images/favicon-32.png" type="image/png" sizes="32x32"/>
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="RLC Lumber"/>
+<meta property="og:title" content="Log Board Foot &amp; Sawmilling Cost Calculator"/>
+<meta property="og:description" content="Scale your logs with Doyle, Scribner, or International 1/4&quot; and get an instant milling estimate from RLC Lumber."/>
+<meta property="og:url" content="https://rlc-hardwood-website.vercel.app/calculator.html"/>
+<meta property="og:image" content="https://rlc-hardwood-website.vercel.app/images/og-image.jpg"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta name="twitter:card" content="summary_large_image"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
@@ -46,7 +60,7 @@
 <header class="border-b border-primary/10 bg-white dark:bg-background-dark sticky top-0 z-50">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center gap-6">
     <a href="index.html" class="flex items-center gap-3 flex-shrink-0">
-        <img src="logo.png" alt="RLC Lumber LLC" class="h-12 w-12 rounded-full object-cover"/>
+        <img src="images/logo.png" alt="RLC Lumber LLC" width="48" height="48" class="h-12 w-12"/>
         <div class="flex flex-col leading-none">
             <span class="text-2xl font-bold tracking-tight text-primary whitespace-nowrap">RLC</span>
             <span class="text-[10px] uppercase tracking-[0.18em] font-semibold opacity-60 whitespace-nowrap mt-0.5">Sawmilling Services</span>
@@ -56,6 +70,7 @@
         <a class="text-sm font-medium hover:text-primary transition-colors" href="index.html#services">Services</a>
         <a class="text-sm font-medium text-primary" href="calculator.html">Calculator</a>
         <a class="text-sm font-medium hover:text-primary transition-colors" href="index.html#equipment">Equipment</a>
+        <a class="text-sm font-medium hover:text-primary transition-colors" href="index.html#faq">FAQ</a>
         <a class="text-sm font-medium hover:text-primary transition-colors" href="index.html#contact">Contact</a>
     </div>
     <a href="tel:9562023455" class="hidden md:inline-flex flex-shrink-0 bg-primary text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:brightness-110 transition-all shadow-lg shadow-primary/20 whitespace-nowrap items-center gap-2">
@@ -219,6 +234,10 @@
                     <span class="text-sm font-bold uppercase tracking-widest text-primary">Total Board Feet</span>
                     <span id="tally-total" class="text-3xl font-black text-slate-900 dark:text-white">0.00</span>
                 </div>
+                <button type="button" data-carry class="mt-4 w-full bg-wood-dark hover:bg-wood-muted text-white font-bold py-3.5 rounded-xl flex items-center justify-center gap-2 transition-colors">
+                    Price these logs
+                    <span class="material-icons text-base">arrow_forward</span>
+                </button>
             </div>
         </div>
     </div>
@@ -249,8 +268,8 @@
 
         <div class="bg-primary p-6 rounded-xl text-white shadow-lg shadow-primary/20">
             <h4 class="font-bold text-lg mb-2">Ready to mill these logs?</h4>
-            <p class="text-white/80 text-sm mb-4">Switch to the Milling Estimate tab to price drop-off milling, on-site milling, or kiln drying.</p>
-            <button type="button" data-goto-tab="milling" class="inline-block bg-white text-primary px-6 py-2 rounded-lg font-bold text-sm hover:shadow-lg transition-all">Get a Milling Estimate</button>
+            <p class="text-white/80 text-sm mb-4">We'll carry your log count and board feet into the Milling Estimate — no retyping.</p>
+            <button type="button" data-carry class="inline-block bg-white text-primary px-6 py-2 rounded-lg font-bold text-sm hover:shadow-lg transition-all">Price these logs</button>
         </div>
     </div>
 </div>
@@ -261,6 +280,15 @@
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
     <div class="lg:col-span-8">
         <div class="bg-white dark:bg-slate-900/50 p-6 sm:p-8 rounded-xl border border-primary/10 shadow-xl shadow-primary/5">
+            <!-- Carried over from the log tally -->
+            <div id="mill-carry-note" class="hidden flex items-start gap-3 mb-8 p-4 rounded-lg bg-primary/5 dark:bg-primary/10 border border-primary/20">
+                <span class="material-icons text-primary text-base mt-0.5">forest</span>
+                <p class="text-sm text-slate-600 dark:text-slate-300">
+                    Loaded from your log tally: <strong id="mill-carry-summary"></strong>.
+                    <span class="block text-xs text-slate-500 dark:text-slate-400 mt-1">Log-rule board feet are an estimate — your final count depends on the lumber actually cut.</span>
+                </p>
+            </div>
+
             <!-- Service selector -->
             <div class="space-y-2 mb-8">
                 <label class="text-sm font-semibold text-slate-600 dark:text-slate-300">Choose a Service</label>
@@ -297,24 +325,25 @@
             <div id="mill-onsite-rows" class="hidden space-y-6 mb-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="space-y-2">
-                        <label class="text-sm font-semibold text-slate-600 dark:text-slate-300">Distance from Shop (one-way)</label>
+                        <label for="mill-miles" class="text-sm font-semibold text-slate-600 dark:text-slate-300">Distance from Shop (one-way)</label>
                         <div class="relative">
                             <input id="mill-miles" class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-lg p-4 focus:ring-2 focus:ring-primary text-lg" placeholder="e.g. 25" type="number" min="0" step="1"/>
                             <span class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm">mi</span>
                         </div>
                     </div>
                     <div class="space-y-2">
-                        <label class="text-sm font-semibold text-slate-600 dark:text-slate-300">Estimated Milling Time</label>
+                        <label for="mill-logs" class="text-sm font-semibold text-slate-600 dark:text-slate-300">Number of Logs</label>
                         <div class="relative">
-                            <input id="mill-hours" class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-lg p-4 focus:ring-2 focus:ring-primary text-lg" placeholder="e.g. 4" type="number" min="0" step="0.5"/>
-                            <span class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm">hrs</span>
+                            <input id="mill-logs" class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-lg p-4 focus:ring-2 focus:ring-primary text-lg" placeholder="e.g. 8" type="number" min="0" step="1"/>
+                            <span class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm">logs</span>
                         </div>
+                        <p id="mill-hours-hint" class="text-xs text-slate-400">We average 20–30 minutes per log.</p>
                     </div>
                 </div>
                 <div class="flex items-start gap-3 p-4 rounded-lg bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800/40">
                     <span class="material-icons text-amber-600 dark:text-amber-400 text-base mt-0.5">info</span>
                     <p class="text-xs text-amber-800 dark:text-amber-300">
-                        Each log averages about 20–30 minutes. Moving logs and stacking lumber yourself reduces time and cost. A <strong>$30 broken-blade fee</strong> applies per blade if metal (nails, fencing) is found in a log.
+                        Moving logs to the mill and stacking lumber yourself considerably reduces time and cost. A <strong>$30 broken-blade fee</strong> applies per blade if metal (nails, fencing) is found in a log.
                     </p>
                 </div>
             </div>
@@ -359,9 +388,56 @@
                 <div class="flex items-start gap-3 mt-4 p-4 rounded-lg bg-slate-100 dark:bg-slate-800/50">
                     <span class="material-icons text-slate-400 text-base mt-0.5">gavel</span>
                     <p class="text-xs text-slate-500 dark:text-slate-400">
-                        This is an <strong>estimate, not a quote.</strong> Final pricing depends on your logs, cut list, and on-site conditions. <a href="mailto:rlclumber17@gmail.com" class="text-primary font-semibold underline underline-offset-2">Email us</a> or call <a href="tel:9562023455" class="text-primary font-semibold underline underline-offset-2">(956) 202-3455</a> to confirm your job.
+                        This is an <strong>estimate, not a quote.</strong> Final pricing depends on your logs, cut list, and on-site conditions. Send it to us below and we'll confirm your job.
                     </p>
                 </div>
+
+                <!-- Request this job: hands the estimate to the owner by email or text. -->
+                <form id="request-form" class="mt-8 pt-8 border-t border-primary/10" novalidate>
+                    <h3 class="font-bold text-lg mb-1 flex items-center gap-2">
+                        <span class="material-icons text-primary">send</span>
+                        Send This Estimate to RLC Lumber
+                    </h3>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 mb-6">Your estimate is filled in for you. We'll reply to confirm price and scheduling.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                        <div class="space-y-1">
+                            <label for="req-name" class="text-sm font-semibold text-slate-600 dark:text-slate-300">Name <span class="text-primary">*</span></label>
+                            <input id="req-name" type="text" autocomplete="name" required class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-lg p-3 focus:ring-2 focus:ring-primary"/>
+                        </div>
+                        <div class="space-y-1">
+                            <label for="req-phone" class="text-sm font-semibold text-slate-600 dark:text-slate-300">Phone <span class="text-primary">*</span></label>
+                            <input id="req-phone" type="tel" autocomplete="tel" required class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-lg p-3 focus:ring-2 focus:ring-primary"/>
+                        </div>
+                        <div class="space-y-1">
+                            <label for="req-email" class="text-sm font-semibold text-slate-600 dark:text-slate-300">Email</label>
+                            <input id="req-email" type="email" autocomplete="email" class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-lg p-3 focus:ring-2 focus:ring-primary"/>
+                        </div>
+                        <div class="space-y-1">
+                            <label for="req-location" class="text-sm font-semibold text-slate-600 dark:text-slate-300">Where are the logs? <span class="font-normal text-slate-400">(town or ZIP)</span></label>
+                            <input id="req-location" type="text" autocomplete="postal-code" class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-lg p-3 focus:ring-2 focus:ring-primary"/>
+                        </div>
+                    </div>
+                    <div class="space-y-1 mb-4">
+                        <label for="req-notes" class="text-sm font-semibold text-slate-600 dark:text-slate-300">Species, cut list &amp; timing</label>
+                        <textarea id="req-notes" rows="4" placeholder="e.g. 3 white oak logs, about 20&quot; × 10'. Want 5/4 boards, 6–10&quot; wide, plus two 4×4 posts. Flexible on dates." class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-lg p-3 focus:ring-2 focus:ring-primary"></textarea>
+                    </div>
+                    <p id="req-error" class="hidden text-sm text-red-600 dark:text-red-400 mb-4" role="alert">Please add your name and phone number so we can reach you.</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <button type="button" data-send="email" class="bg-primary hover:bg-primary/90 text-white font-bold py-3.5 rounded-xl flex items-center justify-center gap-2 transition-all shadow-lg shadow-primary/20">
+                            <span class="material-icons text-base">email</span>
+                            Email Request
+                        </button>
+                        <button type="button" data-send="sms" class="bg-wood-dark hover:bg-wood-muted text-white font-bold py-3.5 rounded-xl flex items-center justify-center gap-2 transition-colors">
+                            <span class="material-icons text-base">sms</span>
+                            Text Request
+                        </button>
+                        <button type="button" data-send="copy" class="border border-slate-300 dark:border-slate-700 font-bold py-3.5 rounded-xl flex items-center justify-center gap-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                            <span class="material-icons text-base">content_copy</span>
+                            <span data-copy-label>Copy Details</span>
+                        </button>
+                    </div>
+                    <p class="text-xs text-slate-400 mt-3">Opens your email or messaging app with everything filled in — attach photos of your logs if you can. No email app? Copy the details and send them to <a href="mailto:rlclumber17@gmail.com" class="text-primary font-semibold">rlclumber17@gmail.com</a>.</p>
+                </form>
             </div>
         </div>
     </div>
@@ -416,7 +492,7 @@
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-12">
     <div class="col-span-1 md:col-span-2">
         <a href="index.html" class="flex items-center gap-3 mb-6">
-            <img src="logo.png" alt="RLC Lumber LLC" class="h-10 w-10 rounded-full object-cover"/>
+            <img src="images/logo.png" alt="RLC Lumber LLC" width="40" height="40" class="h-10 w-10" loading="lazy"/>
             <div class="flex flex-col leading-none">
                 <span class="text-xl font-bold tracking-tight text-primary">RLC</span>
                 <span class="text-[9px] uppercase tracking-[0.18em] font-semibold opacity-60 mt-0.5">Sawmilling Services</span>
@@ -479,14 +555,6 @@ tabs.forEach(t => t.addEventListener('click', () => {
     activateTab(t.dataset.tab);
     history.replaceState(null, '', t.dataset.tab === 'milling' ? '#milling' : '#calculator');
 }));
-
-document.querySelectorAll('[data-goto-tab]').forEach(btn => {
-    btn.addEventListener('click', () => {
-        activateTab(btn.dataset.gotoTab);
-        history.replaceState(null, '', '#' + (btn.dataset.gotoTab === 'milling' ? 'milling' : 'calculator'));
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-});
 
 activateTab(location.hash === '#milling' ? 'milling' : 'log');
 
@@ -618,7 +686,10 @@ selectRule('doyle');
 
 /* ============ MILLING ESTIMATE CALCULATOR ============ */
 const RATES = { dropoff: 0.65, kiln: 0.70, hourly: 85, mile: 1.25, setup: 100 };
+const MINUTES_PER_LOG = { lo: 20, hi: 30 };
+const SERVICE_NAMES = { dropoff: 'Drop-Off Milling', onsite: 'On-Site Portable Milling', kiln: 'Solar Kiln Drying' };
 let activeService = 'dropoff';
+let lastEstimate = null;
 
 const serviceBtns = document.querySelectorAll('.service-btn');
 const millBfRow = document.getElementById('mill-bf-row');
@@ -643,6 +714,7 @@ function selectService(service) {
         addKilnCheckbox.checked = false;
         kilnBfRow.classList.add('hidden');
     }
+    if (!document.getElementById('mill-results').classList.contains('hidden')) calcMilling();
 }
 
 serviceBtns.forEach(b => b.addEventListener('click', () => selectService(b.dataset.service)));
@@ -651,45 +723,156 @@ addKilnCheckbox.addEventListener('change', () => {
 });
 
 function money(n) { return '$' + n.toFixed(2); }
+function moneyRange(r) { return r.lo === r.hi ? money(r.lo) : `${money(r.lo)} – ${money(r.hi)}`; }
+function hrs(h) { return String(Math.round(h * 10) / 10); }
+function plural(n, word) { return `${n} ${word}${n === 1 ? '' : 's'}`; }
+function num(id) { return parseFloat(document.getElementById(id).value) || 0; }
+
+// On-site time is quoted from the log count: the owner averages 20–30 minutes per log.
+function onsiteHours(logs) {
+    return { lo: logs * MINUTES_PER_LOG.lo / 60, hi: logs * MINUTES_PER_LOG.hi / 60 };
+}
+
+function updateHoursHint() {
+    const logs = num('mill-logs');
+    const h = onsiteHours(logs);
+    document.getElementById('mill-hours-hint').textContent = logs > 0
+        ? `About ${hrs(h.lo)}–${hrs(h.hi)} hours of milling at 20–30 minutes per log.`
+        : 'We average 20–30 minutes per log.';
+}
 
 function calcMilling() {
     const items = [];
+    const flat = (label, amount) => items.push({ label, lo: amount, hi: amount });
     if (activeService === 'dropoff') {
-        const bf = parseFloat(document.getElementById('mill-bf').value) || 0;
-        items.push({ label: `Drop-off milling — ${bf} bd ft × $0.65`, amount: bf * RATES.dropoff });
+        const bf = num('mill-bf');
+        flat(`Drop-off milling — ${bf} bd ft × $0.65`, bf * RATES.dropoff);
     } else if (activeService === 'kiln') {
-        const bf = parseFloat(document.getElementById('mill-bf').value) || 0;
-        items.push({ label: `Solar kiln drying — ${bf} bd ft × $0.70`, amount: bf * RATES.kiln });
+        const bf = num('mill-bf');
+        flat(`Solar kiln drying — ${bf} bd ft × $0.70`, bf * RATES.kiln);
     } else if (activeService === 'onsite') {
-        const miles = parseFloat(document.getElementById('mill-miles').value) || 0;
-        const hours = parseFloat(document.getElementById('mill-hours').value) || 0;
-        items.push({ label: 'On-site setup fee', amount: RATES.setup });
-        items.push({ label: `Milling labor — ${hours} hr × $85`, amount: hours * RATES.hourly });
-        items.push({ label: `Travel — ${miles} mi × $1.25 (one-way)`, amount: miles * RATES.mile });
+        const miles = num('mill-miles');
+        const logs = num('mill-logs');
+        const h = onsiteHours(logs);
+        flat('On-site setup fee', RATES.setup);
+        items.push({
+            label: `Milling labor — ${plural(logs, 'log')} ≈ ${hrs(h.lo)}–${hrs(h.hi)} hr × $85`,
+            lo: h.lo * RATES.hourly,
+            hi: h.hi * RATES.hourly,
+        });
+        flat(`Travel — ${miles} mi × $1.25 (one-way)`, miles * RATES.mile);
     }
     if (activeService !== 'kiln' && addKilnCheckbox.checked) {
-        const kbf = parseFloat(document.getElementById('mill-kiln-bf').value) || 0;
-        items.push({ label: `Solar kiln drying — ${kbf} bd ft × $0.70`, amount: kbf * RATES.kiln });
+        const kbf = num('mill-kiln-bf');
+        flat(`Solar kiln drying — ${kbf} bd ft × $0.70`, kbf * RATES.kiln);
     }
-    const total = items.reduce((sum, i) => sum + i.amount, 0);
+    const total = items.reduce((t, i) => ({ lo: t.lo + i.lo, hi: t.hi + i.hi }), { lo: 0, hi: 0 });
+    lastEstimate = { service: SERVICE_NAMES[activeService], items, total };
+
     document.getElementById('mill-line-items').innerHTML = items.map(i => `
         <div class="flex justify-between items-baseline gap-4 text-sm">
             <span class="text-slate-600 dark:text-slate-400">${i.label}</span>
-            <span class="font-semibold whitespace-nowrap">${money(i.amount)}</span>
+            <span class="font-semibold whitespace-nowrap">${moneyRange(i)}</span>
         </div>
     `).join('');
-    document.getElementById('mill-total').textContent = money(total);
+    const totalEl = document.getElementById('mill-total');
+    totalEl.textContent = moneyRange(total);
+    totalEl.classList.toggle('text-4xl', total.lo === total.hi);
+    totalEl.classList.toggle('text-2xl', total.lo !== total.hi);
+    totalEl.classList.toggle('sm:text-4xl', total.lo !== total.hi);
     document.getElementById('mill-results').classList.remove('hidden');
 }
 
 document.getElementById('mill-calc-btn').addEventListener('click', calcMilling);
 document.querySelectorAll('#panel-milling input').forEach(el => {
+    if (el.closest('#request-form')) return;
     el.addEventListener('input', () => {
+        if (el.id === 'mill-bf' || el.id === 'mill-logs') document.getElementById('mill-carry-note').classList.add('hidden');
+        if (el.id === 'mill-logs') updateHoursHint();
         if (!document.getElementById('mill-results').classList.contains('hidden')) calcMilling();
     });
 });
 
 selectService('dropoff');
+
+/* ============ CARRY LOG TALLY INTO THE ESTIMATE ============ */
+function carryToMilling() {
+    const { D, L } = readDims();
+    const logs = tally.length ? tally
+        : (D > 0 && L > 0 ? [{ bf: RULES[activeRule](D, L), ruleName: RULE_NAMES[activeRule] }] : []);
+    activateTab('milling');
+    history.replaceState(null, '', '#milling');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (!logs.length) return;
+
+    const bf = Math.round(logs.reduce((s, t) => s + t.bf, 0));
+    document.getElementById('mill-bf').value = bf;
+    document.getElementById('mill-kiln-bf').value = bf;
+    document.getElementById('mill-logs').value = logs.length;
+    const rules = [...new Set(logs.map(t => t.ruleName))].join(', ');
+    document.getElementById('mill-carry-summary').textContent = `${plural(logs.length, 'log')}, ${bf} bd ft (${rules})`;
+    document.getElementById('mill-carry-note').classList.remove('hidden');
+    updateHoursHint();
+    calcMilling();
+}
+document.querySelectorAll('[data-carry]').forEach(btn => btn.addEventListener('click', carryToMilling));
+
+/* ============ SEND THIS ESTIMATE ============ */
+// mailto:/sms: hand-off needs no backend; swap sendRequest() for a form service later if the owner wants one.
+const OWNER = { email: 'rlclumber17@gmail.com', sms: '+19562023455' };
+const field = id => document.getElementById(id).value.trim();
+
+function requestText() {
+    const lines = ['Milling estimate request — RLC Lumber website', '', `Name: ${field('req-name')}`, `Phone: ${field('req-phone')}`];
+    if (field('req-email')) lines.push(`Email: ${field('req-email')}`);
+    if (field('req-location')) lines.push(`Log location: ${field('req-location')}`);
+    lines.push('', `Service: ${lastEstimate.service}`);
+    lastEstimate.items.forEach(i => lines.push(`- ${i.label}: ${moneyRange(i)}`));
+    lines.push(`Estimated total: ${moneyRange(lastEstimate.total)}`);
+    if (field('req-notes')) lines.push('', 'Species, cut list & timing:', field('req-notes'));
+    lines.push('', 'Website estimate only — not a final quote.');
+    return lines.join('\n');
+}
+
+async function copyText(text) {
+    try {
+        await navigator.clipboard.writeText(text);
+    } catch (e) {
+        const ta = Object.assign(document.createElement('textarea'), { value: text });
+        ta.style.cssText = 'position:fixed;opacity:0';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        ta.remove();
+    }
+}
+
+const requiredFields = ['req-name', 'req-phone'].map(id => document.getElementById(id));
+requiredFields.forEach(el => el.addEventListener('input', () => el.classList.remove('ring-2', 'ring-red-400')));
+
+function sendRequest(mode, btn) {
+    const missing = requiredFields.filter(el => !el.value.trim());
+    missing.forEach(el => el.classList.add('ring-2', 'ring-red-400'));
+    document.getElementById('req-error').classList.toggle('hidden', missing.length === 0);
+    if (missing.length) { missing[0].focus(); return; }
+
+    calcMilling();
+    const text = requestText();
+    if (mode === 'email') {
+        const subject = `Milling estimate request — ${field('req-name')}`;
+        location.href = `mailto:${OWNER.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(text)}`;
+    } else if (mode === 'sms') {
+        // "?&body=" is the form both iOS and Android Messages accept.
+        location.href = `sms:${OWNER.sms}?&body=${encodeURIComponent(text)}`;
+    } else {
+        copyText(text).then(() => {
+            const label = btn.querySelector('[data-copy-label]');
+            label.textContent = 'Copied!';
+            setTimeout(() => { label.textContent = 'Copy Details'; }, 2000);
+        });
+    }
+}
+document.querySelectorAll('[data-send]').forEach(btn => btn.addEventListener('click', () => sendRequest(btn.dataset.send, btn)));
 
 }); // end DOMContentLoaded
 </script>
