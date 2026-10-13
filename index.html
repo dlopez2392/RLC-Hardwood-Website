@@ -6,7 +6,7 @@
 <title>Portable Sawmill &amp; Log Milling in Chatfield, MN | RLC Lumber</title>
 <meta name="description" content="Portable on-site sawmilling, drop-off log milling &amp; solar kiln drying in Chatfield, MN near Rochester. Serving Southern Minnesota &amp; Northern Iowa. Free online estimate."/>
 <link rel="canonical" href="https://rlc-hardwood-website.vercel.app/"/>
-<meta name="theme-color" content="#2d241e"/>
+<meta name="theme-color" content="#1E140C"/>
 <link rel="icon" href="favicon.ico" sizes="48x48"/>
 <link rel="icon" href="images/favicon-32.png" type="image/png" sizes="32x32"/>
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png"/>
@@ -18,7 +18,7 @@
 <meta property="og:image" content="https://rlc-hardwood-website.vercel.app/images/og-image.jpg"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
-<meta property="og:image:alt" content="RLC Lumber logo on log end grain with the tagline Local &amp; Portable Sawmilling Services"/>
+<meta property="og:image:alt" content="RLC Lumber's Norwood portable sawmill with a log loaded, beside the tagline Local &amp; Portable Sawmilling Services"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <script type="application/ld+json">
 {
@@ -31,7 +31,13 @@
     "description": "Drop-off log milling, on-site portable sawmilling, and solar kiln drying in Chatfield, Minnesota.",
     "url": "https://rlc-hardwood-website.vercel.app/",
     "logo": "https://rlc-hardwood-website.vercel.app/images/logo-512.png",
-    "image": "https://rlc-hardwood-website.vercel.app/images/og-image.jpg",
+    "image": [
+        "https://rlc-hardwood-website.vercel.app/images/og-image.jpg",
+        "https://rlc-hardwood-website.vercel.app/images/work/mill-log.jpg",
+        "https://rlc-hardwood-website.vercel.app/images/work/towing-mill.jpg",
+        "https://rlc-hardwood-website.vercel.app/images/work/norwood-front.jpg",
+        "https://rlc-hardwood-website.vercel.app/images/work/lumber-trailer.jpg"
+    ],
     "telephone": "+1-956-202-3455",
     "email": "rlclumber17@gmail.com",
     "address": {
@@ -43,62 +49,111 @@
         "addressCountry": "US"
     },
     "areaServed": [
-        { "@type": "AdministrativeArea", "name": "Southern Minnesota" },
-        { "@type": "AdministrativeArea", "name": "Northern Iowa" }
+        {
+            "@type": "AdministrativeArea",
+            "name": "Southern Minnesota"
+        },
+        {
+            "@type": "AdministrativeArea",
+            "name": "Northern Iowa"
+        }
     ],
     "openingHoursSpecification": [
-        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "07:00", "closes": "19:00" },
-        { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "07:00", "closes": "14:00" }
+        {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday"
+            ],
+            "opens": "07:00",
+            "closes": "19:00"
+        },
+        {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Saturday",
+            "opens": "07:00",
+            "closes": "14:00"
+        }
     ],
-    "sameAs": ["https://www.facebook.com/profile.php?id=100089117444800"],
+    "sameAs": [
+        "https://www.facebook.com/profile.php?id=100089117444800"
+    ],
     "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Sawmilling Services",
         "itemListElement": [
             {
                 "@type": "Offer",
-                "itemOffered": { "@type": "Service", "name": "Drop-Off Milling", "description": "Bring logs to our shop with a cut list; lumber is stickered and stacked." },
-                "priceSpecification": { "@type": "UnitPriceSpecification", "price": 0.65, "priceCurrency": "USD", "unitText": "board foot" }
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "Drop-Off Milling",
+                    "description": "Bring logs to our shop with a cut list; lumber is stickered and stacked."
+                },
+                "priceSpecification": {
+                    "@type": "UnitPriceSpecification",
+                    "price": 0.65,
+                    "priceCurrency": "USD",
+                    "unitText": "board foot"
+                }
             },
             {
                 "@type": "Offer",
-                "itemOffered": { "@type": "Service", "name": "On-Site Portable Milling", "description": "Norwood HD36V2 portable sawmill brought to your property. $100 setup and $1.25/mile travel apply." },
-                "priceSpecification": { "@type": "UnitPriceSpecification", "price": 85, "priceCurrency": "USD", "unitCode": "HUR" }
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "On-Site Portable Milling",
+                    "description": "Norwood HD36V2 portable sawmill brought to your property. $100 setup and $1.25/mile travel apply."
+                },
+                "priceSpecification": {
+                    "@type": "UnitPriceSpecification",
+                    "price": 85,
+                    "priceCurrency": "USD",
+                    "unitCode": "HUR"
+                }
             },
             {
                 "@type": "Offer",
-                "itemOffered": { "@type": "Service", "name": "Solar Kiln Drying", "description": "Solar kiln drying to 8–12% moisture content; up to 12 ft lengths, 1,600 board feet per load." },
-                "priceSpecification": { "@type": "UnitPriceSpecification", "price": 0.70, "priceCurrency": "USD", "unitText": "board foot" }
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "Solar Kiln Drying",
+                    "description": "Solar kiln drying to 8–12% moisture content; up to 12 ft lengths, 1,600 board feet per load."
+                },
+                "priceSpecification": {
+                    "@type": "UnitPriceSpecification",
+                    "price": 0.7,
+                    "priceCurrency": "USD",
+                    "unitText": "board foot"
+                }
             }
         ]
     }
 }
 </script>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
 <script>
+    // Palette sampled from the RLC Lumber logo: line-art ink, wordmark walnut, ring wood and highlight, paper.
     tailwind.config = {
-        darkMode: "class",
         theme: {
             extend: {
                 colors: {
-                    "primary": "#8B5A2B",
-                    "primary-light": "#A97C50",
-                    "honey": "#F0B45A",
-                    "background-light": "#FAF6F0",
-                    "background-dark": "#2C1E12",
-                    "wood-dark": "#2d241e",
-                    "wood-muted": "#4a3f35",
+                    "char": "#1E140C",
+                    "walnut": "#5A3317",
+                    "saddle": "#7A4A24",
+                    "oak": "#B07D52",
+                    "oak-light": "#D9B48C",
+                    "paper": "#FBF7EF",
+                    "linen": "#F1E8D9",
+                    "bark": "#5C4A3B",
                 },
                 fontFamily: {
-                    "display": ["Inter"]
-                },
-                borderRadius: {
-                    "DEFAULT": "0.25rem",
-                    "lg": "0.5rem",
-                    "xl": "0.75rem",
-                    "full": "9999px"
+                    "display": ["Fraunces", "Georgia", "serif"],
+                    "sans": ["Inter", "system-ui", "sans-serif"],
                 },
             },
         },
@@ -107,296 +162,244 @@
 <style>
     /* Keep anchored sections clear of the sticky header */
     [id] { scroll-margin-top: 5rem; }
+    .font-display { font-variation-settings: "SOFT" 50, "WONK" 0; }
+    .eyebrow { font: 600 0.75rem/1 Inter, sans-serif; letter-spacing: 0.2em; text-transform: uppercase; }
+    @keyframes ribbon { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .ribbon-track { animation: ribbon 40s linear infinite; }
+    @media (prefers-reduced-motion: reduce) { .ribbon-track { animation: none; } }
+    details > summary::-webkit-details-marker { display: none; }
+    /* Arched photo frames: a semicircular top needs a vertical radius of half the width, given here per aspect ratio */
+    .arch-3x4 { border-radius: 50% 50% 1.5rem 1.5rem / 37.5% 37.5% 1.5rem 1.5rem; }
+    .arch-norwood { border-radius: 50% 50% 1.5rem 1.5rem / 42.9% 42.9% 1.5rem 1.5rem; }
 </style>
 </head>
-<body class="font-display bg-background-light dark:bg-background-dark text-wood-dark dark:text-gray-100 selection:bg-primary selection:text-white overflow-x-hidden">
+<body class="font-sans bg-paper text-char antialiased selection:bg-walnut selection:text-paper overflow-x-hidden">
 
-<!-- Sticky Header -->
-<header class="sticky top-0 z-50 bg-white/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-primary/10">
+<!-- Header -->
+<header class="sticky top-0 z-50 bg-paper/90 backdrop-blur-md border-b border-walnut/10">
 <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="flex h-20 items-center gap-6">
     <a href="index.html" class="flex items-center gap-3 flex-shrink-0">
         <img src="images/logo.png" alt="RLC Lumber LLC" width="48" height="48" class="h-12 w-12"/>
         <div class="flex flex-col leading-none">
-            <span class="text-2xl font-bold tracking-tight text-primary whitespace-nowrap">RLC</span>
-            <span class="text-[10px] uppercase tracking-[0.18em] font-semibold opacity-60 whitespace-nowrap mt-0.5">Sawmilling Services</span>
+            <span class="font-display text-2xl font-semibold text-walnut whitespace-nowrap">RLC Lumber</span>
+            <span class="text-[10px] uppercase tracking-[0.2em] font-semibold text-bark whitespace-nowrap mt-1">Sawmilling · Chatfield, MN</span>
         </div>
     </a>
-    <div class="hidden md:flex flex-1 justify-center items-center gap-9">
-        <a class="text-sm font-medium hover:text-primary transition-colors" href="#services">Services</a>
-        <a class="text-sm font-medium hover:text-primary transition-colors" href="calculator.html">Calculator</a>
-        <a class="text-sm font-medium hover:text-primary transition-colors" href="#equipment">Equipment</a>
-        <a class="text-sm font-medium hover:text-primary transition-colors" href="#faq">FAQ</a>
-        <a class="text-sm font-medium hover:text-primary transition-colors" href="#contact">Contact</a>
+    <div class="hidden lg:flex flex-1 justify-center items-center gap-8 text-sm font-medium">
+        <a class="hover:text-walnut transition-colors" href="#services">Services</a>
+        <a class="hover:text-walnut transition-colors" href="#onsite">On-Site Milling</a>
+        <a class="hover:text-walnut transition-colors" href="#equipment">Equipment</a>
+        <a class="hover:text-walnut transition-colors" href="calculator.html">Calculator</a>
+        <a class="hover:text-walnut transition-colors" href="#faq">FAQ</a>
     </div>
-    <a href="calculator.html#milling" class="hidden md:inline-flex flex-shrink-0 bg-primary text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:brightness-110 transition-all shadow-lg shadow-primary/20 whitespace-nowrap">
-        Get an Estimate
-    </a>
-    <!-- Mobile menu button -->
-    <button id="mobile-menu-btn" class="md:hidden ml-auto p-2 hover:bg-primary/10 rounded-full transition-colors" aria-label="Open menu">
+    <div class="hidden lg:flex items-center gap-5 flex-shrink-0">
+        <a href="tel:9562023455" class="text-sm font-semibold text-walnut hover:underline underline-offset-4">(956) 202-3455</a>
+        <a href="calculator.html#milling" class="bg-walnut text-paper px-5 py-2.5 rounded-full font-semibold text-sm hover:bg-char transition-colors whitespace-nowrap">Get an Estimate</a>
+    </div>
+    <button id="mobile-menu-btn" class="lg:hidden ml-auto p-2 hover:bg-walnut/10 rounded-full transition-colors" aria-label="Open menu">
         <span class="material-icons text-xl">menu</span>
     </button>
 </div>
-<!-- Mobile menu -->
-<div id="mobile-menu" class="hidden md:hidden pb-4 space-y-2">
-    <a class="block px-4 py-2 text-sm font-medium hover:bg-primary/10 rounded-lg" href="#services">Services</a>
-    <a class="block px-4 py-2 text-sm font-medium hover:bg-primary/10 rounded-lg" href="calculator.html">Calculator</a>
-    <a class="block px-4 py-2 text-sm font-medium hover:bg-primary/10 rounded-lg" href="#equipment">Equipment</a>
-    <a class="block px-4 py-2 text-sm font-medium hover:bg-primary/10 rounded-lg" href="#faq">FAQ</a>
-    <a class="block px-4 py-2 text-sm font-medium hover:bg-primary/10 rounded-lg" href="#contact">Contact</a>
-    <a class="flex items-center gap-2 px-4 py-2 text-sm font-semibold hover:bg-primary/10 rounded-lg" href="tel:9562023455"><span class="material-icons text-base text-primary">call</span>(956) 202-3455</a>
-    <a href="calculator.html#milling" class="block px-4 py-2 bg-primary text-white rounded-lg font-semibold text-sm text-center">Get an Estimate</a>
+<div id="mobile-menu" class="hidden lg:hidden pb-4 space-y-1">
+    <a class="block px-4 py-2 text-sm font-medium hover:bg-walnut/10 rounded-lg" href="#services">Services</a>
+    <a class="block px-4 py-2 text-sm font-medium hover:bg-walnut/10 rounded-lg" href="#onsite">On-Site Milling</a>
+    <a class="block px-4 py-2 text-sm font-medium hover:bg-walnut/10 rounded-lg" href="#equipment">Equipment</a>
+    <a class="block px-4 py-2 text-sm font-medium hover:bg-walnut/10 rounded-lg" href="calculator.html">Calculator</a>
+    <a class="block px-4 py-2 text-sm font-medium hover:bg-walnut/10 rounded-lg" href="#faq">FAQ</a>
+    <a class="block px-4 py-2 text-sm font-medium hover:bg-walnut/10 rounded-lg" href="#contact">Contact</a>
+    <a class="flex items-center gap-2 px-4 py-2 text-sm font-semibold hover:bg-walnut/10 rounded-lg" href="tel:9562023455"><span class="material-icons text-base text-walnut">call</span>(956) 202-3455</a>
+    <a href="calculator.html#milling" class="block mx-4 mt-2 py-3 bg-walnut text-paper rounded-full font-semibold text-sm text-center">Get an Estimate</a>
 </div>
 </nav>
 </header>
 
 <main>
-<!-- Hero Section -->
-<section id="home" class="relative min-h-[85vh] overflow-hidden bg-wood-dark">
-<!-- Log end grain with the logo at the pith. Swap in a real job photo of the Norwood mill when the owner supplies one. -->
-<div class="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_50%,#4a3424_0%,#2d241e_55%,#1d1712_100%)]"></div>
-<div class="pointer-events-none absolute top-1/2 -translate-y-1/2 -right-[420px] sm:-right-[360px] lg:-right-[140px] xl:-right-[60px] w-[900px] aspect-square" aria-hidden="true">
-    <img src="images/end-grain.svg" alt="" class="absolute inset-0 w-full h-full opacity-30 lg:opacity-60 [mask-image:linear-gradient(to_right,transparent,black_40%)]"/>
-    <img src="images/logo-512.png" alt="" width="252" height="252" class="hidden lg:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[28%] drop-shadow-[0_12px_40px_rgba(0,0,0,0.55)]"/>
-</div>
-<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-[85vh] py-20 flex flex-col justify-center">
-    <div class="max-w-2xl text-white">
-        <span class="inline-block px-3 py-1 bg-black/30 border border-honey/40 text-honey rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest mb-6">
-            Serving Southern Minnesota &amp; Northern Iowa
-        </span>
-        <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold leading-tight mb-6">
-            Local &amp; Portable <span class="text-honey">Sawmilling</span> Services.
+<!-- Hero -->
+<section id="home" class="relative overflow-hidden">
+<img src="images/end-grain.svg" alt="" aria-hidden="true" class="pointer-events-none absolute -left-[340px] -bottom-[420px] w-[820px] opacity-25"/>
+<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-24 lg:pt-20 lg:pb-28 grid lg:grid-cols-12 gap-14 lg:gap-10 items-center">
+    <div class="lg:col-span-7">
+        <p class="eyebrow text-saddle flex items-center gap-3 mb-6"><span class="h-px w-10 bg-oak"></span>Local &amp; Portable Sawmilling</p>
+        <h1 class="font-display text-[2.75rem] leading-[1.02] sm:text-6xl lg:text-7xl font-semibold tracking-tight text-char mb-7">
+            We bring the sawmill <em class="font-normal italic text-walnut">to your logs.</em>
         </h1>
-        <p class="text-lg sm:text-xl text-gray-100/95 mb-10 leading-relaxed">
-            Turn your logs into custom lumber. We bring the mill to you or process your logs at our shop — plus eco-friendly solar kiln drying to get your wood project-ready.
+        <p class="text-lg sm:text-xl text-bark leading-relaxed max-w-xl mb-10">
+            On-site milling with our Norwood portable mill, drop-off milling at our Chatfield shop, and solar kiln drying — for woodworkers, builders, and landowners across Southern Minnesota &amp; Northern Iowa.
         </p>
-        <div class="flex flex-col sm:flex-row sm:flex-wrap gap-4">
-            <a href="calculator.html#milling" class="bg-primary hover:bg-primary/90 text-white px-6 sm:px-8 py-4 rounded-xl font-bold transition-all transform hover:scale-105 inline-flex items-center justify-center gap-2">
-                <span class="material-icons">calculate</span>
-                Get an Estimate
+        <div class="flex flex-col sm:flex-row gap-3 mb-12">
+            <a href="calculator.html#milling" class="inline-flex items-center justify-center gap-2 bg-walnut text-paper px-7 py-4 rounded-full font-semibold hover:bg-char transition-colors">
+                Get a free estimate <span class="material-icons text-lg">arrow_forward</span>
             </a>
-            <a href="tel:9562023455" class="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white px-6 sm:px-8 py-4 rounded-xl font-bold transition-all inline-flex items-center justify-center gap-2">
-                <span class="material-icons">call</span>
-                Call (956) 202-3455
+            <a href="tel:9562023455" class="inline-flex items-center justify-center gap-2 border border-walnut/30 text-walnut px-7 py-4 rounded-full font-semibold hover:border-walnut hover:bg-walnut/5 transition-colors">
+                <span class="material-icons text-lg">call</span> (956) 202-3455
             </a>
         </div>
-        <ul class="mt-10 flex flex-wrap gap-x-6 gap-y-3 text-sm text-gray-200/90">
-            <li class="flex items-center gap-2"><span class="material-icons text-honey text-lg">local_shipping</span>We come to you</li>
-            <li class="flex items-center gap-2"><span class="material-icons text-honey text-lg">straighten</span>Logs up to 36&quot; diameter</li>
-            <li class="flex items-center gap-2"><span class="material-icons text-honey text-lg">wb_sunny</span>Solar kiln drying</li>
-        </ul>
+        <dl class="grid grid-cols-3 max-w-xl divide-x divide-walnut/15 border-t border-walnut/15 pt-6">
+            <div class="pr-3 sm:pr-4">
+                <dt class="text-[11px] sm:text-xs text-bark mb-1 whitespace-nowrap">On-site milling</dt>
+                <dd class="font-display text-xl sm:text-3xl font-semibold text-walnut whitespace-nowrap">$85<span class="text-xs sm:text-base font-normal text-bark">/hr</span></dd>
+            </div>
+            <div class="px-3 sm:px-4">
+                <dt class="text-[11px] sm:text-xs text-bark mb-1 whitespace-nowrap">Drop-off milling</dt>
+                <dd class="font-display text-xl sm:text-3xl font-semibold text-walnut whitespace-nowrap">$0.65<span class="text-xs sm:text-base font-normal text-bark">/bd ft</span></dd>
+            </div>
+            <div class="pl-3 sm:pl-4">
+                <dt class="text-[11px] sm:text-xs text-bark mb-1 whitespace-nowrap">Logs up to</dt>
+                <dd class="font-display text-xl sm:text-3xl font-semibold text-walnut whitespace-nowrap">36&quot;<span class="text-xs sm:text-base font-normal text-bark"> wide</span></dd>
+            </div>
+        </dl>
     </div>
-</div>
-</section>
-
-<!-- Services Section -->
-<section id="services" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="text-center mb-16">
-    <h2 class="text-4xl font-bold mb-4">Our Sawmilling Services</h2>
-    <p class="max-w-2xl mx-auto text-wood-muted dark:text-gray-400 text-lg">
-        Whether you bring the logs to us or we bring the mill to you, we mill accurately and stack your lumber ready to dry.
-    </p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-    <!-- Drop-Off Milling -->
-    <div class="flex flex-col bg-white dark:bg-wood-dark border border-primary/10 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all">
-        <div class="p-8 flex-1">
-            <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
-                <span class="material-icons text-primary text-3xl">forest</span>
-            </div>
-            <h3 class="text-2xl font-bold mb-2">Drop-Off Milling</h3>
-            <div class="flex items-baseline gap-1 mb-4">
-                <span class="text-4xl font-black text-primary">$0.65</span>
-                <span class="text-wood-muted dark:text-gray-400 font-medium">/ board foot</span>
-            </div>
-            <p class="text-wood-muted dark:text-gray-400 mb-6 leading-relaxed">
-                Bring your logs to our shop and we'll mill them to your specs. A detailed cut list is required so every log is milled exactly the way you need it.
-            </p>
-            <ul class="space-y-3 text-sm">
-                <li class="flex items-start gap-3"><span class="material-icons text-primary text-base mt-0.5">check_circle</span><span>Detailed cut list required</span></li>
-                <li class="flex items-start gap-3"><span class="material-icons text-primary text-base mt-0.5">check_circle</span><span>Lumber stickered &amp; stacked for you</span></li>
-                <li class="flex items-start gap-3"><span class="material-icons text-primary text-base mt-0.5">check_circle</span><span>We call you when the job is complete</span></li>
-            </ul>
-        </div>
-        <div class="px-8 pb-8">
-            <a href="calculator.html#milling" class="block text-center bg-primary/10 hover:bg-primary hover:text-white text-primary font-bold py-3 rounded-lg transition-colors">Estimate this service</a>
-        </div>
-    </div>
-    <!-- On-Site Portable Milling -->
-    <div class="flex flex-col bg-white dark:bg-wood-dark border-2 border-primary rounded-2xl overflow-hidden shadow-lg relative">
-        <div class="absolute top-0 right-0 bg-primary text-white px-4 py-1 rounded-bl-lg text-xs font-bold uppercase tracking-widest">We Come to You</div>
-        <div class="p-8 flex-1">
-            <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
-                <span class="material-icons text-primary text-3xl">local_shipping</span>
-            </div>
-            <h3 class="text-2xl font-bold mb-2">On-Site Portable Milling</h3>
-            <div class="flex items-baseline gap-1 mb-4">
-                <span class="text-4xl font-black text-primary">$85</span>
-                <span class="text-wood-muted dark:text-gray-400 font-medium">/ hour</span>
-            </div>
-            <p class="text-wood-muted dark:text-gray-400 mb-6 leading-relaxed">
-                Have logs that are tough to move? We bring our Norwood portable sawmill to your property and mill on location. Averages about 20–30 minutes per log.
-            </p>
-            <ul class="space-y-3 text-sm">
-                <li class="flex items-start gap-3"><span class="material-icons text-primary text-base mt-0.5">check_circle</span><span>$1.25 / mile travel (one-way from shop)</span></li>
-                <li class="flex items-start gap-3"><span class="material-icons text-primary text-base mt-0.5">check_circle</span><span>$100 setup fee</span></li>
-                <li class="flex items-start gap-3"><span class="material-icons text-primary text-base mt-0.5">check_circle</span><span>$30 per broken blade if metal is in the log</span></li>
-                <li class="flex items-start gap-3"><span class="material-icons text-primary text-base mt-0.5">savings</span><span>Move logs &amp; stack lumber yourself to cut cost</span></li>
-            </ul>
-        </div>
-        <div class="px-8 pb-8">
-            <a href="calculator.html#milling" class="block text-center bg-primary hover:brightness-110 text-white font-bold py-3 rounded-lg transition-all shadow-lg shadow-primary/20">Estimate this service</a>
-        </div>
-    </div>
-    <!-- Solar Kiln Drying -->
-    <div class="flex flex-col bg-white dark:bg-wood-dark border border-primary/10 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all">
-        <div class="p-8 flex-1">
-            <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
-                <span class="material-icons text-primary text-3xl">wb_sunny</span>
-            </div>
-            <h3 class="text-2xl font-bold mb-2">Solar Kiln Drying</h3>
-            <div class="flex items-baseline gap-1 mb-4">
-                <span class="text-4xl font-black text-primary">$0.70</span>
-                <span class="text-wood-muted dark:text-gray-400 font-medium">/ board foot</span>
-            </div>
-            <p class="text-wood-muted dark:text-gray-400 mb-6 leading-relaxed">
-                Dry your freshly milled lumber in our eco-friendly solar kiln. We target a stable moisture content so your wood is ready for fine woodworking.
-            </p>
-            <ul class="space-y-3 text-sm">
-                <li class="flex items-start gap-3"><span class="material-icons text-primary text-base mt-0.5">check_circle</span><span>Target moisture content 8–12%</span></li>
-                <li class="flex items-start gap-3"><span class="material-icons text-primary text-base mt-0.5">check_circle</span><span>Handles lumber up to 12' long</span></li>
-                <li class="flex items-start gap-3"><span class="material-icons text-primary text-base mt-0.5">check_circle</span><span>1,600 board foot total capacity</span></li>
-            </ul>
-        </div>
-        <div class="px-8 pb-8">
-            <a href="calculator.html#milling" class="block text-center bg-primary/10 hover:bg-primary hover:text-white text-primary font-bold py-3 rounded-lg transition-colors">Estimate this service</a>
-        </div>
-    </div>
-</div>
-<p class="text-center text-sm text-wood-muted dark:text-gray-400 mt-8">
-    Prices shown are standard rates. Use our <a href="calculator.html#milling" class="text-primary font-semibold underline underline-offset-2">Milling Estimate Calculator</a> for a project estimate.
-</p>
-</section>
-
-<!-- Equipment & Capabilities -->
-<section id="equipment" class="bg-wood-dark py-24 text-white relative overflow-hidden">
-<div class="absolute top-0 right-0 w-1/3 h-full opacity-10 pointer-events-none">
-    <svg class="w-full h-full fill-white" viewBox="0 0 100 100">
-        <path d="M0 0 L100 0 L100 100 L0 100 Z" fill="url(#wood-grain)"></path>
-        <defs>
-            <pattern height="20" id="wood-grain" patternUnits="userSpaceOnUse" width="20">
-                <path d="M0 10 Q 10 0, 20 10 T 40 10" fill="none" stroke="currentColor" stroke-width="0.5"></path>
-            </pattern>
-        </defs>
-    </svg>
-</div>
-<div class="max-w-7xl mx-auto px-4 relative z-10">
-    <div class="text-center mb-16">
-        <h2 class="text-4xl font-bold mb-4">Equipment &amp; Capabilities</h2>
-        <p class="max-w-2xl mx-auto text-gray-400 text-lg">Professional-grade equipment that handles big logs and dries lumber the eco-friendly way.</p>
-    </div>
-    <div class="grid lg:grid-cols-2 gap-8">
-        <!-- Sawmill -->
-        <div class="bg-white/5 backdrop-blur-xl p-6 sm:p-8 rounded-3xl border border-white/10">
-            <div class="flex items-center gap-3 mb-6">
-                <span class="material-icons text-primary text-3xl">precision_manufacturing</span>
-                <h3 class="text-2xl font-bold">Norwood HD36V2 Portable Sawmill</h3>
-            </div>
-            <p class="text-gray-400 mb-8 leading-relaxed">A heavy-duty portable band sawmill built to take on large-diameter hardwood logs with accurate, consistent cuts.</p>
-            <div class="grid grid-cols-3 gap-2 sm:gap-4">
-                <div class="bg-white/5 rounded-xl p-3 sm:p-4 text-center">
-                    <div class="text-xl sm:text-2xl md:text-3xl font-black text-primary">36"</div>
-                    <div class="text-[10px] sm:text-xs uppercase tracking-wider sm:tracking-widest text-gray-400 mt-1 leading-tight">Log Diameter</div>
-                </div>
-                <div class="bg-white/5 rounded-xl p-3 sm:p-4 text-center">
-                    <div class="text-xl sm:text-2xl md:text-3xl font-black text-primary">31"</div>
-                    <div class="text-[10px] sm:text-xs uppercase tracking-wider sm:tracking-widest text-gray-400 mt-1 leading-tight">Cut Width</div>
-                </div>
-                <div class="bg-white/5 rounded-xl p-3 sm:p-4 text-center">
-                    <div class="text-xl sm:text-2xl md:text-3xl font-black text-primary">13'</div>
-                    <div class="text-[10px] sm:text-xs uppercase tracking-wider sm:tracking-widest text-gray-400 mt-1 leading-tight">Log Length</div>
-                </div>
-            </div>
-        </div>
-        <!-- Solar Kiln -->
-        <div class="bg-white/5 backdrop-blur-xl p-6 sm:p-8 rounded-3xl border border-white/10">
-            <div class="flex items-center gap-3 mb-6">
-                <span class="material-icons text-primary text-3xl">wb_sunny</span>
-                <h3 class="text-2xl font-bold">Eco-Friendly Solar Kiln</h3>
-            </div>
-            <p class="text-gray-400 mb-8 leading-relaxed">A solar-powered drying kiln that gently brings lumber down to a stable, workable moisture content — without high energy costs.</p>
-            <div class="grid grid-cols-3 gap-2 sm:gap-4">
-                <div class="bg-white/5 rounded-xl p-3 sm:p-4 text-center">
-                    <div class="text-xl sm:text-2xl md:text-3xl font-black text-primary">8–12%</div>
-                    <div class="text-[10px] sm:text-xs uppercase tracking-wider sm:tracking-widest text-gray-400 mt-1 leading-tight">Target MC</div>
-                </div>
-                <div class="bg-white/5 rounded-xl p-3 sm:p-4 text-center">
-                    <div class="text-xl sm:text-2xl md:text-3xl font-black text-primary">12'</div>
-                    <div class="text-[10px] sm:text-xs uppercase tracking-wider sm:tracking-widest text-gray-400 mt-1 leading-tight">Max Length</div>
-                </div>
-                <div class="bg-white/5 rounded-xl p-3 sm:p-4 text-center">
-                    <div class="text-xl sm:text-2xl md:text-3xl font-black text-primary">1,600</div>
-                    <div class="text-[10px] sm:text-xs uppercase tracking-wider sm:tracking-widest text-gray-400 mt-1 leading-tight">Board Feet</div>
-                </div>
-            </div>
+    <div class="lg:col-span-5">
+        <div class="relative mx-auto w-[min(100%,360px)] lg:mr-6">
+            <figure>
+                <img src="images/work/mill-log.jpg" alt="A log loaded on RLC Lumber's Norwood portable sawmill" width="360" height="480" class="w-full aspect-[3/4] object-cover arch-3x4 shadow-2xl shadow-char/25"/>
+            </figure>
+            <img src="images/work/rough-sawn-boards.jpg" alt="Freshly sawn rough boards stacked on a trailer" width="480" height="640" class="absolute -left-3 sm:-left-20 -bottom-12 w-36 sm:w-44 aspect-[3/4] object-cover rounded-2xl border-[6px] border-paper shadow-xl -rotate-3"/>
+            <img src="images/logo-512.png" alt="" aria-hidden="true" width="104" height="104" class="absolute -right-1 sm:-right-4 top-10 w-24 sm:w-[104px] rotate-6 drop-shadow-[0_10px_24px_rgba(30,20,12,0.35)]"/>
         </div>
     </div>
 </div>
 </section>
 
-<!-- Service Area & Hours -->
-<section id="area" class="py-24 bg-background-light dark:bg-background-dark">
+<!-- Ribbon -->
+<div class="bg-char text-paper py-4 overflow-hidden" aria-hidden="true">
+    <div class="ribbon-track flex w-max gap-10 whitespace-nowrap font-display italic text-lg">
+        <span>Drop-off milling</span><span class="text-oak">✦</span><span>On-site portable milling</span><span class="text-oak">✦</span><span>Solar kiln drying</span><span class="text-oak">✦</span><span>Norwood LumberPro HD36</span><span class="text-oak">✦</span><span>Southern Minnesota &amp; Northern Iowa</span><span class="text-oak">✦</span>
+        <span>Drop-off milling</span><span class="text-oak">✦</span><span>On-site portable milling</span><span class="text-oak">✦</span><span>Solar kiln drying</span><span class="text-oak">✦</span><span>Norwood LumberPro HD36</span><span class="text-oak">✦</span><span>Southern Minnesota &amp; Northern Iowa</span><span class="text-oak">✦</span>
+    </div>
+</div>
+
+<!-- Services -->
+<section id="services" class="py-24 lg:py-32">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid lg:grid-cols-2 gap-12 items-start">
-        <div>
-            <h2 class="text-3xl font-bold mb-4">Service Area &amp; Hours</h2>
-            <p class="text-wood-muted dark:text-gray-400 mb-8 leading-relaxed">
-                Based in Chatfield, Minnesota, we provide drop-off milling at our shop and travel for on-site portable milling throughout <strong class="text-wood-dark dark:text-white">Southern Minnesota &amp; Northern Iowa</strong>.
-            </p>
-            <div class="space-y-6">
-                <div class="flex items-start gap-4">
-                    <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                        <span class="material-icons text-primary">location_on</span>
-                    </div>
-                    <div>
-                        <h4 class="font-bold mb-1">Our Shop</h4>
-                        <p class="text-wood-muted dark:text-gray-400">17490 Co Rd 2, Chatfield, MN 55923</p>
-                        <a href="https://www.google.com/maps/search/?api=1&query=17490+Co+Rd+2+Chatfield+MN+55923" target="_blank" rel="noopener" class="text-primary text-sm font-semibold hover:underline">Open in Google Maps &rarr;</a>
-                    </div>
-                </div>
-                <div class="flex items-start gap-4">
-                    <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                        <span class="material-icons text-primary">map</span>
-                    </div>
-                    <div>
-                        <h4 class="font-bold mb-1">Service Region</h4>
-                        <p class="text-wood-muted dark:text-gray-400">Southern Minnesota &amp; Northern Iowa</p>
-                    </div>
-                </div>
-            </div>
+    <div class="grid lg:grid-cols-12 gap-6 mb-14 items-end">
+        <div class="lg:col-span-7">
+            <p class="eyebrow text-saddle mb-4">Services &amp; rates</p>
+            <h2 class="font-display text-4xl sm:text-5xl font-semibold tracking-tight">Three ways to turn trees <em class="font-normal italic text-walnut">into lumber.</em></h2>
         </div>
-        <div class="bg-white dark:bg-wood-dark border border-primary/10 rounded-2xl p-8 shadow-sm">
-            <div class="flex items-center gap-3 mb-6">
-                <span class="material-icons text-primary">schedule</span>
-                <h3 class="text-xl font-bold">Hours of Operation</h3>
+        <p class="lg:col-span-5 text-bark text-lg leading-relaxed">Bring your logs to us, or we'll bring the mill to you. Either way we mill accurately to your cut list and stack your lumber ready to dry.</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+        <!-- Drop-off -->
+        <article class="flex flex-col bg-white border border-walnut/10 rounded-3xl p-8 lg:p-10">
+            <span class="font-display italic text-oak text-lg mb-6">01</span>
+            <h3 class="font-display text-2xl font-semibold mb-3">Drop-Off Milling</h3>
+            <p class="mb-6"><span class="font-display text-5xl font-semibold text-walnut">$0.65</span> <span class="text-bark">/ board foot</span></p>
+            <p class="text-bark leading-relaxed mb-6">Bring your logs to our shop and we'll mill them to your specs. A detailed cut list is required so every log is milled exactly the way you need it.</p>
+            <ul class="space-y-3 text-sm border-t border-walnut/10 pt-6 mb-8 flex-1">
+                <li class="flex gap-3"><span class="material-icons text-oak text-base">check</span>Detailed cut list required</li>
+                <li class="flex gap-3"><span class="material-icons text-oak text-base">check</span>Lumber stickered &amp; stacked for you</li>
+                <li class="flex gap-3"><span class="material-icons text-oak text-base">check</span>We call you when the job is complete</li>
+            </ul>
+            <a href="calculator.html#milling" class="inline-flex items-center gap-1 font-semibold text-walnut hover:gap-2 transition-all">Estimate this service <span class="material-icons text-lg">arrow_forward</span></a>
+        </article>
+        <!-- On-site -->
+        <article class="relative flex flex-col bg-char text-paper rounded-3xl p-8 lg:p-10 shadow-2xl shadow-char/20">
+            <span class="absolute top-8 right-8 eyebrow text-oak-light">We come to you</span>
+            <span class="font-display italic text-oak-light text-lg mb-6">02</span>
+            <h3 class="font-display text-2xl font-semibold mb-3">On-Site Portable Milling</h3>
+            <p class="mb-6"><span class="font-display text-5xl font-semibold text-oak-light">$85</span> <span class="text-paper/70">/ hour</span></p>
+            <p class="text-paper/75 leading-relaxed mb-6">Logs that are tough to move? We tow our Norwood portable sawmill to your property and mill on location — about 20–30 minutes per log.</p>
+            <ul class="space-y-3 text-sm border-t border-paper/15 pt-6 mb-8 flex-1">
+                <li class="flex gap-3"><span class="material-icons text-oak-light text-base">check</span>$100 setup fee</li>
+                <li class="flex gap-3"><span class="material-icons text-oak-light text-base">check</span>$1.25 / mile travel, one-way from our shop</li>
+                <li class="flex gap-3"><span class="material-icons text-oak-light text-base">check</span>$30 per broken blade if metal is in a log</li>
+                <li class="flex gap-3"><span class="material-icons text-oak-light text-base">check</span>Move logs &amp; stack lumber yourself to cut cost</li>
+            </ul>
+            <a href="calculator.html#milling" class="inline-flex items-center justify-center gap-2 bg-paper text-walnut font-semibold py-3.5 rounded-full hover:bg-oak-light transition-colors">Estimate an on-site job <span class="material-icons text-lg">arrow_forward</span></a>
+        </article>
+        <!-- Kiln -->
+        <article class="flex flex-col bg-white border border-walnut/10 rounded-3xl p-8 lg:p-10">
+            <span class="font-display italic text-oak text-lg mb-6">03</span>
+            <h3 class="font-display text-2xl font-semibold mb-3">Solar Kiln Drying</h3>
+            <p class="mb-6"><span class="font-display text-5xl font-semibold text-walnut">$0.70</span> <span class="text-bark">/ board foot</span></p>
+            <p class="text-bark leading-relaxed mb-6">Dry your freshly milled lumber in our eco-friendly solar kiln, down to a stable moisture content that's ready for fine woodworking.</p>
+            <ul class="space-y-3 text-sm border-t border-walnut/10 pt-6 mb-8 flex-1">
+                <li class="flex gap-3"><span class="material-icons text-oak text-base">check</span>Target moisture content 8–12%</li>
+                <li class="flex gap-3"><span class="material-icons text-oak text-base">check</span>Handles lumber up to 12' long</li>
+                <li class="flex gap-3"><span class="material-icons text-oak text-base">check</span>1,600 board feet per load</li>
+            </ul>
+            <a href="calculator.html#milling" class="inline-flex items-center gap-1 font-semibold text-walnut hover:gap-2 transition-all">Estimate this service <span class="material-icons text-lg">arrow_forward</span></a>
+        </article>
+    </div>
+</div>
+</section>
+
+<!-- On-site milling -->
+<section id="onsite" class="py-24 lg:py-32 bg-linen">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-16 lg:gap-12 items-center">
+    <div class="lg:col-span-6 grid grid-cols-2 gap-4 sm:gap-6 max-w-xl mx-auto lg:mx-0">
+        <figure>
+            <img src="images/work/towing-mill.jpg" alt="Pickup truck towing the Norwood portable sawmill to a job" width="360" height="480" loading="lazy" class="w-full aspect-[3/4] object-cover rounded-3xl shadow-xl"/>
+            <figcaption class="font-display italic text-sm text-bark mt-3">On the road to a job</figcaption>
+        </figure>
+        <figure class="mt-16">
+            <img src="images/work/mill-barn.jpg" alt="The Norwood portable sawmill set up on a driveway beside a red barn" width="360" height="480" loading="lazy" class="w-full aspect-[3/4] object-cover rounded-3xl shadow-xl"/>
+            <figcaption class="font-display italic text-sm text-bark mt-3">Set up and ready to cut</figcaption>
+        </figure>
+    </div>
+    <div class="lg:col-span-6 lg:pl-8">
+        <p class="eyebrow text-saddle mb-4">On-site milling</p>
+        <h2 class="font-display text-4xl sm:text-5xl font-semibold tracking-tight mb-6">The mill comes <em class="font-normal italic text-walnut">to you.</em></h2>
+        <p class="text-bark text-lg leading-relaxed mb-10">A storm-felled oak in the yard or a stack of logs at the edge of the field — no hauling required. We tow the Norwood to your property and turn your logs into usable lumber right where they lie.</p>
+        <ol class="space-y-8 mb-10">
+            <li class="flex gap-5">
+                <span class="flex-shrink-0 w-11 h-11 rounded-full border border-walnut/30 flex items-center justify-center font-display text-lg text-walnut">1</span>
+                <div>
+                    <h3 class="font-semibold mb-1">Tell us about your logs</h3>
+                    <p class="text-bark text-sm leading-relaxed">How many, roughly how big, and where they are. Our <a href="calculator.html#milling" class="text-walnut font-semibold underline underline-offset-2">estimate calculator</a> prices it from your log count.</p>
+                </div>
+            </li>
+            <li class="flex gap-5">
+                <span class="flex-shrink-0 w-11 h-11 rounded-full border border-walnut/30 flex items-center justify-center font-display text-lg text-walnut">2</span>
+                <div>
+                    <h3 class="font-semibold mb-1">We tow the mill to your property</h3>
+                    <p class="text-bark text-sm leading-relaxed">A $100 setup fee plus $1.25 per mile, one-way from our Chatfield shop.</p>
+                </div>
+            </li>
+            <li class="flex gap-5">
+                <span class="flex-shrink-0 w-11 h-11 rounded-full border border-walnut/30 flex items-center justify-center font-display text-lg text-walnut">3</span>
+                <div>
+                    <h3 class="font-semibold mb-1">We mill to your cut list</h3>
+                    <p class="text-bark text-sm leading-relaxed">About 20–30 minutes per log at $85 an hour. Moving logs to the mill and stacking lumber yourself considerably reduces time and cost.</p>
+                </div>
+            </li>
+        </ol>
+        <a href="calculator.html#milling" class="inline-flex items-center gap-2 bg-walnut text-paper px-7 py-4 rounded-full font-semibold hover:bg-char transition-colors">Estimate an on-site job <span class="material-icons text-lg">arrow_forward</span></a>
+    </div>
+</div>
+</section>
+
+<!-- Equipment -->
+<section id="equipment" class="relative py-24 lg:py-32 bg-char text-paper overflow-hidden">
+<img src="images/end-grain.svg" alt="" aria-hidden="true" class="pointer-events-none absolute -right-[300px] -top-[260px] w-[760px] opacity-20"/>
+<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-16 lg:gap-12 items-center">
+    <figure class="lg:col-span-5 mx-auto w-[min(100%,380px)]">
+        <img src="images/work/norwood-front.jpg" alt="Front view of RLC Lumber's Norwood LumberPro sawmill" width="412" height="480" loading="lazy" class="w-full aspect-[412/480] object-cover arch-norwood"/>
+        <figcaption class="font-display italic text-sm text-paper/60 mt-4 text-center">Norwood LumberPro HD36</figcaption>
+    </figure>
+    <div class="lg:col-span-7">
+        <p class="eyebrow text-oak-light mb-4">Equipment &amp; capabilities</p>
+        <h2 class="font-display text-4xl sm:text-5xl font-semibold tracking-tight mb-6">Built for <em class="font-normal italic text-oak-light">big hardwood.</em></h2>
+        <p class="text-paper/70 text-lg leading-relaxed mb-12 max-w-2xl">A heavy-duty portable band sawmill for large-diameter logs and accurate, consistent cuts — and a solar kiln that brings lumber down to a stable moisture content without high energy costs.</p>
+        <div class="space-y-10">
+            <div>
+                <h3 class="eyebrow text-paper/60 mb-5">Norwood portable sawmill</h3>
+                <dl class="grid grid-cols-3 divide-x divide-paper/15 border-y border-paper/15 py-6">
+                    <div class="pr-4"><dd class="font-display text-4xl sm:text-5xl font-semibold text-oak-light">36&quot;</dd><dt class="text-xs sm:text-sm text-paper/60 mt-2">Log diameter</dt></div>
+                    <div class="px-4"><dd class="font-display text-4xl sm:text-5xl font-semibold text-oak-light">31&quot;</dd><dt class="text-xs sm:text-sm text-paper/60 mt-2">Cut width</dt></div>
+                    <div class="pl-4"><dd class="font-display text-4xl sm:text-5xl font-semibold text-oak-light">13'</dd><dt class="text-xs sm:text-sm text-paper/60 mt-2">Log length</dt></div>
+                </dl>
             </div>
-            <table class="w-full text-left">
-                <tbody class="divide-y divide-primary/10">
-                    <tr>
-                        <td class="py-3 font-semibold">Monday – Friday</td>
-                        <td class="py-3 text-right text-wood-muted dark:text-gray-400">7:00 AM – 7:00 PM</td>
-                    </tr>
-                    <tr>
-                        <td class="py-3 font-semibold">Saturday</td>
-                        <td class="py-3 text-right text-wood-muted dark:text-gray-400">7:00 AM – 2:00 PM</td>
-                    </tr>
-                    <tr>
-                        <td class="py-3 font-semibold">Sunday</td>
-                        <td class="py-3 text-right text-wood-muted dark:text-gray-400">Closed</td>
-                    </tr>
-                </tbody>
-            </table>
-            <a href="calculator.html#milling" class="mt-8 block text-center bg-primary text-white font-bold py-3 rounded-lg hover:brightness-110 transition-all shadow-lg shadow-primary/20">Get a Milling Estimate</a>
+            <div>
+                <h3 class="eyebrow text-paper/60 mb-5">Solar kiln</h3>
+                <dl class="grid grid-cols-3 divide-x divide-paper/15 border-y border-paper/15 py-6">
+                    <div class="pr-4"><dd class="font-display text-4xl sm:text-5xl font-semibold text-oak-light">8–12%</dd><dt class="text-xs sm:text-sm text-paper/60 mt-2">Target moisture</dt></div>
+                    <div class="px-4"><dd class="font-display text-4xl sm:text-5xl font-semibold text-oak-light">12'</dd><dt class="text-xs sm:text-sm text-paper/60 mt-2">Max length</dt></div>
+                    <div class="pl-4"><dd class="font-display text-4xl sm:text-5xl font-semibold text-oak-light">1,600</dd><dt class="text-xs sm:text-sm text-paper/60 mt-2">Board feet per load</dt></div>
+                </dl>
+            </div>
         </div>
     </div>
 </div>
@@ -404,155 +407,179 @@
 
 <!-- Our Work & Reviews -->
 <!-- Add real job photos and reviews here as the owner supplies them. Never publish sample or placeholder reviews. -->
-<section id="work" class="py-24 border-t border-primary/10 bg-white dark:bg-wood-dark">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold mb-4">Our Work &amp; Reviews</h2>
-        <p class="max-w-2xl mx-auto text-wood-muted dark:text-gray-400">We post logs milled, lumber stacked, and kiln loads on Facebook. If we've milled for you, a quick review helps your neighbors find a sawyer they can trust.</p>
+<section id="work" class="py-24 lg:py-32">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-16 lg:gap-12 items-center">
+    <figure class="lg:col-span-5 mx-auto w-[min(100%,360px)]">
+        <img src="images/work/lumber-trailer.jpg" alt="A trailer load of freshly milled boards and beams" width="360" height="480" loading="lazy" class="w-full aspect-[3/4] object-cover rounded-3xl shadow-2xl shadow-char/20 rotate-[-1.5deg]"/>
+    </figure>
+    <div class="lg:col-span-7">
+        <p class="eyebrow text-saddle mb-4">From the mill</p>
+        <h2 class="font-display text-4xl sm:text-5xl font-semibold tracking-tight mb-6">Local logs, <em class="font-normal italic text-walnut">honest lumber.</em></h2>
+        <p class="text-bark text-lg leading-relaxed mb-10 max-w-2xl">We post recent jobs on Facebook — logs milled, lumber stacked, and kiln loads. If we've milled for you, a quick review helps your neighbors find a sawyer they can trust.</p>
+        <div class="flex flex-col sm:flex-row gap-3">
+            <a href="https://www.facebook.com/profile.php?id=100089117444800" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 bg-walnut text-paper px-7 py-4 rounded-full font-semibold hover:bg-char transition-colors">
+                <span class="material-icons text-lg">photo_library</span> See recent jobs
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=100089117444800&amp;sk=reviews" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 border border-walnut/30 text-walnut px-7 py-4 rounded-full font-semibold hover:border-walnut hover:bg-walnut/5 transition-colors">
+                <span class="material-icons text-lg">rate_review</span> Leave a review
+            </a>
+        </div>
     </div>
-    <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-        <a href="https://www.facebook.com/profile.php?id=100089117444800" target="_blank" rel="noopener" class="group flex items-start gap-5 p-8 rounded-2xl border border-primary/15 bg-background-light dark:bg-background-dark hover:border-primary hover:shadow-xl transition-all">
-            <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                <span class="material-icons text-primary text-3xl">photo_library</span>
+</div>
+</section>
+
+<!-- Service Area & Hours -->
+<section id="area" class="py-24 lg:py-28 bg-linen">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-12 items-start">
+    <div class="lg:col-span-7">
+        <p class="eyebrow text-saddle mb-4">Service area &amp; hours</p>
+        <h2 class="font-display text-4xl sm:text-5xl font-semibold tracking-tight mb-6">Based in Chatfield. <em class="font-normal italic text-walnut">Milling across the region.</em></h2>
+        <p class="text-bark text-lg leading-relaxed mb-10 max-w-2xl">Drop-off milling happens at our shop; on-site milling travels throughout Southern Minnesota &amp; Northern Iowa.</p>
+        <div class="grid sm:grid-cols-2 gap-8">
+            <div>
+                <h3 class="font-semibold mb-2 flex items-center gap-2"><span class="material-icons text-oak text-xl">location_on</span>Our shop</h3>
+                <p class="text-bark">17490 Co Rd 2<br/>Chatfield, MN 55923</p>
+                <a href="https://www.google.com/maps/search/?api=1&amp;query=17490+Co+Rd+2+Chatfield+MN+55923" target="_blank" rel="noopener" class="inline-block mt-2 text-walnut text-sm font-semibold underline underline-offset-4">Open in Google Maps</a>
             </div>
             <div>
-                <h3 class="text-xl font-bold mb-2">See recent jobs</h3>
-                <p class="text-wood-muted dark:text-gray-400 text-sm mb-4">Photos from on-site jobs, drop-off milling, and the solar kiln.</p>
-                <span class="inline-flex items-center gap-1 text-primary font-bold text-sm">View on Facebook <span class="material-icons text-base group-hover:translate-x-1 transition-transform">arrow_forward</span></span>
+                <h3 class="font-semibold mb-2 flex items-center gap-2"><span class="material-icons text-oak text-xl">map</span>Service region</h3>
+                <p class="text-bark">Southern Minnesota<br/>&amp; Northern Iowa</p>
             </div>
-        </a>
-        <a href="https://www.facebook.com/profile.php?id=100089117444800&amp;sk=reviews" target="_blank" rel="noopener" class="group flex items-start gap-5 p-8 rounded-2xl border border-primary/15 bg-background-light dark:bg-background-dark hover:border-primary hover:shadow-xl transition-all">
-            <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                <span class="material-icons text-primary text-3xl">rate_review</span>
-            </div>
-            <div>
-                <h3 class="text-xl font-bold mb-2">Worked with us?</h3>
-                <p class="text-wood-muted dark:text-gray-400 text-sm mb-4">Tell others how your logs turned out. It takes a minute and means a lot to a local business.</p>
-                <span class="inline-flex items-center gap-1 text-primary font-bold text-sm">Leave a review <span class="material-icons text-base group-hover:translate-x-1 transition-transform">arrow_forward</span></span>
-            </div>
-        </a>
+        </div>
+    </div>
+    <div class="lg:col-span-5 bg-paper border border-walnut/10 rounded-3xl p-8 lg:p-10">
+        <h3 class="font-display text-2xl font-semibold mb-6">Hours</h3>
+        <table class="w-full text-left mb-8">
+            <tbody class="divide-y divide-walnut/10">
+                <tr><td class="py-3 font-medium">Monday – Friday</td><td class="py-3 text-right text-bark">7:00 AM – 7:00 PM</td></tr>
+                <tr><td class="py-3 font-medium">Saturday</td><td class="py-3 text-right text-bark">7:00 AM – 2:00 PM</td></tr>
+                <tr><td class="py-3 font-medium">Sunday</td><td class="py-3 text-right text-bark">Closed</td></tr>
+            </tbody>
+        </table>
+        <a href="calculator.html#milling" class="flex items-center justify-center gap-2 bg-walnut text-paper py-3.5 rounded-full font-semibold hover:bg-char transition-colors">Get a milling estimate</a>
     </div>
 </div>
 </section>
 
 <!-- FAQ -->
-<section id="faq" class="py-24 bg-background-light dark:bg-background-dark">
-<div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold mb-4">Sawmilling Questions</h2>
-        <p class="text-wood-muted dark:text-gray-400">Straight answers before you haul a log or book the mill.</p>
+<section id="faq" class="py-24 lg:py-32">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-12">
+    <div class="lg:col-span-4">
+        <div class="lg:sticky lg:top-28">
+            <p class="eyebrow text-saddle mb-4">Questions</p>
+            <h2 class="font-display text-4xl sm:text-5xl font-semibold tracking-tight mb-6">Before you <em class="font-normal italic text-walnut">haul a log.</em></h2>
+            <p class="text-bark leading-relaxed">Something else on your mind? Call <a href="tel:9562023455" class="text-walnut font-semibold">(956) 202-3455</a>.</p>
+        </div>
     </div>
-    <div class="space-y-3">
-        <details class="group bg-white dark:bg-wood-dark border border-primary/10 rounded-xl p-6 open:shadow-md">
-            <summary class="flex justify-between items-center gap-4 cursor-pointer list-none font-bold">
+    <div class="lg:col-span-8 divide-y divide-walnut/15 border-y border-walnut/15">
+        <details class="group py-6">
+            <summary class="flex justify-between items-center gap-6 cursor-pointer list-none font-display text-xl font-semibold">
                 What do I need to bring for drop-off milling?
-                <span class="material-icons text-primary transition-transform group-open:rotate-45">add</span>
+                <span class="material-icons text-walnut transition-transform group-open:rotate-45">add</span>
             </summary>
-            <p class="mt-4 text-wood-muted dark:text-gray-400 leading-relaxed">Your logs and a detailed cut list — board thicknesses, widths, and how many of each. The cut list is required so every log is milled the way you need it. We sticker and stack your lumber and call you when the job is done.</p>
+            <p class="mt-4 text-bark leading-relaxed max-w-2xl">Your logs and a detailed cut list — board thicknesses, widths, and how many of each. The cut list is required so every log is milled the way you need it. We sticker and stack your lumber and call you when the job is done.</p>
         </details>
-        <details class="group bg-white dark:bg-wood-dark border border-primary/10 rounded-xl p-6 open:shadow-md">
-            <summary class="flex justify-between items-center gap-4 cursor-pointer list-none font-bold">
+        <details class="group py-6">
+            <summary class="flex justify-between items-center gap-6 cursor-pointer list-none font-display text-xl font-semibold">
                 How long does on-site portable milling take?
-                <span class="material-icons text-primary transition-transform group-open:rotate-45">add</span>
+                <span class="material-icons text-walnut transition-transform group-open:rotate-45">add</span>
             </summary>
-            <p class="mt-4 text-wood-muted dark:text-gray-400 leading-relaxed">About 20–30 minutes per log on average. Having your logs moved to the mill and stacking the lumber yourself cuts the time — and your bill — considerably. Our <a href="calculator.html#milling" class="text-primary font-semibold underline underline-offset-2">estimate calculator</a> works it out from your log count.</p>
+            <p class="mt-4 text-bark leading-relaxed max-w-2xl">About 20–30 minutes per log on average. Having your logs moved to the mill and stacking the lumber yourself cuts the time — and your bill — considerably. Our <a href="calculator.html#milling" class="text-walnut font-semibold underline underline-offset-2">estimate calculator</a> works it out from your log count.</p>
         </details>
-        <details class="group bg-white dark:bg-wood-dark border border-primary/10 rounded-xl p-6 open:shadow-md">
-            <summary class="flex justify-between items-center gap-4 cursor-pointer list-none font-bold">
+        <details class="group py-6">
+            <summary class="flex justify-between items-center gap-6 cursor-pointer list-none font-display text-xl font-semibold">
                 What happens if there's metal in my log?
-                <span class="material-icons text-primary transition-transform group-open:rotate-45">add</span>
+                <span class="material-icons text-walnut transition-transform group-open:rotate-45">add</span>
             </summary>
-            <p class="mt-4 text-wood-muted dark:text-gray-400 leading-relaxed">Nails, fence wire, and old hardware can break a band saw blade. If that happens there is a $30 fee per broken blade. Yard and fence-line trees are the most likely to hide metal, so let us know where your logs came from.</p>
+            <p class="mt-4 text-bark leading-relaxed max-w-2xl">Nails, fence wire, and old hardware can break a band saw blade. If that happens there is a $30 fee per broken blade. Yard and fence-line trees are the most likely to hide metal, so let us know where your logs came from.</p>
         </details>
-        <details class="group bg-white dark:bg-wood-dark border border-primary/10 rounded-xl p-6 open:shadow-md">
-            <summary class="flex justify-between items-center gap-4 cursor-pointer list-none font-bold">
+        <details class="group py-6">
+            <summary class="flex justify-between items-center gap-6 cursor-pointer list-none font-display text-xl font-semibold">
                 How big a log can you mill?
-                <span class="material-icons text-primary transition-transform group-open:rotate-45">add</span>
+                <span class="material-icons text-walnut transition-transform group-open:rotate-45">add</span>
             </summary>
-            <p class="mt-4 text-wood-muted dark:text-gray-400 leading-relaxed">Our Norwood HD36V2 handles logs up to 36&quot; in diameter and 13' long, with a maximum cut width of 31&quot;.</p>
+            <p class="mt-4 text-bark leading-relaxed max-w-2xl">Our Norwood handles logs up to 36&quot; in diameter and 13' long, with a maximum cut width of 31&quot;.</p>
         </details>
-        <details class="group bg-white dark:bg-wood-dark border border-primary/10 rounded-xl p-6 open:shadow-md">
-            <summary class="flex justify-between items-center gap-4 cursor-pointer list-none font-bold">
+        <details class="group py-6">
+            <summary class="flex justify-between items-center gap-6 cursor-pointer list-none font-display text-xl font-semibold">
                 How dry will kiln-dried lumber be?
-                <span class="material-icons text-primary transition-transform group-open:rotate-45">add</span>
+                <span class="material-icons text-walnut transition-transform group-open:rotate-45">add</span>
             </summary>
-            <p class="mt-4 text-wood-muted dark:text-gray-400 leading-relaxed">Our solar kiln targets 8–12% moisture content — ready for furniture and interior projects. It takes lumber up to 12' long and holds 1,600 board feet per load.</p>
+            <p class="mt-4 text-bark leading-relaxed max-w-2xl">Our solar kiln targets 8–12% moisture content — ready for furniture and interior projects. It takes lumber up to 12' long and holds 1,600 board feet per load.</p>
         </details>
-        <details class="group bg-white dark:bg-wood-dark border border-primary/10 rounded-xl p-6 open:shadow-md">
-            <summary class="flex justify-between items-center gap-4 cursor-pointer list-none font-bold">
+        <details class="group py-6">
+            <summary class="flex justify-between items-center gap-6 cursor-pointer list-none font-display text-xl font-semibold">
                 How far will you travel?
-                <span class="material-icons text-primary transition-transform group-open:rotate-45">add</span>
+                <span class="material-icons text-walnut transition-transform group-open:rotate-45">add</span>
             </summary>
-            <p class="mt-4 text-wood-muted dark:text-gray-400 leading-relaxed">We mill on-site throughout Southern Minnesota and Northern Iowa from our shop in Chatfield. Travel is $1.25 per mile, one-way from the shop, plus a $100 setup fee.</p>
+            <p class="mt-4 text-bark leading-relaxed max-w-2xl">We mill on-site throughout Southern Minnesota and Northern Iowa from our shop in Chatfield. Travel is $1.25 per mile, one-way from the shop, plus a $100 setup fee.</p>
         </details>
+    </div>
+</div>
+</section>
+
+<!-- Closing call to action -->
+<section class="relative bg-walnut text-paper overflow-hidden">
+<img src="images/end-grain.svg" alt="" aria-hidden="true" class="pointer-events-none absolute -right-[200px] top-1/2 -translate-y-1/2 w-[640px] opacity-25 mix-blend-screen"/>
+<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24 flex flex-col lg:flex-row lg:items-center justify-between gap-10">
+    <div>
+        <h2 class="font-display text-4xl sm:text-5xl font-semibold tracking-tight mb-4">Got logs? <em class="font-normal italic text-oak-light">Let's make lumber.</em></h2>
+        <p class="text-paper/75 text-lg max-w-xl">Price your job in a minute, then send it straight to us. We'll confirm the details and get you on the schedule.</p>
+    </div>
+    <div class="flex flex-col sm:flex-row gap-3 flex-shrink-0">
+        <a href="calculator.html#milling" class="inline-flex items-center justify-center gap-2 bg-paper text-walnut px-7 py-4 rounded-full font-semibold hover:bg-oak-light transition-colors">Get a free estimate <span class="material-icons text-lg">arrow_forward</span></a>
+        <a href="tel:9562023455" class="inline-flex items-center justify-center gap-2 border border-paper/40 px-7 py-4 rounded-full font-semibold hover:bg-paper/10 transition-colors"><span class="material-icons text-lg">call</span> Call us</a>
     </div>
 </div>
 </section>
 </main>
 
 <!-- Footer / Contact -->
-<footer id="contact" class="bg-wood-dark text-white pt-20 pb-10 border-t border-white/5">
+<footer id="contact" class="bg-char text-paper pt-20 pb-10">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
-        <div class="col-span-1 lg:col-span-1">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-16">
+        <div class="lg:col-span-4">
             <a href="index.html" class="flex items-center gap-3 mb-6">
-                <img src="images/logo.png" alt="RLC Lumber LLC" width="48" height="48" class="h-12 w-12" loading="lazy"/>
-                <div class="flex flex-col">
-                    <span class="text-2xl font-bold tracking-tighter text-primary">RLC Lumber</span>
-                    <span class="text-[10px] uppercase tracking-widest font-semibold opacity-60 leading-tight">Sawmilling Services</span>
-                </div>
+                <img src="images/logo.png" alt="RLC Lumber LLC" width="56" height="56" class="h-14 w-14" loading="lazy"/>
+                <span class="font-display text-2xl font-semibold">RLC Lumber</span>
             </a>
-            <p class="text-gray-400 mb-6 leading-relaxed">
-                Local &amp; portable sawmilling services for furniture makers, designers, builders, and hobbyists across Southern Minnesota &amp; Northern Iowa.
-            </p>
-            <div class="flex gap-4">
-                <a class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-colors" href="https://www.facebook.com/profile.php?id=100089117444800" target="_blank" rel="noopener" aria-label="Facebook">
-                    <span class="material-icons text-xl">facebook</span>
-                </a>
-            </div>
+            <p class="text-paper/60 leading-relaxed mb-6 max-w-sm">Local &amp; portable sawmilling for furniture makers, designers, builders, and hobbyists across Southern Minnesota &amp; Northern Iowa.</p>
+            <a class="inline-flex items-center gap-2 text-sm font-semibold text-oak-light hover:text-paper transition-colors" href="https://www.facebook.com/profile.php?id=100089117444800" target="_blank" rel="noopener">
+                <span class="material-icons text-lg">facebook</span> Follow us on Facebook
+            </a>
         </div>
-        <div>
-            <h4 class="font-bold mb-6 text-lg">Services</h4>
-            <ul class="space-y-4 text-gray-400">
-                <li><a class="hover:text-primary transition-colors" href="#services">Drop-Off Milling</a></li>
-                <li><a class="hover:text-primary transition-colors" href="#services">On-Site Portable Milling</a></li>
-                <li><a class="hover:text-primary transition-colors" href="#services">Solar Kiln Drying</a></li>
-                <li><a class="hover:text-primary transition-colors" href="calculator.html">Calculator</a></li>
+        <div class="lg:col-span-2">
+            <h4 class="eyebrow text-paper/50 mb-6">Services</h4>
+            <ul class="space-y-3 text-paper/80">
+                <li><a class="hover:text-oak-light transition-colors" href="#services">Drop-Off Milling</a></li>
+                <li><a class="hover:text-oak-light transition-colors" href="#onsite">On-Site Milling</a></li>
+                <li><a class="hover:text-oak-light transition-colors" href="#services">Solar Kiln Drying</a></li>
+                <li><a class="hover:text-oak-light transition-colors" href="calculator.html">Calculator</a></li>
             </ul>
         </div>
-        <div>
-            <h4 class="font-bold mb-6 text-lg">Contact Us</h4>
-            <ul class="space-y-4 text-gray-400">
-                <li class="flex items-start gap-3">
-                    <span class="material-icons text-primary text-sm mt-1">location_on</span>
-                    <span>17490 Co Rd 2,<br/>Chatfield, MN 55923</span>
-                </li>
-                <li class="flex items-center gap-3">
-                    <span class="material-icons text-primary text-sm">phone</span>
-                    <a href="tel:9562023455" class="hover:text-primary transition-colors">(956) 202-3455</a>
-                </li>
-                <li class="flex items-center gap-3">
-                    <span class="material-icons text-primary text-sm">email</span>
-                    <a href="mailto:rlclumber17@gmail.com" class="hover:text-primary transition-colors">rlclumber17@gmail.com</a>
-                </li>
+        <div class="lg:col-span-3">
+            <h4 class="eyebrow text-paper/50 mb-6">Contact</h4>
+            <ul class="space-y-3 text-paper/80">
+                <li>17490 Co Rd 2<br/>Chatfield, MN 55923</li>
+                <li><a href="tel:9562023455" class="hover:text-oak-light transition-colors">(956) 202-3455</a></li>
+                <li><a href="mailto:rlclumber17@gmail.com" class="hover:text-oak-light transition-colors">rlclumber17@gmail.com</a></li>
             </ul>
         </div>
-        <div>
-            <h4 class="font-bold mb-6 text-lg">Hours</h4>
-            <ul class="space-y-2 text-gray-400 text-sm">
+        <div class="lg:col-span-3">
+            <h4 class="eyebrow text-paper/50 mb-6">Hours</h4>
+            <ul class="space-y-3 text-paper/80 text-sm">
                 <li class="flex justify-between gap-4"><span>Mon – Fri</span><span>7am – 7pm</span></li>
                 <li class="flex justify-between gap-4"><span>Saturday</span><span>7am – 2pm</span></li>
                 <li class="flex justify-between gap-4"><span>Sunday</span><span>Closed</span></li>
             </ul>
-            <a href="calculator.html#milling" class="inline-block mt-6 bg-primary text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:brightness-110 transition-all">Get an Estimate</a>
         </div>
     </div>
-    <div class="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500 uppercase tracking-widest font-bold">
-        <p>&copy; 2026 RLC Lumber LLC. All Rights Reserved.</p>
-        <div class="flex gap-8">
-            <a class="hover:text-white transition-colors" href="#services">Services</a>
-            <a class="hover:text-white transition-colors" href="calculator.html">Calculator</a>
-            <a class="hover:text-white transition-colors" href="#faq">FAQ</a>
+    <div class="pt-8 border-t border-paper/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-paper/40">
+        <p>&copy; 2026 RLC Lumber LLC. All rights reserved.</p>
+        <div class="flex gap-6">
+            <a class="hover:text-paper transition-colors" href="#services">Services</a>
+            <a class="hover:text-paper transition-colors" href="calculator.html">Calculator</a>
+            <a class="hover:text-paper transition-colors" href="#faq">FAQ</a>
         </div>
     </div>
 </div>
