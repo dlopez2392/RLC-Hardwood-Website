@@ -20,75 +20,94 @@
 <meta property="og:image:height" content="630"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
 <script>
+    // Same logo-derived palette as index.html. "slate" is remapped to warm tones so the calculator's gray utilities match.
     tailwind.config = {
-        darkMode: "class",
         theme: {
             extend: {
                 colors: {
-                    "primary": "#8B5A2B",
-                    "primary-light": "#A97C50",
-                    "honey": "#F0B45A",
-                    "background-light": "#FAF6F0",
-                    "background-dark": "#2C1E12",
-                    "wood-dark": "#2d241e",
-                    "wood-muted": "#4a3f35",
+                    "char": "#1E140C",
+                    "walnut": "#5A3317",
+                    "saddle": "#7A4A24",
+                    "oak": "#B07D52",
+                    "oak-light": "#D9B48C",
+                    "paper": "#FBF7EF",
+                    "linen": "#F1E8D9",
+                    "bark": "#5C4A3B",
+                    "primary": "#5A3317",
+                    "wood-dark": "#1E140C",
+                    "wood-muted": "#5C4A3B",
+                    "background-light": "#FBF7EF",
+                    "slate": {
+                        50: "#FAF6EF", 100: "#F3EBDD", 200: "#E6D9C5", 300: "#D2C0A6", 400: "#A8917A",
+                        500: "#7E6955", 600: "#5C4A3B", 700: "#46372A", 800: "#2F241B", 900: "#1E140C", 950: "#140D07",
+                    },
                 },
                 fontFamily: {
-                    "display": ["Inter"]
-                },
-                borderRadius: {
-                    "DEFAULT": "0.25rem",
-                    "lg": "0.5rem",
-                    "xl": "0.75rem",
-                    "full": "9999px"
+                    "display": ["Fraunces", "Georgia", "serif"],
+                    "sans": ["Inter", "system-ui", "sans-serif"],
                 },
             },
         },
     }
 </script>
 <style>
-    body { font-family: 'Inter', sans-serif; }
-    input[type="range"] { accent-color: #8B5A2B; }
+    .font-display { font-variation-settings: "SOFT" 50, "WONK" 0; }
+    .eyebrow { font: 600 0.75rem/1 Inter, sans-serif; letter-spacing: 0.2em; text-transform: uppercase; }
+    input[type="range"] { accent-color: #5A3317; }
 </style>
 </head>
-<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display transition-colors duration-300 overflow-x-hidden">
+<body class="font-sans bg-paper text-char antialiased selection:bg-walnut selection:text-paper overflow-x-hidden">
 
-<!-- Header / Navigation -->
-<header class="border-b border-primary/10 bg-white dark:bg-background-dark sticky top-0 z-50">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center gap-6">
+<!-- Header -->
+<header class="sticky top-0 z-50 bg-paper/90 backdrop-blur-md border-b border-walnut/10">
+<nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex h-20 items-center gap-6">
     <a href="index.html" class="flex items-center gap-3 flex-shrink-0">
         <img src="images/logo.png" alt="RLC Lumber LLC" width="48" height="48" class="h-12 w-12"/>
         <div class="flex flex-col leading-none">
-            <span class="text-2xl font-bold tracking-tight text-primary whitespace-nowrap">RLC</span>
-            <span class="text-[10px] uppercase tracking-[0.18em] font-semibold opacity-60 whitespace-nowrap mt-0.5">Sawmilling Services</span>
+            <span class="font-display text-2xl font-semibold text-walnut whitespace-nowrap">RLC Lumber</span>
+            <span class="text-[10px] uppercase tracking-[0.2em] font-semibold text-bark whitespace-nowrap mt-1">Sawmilling · Chatfield, MN</span>
         </div>
     </a>
-    <div class="hidden md:flex flex-1 justify-center items-center gap-9">
-        <a class="text-sm font-medium hover:text-primary transition-colors" href="index.html#services">Services</a>
-        <a class="text-sm font-medium text-primary" href="calculator.html">Calculator</a>
-        <a class="text-sm font-medium hover:text-primary transition-colors" href="index.html#equipment">Equipment</a>
-        <a class="text-sm font-medium hover:text-primary transition-colors" href="index.html#faq">FAQ</a>
-        <a class="text-sm font-medium hover:text-primary transition-colors" href="index.html#contact">Contact</a>
+    <div class="hidden lg:flex flex-1 justify-center items-center gap-8 text-sm font-medium">
+        <a class="hover:text-walnut transition-colors" href="index.html#services">Services</a>
+        <a class="hover:text-walnut transition-colors" href="index.html#onsite">On-Site Milling</a>
+        <a class="hover:text-walnut transition-colors" href="index.html#equipment">Equipment</a>
+        <a class="text-walnut font-semibold" href="calculator.html" aria-current="page">Calculator</a>
+        <a class="hover:text-walnut transition-colors" href="index.html#faq">FAQ</a>
     </div>
-    <a href="tel:9562023455" class="hidden md:inline-flex flex-shrink-0 bg-primary text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:brightness-110 transition-all shadow-lg shadow-primary/20 whitespace-nowrap items-center gap-2">
-        <span class="material-icons text-base">call</span>
-        (956) 202-3455
-    </a>
-    <a href="tel:9562023455" class="md:hidden ml-auto flex items-center gap-2 text-sm font-semibold text-primary" aria-label="Call us">
-        <span class="material-icons text-base">call</span>
-    </a>
+    <div class="hidden lg:flex items-center gap-5 flex-shrink-0">
+        <a href="tel:9562023455" class="text-sm font-semibold text-walnut hover:underline underline-offset-4">(956) 202-3455</a>
+        <a href="calculator.html#milling" class="bg-walnut text-paper px-5 py-2.5 rounded-full font-semibold text-sm hover:bg-char transition-colors whitespace-nowrap">Get an Estimate</a>
+    </div>
+    <button id="mobile-menu-btn" class="lg:hidden ml-auto p-2 hover:bg-walnut/10 rounded-full transition-colors" aria-label="Open menu">
+        <span class="material-icons text-xl">menu</span>
+    </button>
 </div>
+<div id="mobile-menu" class="hidden lg:hidden pb-4 space-y-1">
+    <a class="block px-4 py-2 text-sm font-medium hover:bg-walnut/10 rounded-lg" href="index.html#services">Services</a>
+    <a class="block px-4 py-2 text-sm font-medium hover:bg-walnut/10 rounded-lg" href="index.html#onsite">On-Site Milling</a>
+    <a class="block px-4 py-2 text-sm font-medium hover:bg-walnut/10 rounded-lg" href="index.html#equipment">Equipment</a>
+    <a class="block px-4 py-2 text-sm font-medium hover:bg-walnut/10 rounded-lg" href="calculator.html">Calculator</a>
+    <a class="block px-4 py-2 text-sm font-medium hover:bg-walnut/10 rounded-lg" href="index.html#faq">FAQ</a>
+    <a class="block px-4 py-2 text-sm font-medium hover:bg-walnut/10 rounded-lg" href="index.html#contact">Contact</a>
+    <a class="flex items-center gap-2 px-4 py-2 text-sm font-semibold hover:bg-walnut/10 rounded-lg" href="tel:9562023455"><span class="material-icons text-base text-walnut">call</span>(956) 202-3455</a>
+    <a href="calculator.html#milling" class="block mx-4 mt-2 py-3 bg-walnut text-paper rounded-full font-semibold text-sm text-center">Get an Estimate</a>
+</div>
+</nav>
 </header>
 
 <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 <!-- Page Title -->
 <div class="mb-8">
-    <h1 class="text-3xl sm:text-4xl font-bold mb-4">Lumber Calculators</h1>
-    <div class="h-1.5 w-24 bg-primary rounded-full mb-4"></div>
-    <p class="text-slate-500 dark:text-slate-400 max-w-2xl text-lg">
+    <p class="eyebrow text-saddle flex items-center gap-3 mb-5"><span class="h-px w-10 bg-oak"></span>Estimate your job</p>
+    <h1 class="font-display text-4xl sm:text-5xl font-semibold tracking-tight mb-4">Lumber <em class="font-normal italic text-walnut">calculators.</em></h1>
+    <p class="text-bark max-w-2xl text-lg">
         Estimate the board feet in a log with the Doyle, Scribner, and International 1/4&quot; scales — then price out our milling services.
     </p>
 </div>
@@ -181,7 +200,7 @@
                 <div class="relative z-10">
                     <p class="text-xs font-bold uppercase tracking-widest text-primary mb-1">Estimated Yield</p>
                     <div class="flex items-baseline gap-2">
-                        <span id="log-result" class="text-5xl sm:text-6xl font-black text-slate-900 dark:text-white">64.00</span>
+                        <span id="log-result" class="text-5xl sm:text-6xl font-display font-semibold text-slate-900 dark:text-white">64.00</span>
                         <span class="text-xl font-medium text-slate-500">Board Feet</span>
                     </div>
                     <p id="log-caption" class="text-sm text-slate-500 dark:text-slate-400 mt-2">12&quot; DIB · 16' length · Doyle</p>
@@ -193,17 +212,17 @@
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
                         <p class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Doyle</p>
-                        <p class="text-2xl font-black"><span id="cmp-doyle">64.00</span><span class="text-sm font-medium text-slate-400"> BF</span></p>
+                        <p class="text-2xl font-display font-semibold"><span id="cmp-doyle">64.00</span><span class="text-sm font-medium text-slate-400"> BF</span></p>
                         <p class="text-xs text-slate-400 mt-1">baseline</p>
                     </div>
                     <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
                         <p class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Scribner</p>
-                        <p class="text-2xl font-black"><span id="cmp-scribner">85.76</span><span class="text-sm font-medium text-slate-400"> BF</span></p>
+                        <p class="text-2xl font-display font-semibold"><span id="cmp-scribner">85.76</span><span class="text-sm font-medium text-slate-400"> BF</span></p>
                         <p id="cmp-scribner-pct" class="text-xs text-primary font-semibold mt-1">+34.0% vs Doyle</p>
                     </div>
                     <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
                         <p class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">International 1/4&quot;</p>
-                        <p class="text-2xl font-black"><span id="cmp-international">96.92</span><span class="text-sm font-medium text-slate-400"> BF</span></p>
+                        <p class="text-2xl font-display font-semibold"><span id="cmp-international">96.92</span><span class="text-sm font-medium text-slate-400"> BF</span></p>
                         <p id="cmp-international-pct" class="text-xs text-primary font-semibold mt-1">+51.4% vs Doyle</p>
                     </div>
                 </div>
@@ -232,7 +251,7 @@
                 <div id="tally-list" class="space-y-2 mb-4"></div>
                 <div class="flex justify-between items-baseline p-4 rounded-xl bg-primary/5 dark:bg-primary/10 border border-primary/20">
                     <span class="text-sm font-bold uppercase tracking-widest text-primary">Total Board Feet</span>
-                    <span id="tally-total" class="text-3xl font-black text-slate-900 dark:text-white">0.00</span>
+                    <span id="tally-total" class="text-3xl font-display font-semibold text-slate-900 dark:text-white">0.00</span>
                 </div>
                 <button type="button" data-carry class="mt-4 w-full bg-wood-dark hover:bg-wood-muted text-white font-bold py-3.5 rounded-xl flex items-center justify-center gap-2 transition-colors">
                     Price these logs
@@ -382,7 +401,7 @@
                     <div id="mill-line-items" class="space-y-3 mb-6"></div>
                     <div class="flex justify-between items-baseline pt-6 border-t border-primary/20">
                         <span class="text-sm font-bold uppercase tracking-widest text-primary">Estimated Total</span>
-                        <span id="mill-total" class="text-4xl font-black text-slate-900 dark:text-white">$0.00</span>
+                        <span id="mill-total" class="text-4xl font-display font-semibold text-slate-900 dark:text-white">$0.00</span>
                     </div>
                 </div>
                 <div class="flex items-start gap-3 mt-4 p-4 rounded-lg bg-slate-100 dark:bg-slate-800/50">
@@ -487,54 +506,64 @@
 </div>
 </main>
 
-<!-- Footer -->
-<footer class="mt-20 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 py-12">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-12">
-    <div class="col-span-1 md:col-span-2">
-        <a href="index.html" class="flex items-center gap-3 mb-6">
-            <img src="images/logo.png" alt="RLC Lumber LLC" width="40" height="40" class="h-10 w-10" loading="lazy"/>
-            <div class="flex flex-col leading-none">
-                <span class="text-xl font-bold tracking-tight text-primary">RLC</span>
-                <span class="text-[9px] uppercase tracking-[0.18em] font-semibold opacity-60 mt-0.5">Sawmilling Services</span>
-            </div>
-        </a>
-        <p class="text-slate-500 dark:text-slate-400 max-w-sm mb-6">
-            Local &amp; portable sawmilling services — drop-off milling, on-site portable milling, and solar kiln drying across Southern Minnesota &amp; Northern Iowa.
-        </p>
-        <div class="flex gap-4">
-            <a class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-primary hover:text-white transition-colors" href="https://www.facebook.com/profile.php?id=100089117444800" target="_blank" rel="noopener" aria-label="Facebook">
-                <span class="material-icons text-sm">facebook</span>
+<!-- Footer / Contact -->
+<footer id="contact" class="mt-24 bg-char text-paper pt-20 pb-10">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-16">
+        <div class="lg:col-span-4">
+            <a href="index.html" class="flex items-center gap-3 mb-6">
+                <img src="images/logo.png" alt="RLC Lumber LLC" width="56" height="56" class="h-14 w-14" loading="lazy"/>
+                <span class="font-display text-2xl font-semibold">RLC Lumber</span>
+            </a>
+            <p class="text-paper/60 leading-relaxed mb-6 max-w-sm">Local &amp; portable sawmilling for furniture makers, designers, builders, and hobbyists across Southern Minnesota &amp; Northern Iowa.</p>
+            <a class="inline-flex items-center gap-2 text-sm font-semibold text-oak-light hover:text-paper transition-colors" href="https://www.facebook.com/profile.php?id=100089117444800" target="_blank" rel="noopener">
+                <span class="material-icons text-lg">facebook</span> Follow us on Facebook
             </a>
         </div>
+        <div class="lg:col-span-2">
+            <h4 class="eyebrow text-paper/50 mb-6">Services</h4>
+            <ul class="space-y-3 text-paper/80">
+                <li><a class="hover:text-oak-light transition-colors" href="index.html#services">Drop-Off Milling</a></li>
+                <li><a class="hover:text-oak-light transition-colors" href="index.html#onsite">On-Site Milling</a></li>
+                <li><a class="hover:text-oak-light transition-colors" href="index.html#services">Solar Kiln Drying</a></li>
+                <li><a class="hover:text-oak-light transition-colors" href="calculator.html">Calculator</a></li>
+            </ul>
+        </div>
+        <div class="lg:col-span-3">
+            <h4 class="eyebrow text-paper/50 mb-6">Contact</h4>
+            <ul class="space-y-3 text-paper/80">
+                <li>17490 Co Rd 2<br/>Chatfield, MN 55923</li>
+                <li><a href="tel:9562023455" class="hover:text-oak-light transition-colors">(956) 202-3455</a></li>
+                <li><a href="mailto:rlclumber17@gmail.com" class="hover:text-oak-light transition-colors">rlclumber17@gmail.com</a></li>
+            </ul>
+        </div>
+        <div class="lg:col-span-3">
+            <h4 class="eyebrow text-paper/50 mb-6">Hours</h4>
+            <ul class="space-y-3 text-paper/80 text-sm">
+                <li class="flex justify-between gap-4"><span>Mon – Fri</span><span>7am – 7pm</span></li>
+                <li class="flex justify-between gap-4"><span>Saturday</span><span>7am – 2pm</span></li>
+                <li class="flex justify-between gap-4"><span>Sunday</span><span>Closed</span></li>
+            </ul>
+        </div>
     </div>
-    <div>
-        <h5 class="font-bold mb-6">Services</h5>
-        <ul class="space-y-3 text-slate-500 dark:text-slate-400 text-sm">
-            <li><a class="hover:text-primary" href="index.html#services">Drop-Off Milling</a></li>
-            <li><a class="hover:text-primary" href="index.html#services">On-Site Portable Milling</a></li>
-            <li><a class="hover:text-primary" href="index.html#services">Solar Kiln Drying</a></li>
-            <li><a class="hover:text-primary" href="calculator.html">Calculator</a></li>
-        </ul>
-    </div>
-    <div>
-        <h5 class="font-bold mb-6">Contact</h5>
-        <p class="text-slate-500 dark:text-slate-400 text-sm mb-1">17490 Co Rd 2</p>
-        <p class="text-slate-500 dark:text-slate-400 text-sm mb-4">Chatfield, MN 55923</p>
-        <p class="text-slate-500 dark:text-slate-400 text-sm"><a class="hover:text-primary" href="tel:9562023455">(956) 202-3455</a></p>
-        <p class="text-slate-500 dark:text-slate-400 text-sm"><a class="hover:text-primary" href="mailto:rlclumber17@gmail.com">rlclumber17@gmail.com</a></p>
-    </div>
-</div>
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-slate-100 dark:border-slate-900 flex flex-col md:flex-row justify-between gap-4 text-xs text-slate-400 font-medium">
-    <p>&copy; 2026 RLC Lumber LLC. All rights reserved.</p>
-    <div class="flex gap-6">
-        <a class="hover:text-primary" href="index.html#services">Services</a>
-        <a class="hover:text-primary" href="index.html#contact">Contact</a>
+    <div class="pt-8 border-t border-paper/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-paper/40">
+        <p>&copy; 2026 RLC Lumber LLC. All rights reserved.</p>
+        <div class="flex gap-6">
+            <a class="hover:text-paper transition-colors" href="index.html#services">Services</a>
+            <a class="hover:text-paper transition-colors" href="calculator.html">Calculator</a>
+            <a class="hover:text-paper transition-colors" href="index.html#faq">FAQ</a>
+        </div>
     </div>
 </div>
 </footer>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+
+/* ===================== MOBILE MENU ===================== */
+const mobileMenu = document.getElementById('mobile-menu');
+document.getElementById('mobile-menu-btn').addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
 
 /* ===================== TABS ===================== */
 const tabs = document.querySelectorAll('.calc-tab');
