@@ -326,7 +326,7 @@
                     <button type="button" data-service="kiln" class="service-btn text-left p-4 rounded-lg border-2 transition-all">
                         <span class="material-icons text-primary mb-1">wb_sunny</span>
                         <span class="block font-bold text-sm">Solar Kiln Drying</span>
-                        <span class="block text-xs text-slate-500 dark:text-slate-400">$0.70 / bd ft</span>
+                        <span class="block text-xs text-slate-500 dark:text-slate-400">$0.50 / bd ft</span>
                     </button>
                 </div>
             </div>
@@ -374,7 +374,7 @@
                     <input id="mill-add-kiln" type="checkbox" class="rounded text-primary focus:ring-primary"/>
                     <span class="flex-1">
                         <span class="block font-semibold text-sm">Add Solar Kiln Drying</span>
-                        <span class="block text-xs text-slate-500 dark:text-slate-400">Dry your milled lumber to 8–12% MC — $0.70 / bd ft</span>
+                        <span class="block text-xs text-slate-500 dark:text-slate-400">Dry your milled lumber to 8–12% MC — $0.50 / bd ft</span>
                     </span>
                 </label>
                 <div id="mill-kiln-bf-row" class="hidden space-y-2 mt-3">
@@ -488,7 +488,7 @@
                 </li>
                 <li class="flex justify-between gap-4 pb-4 border-b border-slate-100 dark:border-slate-800">
                     <span class="text-slate-600 dark:text-slate-400">Solar Kiln Drying</span>
-                    <span class="font-bold whitespace-nowrap">$0.70 / bd ft</span>
+                    <span class="font-bold whitespace-nowrap">$0.50 / bd ft</span>
                 </li>
                 <li class="flex justify-between gap-4">
                     <span class="text-slate-600 dark:text-slate-400">Broken Blade (metal)</span>
@@ -715,7 +715,7 @@ document.getElementById('log-reset').addEventListener('click', () => {
 selectRule('doyle');
 
 /* ============ MILLING ESTIMATE CALCULATOR ============ */
-const RATES = { dropoff: 0.65, kiln: 0.70, hourly: 85, mile: 1.25, setup: 100 };
+const RATES = { dropoff: 0.65, kiln: 0.50, hourly: 85, mile: 1.25, setup: 100 };
 const MINUTES_PER_LOG = { lo: 20, hi: 30 };
 const SERVICE_NAMES = { dropoff: 'Drop-Off Milling', onsite: 'On-Site Portable Milling', kiln: 'Solar Kiln Drying' };
 let activeService = 'dropoff';
@@ -779,7 +779,7 @@ function calcMilling() {
         flat(`Drop-off milling — ${bf} bd ft × $0.65`, bf * RATES.dropoff);
     } else if (activeService === 'kiln') {
         const bf = num('mill-bf');
-        flat(`Solar kiln drying — ${bf} bd ft × $0.70`, bf * RATES.kiln);
+        flat(`Solar kiln drying — ${bf} bd ft × $0.50`, bf * RATES.kiln);
     } else if (activeService === 'onsite') {
         const miles = num('mill-miles');
         const logs = num('mill-logs');
@@ -794,7 +794,7 @@ function calcMilling() {
     }
     if (activeService !== 'kiln' && addKilnCheckbox.checked) {
         const kbf = num('mill-kiln-bf');
-        flat(`Solar kiln drying — ${kbf} bd ft × $0.70`, kbf * RATES.kiln);
+        flat(`Solar kiln drying — ${kbf} bd ft × $0.50`, kbf * RATES.kiln);
     }
     const total = items.reduce((t, i) => ({ lo: t.lo + i.lo, hi: t.hi + i.hi }), { lo: 0, hi: 0 });
     lastEstimate = { service: SERVICE_NAMES[activeService], items, total };
