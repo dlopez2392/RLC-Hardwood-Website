@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://rlc-hardwood-website.vercel.app/sitemap.xml
+Sitemap: https://rlclumber.com/sitemap.xml
