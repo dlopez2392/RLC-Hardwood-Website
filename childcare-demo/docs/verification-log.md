@@ -63,3 +63,37 @@ See §4. The final run is appended there.
 There is no horizontal overflow at 375, 768, 1280 or 1920 px on any of the 21 routes.
 
 ## 4. Final runs
+
+### Lighthouse: desktop (final)
+
+| Page | Perf | A11y | BP | SEO | LCP | CLS | TBT |
+|---|---|---|---|---|---|---|---|
+| `/` | 100 | 100 | 100 | 100 | 0.2 s | 0.001 | 0 ms |
+| `/a-day/` | 100 | 100 | 100 | 100 | 0.2 s | 0 | 0 ms |
+| `/tuition/` | 100 | 100 | 100 | 100 | 0.2 s | 0 | 0 ms |
+| `/tour/` | 100 | 100 | 100 | 100 | 0.2 s | 0.003 | 0 ms |
+| `/portal/` | 100 | 100 | 100 | 100 | 0.2 s | 0 | 0 ms |
+| `/es/` | 100 | 100 | 100 | 100 | 0.2 s | 0.001 | 0 ms |
+
+After the italic-font preload, the English home page re-ran on mobile at **100 · 100 · 100 · 100 with CLS 0**.
+
+### Spanish editorial review
+
+An independent Spanish-language editor audited every Spanish string against the San Antonio market. The verdict was *"reads as professionally written Spanish, not a translation; register consistently usted."* All 8 errors and 15 improvements were applied:
+- Decimal format.
+- A leftover "pre-K".
+- Lowercase *prekínder*.
+- An inclusive plural for mixed-gender staff.
+- *Usted* command forms on buttons.
+- "Sin nueces ni cacahuates".
+- HHSC's full name.
+- a. m./p. m. on tour times.
+
+The review also caught *Prekínder* leaking into three English strings, which has been fixed.
+
+### Final regression (after all copy changes)
+
+- `astro check`: 0 errors.
+- Overflow: none on 21 routes × 4 widths.
+- axe: 0 violations on 21 routes × 2 widths.
+- Assistant: 9/9 test questions answered correctly or declined appropriately.
