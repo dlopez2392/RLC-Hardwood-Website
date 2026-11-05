@@ -1,0 +1,123 @@
+---
+import '@/styles/global.css';
+import { LOCALE, ROUTES, otherLang, ui, type Lang, type RouteKey } from '@/i18n';
+import { SITE, RATING } from '@/data/site';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import DemoBanner from '@/components/layout/DemoBanner.astro';
+import Assistant from '@/components/islands/AssistantLauncher';
+
+interface Props {
+  lang: Lang;
+  route: RouteKey | '404';
+  title: string;
+  description: string;
+  /** Extra JSON-LD objects for this page */
+  schema?: Record<string, unknown>[];
+  /** Hide the global assistant (e.g. on pages that embed it) */
+  noAssistant?: boolean;
+}
+const { lang, route, title, description, schema = [], noAssistant = false } = Astro.props;
+const t = ui[lang];
+const site = Astro.site!;
+const path = route === '404' ? (lang === 'es' ? '/es/404/' : '/404/') : ROUTES[route][lang];
+const canonical = new URL(path, site).href;
+const alt = route === '404' ? null : new URL(ROUTES[route][otherLang(lang)], site).href;
+const enUrl = route === '404' ? null : new URL(ROUTES[route].en, site).href;
+const ogImage = new URL(`/og/${route === '404' ? 'home' : route}-${lang}.png`, site).href;
+const fullTitle = route === 'home' ? title : `${title} · ${t.brandFull}`;
+
+const childCare = {
+  '@context': 'https://schema.org',
+  '@type': 'ChildCare',
+  '@id': new URL('/#business', site).href,
+  name: `${SITE.name} (fictional demo)`,
+  description:
+    lang === 'en'
+      ? 'Fictional bilingual early-learning studio for infants through school-age children in San Antonio, Texas. Portfolio demonstration only.'
+      : 'Estudio ficticio de aprendizaje temprano bilingüe, desde bebés hasta edad escolar, en San Antonio, Texas. Solo demostración de portafolio.',
+  url: new URL(ROUTES.home[lang], site).href,
+  telephone: '+1-210-555-0142',
+  email: SITE.email,
+  image: new URL('/og/home-en.png', site).href,
+  logo: new URL('/favicon.svg', site).href,
+  priceRange: '$$$',
+  currenciesAccepted: 'USD',
+  availableLanguage: ['English', 'Spanish'],
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: SITE.street,
+    addressLocality: SITE.city,
+    addressRegion: SITE.region,
+    postalCode: SITE.postal,
+    addressCountry: SITE.country,
+  },
+  geo: { '@type': 'GeoCoordinates', latitude: SITE.geo.lat, longitude: SITE.geo.lng },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: SITE.opens,
+      closes: SITE.closes,
+    },
+  ],
+  aggregateRating: { '@type': 'AggregateRating', ratingValue: RATING.value, reviewCount: RATING.count, bestRating: 5 },
+  sameAs: SITE.social.map((s) => s.href),
+};
+const ld = [childCare, ...schema];
+---
+<!doctype html>
+<html lang={lang === 'en' ? 'en-US' : 'es-US'} dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {enUrl && <link rel="alternate" hreflang="en-US" href={new URL(ROUTES[route as RouteKey].en, site).href} />}
+    {enUrl && <link rel="alternate" hreflang="es-US" href={new URL(ROUTES[route as RouteKey].es, site).href} />}
+    {enUrl && <link rel="alternate" hreflang="x-default" href={enUrl} />}
+    <meta name="theme-color" content="#FBF6EE" />
+    <meta name="color-scheme" content="light" />
+    <meta name="robots" content="index, follow" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="preload" href="/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={t.brandFull} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={t.brandFull} />
+    <meta property="og:locale" content={LOCALE[lang].replace('-', '_')} />
+    {alt && <meta property="og:locale:alternate" content={LOCALE[otherLang(lang)].replace('-', '_')} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <script is:inline>document.documentElement.classList.add('js');</script>
+    {ld.map((obj) => <script type="application/ld+json" set:html={JSON.stringify(obj)} />)}
+  </head>
+  <body class="min-h-dvh flex flex-col">
+    <a href="#main" class="skip-link">{t.skip}</a>
+    <DemoBanner lang={lang} />
+    <Header lang={lang} route={route} />
+    <main id="main" tabindex="-1" class="flex-1 outline-none">
+      <slot />
+    </main>
+    <Footer lang={lang} route={route} />
+    {!noAssistant && <Assistant client:idle lang={lang} />}
+    <script>
+      import '@/scripts/reveal';
+    </script>
+  </body>
+</html>

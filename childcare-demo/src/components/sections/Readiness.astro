@@ -1,0 +1,52 @@
+---
+import { READINESS } from '@/data/site';
+import { dict, ui, type Lang } from '@/i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = ui[lang];
+const c = dict(
+  {
+    eyebrow: 'Proof of learning',
+    title: 'Ready for kindergarten — and we can show you.',
+    lede: 'Kestrels are assessed gently three times a year across five domains using a play-based observation tool. Here is how last year’s class finished.',
+    big: 'met or exceeded kindergarten-readiness benchmarks',
+    method: 'Fictional figures for demonstration. In production, we would cite the assessment tool and sample size.',
+  },
+  {
+    eyebrow: 'Prueba del aprendizaje',
+    title: 'Listos para el kínder, y se lo podemos demostrar.',
+    lede: 'Los Kestrels se evalúan con delicadeza tres veces al año en cinco áreas, mediante una herramienta de observación basada en el juego. Así terminó la generación pasada.',
+    big: 'alcanzaron o superaron las metas de preparación para el kínder',
+    method: 'Cifras ficticias de demostración. En producción citaríamos la herramienta de evaluación y el tamaño de la muestra.',
+  },
+)[lang];
+---
+<section class="section-y bg-[var(--color-paper)]" aria-labelledby="ready-title">
+  <div class="container-x grid gap-12 lg:grid-cols-2 lg:items-center">
+    <div data-reveal>
+      <p class="eyebrow">{c.eyebrow}</p>
+      <h2 id="ready-title" class="display-md mt-4">{c.title}</h2>
+      <p class="lede mt-5">{c.lede}</p>
+      <p class="mt-8 flex items-baseline gap-4">
+        <span class="font-display text-[clamp(4.5rem,10vw,7.5rem)] leading-none text-[var(--color-sun-ink)]" style="font-weight:400">{READINESS.headline}%</span>
+        <span class="max-w-[14rem] font-semibold leading-snug">{READINESS.cohort[lang]} {c.big}</span>
+      </p>
+      <p class="mt-5 flex flex-wrap items-center gap-2 text-sm text-[var(--color-ink-soft)]"><span class="sample-badge">{t.sample}</span>{c.method}</p>
+    </div>
+    <ul class="paper space-y-6 p-7 sm:p-9" data-reveal data-readiness>
+      {READINESS.domains.map((d) => (
+        <li>
+          <div class="flex justify-between gap-4 font-semibold"><span>{d.label[lang]}</span><span class="tabular-nums">{d.value}%</span></div>
+          <div class="mt-2 h-3 overflow-hidden rounded-full bg-[var(--color-shadow)]" role="presentation">
+            <div class="readiness-bar h-full rounded-full bg-[linear-gradient(90deg,var(--color-moss),var(--color-sage))]" style={`--w:${d.value}%`}></div>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+<style>
+  .readiness-bar { width: var(--w); transform-origin: left; }
+  :global(.js) [data-readiness]:not(.is-in) .readiness-bar { transform: scaleX(0); }
+  :global(.js) [data-readiness].is-in .readiness-bar { transform: scaleX(1); transition: transform 1.4s var(--ease-soft) .2s; }
+</style>

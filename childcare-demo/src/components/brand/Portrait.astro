@@ -1,0 +1,48 @@
+---
+import type { Portrait as P } from '@/data/teachers';
+/**
+ * Parametric cut-paper portrait. Intentionally illustrative (not photoreal):
+ * fictional staff should never be mistaken for real people.
+ */
+interface Props { p: P; label: string; class?: string }
+const { p, label, class: cls = '' } = Astro.props;
+const shadow = 'filter: drop-shadow(0 3px 0 rgb(31 58 51 / .16))';
+const hairBack: Record<P['style'], string> = {
+  bun: 'M60 98c0-34 18-54 40-54s40 20 40 54c-6-14-22-24-40-24s-34 10-40 24Z',
+  short: 'M62 96c0-30 16-50 38-50s38 18 38 46c-10-12-24-18-38-18-16 0-30 8-38 22Z',
+  curls: 'M50 120c-8-50 14-82 50-82s58 32 50 82c-4-12-8-18-12-22 2-20-14-36-38-36s-40 16-38 36c-4 4-8 10-12 22Z',
+  long: 'M54 170c-8-40-6-80 6-104 10-18 24-26 40-26s30 8 40 26c12 24 14 64 6 104-8-30-10-56-12-74-10-14-22-20-34-20s-24 6-34 20c-2 18-4 44-12 74Z',
+  bob: 'M56 136c-6-46 10-90 44-90s50 44 44 90c-6-6-8-20-8-36-10-12-22-18-36-18s-26 6-36 18c0 16-2 30-8 36Z',
+  crop: 'M64 92c0-26 16-42 36-42s36 16 36 42c-8-8-20-12-36-12s-28 4-36 12Z',
+  wrap: 'M54 110c-4-46 18-74 46-74s50 28 46 74c-2-10-8-18-14-22 0-14-14-26-32-26s-32 12-32 26c-6 4-12 12-14 22Z',
+  waves: 'M54 134c-8-44 8-88 46-88s54 44 46 88c-6-4-10-14-10-28-10-16-22-24-36-24s-26 8-36 24c0 14-4 24-10 28Z',
+};
+---
+<svg viewBox="0 0 200 220" class={cls} role="img" aria-label={label} focusable="false">
+  <path d="M14 220V96C14 48 52 12 100 12s86 36 86 84v124Z" fill={p.bg} />
+  <g style={shadow}>
+    <path d={hairBack[p.style]} fill={p.hair} />
+    <path d="M34 220c4-40 30-62 66-62s62 22 66 62Z" fill={p.top} />
+    <rect x="88" y="136" width="24" height="30" rx="10" fill={p.skin} />
+    <ellipse cx="100" cy="106" rx="34" ry="38" fill={p.skin} />
+    {p.style === 'bun' && <circle cx="100" cy="42" r="18" fill={p.hair} />}
+    {p.style === 'wrap' && <path d="M62 92c4-30 20-48 38-48s34 18 38 48c-12-10-24-14-38-14s-26 4-38 14Z" fill="#E2683C" />}
+    {p.style === 'wrap' && <path d="M126 52c14-6 24 4 18 16" stroke="#E2683C" stroke-width="10" fill="none" stroke-linecap="round" />}
+    {p.style === 'curls' && [62, 78, 96, 114, 132].map((x, i) => <circle cx={x + 4} cy={i % 2 ? 66 : 72} r="12" fill={p.hair} />)}
+    {p.style === 'short' && <path d="M66 86c10-20 30-28 52-22 10 4 16 12 18 22-14-8-32-10-50-6-8 2-14 4-20 6Z" fill={p.hair} />}
+    {p.style === 'crop' && <path d="M68 84c8-18 22-26 36-26s26 8 30 22c-20-6-44-6-66 4Z" fill={p.hair} />}
+    {p.style === 'bob' && <path d="M66 96c4-24 18-36 34-36s28 10 34 30c-22-2-44 0-68 6Z" fill={p.hair} />}
+    {p.style === 'waves' && <path d="M64 98c8-24 20-34 36-34s30 10 36 34c-10-8-20-8-28-2-10-8-30-8-44 2Z" fill={p.hair} />}
+    {p.style === 'long' && <path d="M66 96c6-22 18-34 34-34s28 12 34 34c-14-10-24-14-34-14s-20 4-34 14Z" fill={p.hair} />}
+    {p.beard && <path d="M70 112c2 28 14 38 30 38s28-10 30-38c-8 10-18 14-30 14s-22-4-30-14Z" fill={p.hair} />}
+  </g>
+  <g stroke="#1F3A33" stroke-width="3" fill="none" stroke-linecap="round">
+    <path d="M82 104q6-6 12 0" /><path d="M106 104q6-6 12 0" />
+    {!p.beard && <path d="M92 124q8 7 16 0" />}
+    {p.beard && <path d="M92 126q8 5 16 0" stroke="#FBF6EE" opacity=".8" />}
+  </g>
+  <circle cx="78" cy="118" r="5.5" fill="#E2683C" opacity=".35" /><circle cx="122" cy="118" r="5.5" fill="#E2683C" opacity=".35" />
+  {p.glasses && (
+    <g stroke="#1F3A33" stroke-width="2.6" fill="none"><circle cx="88" cy="104" r="11" /><circle cx="112" cy="104" r="11" /><path d="M99 104h2" /></g>
+  )}
+</svg>

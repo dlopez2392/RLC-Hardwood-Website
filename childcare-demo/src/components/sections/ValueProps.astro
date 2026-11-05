@@ -1,0 +1,42 @@
+---
+import Illo from '@/components/brand/Illo.astro';
+import SectionHead from '@/components/ui/SectionHead.astro';
+import { dict, href, type Lang } from '@/i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const c = dict(
+  {
+    eyebrow: 'Why families choose Sunroom',
+    title: 'Small rooms. <em class="italic-sun">Long</em> relationships. Nothing hidden.',
+    items: [
+      { illo: 'heart-hands', title: 'Teachers who stay', body: 'Our lead teachers average 8 years here. Your child is known — their fears, their jokes, the way they like their toast cut.', link: 'Meet the teachers', to: 'teachers' },
+      { illo: 'leaf-sprig', title: 'Two languages, every room', body: 'Every classroom has a Spanish-speaking teacher. Children absorb both languages the natural way: through songs, stories and lunch-table talk.', link: 'See the programs', to: 'programs' },
+      { illo: 'phone-sun', title: 'You will see their day', body: 'Meals, naps, photos and one real sentence from their teacher — in your pocket before pick-up. No more “what did you do today?” “Nothing.”', link: 'Preview the family app', to: 'portal' },
+    ],
+  },
+  {
+    eyebrow: 'Por qué las familias eligen Sunroom',
+    title: 'Salones pequeños. Relaciones <em class="italic-sun">largas</em>. Nada escondido.',
+    items: [
+      { illo: 'heart-hands', title: 'Maestros que se quedan', body: 'Nuestras maestras titulares llevan en promedio 8 años aquí. Conocen a su hijo: sus miedos, sus chistes y cómo le gusta que le corten el pan tostado.', link: 'Conozca a los maestros', to: 'teachers' },
+      { illo: 'leaf-sprig', title: 'Dos idiomas en cada salón', body: 'Cada salón tiene una maestra que habla español. Los niños aprenden ambos idiomas de forma natural: con canciones, cuentos y la plática a la hora de comer.', link: 'Vea los programas', to: 'programs' },
+      { illo: 'phone-sun', title: 'Usted verá su día', body: 'Comidas, siestas, fotos y una frase de verdad de su maestra, en su bolsillo antes de la salida. Se acabó el “¿qué hiciste hoy?”, “nada”.', link: 'Vea la app familiar', to: 'portal' },
+    ],
+  },
+)[lang];
+---
+<section class="section-y" aria-labelledby="why-title">
+  <div class="container-x">
+    <SectionHead eyebrow={c.eyebrow} title={c.title} id="why-title" />
+    <ul class="mt-14 grid gap-6 md:grid-cols-3">
+      {c.items.map((it, i) => (
+        <li class="paper lift group relative flex flex-col p-7" data-reveal data-reveal-delay={i * 90}>
+          <div class="mb-7 grid size-28 place-items-center rounded-[1.5rem]" style={`background:${["#F2CDBF","#E7EDDD","#CFE0E3"][i]}`}><div class="tilt size-20"><Illo name={it.illo as any} class="h-full w-full" /></div></div>
+          <h3 class="text-[1.75rem]">{it.title}</h3>
+          <p class="mt-3 flex-1 text-[var(--color-ink-soft)]">{it.body}</p>
+          <a href={href(it.to as any, lang)} class="link-draw mt-6 w-fit after:absolute after:inset-0 after:content-['']">{it.link} <span aria-hidden="true">→</span></a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

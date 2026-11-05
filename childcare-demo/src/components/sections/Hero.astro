@@ -1,0 +1,187 @@
+---
+import HeroScene from './HeroScene.astro';
+import { dict, href, ui, type Lang } from '@/i18n';
+import { NOW_LINES, WEEKEND_LINE } from '@/data/calendar';
+import { RATING } from '@/data/site';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const c = dict(
+  {
+    eyebrow: 'Bilingual early learning · San Antonio, Texas',
+    h1a: 'Where the',
+    h1b: 'whole day',
+    h1c: 'is the curriculum.',
+    lede: 'A light-filled studio for children from 6 weeks to 10 years. Small groups, teachers who stay, two languages, and a day designed hour by hour, from the first hello to golden-hour pick-up.',
+    now: 'Right now at Sunroom',
+    local: 'in San Antonio',
+    greetings: ['Good morning', 'Good afternoon', 'Good evening'],
+    sceneLabel: 'Cut-paper illustration of the Sunroom studio under an old pecan tree. The sky and sun follow the time of day in San Antonio.',
+    trust: ['1 teacher : 3 infants', 'Texas licensed', 'English & Spanish', 'Tuition published'],
+    ratingLabel: `${RATING.value} out of 5 from ${RATING.count} family reviews`,
+  },
+  {
+    eyebrow: 'Aprendizaje temprano bilingüe · San Antonio, Texas',
+    h1a: 'Aquí,',
+    h1b: 'cada momento',
+    h1c: 'del día enseña.',
+    lede: 'Un estudio lleno de luz para niños de 6 semanas a 10 años. Grupos pequeños, maestros que se quedan, dos idiomas y un día pensado hora por hora, desde el primer saludo hasta la salida a la hora dorada.',
+    now: 'En este momento en Sunroom',
+    local: 'en San Antonio',
+    greetings: ['Buenos días', 'Buenas tardes', 'Buenas noches'],
+    sceneLabel: 'Ilustración de papel recortado del estudio Sunroom bajo un viejo nogal. El cielo y el sol siguen la hora del día en San Antonio.',
+    trust: ['1 maestra : 3 bebés', 'Con licencia en Texas', 'Inglés y español', 'Colegiatura publicada'],
+    ratingLabel: `${RATING.value} de 5 en ${RATING.count} reseñas de familias`,
+  },
+)[lang];
+const t = ui[lang];
+const lines = NOW_LINES.map((l) => ({ from: l.from, to: l.to, text: l.text[lang] }));
+const ssrLine = NOW_LINES[3]!.text[lang]; // mid-morning default
+---
+<section class="relative overflow-hidden" aria-labelledby="hero-title">
+  <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(60rem_40rem_at_10%_-10%,rgb(246_196_154/.35),transparent_70%)]" aria-hidden="true"></div>
+  <div class="container-x relative grid items-center gap-10 pt-10 pb-16 md:pt-14 lg:grid-cols-[1.08fr_0.92fr] lg:gap-14 lg:pt-16 lg:pb-24">
+    <div class="relative z-[2]">
+      <p class="eyebrow hero-in" style="--d:0">{c.eyebrow}</p>
+      <h1 id="hero-title" class="display-xl mt-5" style="view-transition-name: page-title">
+        {c.h1a} <span class="italic-sun whitespace-nowrap">{c.h1b}</span><br class="hidden sm:block" /> {c.h1c}
+      </h1>
+      <p class="lede mt-6 max-w-[36rem] hero-in" style="--d:2">{c.lede}</p>
+      <div class="mt-8 flex flex-wrap items-center gap-3 hero-in" style="--d:3">
+        <a href={href('tour', lang)} class="btn btn-primary">
+          <svg class="btn-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5" fill="currentColor" /><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" /></g></svg>
+          {t.cta.tour}
+        </a>
+        <a href={href('tuition', lang)} class="btn btn-ghost">{t.cta.tuition}</a>
+      </div>
+      <ul class="mt-9 grid max-w-[30rem] grid-cols-2 gap-x-5 gap-y-2.5 text-[0.9375rem] font-semibold hero-in" style="--d:4">
+        {c.trust.map((x) => (
+          <li class="inline-flex items-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#6F8A64" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" /></svg>{x}
+          </li>
+        ))}
+      </ul>
+      <div class="mt-7 inline-flex items-center gap-2.5 rounded-full bg-[#fffdf9] py-2 pr-3 pl-4 shadow-[var(--shadow-paper)] hero-in" style="--d:5">
+        <span class="flex text-[var(--color-sun-ink)]" aria-hidden="true">{'★★★★★'}</span>
+        <span class="text-[0.9375rem] font-semibold"><span class="sr-only">{c.ratingLabel}</span><span aria-hidden="true">{RATING.value} · {RATING.count} {lang === 'en' ? 'reviews' : 'reseñas'}</span></span>
+        <span class="sample-badge">{t.sampleShort}</span>
+      </div>
+    </div>
+
+    <div class="relative mx-auto w-full max-w-[34rem] lg:max-w-none">
+      <div class="hero-window-wrap grain relative aspect-[600/680] rounded-t-full" data-hero>
+        <HeroScene label={c.sceneLabel} />
+      </div>
+      <div
+        class="paper relative z-[3] mx-4 -mt-16 p-5 sm:absolute sm:-bottom-8 sm:-left-8 sm:mx-0 sm:mt-0 sm:w-[21rem] lg:-left-14"
+        data-now
+        data-lines={JSON.stringify(lines)}
+        data-weekend={WEEKEND_LINE[lang]}
+        data-greetings={JSON.stringify(c.greetings)}
+        data-lang={lang}
+      >
+        <p class="flex items-center gap-2 text-[0.8125rem] font-bold uppercase tracking-[0.12em] text-[var(--color-ink-soft)]">
+          <span class="live-dot" aria-hidden="true"></span>{c.now}
+        </p>
+        <p class="mt-2 font-display text-[1.375rem] leading-tight" style="font-weight:450">
+          <span data-greeting>{c.greetings[0]}</span>. <span class="text-[var(--color-ink-soft)]" data-clock>10:15 a.m.</span>
+          <span class="sr-only"> {c.local}</span>
+        </p>
+        <p class="mt-1.5 text-[0.9375rem] leading-snug" data-line>{ssrLine}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-window-wrap { filter: drop-shadow(0 30px 40px rgb(31 58 51 / 0.18)); }
+  .hero-window-wrap::after { border-radius: 999px 999px 0 0; }
+  :global(.js) .hero-in { opacity: 0; transform: translateY(16px); animation: hero-in 0.9s var(--ease-soft) forwards; animation-delay: calc(var(--d) * 90ms + 80ms); }
+  @keyframes hero-in { to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { :global(.js) .hero-in { opacity: 1; transform: none; animation: none; } }
+</style>
+
+<script>
+  import { animate } from 'motion';
+
+  type Line = { from: number; to: number; text: string };
+  const card = document.querySelector<HTMLElement>('[data-now]');
+  const wrap = document.querySelector<HTMLElement>('[data-hero]');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Sky keyframes by hour (San Antonio local time).
+  const SKY: [number, string, string, string][] = [
+    // hour, top, bottom, window light
+    [0, '#1f2a44', '#3B4A6B', '#F7DFA6'],
+    [5.5, '#3B4A6B', '#F2CDBF', '#F7DFA6'],
+    [7, '#F6C49A', '#FBF6EE', '#CFE0E3'],
+    [9, '#CFE0E3', '#FBF6EE', '#CFE0E3'],
+    [15, '#CFE0E3', '#F7EEDC', '#CFE0E3'],
+    [17.5, '#F6C49A', '#F2CDBF', '#F7DFA6'],
+    [19, '#3B4A6B', '#E2683C', '#F7DFA6'],
+    [20.5, '#1f2a44', '#3B4A6B', '#F7DFA6'],
+    [24, '#1f2a44', '#3B4A6B', '#F7DFA6'],
+  ];
+  const hex = (h: string) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16));
+  const mix = (a: string, b: string, t: number) =>
+    '#' + hex(a).map((v, i) => Math.round(v + (hex(b)[i]! - v) * t).toString(16).padStart(2, '0')).join('');
+
+  function skyAt(h: number) {
+    for (let i = 0; i < SKY.length - 1; i++) {
+      const [h0, t0, b0, w0] = SKY[i]!; const [h1, t1, b1, w1] = SKY[i + 1]!;
+      if (h >= h0 && h <= h1) { const t = (h - h0) / (h1 - h0); return [mix(t0, t1, t), mix(b0, b1, t), mix(w0, w1, t)] as const; }
+    }
+    return [SKY[0]![1], SKY[0]![2], SKY[0]![3]] as const;
+  }
+  /** Sun follows a half-ellipse from 6:00 (left horizon) to 19:00 (right horizon). */
+  function sunAt(h: number) {
+    const night = h < 6 || h > 19.5;
+    const p = Math.min(1, Math.max(0, (h - 6) / 13));
+    const ang = Math.PI * (1 - p);
+    if (night) return { x: 420, y: 180, night: 1 };
+    const fade = h > 19 ? (h - 19) / 0.5 : 0;
+    return { x: 300 + Math.cos(ang) * 230, y: 470 - Math.sin(ang) * 330, night: fade };
+  }
+
+  function sanAntonioNow() {
+    const parts = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Chicago', hour: 'numeric', minute: 'numeric', weekday: 'short', hour12: false }).formatToParts(new Date());
+    const get = (t: string) => parts.find((p) => p.type === t)?.value ?? '0';
+    const hour = Number(get('hour')) % 24, minute = Number(get('minute'));
+    return { hour, minute, decimal: hour + minute / 60, weekend: ['Sat', 'Sun'].includes(get('weekday')) };
+  }
+
+  function render(first = false) {
+    if (!card || !wrap) return;
+    const now = sanAntonioNow();
+    const lang = card.dataset.lang === 'es' ? 'es-US' : 'en-US';
+    const lines: Line[] = JSON.parse(card.dataset.lines ?? '[]');
+    const greetings: string[] = JSON.parse(card.dataset.greetings ?? '[]');
+    const line = now.weekend ? card.dataset.weekend : lines.find((l) => now.decimal >= l.from && now.decimal < l.to)?.text;
+    const g = now.decimal < 12 ? greetings[0] : now.decimal < 18 ? greetings[1] : greetings[2];
+    const clock = new Intl.DateTimeFormat(lang, { timeZone: 'America/Chicago', hour: 'numeric', minute: '2-digit' }).format(new Date());
+    card.querySelector('[data-greeting]')!.textContent = g ?? '';
+    card.querySelector('[data-clock]')!.textContent = clock;
+    if (line) card.querySelector('[data-line]')!.textContent = line;
+
+    const [top, bottom, win] = skyAt(now.decimal);
+    const sun = sunAt(now.decimal);
+    wrap.style.setProperty('--sky-top', top);
+    wrap.style.setProperty('--sky-bottom', bottom);
+    wrap.style.setProperty('--window', win);
+    wrap.style.setProperty('--night', String(sun.night));
+    if (first && !reduce && !sun.night) {
+      // the sun rises into place on first paint
+      animate(0, 1, {
+        duration: 1.8, ease: [0.22, 1, 0.36, 1], delay: 0.25,
+        onUpdate: (t) => {
+          wrap.style.setProperty('--sun-x', `${sun.x}px`);
+          wrap.style.setProperty('--sun-y', `${sun.y + (1 - t) * 260}px`);
+        },
+      });
+    } else {
+      wrap.style.setProperty('--sun-x', `${sun.x}px`);
+      wrap.style.setProperty('--sun-y', `${sun.y}px`);
+    }
+  }
+  render(true);
+  setInterval(render, 60_000);
+</script>

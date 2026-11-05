@@ -1,0 +1,58 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Hero from '@/components/sections/Hero.astro';
+import AgePicker from '@/components/islands/AgePicker';
+import ValueProps from '@/components/sections/ValueProps.astro';
+import TrustBar from '@/components/sections/TrustBar.astro';
+import ProgramCards from '@/components/sections/ProgramCards.astro';
+import DayRibbon from '@/components/sections/DayRibbon.astro';
+import Stories from '@/components/sections/Stories.astro';
+import Readiness from '@/components/sections/Readiness.astro';
+import EventsStrip from '@/components/sections/EventsStrip.astro';
+import MenuModule from '@/components/sections/MenuModule.astro';
+import CtaBand from '@/components/sections/CtaBand.astro';
+import { dict, type Lang } from '@/i18n';
+import { EVENTS } from '@/data/calendar';
+import { SITE } from '@/data/site';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const m = dict(
+  {
+    title: 'Sunroom Early Learning Studio · Bilingual childcare in San Antonio, TX',
+    desc: 'A light-filled, bilingual early-learning studio in San Antonio for 6 weeks to 10 years. Ratios far below Texas minimums, published tuition, and tours you can book in three taps. (Fictional demo.)',
+  },
+  {
+    title: 'Sunroom Early Learning Studio · Guardería bilingüe en San Antonio, TX',
+    desc: 'Un estudio de aprendizaje temprano bilingüe y lleno de luz en San Antonio, de 6 semanas a 10 años. Proporciones muy por debajo del mínimo de Texas, colegiatura publicada y visitas en tres pasos. (Demo ficticio).',
+  },
+)[lang];
+const events = EVENTS.filter((e) => e.kind !== 'closed').map((e) => ({
+  '@context': 'https://schema.org',
+  '@type': 'Event',
+  name: e.title[lang],
+  description: e.note[lang],
+  startDate: e.date,
+  endDate: e.end ?? e.date,
+  eventStatus: 'https://schema.org/EventScheduled',
+  eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+  location: { '@type': 'Place', name: SITE.name, address: `${SITE.street}, ${SITE.city}, ${SITE.region} ${SITE.postal}` },
+  organizer: { '@type': 'Organization', name: SITE.name, url: Astro.site?.href },
+}));
+---
+<BaseLayout lang={lang} route="home" title={m.title} description={m.desc} schema={events}>
+  <Hero lang={lang} />
+  <section class="container-x pt-4 md:pt-6" aria-label={lang === 'en' ? 'Find your child’s program' : 'Encuentre el programa de su hijo'}>
+    <div class="grain rounded-[2rem] bg-[var(--color-paper)] p-6 sm:p-10 lg:p-14">
+      <div class="relative z-[2]"><AgePicker client:idle lang={lang} /></div>
+    </div>
+  </section>
+  <ValueProps lang={lang} />
+  <TrustBar lang={lang} />
+  <ProgramCards lang={lang} />
+  <DayRibbon lang={lang} />
+  <Stories lang={lang} />
+  <Readiness lang={lang} />
+  <EventsStrip lang={lang} />
+  <MenuModule lang={lang} />
+  <CtaBand lang={lang} />
+</BaseLayout>

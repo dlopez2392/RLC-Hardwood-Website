@@ -1,0 +1,79 @@
+---
+import Logo from '@/components/brand/Logo.astro';
+import { href, ui, type Lang, type RouteKey } from '@/i18n';
+import { SITE } from '@/data/site';
+interface Props { lang: Lang; route: RouteKey | '404' }
+const { lang } = Astro.props;
+const t = ui[lang];
+const explore: RouteKey[] = ['programs', 'day', 'teachers', 'safety'];
+const families: RouteKey[] = ['tuition', 'tour', 'portal', 'faq', 'contact'];
+const label = (k: RouteKey) => (k === 'tour' ? t.nav.tour : t.nav[k as keyof typeof t.nav]);
+---
+<footer class="on-dark grain mt-auto bg-[var(--color-ink)] text-[var(--color-cream)]">
+  <div class="container-x relative z-[2] pt-20 pb-10">
+    <div class="grid gap-12 lg:grid-cols-[1.3fr_1fr_1fr_1.4fr]">
+      <div>
+        <Logo tone="cream" size={44} />
+        <p class="mt-6 max-w-xs font-display text-2xl leading-snug text-[var(--color-apricot)]" style="font-style:italic">{t.footer.tagline}</p>
+        <ul class="mt-8 flex gap-2" aria-label={t.footer.follow}>
+          {SITE.social.map((s) => (
+            <li>
+              <a href={s.href} rel="noopener" target="_blank" class="inline-flex size-11 items-center justify-center rounded-full border border-[rgb(251_246_238/0.25)] transition hover:border-[var(--color-apricot)] hover:text-[var(--color-apricot)]">
+                <span class="sr-only">{`${s.name} (${s.handle})`}</span>
+                {s.name === 'Instagram' && <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1" fill="currentColor" /></svg>}
+                {s.name === 'Facebook' && <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 8h3V4h-3c-2.8 0-4 1.8-4 4v2H7v4h3v8h4v-8h3l1-4h-4V8.5c0-.3.2-.5.5-.5Z" /></svg>}
+                {s.name === 'Pinterest' && <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.6 19.3c-.1-.8-.2-2 0-2.9l1.3-5.4s-.3-.7-.3-1.6c0-1.5.9-2.6 2-2.6.9 0 1.4.7 1.4 1.5 0 .9-.6 2.3-.9 3.6-.3 1.1.6 2 1.6 2 2 0 3.5-2.1 3.5-5.1 0-2.7-1.9-4.5-4.7-4.5-3.2 0-5 2.4-5 4.9 0 1 .4 2 .9 2.6.1.1.1.2.1.3l-.3 1.3c0 .2-.2.3-.4.2-1.4-.7-2.3-2.7-2.3-4.4 0-3.6 2.6-6.9 7.5-6.9 3.9 0 7 2.8 7 6.6 0 3.9-2.5 7.1-5.9 7.1-1.2 0-2.2-.6-2.6-1.3l-.7 2.7c-.3 1-1 2.2-1.4 3A10 10 0 1 0 12 2Z" /></svg>}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <nav aria-label={t.footer.explore}>
+        <h2 class="eyebrow !text-[0.75rem]">{t.footer.explore}</h2>
+        <ul class="mt-4 space-y-2.5">
+          {explore.map((k) => <li><a class="inline-block py-0.5 hover:text-[var(--color-apricot)]" href={href(k, lang)}>{label(k)}</a></li>)}
+        </ul>
+      </nav>
+      <nav aria-label={t.footer.families}>
+        <h2 class="eyebrow !text-[0.75rem]">{t.footer.families}</h2>
+        <ul class="mt-4 space-y-2.5">
+          {families.map((k) => <li><a class="inline-block py-0.5 hover:text-[var(--color-apricot)]" href={href(k, lang)}>{label(k)}</a></li>)}
+        </ul>
+      </nav>
+
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-1">
+        <div>
+          <h2 class="eyebrow !text-[0.75rem]">{t.footer.visit}</h2>
+          <address class="mt-4 not-italic leading-relaxed">
+            {SITE.street}<br />{SITE.city}, {SITE.region} {SITE.postal}<br />
+            <a href={SITE.phoneHref} class="link-draw mt-1 inline-block">{SITE.phone}</a>
+          </address>
+          <h2 class="eyebrow mt-6 !text-[0.75rem]">{t.footer.hours}</h2>
+          <p class="mt-2">{t.footer.hoursValue}<br /><span class="text-sm text-[#d9cfbf]">{t.footer.closed}</span></p>
+        </div>
+        <figure class="overflow-hidden rounded-[var(--radius-paper)] bg-[#2a4a42]">
+          <svg viewBox="0 0 320 170" role="img" aria-label={t.footer.mapLabel} class="block h-auto w-full">
+            <rect width="320" height="170" fill="#2a4a42" />
+            <path d="M0 40h320M0 112h320M70 0v170M200 0v170M260 0v170" stroke="#3d5f56" stroke-width="10" />
+            <path d="M-10 150C60 120 120 160 190 128s110-20 150-40" stroke="#3b4a6b" stroke-width="14" fill="none" opacity=".9" />
+            <ellipse cx="248" cy="58" rx="40" ry="24" fill="#6f8a64" opacity=".8" />
+            <text x="248" y="62" text-anchor="middle" font-size="11" fill="#fbf6ee" font-family="system-ui">Olmos Park</text>
+            <g transform="translate(140 76)">
+              <circle r="22" fill="#e2683c" opacity=".25" class="anim-ping" />
+              <path d="M0 14C-10 2-14-6-14-12a14 14 0 0 1 28 0c0 6-4 14-14 26Z" fill="#e2683c" />
+              <circle cy="-12" r="5" fill="#fbf6ee" />
+            </g>
+            <text x="140" y="112" text-anchor="middle" font-size="11" font-weight="700" fill="#fbf6ee" font-family="system-ui">Sunroom</text>
+          </svg>
+          <figcaption class="px-4 py-2.5 text-xs text-[#d9cfbf]">{t.footer.mapCaption}</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="mt-16 flex flex-col gap-3 border-t border-[rgb(251_246_238/0.15)] pt-8 text-[0.8125rem] text-[#d9cfbf] md:flex-row md:items-start md:justify-between">
+      <p class="max-w-xl">{t.footer.legal} {t.footer.photo} {t.footer.privacy}</p>
+      <p class="shrink-0 font-semibold">{t.footer.license}</p>
+    </div>
+  </div>
+</footer>

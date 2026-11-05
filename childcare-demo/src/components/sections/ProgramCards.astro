@@ -1,0 +1,61 @@
+---
+import Illo from '@/components/brand/Illo.astro';
+import SectionHead from '@/components/ui/SectionHead.astro';
+import { PROGRAMS } from '@/data/programs';
+import { dict, fmtMoney, href, ui, type Lang } from '@/i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = ui[lang];
+const c = dict(
+  {
+    eyebrow: 'Programs, 6 weeks to 10 years',
+    title: 'Five rooms, each named for a <em class="italic-sun">bird</em> that grows up here.',
+    lede: 'We publish our ratios and tuition right here, on the first page, because you should not need a sales call to learn them.',
+    ratio: 'ratio',
+    from: 'from',
+    mo: '/mo',
+    explore: 'Explore',
+  },
+  {
+    eyebrow: 'Programas, de 6 semanas a 10 años',
+    title: 'Cinco salones, cada uno con el nombre de un <em class="italic-sun">pájaro</em> que crece aquí.',
+    lede: 'Publicamos la proporción de maestros y la colegiatura aquí, en la primera página, porque no debería necesitar una llamada de ventas para saberlas.',
+    ratio: 'proporción',
+    from: 'desde',
+    mo: '/mes',
+    explore: 'Conozca',
+  },
+)[lang];
+---
+<section class="section-y bg-[var(--color-paper)]" aria-labelledby="programs-title">
+  <div class="container-x">
+    <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+      <SectionHead eyebrow={c.eyebrow} title={c.title} lede={c.lede} id="programs-title" />
+      <a href={href('programs', lang)} class="btn btn-ghost shrink-0" data-reveal>{t.cta.programs}</a>
+    </div>
+    <ul class="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+      {PROGRAMS.map((p, i) => (
+        <li class="lift group relative flex flex-col overflow-hidden rounded-[var(--radius-paper)] shadow-[var(--shadow-paper)]" style={`background:${p.tone.bg}`} data-reveal data-reveal-delay={i * 80}>
+          <div class="relative px-6 pt-6">
+            <p class="text-[0.8125rem] font-bold uppercase tracking-[0.12em]">{p.ages[lang]}</p>
+            <h3 class="mt-2 text-[2rem]">{p.room}</h3>
+            <p class="font-semibold">{p.name[lang]}</p>
+          </div>
+          <div class="tilt mx-auto my-4 size-36"><Illo name={p.illo} class="h-full w-full" /></div>
+          <div class="mt-auto flex items-end justify-between gap-3 border-t border-[rgb(31_58_51/.12)] bg-[rgb(255_253_249/.55)] px-6 py-4">
+            <div>
+              <p class="text-[0.75rem] font-bold uppercase tracking-[0.1em]">{c.ratio}</p>
+              <p class="font-display text-[1.375rem] leading-tight" style="font-weight:450">1 : {p.ratio}</p>
+            </div>
+            <div class="text-right">
+              <p class="text-[0.75rem] font-bold uppercase tracking-[0.1em]">{c.from} <span class="sr-only">({t.sample})</span></p>
+              <p class="font-display text-[1.375rem] leading-tight" style="font-weight:450">{fmtMoney(Math.round(p.monthly * 0.48), lang)}<span class="text-sm font-sans">{c.mo}</span></p>
+            </div>
+          </div>
+          <a href={href('programs', lang, p.id)} class="absolute inset-0 rounded-[inherit]"><span class="sr-only">{c.explore} {p.room} · {p.name[lang]}</span></a>
+        </li>
+      ))}
+    </ul>
+    <p class="mt-6 flex items-center gap-2 text-sm text-[var(--color-ink-soft)]"><span class="sample-badge">{t.sampleShort}</span>{lang === 'en' ? '“From” is the 2-day part-time rate. Full-time rates are on each program.' : '“Desde” es la tarifa de medio tiempo de 2 días. Las tarifas de tiempo completo están en cada programa.'}</p>
+  </div>
+</section>

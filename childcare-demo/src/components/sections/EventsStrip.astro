@@ -1,0 +1,76 @@
+---
+import { EVENTS } from '@/data/calendar';
+import { dict, LOCALE, type Lang } from '@/i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const c = dict(
+  {
+    eyebrow: 'Coming up this season',
+    title: 'The calendar families plan around.',
+    prev: 'Previous events', next: 'More events', list: 'Upcoming events',
+    kinds: { family: 'Family event', closed: 'Closed', class: 'In class', community: 'Community' },
+  },
+  {
+    eyebrow: 'Próximamente esta temporada',
+    title: 'El calendario que las familias apartan.',
+    prev: 'Eventos anteriores', next: 'Más eventos', list: 'Próximos eventos',
+    kinds: { family: 'Evento familiar', closed: 'Cerrado', class: 'En clase', community: 'Comunidad' },
+  },
+)[lang];
+const fmtM = new Intl.DateTimeFormat(LOCALE[lang], { month: 'short', timeZone: 'UTC' });
+const fmtD = new Intl.DateTimeFormat(LOCALE[lang], { day: 'numeric', timeZone: 'UTC' });
+const fmtW = new Intl.DateTimeFormat(LOCALE[lang], { weekday: 'long', timeZone: 'UTC' });
+const fmtFull = new Intl.DateTimeFormat(LOCALE[lang], { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+const kindTone: Record<string, string> = { family: '#F6C49A', closed: '#EADFCF', class: '#E7EDDD', community: '#F2CDBF' };
+---
+<section class="section-y bg-[var(--color-sage-soft)]" aria-labelledby="events-title">
+  <div class="container-x flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+    <div data-reveal>
+      <p class="eyebrow">{c.eyebrow}</p>
+      <h2 id="events-title" class="display-md mt-4">{c.title}</h2>
+    </div>
+    <div class="flex gap-2" data-reveal>
+      <button type="button" class="inline-flex size-12 items-center justify-center rounded-full border-[1.5px] border-[var(--color-ink)] transition hover:bg-[var(--color-ink)] hover:text-[var(--color-cream)]" data-events-prev>
+        <span class="sr-only">{c.prev}</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M15 6l-6 6 6 6" /></svg>
+      </button>
+      <button type="button" class="inline-flex size-12 items-center justify-center rounded-full border-[1.5px] border-[var(--color-ink)] transition hover:bg-[var(--color-ink)] hover:text-[var(--color-cream)]" data-events-next>
+        <span class="sr-only">{c.next}</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M9 6l6 6-6 6" /></svg>
+      </button>
+    </div>
+  </div>
+  <ol class="scroll-x container-x mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4" aria-label={c.list} tabindex="0" data-events>
+    {EVENTS.filter((e) => new Date((e.end ?? e.date) + "T23:59:59Z").getTime() >= Date.now() - 864e5).map((e) => {
+      const d = new Date(e.date + 'T12:00:00Z');
+      return (
+        <li class="w-[17rem] shrink-0 snap-start" data-date={e.end ?? e.date}>
+          <article class="paper flex h-full gap-4 p-5">
+            <div class="flex w-16 shrink-0 flex-col items-center justify-center rounded-2xl py-3 text-center" style={`background:${kindTone[e.kind]}`}>
+              <span class="text-[0.75rem] font-bold uppercase tracking-[0.1em]">{fmtM.format(d).replace('.', '')}</span>
+              <span class="font-display text-[2rem] leading-none" style="font-weight:450">{fmtD.format(d)}</span>
+            </div>
+            <div class="min-w-0">
+              <p class="text-[0.75rem] font-bold uppercase tracking-[0.1em] text-[var(--color-sun-ink)]">{c.kinds[e.kind]}</p>
+              <h3 class="mt-1 font-sans text-[1.0625rem] font-bold leading-snug tracking-normal">{e.title[lang]}</h3>
+              <p class="mt-1.5 text-[0.875rem] leading-snug text-[var(--color-ink-soft)]">{e.note[lang]}</p>
+              <p class="sr-only">{fmtW.format(d)}, {fmtFull.format(d)}</p>
+            </div>
+          </article>
+        </li>
+      );
+    })}
+  </ol>
+</section>
+
+<script>
+  const list = document.querySelector<HTMLElement>('[data-events]');
+  if (list) {
+    // hide events that are already over (relative to the visitor's today)
+    const today = new Date(); today.setHours(0, 0, 0, 0);
+    list.querySelectorAll<HTMLElement>('li[data-date]').forEach((li) => {
+      if (new Date(li.dataset.date + 'T23:59:59') < today) li.remove();
+    });
+    const step = () => (list.querySelector('li')?.getBoundingClientRect().width ?? 280) + 16;
+    document.querySelector('[data-events-prev]')?.addEventListener('click', () => list.scrollBy({ left: -step(), behavior: 'smooth' }));
+    document.querySelector('[data-events-next]')?.addEventListener('click', () => list.scrollBy({ left: step(), behavior: 'smooth' }));
+  }
+</script>

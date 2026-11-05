@@ -1,0 +1,93 @@
+---
+import Illo from '@/components/brand/Illo.astro';
+import { ALLERGEN_LABEL, MENU, MENU_WEEK } from '@/data/calendar';
+import { dict, type Lang } from '@/i18n';
+interface Props { lang: Lang; id?: string }
+const { lang, id = 'menu' } = Astro.props;
+const c = dict(
+  {
+    eyebrow: 'This week’s menu', title: 'Rosa cooks from scratch, every morning.',
+    lede: 'Breakfast, lunch and two snacks are included. Our kitchen is nut-free, and we adapt for vegetarian, halal and medical diets.',
+    meals: { breakfast: 'Breakfast', lunch: 'Lunch', snack: 'Snack' }, contains: 'Contains', none: 'Top-allergen free', tabs: 'Days of the week',
+  },
+  {
+    eyebrow: 'El menú de esta semana', title: 'Rosa cocina desde cero, cada mañana.',
+    lede: 'El desayuno, el almuerzo y dos meriendas están incluidos. Nuestra cocina es libre de nueces y adaptamos dietas vegetarianas, halal y médicas.',
+    meals: { breakfast: 'Desayuno', lunch: 'Almuerzo', snack: 'Merienda' }, contains: 'Contiene', none: 'Sin alérgenos principales', tabs: 'Días de la semana',
+  },
+)[lang];
+const meals = ['breakfast', 'lunch', 'snack'] as const;
+---
+<section class="section-y" aria-labelledby={`${id}-title`}>
+  <div class="container-x grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+    <div data-reveal>
+      <p class="eyebrow">{c.eyebrow} · {MENU_WEEK[lang]}</p>
+      <h2 id={`${id}-title`} class="display-md mt-4">{c.title}</h2>
+      <p class="lede mt-5">{c.lede}</p>
+      <div class="mt-8 size-40"><Illo name="bowl" class="h-full w-full" /></div>
+    </div>
+    <div class="paper p-3 sm:p-4" data-reveal data-menu>
+      <div role="tablist" aria-label={c.tabs} class="grid grid-cols-5 gap-1 rounded-[1rem] bg-[var(--color-paper)] p-1">
+        {MENU.map((d, i) => (
+          <button
+            type="button" role="tab" id={`${id}-tab-${i}`} aria-controls={`${id}-panel-${i}`} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1}
+            class="min-h-11 rounded-[0.8rem] px-1 text-[0.9375rem] font-bold transition aria-selected:bg-[var(--color-ink)] aria-selected:text-[var(--color-cream)] hover:bg-[#fffdf9] aria-selected:hover:bg-[var(--color-ink)]"
+          >
+            <span aria-hidden="true">{d.short[lang]}</span><span class="sr-only">{d.day[lang]}</span>
+          </button>
+        ))}
+      </div>
+      {MENU.map((d, i) => (
+        <div role="tabpanel" id={`${id}-panel-${i}`} aria-labelledby={`${id}-tab-${i}`} hidden={i !== 0} tabindex="0" class="px-3 pt-6 pb-3 sm:px-5">
+          <h3 class="text-[1.75rem]">{d.day[lang]}</h3>
+          <dl class="mt-4 divide-y divide-[rgb(31_58_51/.1)]">
+            {meals.map((m) => (
+              <div class="grid gap-1 py-4 sm:grid-cols-[8rem_1fr] sm:gap-6">
+                <dt class="text-[0.8125rem] font-bold uppercase tracking-[0.1em] text-[var(--color-sun-ink)] sm:pt-1">{c.meals[m]}</dt>
+                <dd>
+                  <p class="text-[1.0625rem] font-semibold">{d[m].dish[lang]}</p>
+                  <p class="mt-1.5 flex flex-wrap gap-1.5 text-[0.8125rem]">
+                    {d[m].allergens.length ? (
+                      <>
+                        <span class="sr-only">{c.contains}:</span>
+                        {d[m].allergens.map((a) => <span class="rounded-full border border-[rgb(31_58_51/.25)] px-2 py-0.5 font-semibold">{ALLERGEN_LABEL[a][lang]}</span>)}
+                      </>
+                    ) : (
+                      <span class="rounded-full bg-[var(--color-sage-soft)] px-2 py-0.5 font-semibold">{c.none}</span>
+                    )}
+                  </p>
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-menu]').forEach((root) => {
+    const tabs = [...root.querySelectorAll<HTMLButtonElement>('[role="tab"]')];
+    const panels = [...root.querySelectorAll<HTMLElement>('[role="tabpanel"]')];
+    const select = (i: number, focus = true) => {
+      tabs.forEach((t, j) => { t.setAttribute('aria-selected', String(i === j)); t.tabIndex = i === j ? 0 : -1; });
+      panels.forEach((p, j) => (p.hidden = i !== j));
+      if (focus) tabs[i]?.focus();
+    };
+    tabs.forEach((t, i) => {
+      t.addEventListener('click', () => select(i));
+      t.addEventListener('keydown', (e) => {
+        const k = e.key;
+        if (k === 'ArrowRight' || k === 'ArrowLeft' || k === 'Home' || k === 'End') {
+          e.preventDefault();
+          const n = k === 'Home' ? 0 : k === 'End' ? tabs.length - 1 : (i + (k === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length;
+          select(n);
+        }
+      });
+    });
+    // open on today's weekday (Mon–Fri)
+    const wd = new Date().getDay();
+    if (wd >= 1 && wd <= 5) select(wd - 1, false);
+  });
+</script>

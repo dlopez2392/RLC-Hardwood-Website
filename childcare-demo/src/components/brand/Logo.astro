@@ -1,0 +1,34 @@
+---
+/**
+ * Sunroom mark: a half-sun rising inside an arched window.
+ * The window mullion and horizon form a quiet "S" rhythm; the sun is the only warm note.
+ */
+interface Props {
+  variant?: 'lockup' | 'mark';
+  size?: number;
+  tone?: 'ink' | 'cream';
+  class?: string;
+  label?: string;
+}
+const { variant = 'lockup', size = 40, tone = 'ink', class: cls = '', label = 'Sunroom Early Learning Studio' } = Astro.props;
+const ink = tone === 'ink' ? '#1F3A33' : '#FBF6EE';
+const fill = tone === 'ink' ? '#FBF6EE' : '#1F3A33';
+---
+<span class:list={['inline-flex items-center gap-2.5', cls]} style="view-transition-name: brand-logo">
+  <svg width={size} height={size} viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+    <path d="M8 44V22C8 12.6 15.2 5 24 5s16 7.6 16 17v22Z" fill={fill} stroke={ink} stroke-width="2.6" stroke-linejoin="round" />
+    <path d="M15 34a9 9 0 0 1 18 0Z" fill="#E2683C" />
+    <g stroke="#E2683C" stroke-width="2.4" stroke-linecap="round">
+      <path d="M24 20.5v-3.2" /><path d="M14.8 24.3l-2.3-2.2" /><path d="M33.2 24.3l2.3-2.2" />
+    </g>
+    <path d="M8 34h32" stroke={ink} stroke-width="2.6" stroke-linecap="round" />
+    <path d="M14 39.5h20" stroke={ink} stroke-width="2" stroke-linecap="round" opacity=".45" />
+  </svg>
+  {variant === 'lockup' && (
+    <span class="flex flex-col leading-none" style={`color:${ink}`}>
+      <span class="font-display text-[1.55rem] tracking-[-0.02em]" style="font-variation-settings:'SOFT' 100,'WONK' 1,'opsz' 72; font-weight: 480">Sunroom</span>
+      <span class="mt-1 text-[0.625rem] font-semibold uppercase tracking-[0.22em] opacity-80">Early Learning Studio</span>
+    </span>
+  )}
+  {variant === 'mark' && <span class="sr-only">{label}</span>}
+</span>

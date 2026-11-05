@@ -1,0 +1,35 @@
+---
+import { SITE } from '@/data/site';
+import { dict, href, type Lang } from '@/i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const c = dict(
+  {
+    title: 'Come see it at <em>9:30 on a Tuesday.</em>',
+    body: 'That is when the rooms are busiest and the mud kitchen is open. Tours take 45 minutes, your child is welcome, and you will leave knowing the tuition.',
+    book: 'Book a tour in 3 taps', call: 'Or call',
+  },
+  {
+    title: 'Venga a verlo <em>un martes a las 9:30.</em>',
+    body: 'Es cuando los salones están más activos y la cocinita de lodo está abierta. Las visitas duran 45 minutos, su hijo es bienvenido y se irá sabiendo la colegiatura.',
+    book: 'Agende en 3 pasos', call: 'O llame al',
+  },
+)[lang];
+---
+<section class="container-x pb-[var(--section-y)]" aria-labelledby="cta-title">
+  <div class="on-dark grain relative overflow-hidden rounded-[2rem] bg-[var(--color-dusk)] px-6 py-16 text-center text-[var(--color-cream)] sm:px-12 md:py-24" data-reveal>
+    <svg class="pointer-events-none absolute -bottom-44 left-1/2 w-[46rem] max-w-none -translate-x-1/2" viewBox="0 0 600 300" aria-hidden="true">
+      <circle cx="300" cy="300" r="300" fill="none" stroke="#F6C49A" stroke-width="2" opacity=".22" stroke-dasharray="2 10" stroke-linecap="round" />
+      <circle cx="300" cy="300" r="225" fill="none" stroke="#F6C49A" stroke-width="2" opacity=".3" />
+      <circle cx="300" cy="300" r="150" fill="#E2683C" />
+    </svg>
+    <div class="relative z-[2] mx-auto max-w-2xl">
+      <h2 id="cta-title" class="display-lg [&_em]:text-[var(--color-apricot)]" set:html={c.title} />
+      <p class="lede mx-auto mt-6 max-w-xl">{c.body}</p>
+      <div class="mt-9 flex flex-wrap items-center justify-center gap-3">
+        <a href={href('tour', lang)} class="btn bg-[var(--color-cream)] text-[var(--color-ink)] hover:bg-white">{c.book}</a>
+        <a href={SITE.phoneHref} class="btn btn-ghost">{c.call} {SITE.phone}</a>
+      </div>
+    </div>
+  </div>
+</section>

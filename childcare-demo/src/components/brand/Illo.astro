@@ -1,0 +1,201 @@
+---
+/**
+ * Cut-paper illustration kit. Every shape uses slightly imperfect paths and a
+ * hard, short "paper" shadow so pieces read as layered card stock.
+ * All illustrations are decorative (aria-hidden) unless a `label` is passed.
+ */
+export type IlloName =
+  | 'nest' | 'blocks' | 'paint' | 'books' | 'kite'
+  | 'door' | 'circle' | 'garden' | 'table' | 'rest' | 'studio' | 'sunset'
+  | 'heart-hands' | 'shield' | 'leaf-sprig' | 'bowl' | 'phone-sun' | 'pecan';
+interface Props { name: IlloName; class?: string; label?: string }
+const { name, class: cls = '', label } = Astro.props;
+const a11y = label ? { role: 'img', 'aria-label': label } : { 'aria-hidden': 'true' };
+const P = 'filter: drop-shadow(0 3px 0 rgb(31 58 51 / .14))';
+---
+<svg viewBox="0 0 200 200" class={cls} {...a11y} focusable="false">
+  {name === 'nest' && (
+    <g style={P}>
+      <path d="M38 118c8 34 40 50 62 50s56-14 64-50c-38 10-88 10-126 0Z" fill="#A8431D" />
+      <path d="M44 120c12 6 30 9 56 9s46-3 58-9" stroke="#F6C49A" stroke-width="4" fill="none" stroke-linecap="round" stroke-dasharray="10 9" />
+      <path d="M52 140c14 6 30 8 48 8s34-2 48-8" stroke="#F6C49A" stroke-width="4" fill="none" stroke-linecap="round" stroke-dasharray="7 11" />
+      <ellipse cx="82" cy="110" rx="17" ry="21" fill="#FBF6EE" />
+      <ellipse cx="114" cy="106" rx="18" ry="23" fill="#CFE0E3" />
+      <circle cx="122" cy="96" r="2.6" fill="#3B4A6B" opacity=".5" />
+      <g class="anim-bob"><path d="M128 52c10-14 30-14 36 2-12-4-24 0-30 8Z" fill="#1F3A33" /><circle cx="150" cy="50" r="2" fill="#FBF6EE" /></g>
+    </g>
+  )}
+  {name === 'blocks' && (
+    <g style={P}>
+      <rect x="40" y="120" width="52" height="48" rx="5" fill="#E2683C" transform="rotate(-3 66 144)" />
+      <rect x="98" y="122" width="56" height="46" rx="5" fill="#3B4A6B" transform="rotate(2 126 145)" />
+      <rect x="66" y="74" width="54" height="50" rx="5" fill="#F7DFA6" transform="rotate(5 93 99)" />
+      <path d="M86 28l26 40H60Z" fill="#6F8A64" transform="rotate(4 86 48)" />
+      <text x="58" y="155" font-family="Georgia,serif" font-size="28" fill="#FBF6EE" font-style="italic">a</text>
+      <text x="117" y="156" font-family="Georgia,serif" font-size="26" fill="#FBF6EE">b</text>
+      <circle cx="93" cy="99" r="9" fill="#A8431D" />
+    </g>
+  )}
+  {name === 'paint' && (
+    <g style={P}>
+      <path d="M36 112c0-36 30-64 68-64 40 0 62 26 62 52 0 18-14 22-26 20-12-2-18 6-14 16 4 12-6 22-24 22-38 0-66-14-66-46Z" fill="#F7DFA6" />
+      <circle cx="74" cy="92" r="11" fill="#E2683C" /><circle cx="104" cy="76" r="10" fill="#3B4A6B" />
+      <circle cx="136" cy="86" r="10" fill="#6F8A64" /><circle cx="70" cy="128" r="11" fill="#A8431D" />
+      <circle cx="100" cy="146" r="9" fill="#1F3A33" opacity=".85" />
+      <g class="anim-sway" style="transform-origin:150px 170px">
+        <rect x="146" y="88" width="10" height="84" rx="5" fill="#1F3A33" transform="rotate(28 151 130)" />
+        <path d="M168 82c6 6 6 16-2 20l-10-6c0-8 6-14 12-14Z" fill="#E2683C" transform="rotate(28 162 92)" />
+      </g>
+    </g>
+  )}
+  {name === 'books' && (
+    <g style={P}>
+      <rect x="38" y="140" width="128" height="22" rx="4" fill="#3B4A6B" />
+      <rect x="48" y="118" width="110" height="22" rx="4" fill="#E2683C" transform="rotate(-2 103 129)" />
+      <rect x="44" y="96" width="116" height="22" rx="4" fill="#6F8A64" transform="rotate(1.5 102 107)" />
+      <path d="M60 140h86M58 118h80" stroke="#FBF6EE" stroke-width="3" opacity=".6" />
+      <path d="M74 96c0-24 20-42 40-42s30 14 30 30v12Z" fill="#F7DFA6" />
+      <path d="M100 58c2 14 2 26 0 38" stroke="#1F3A33" stroke-width="3" fill="none" />
+      <circle cx="140" cy="44" r="12" fill="#E2683C" class="anim-bob" />
+    </g>
+  )}
+  {name === 'kite' && (
+    <g style={P}>
+      <g class="anim-sway" style="transform-origin:100px 190px">
+        <path d="M100 22l44 52-44 62-44-62Z" fill="#E2683C" />
+        <path d="M100 22v114M56 74h88" stroke="#FBF6EE" stroke-width="3" />
+        <path d="M100 22l44 52H100Z" fill="#A8431D" />
+        <path d="M100 136c-8 14 8 18 0 30s8 16 2 26" stroke="#1F3A33" stroke-width="2.5" fill="none" stroke-linecap="round" />
+        <path d="M94 150l12 4-12 4Z" fill="#3B4A6B" /><path d="M96 172l12 4-12 4Z" fill="#6F8A64" />
+      </g>
+      <path d="M26 54c6-8 18-8 24 0" stroke="#3B4A6B" stroke-width="4" fill="none" stroke-linecap="round" class="anim-drift" />
+    </g>
+  )}
+  {name === 'door' && (
+    <g style={P}>
+      <rect x="20" y="160" width="160" height="18" rx="4" fill="#A9B99A" />
+      <path d="M56 166V74c0-26 20-44 44-44s44 18 44 44v92Z" fill="#1F3A33" />
+      <path d="M66 166V78c0-20 15-36 34-36s34 16 34 36v88Z" fill="#F6C49A" />
+      <circle cx="122" cy="116" r="4.5" fill="#1F3A33" />
+      <path d="M100 42v124" stroke="#1F3A33" stroke-width="2" opacity=".2" />
+      <path d="M150 100c10-12 26-10 30 4-12-2-20 2-24 10Z" fill="#6F8A64" />
+      <path d="M36 140c-4-18 8-30 20-30-2 12-8 22-20 30Z" fill="#6F8A64" />
+      <rect x="148" y="132" width="20" height="30" rx="3" fill="#E2683C" />
+      <path d="M152 132c0-8 12-8 12 0" stroke="#E2683C" stroke-width="3" fill="none" />
+    </g>
+  )}
+  {name === 'circle' && (
+    <g style={P}>
+      <ellipse cx="100" cy="132" rx="82" ry="40" fill="#E2683C" opacity=".9" />
+      <ellipse cx="100" cy="132" rx="58" ry="26" fill="#F7DFA6" />
+      {[0, 1, 2, 3, 4, 5, 6].map((i) => {
+        const ang = (i / 7) * Math.PI * 2 - Math.PI / 2;
+        const x = 100 + Math.cos(ang) * 70; const y = 120 + Math.sin(ang) * 32;
+        const c = ['#1F3A33', '#3B4A6B', '#6F8A64', '#A8431D'][i % 4];
+        return (<g><circle cx={x} cy={y - 18} r="9" fill="#F2CDBF" /><path d={`M${x - 12} ${y + 6}c0-14 6-18 12-18s12 4 12 18Z`} fill={c} /></g>);
+      })}
+      <path d="M86 64c0-10 28-10 28 0l-6 20h-16Z" fill="#3B4A6B" />
+      <path d="M92 52l8-12 8 12" stroke="#E2683C" stroke-width="3" fill="none" stroke-linecap="round" />
+    </g>
+  )}
+  {name === 'garden' && (
+    <g style={P}>
+      <path d="M0 150c40-18 80-18 120-6s60 6 80-6v62H0Z" fill="#6F8A64" />
+      <path d="M0 170c50-12 110-12 200 0v30H0Z" fill="#A9B99A" />
+      <rect x="128" y="58" width="12" height="96" rx="5" fill="#7A4E36" />
+      <path d="M134 18c34 0 54 22 54 46 0 18-16 26-30 22-6 12-36 14-46 2-18 4-34-8-30-26 4-24 24-44 52-44Z" fill="#1F3A33" class="anim-sway" style="transform-origin:134px 150px" />
+      <path d="M30 150c0-16 10-28 22-28s22 12 22 28" fill="#F7DFA6" />
+      <rect x="40" y="132" width="24" height="10" rx="3" fill="#A8431D" />
+      <circle cx="94" cy="160" r="8" fill="#E2683C" /><circle cx="108" cy="166" r="6" fill="#F6C49A" />
+      <path d="M70 110c4-10 14-12 20-4" stroke="#FBF6EE" stroke-width="3" fill="none" stroke-linecap="round" class="anim-drift" />
+    </g>
+  )}
+  {name === 'table' && (
+    <g style={P}>
+      <rect x="18" y="110" width="164" height="16" rx="6" fill="#7A4E36" />
+      <rect x="30" y="126" width="10" height="54" rx="4" fill="#7A4E36" /><rect x="160" y="126" width="10" height="54" rx="4" fill="#7A4E36" />
+      <path d="M44 108c0-18 14-26 28-26s28 8 28 26Z" fill="#FBF6EE" />
+      <path d="M50 96c8 4 36 4 44 0" stroke="#E2683C" stroke-width="5" stroke-linecap="round" />
+      <path d="M108 108c0-14 10-22 22-22s22 8 22 22Z" fill="#A9B99A" />
+      <rect x="150" y="76" width="16" height="32" rx="5" fill="#CFE0E3" />
+      <path d="M150 84h-6c-4 0-4 12 0 12h6" stroke="#CFE0E3" stroke-width="4" fill="none" />
+      <path d="M64 70c-4-8 4-10 0-18M78 70c-4-8 4-10 0-18" stroke="#1F3A33" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".5" class="anim-bob" />
+    </g>
+  )}
+  {name === 'rest' && (
+    <g style={P}>
+      <path d="M150 38a40 40 0 1 1-50 56 34 34 0 0 0 50-56Z" fill="#F7DFA6" />
+      <circle cx="44" cy="40" r="3" fill="#F7DFA6" class="anim-bob" /><circle cx="70" cy="66" r="2" fill="#F7DFA6" /><circle cx="168" cy="120" r="2.5" fill="#F7DFA6" />
+      <rect x="22" y="128" width="156" height="30" rx="10" fill="#3B4A6B" />
+      <path d="M30 128c0-16 12-22 26-22h26c10 0 14 8 14 22Z" fill="#FBF6EE" />
+      <path d="M86 128c20-14 70-16 92 0Z" fill="#E2683C" />
+      <path d="M84 116q6-6 12 0" stroke="#1F3A33" stroke-width="2.5" fill="none" stroke-linecap="round" />
+      <rect x="30" y="158" width="10" height="20" rx="3" fill="#3B4A6B" /><rect x="160" y="158" width="10" height="20" rx="3" fill="#3B4A6B" />
+    </g>
+  )}
+  {name === 'studio' && (
+    <g style={P}>
+      <path d="M60 180l30-130M140 180l-30-130M100 50v130" stroke="#7A4E36" stroke-width="7" stroke-linecap="round" />
+      <rect x="48" y="62" width="104" height="80" rx="4" fill="#FBF6EE" transform="rotate(-2 100 102)" />
+      <path d="M64 120c10-30 24-40 36-20s22 14 34-12" stroke="#E2683C" stroke-width="7" fill="none" stroke-linecap="round" />
+      <circle cx="80" cy="86" r="10" fill="#F7DFA6" /><path d="M110 128c6-8 18-8 24 0" stroke="#3B4A6B" stroke-width="6" fill="none" stroke-linecap="round" />
+      <rect x="40" y="140" width="120" height="8" rx="3" fill="#7A4E36" />
+      <circle cx="168" cy="44" r="10" fill="#6F8A64" class="anim-bob" />
+    </g>
+  )}
+  {name === 'sunset' && (
+    <g style={P}>
+      <circle cx="100" cy="128" r="46" fill="#E2683C" />
+      <path d="M0 128h200v72H0Z" fill="#3B4A6B" />
+      <path d="M0 140c34-10 60-4 100 4s74 6 100-4v60H0Z" fill="#1F3A33" />
+      <path d="M30 120h40M130 116h46M60 106h24" stroke="#F6C49A" stroke-width="4" stroke-linecap="round" class="anim-drift" />
+      <g fill="#FBF6EE"><circle cx="66" cy="152" r="7" /><path d="M56 186c0-16 4-24 10-24s10 8 10 24Z" />
+        <circle cx="86" cy="158" r="5" /><path d="M79 186c0-12 3-18 7-18s7 6 7 18Z" /></g>
+    </g>
+  )}
+  {name === 'heart-hands' && (
+    <g style={P}>
+      <path d="M100 168c-50-30-74-58-74-88 0-22 16-38 36-38 16 0 30 10 38 26 8-16 22-26 38-26 20 0 36 16 36 38 0 30-24 58-74 88Z" fill="#E2683C" />
+      <path d="M58 82c4-12 12-18 22-18" stroke="#F6C49A" stroke-width="6" fill="none" stroke-linecap="round" />
+    </g>
+  )}
+  {name === 'shield' && (
+    <g style={P}>
+      <path d="M100 20l66 22v50c0 44-30 76-66 90-36-14-66-46-66-90V42Z" fill="#1F3A33" />
+      <path d="M100 38l50 16v38c0 34-22 58-50 70Z" fill="#3B4A6B" />
+      <path d="M70 102l20 20 42-44" stroke="#F6C49A" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+    </g>
+  )}
+  {name === 'leaf-sprig' && (
+    <g style={P}>
+      <path d="M100 186C96 130 100 70 120 20" stroke="#1F3A33" stroke-width="5" fill="none" stroke-linecap="round" />
+      <path d="M104 132c-34-4-54-24-56-50 30 2 52 22 56 50Z" fill="#6F8A64" />
+      <path d="M108 96c22-18 50-20 66-6-18 18-44 18-66 6Z" fill="#A9B99A" />
+      <path d="M112 60c-20-14-28-32-22-50 18 10 26 30 22 50Z" fill="#6F8A64" />
+    </g>
+  )}
+  {name === 'bowl' && (
+    <g style={P}>
+      <path d="M28 100h144c0 40-32 70-72 70s-72-30-72-70Z" fill="#E2683C" />
+      <path d="M40 100c6-16 30-24 60-24s54 8 60 24Z" fill="#F7DFA6" />
+      <circle cx="78" cy="92" r="8" fill="#6F8A64" /><circle cx="118" cy="88" r="7" fill="#A8431D" /><circle cx="98" cy="84" r="6" fill="#FBF6EE" />
+      <path d="M82 60c-4-10 6-12 0-24M104 58c-4-10 6-12 0-24M126 60c-4-10 6-12 0-24" stroke="#1F3A33" stroke-width="3" fill="none" stroke-linecap="round" opacity=".45" class="anim-bob" />
+    </g>
+  )}
+  {name === 'phone-sun' && (
+    <g style={P}>
+      <rect x="56" y="20" width="88" height="164" rx="18" fill="#1F3A33" />
+      <rect x="64" y="36" width="72" height="132" rx="10" fill="#FBF6EE" />
+      <circle cx="100" cy="80" r="20" fill="#E2683C" />
+      <rect x="74" y="112" width="52" height="7" rx="3.5" fill="#A9B99A" /><rect x="74" y="126" width="36" height="7" rx="3.5" fill="#F6C49A" />
+      <rect x="74" y="140" width="44" height="7" rx="3.5" fill="#CFE0E3" />
+    </g>
+  )}
+  {name === 'pecan' && (
+    <g style={P}>
+      <ellipse cx="100" cy="104" rx="40" ry="58" fill="#7A4E36" transform="rotate(-18 100 104)" />
+      <path d="M86 56c10 30 12 70 2 100" stroke="#5A3826" stroke-width="5" fill="none" />
+      <path d="M118 36c14-14 34-14 44 0-16 4-30 4-44 0Z" fill="#6F8A64" />
+    </g>
+  )}
+</svg>

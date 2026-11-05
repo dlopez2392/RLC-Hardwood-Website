@@ -1,0 +1,34 @@
+{
+  "name": "sunroom-early-learning-demo",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Sunroom Early Learning Studio — a fictional, bilingual childcare website built as a portfolio demo.",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "verify:shots": "node scripts/screenshots.mjs",
+    "verify:a11y": "node scripts/a11y.mjs",
+    "verify:lighthouse": "node scripts/lighthouse.mjs"
+  },
+  "dependencies": {
+    "@astrojs/preact": "^6.1.1",
+    "@astrojs/sitemap": "^3.7.4",
+    "@tailwindcss/vite": "^4.3.4",
+    "astro": "^7.4.6",
+    "motion": "^14.9.1",
+    "preact": "^11.1.1",
+    "tailwindcss": "^4.3.4"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.12",
+    "@axe-core/playwright": "^4.14.0",
+    "@fontsource-variable/fraunces": "^5.3.0",
+    "@fontsource-variable/instrument-sans": "^5.3.0",
+    "lighthouse": "^13.6.0",
+    "sharp": "^0.35.5",
+    "typescript": "^6.0.3"
+  }
+}
