@@ -5,8 +5,9 @@ import type { AssistantProvider, AskContext, Chunk } from './types';
 /* ── Text normalisation ─────────────────────────────────────────── */
 const fold = (s: string) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
 const STOP = new Set(
-  ('a an the is are do does did you your i my me we our of to in on for at and or with what how when where who can will be it ' +
-    'el la los las un una es son de del en y o con que como cuando donde quien puedo puede mi mis su sus se por para lo al hay me nos').split(' '),
+  fold('a an the is are do does did you your i my me we our of to in on for at and or with what how when where who can will be it ' +
+    'el la los las un una es son de del en y o con que como cuando donde quien puedo puede mi mis su sus se por para lo al hay me nos ' +
+    'kid kids child children son daughter baby going get take tell know need want have has had hijo hija hijos niño niña bebe quiero necesito saber tiene tengo tienen ir va hacer si esta este esto').split(' '),
 );
 /** Light stemming that works acceptably for both English and Spanish. */
 const stem = (w: string) => w.replace(/(ies|es|s)$/u, (m) => (w.length > 4 ? (m === 'ies' ? 'y' : '') : m));
@@ -15,7 +16,10 @@ export const tokens = (s: string) =>
 
 /** Synonyms bridge everyday parent phrasing to FAQ vocabulary. */
 const SYN: Record<string, string[]> = {
-  cost: ['tuition', 'price'], price: ['tuition'], expensive: ['tuition'], pay: ['tuition'], money: ['tuition'],
+  cost: ['tuition', 'price'], price: ['tuition'], expensive: ['tuition'], pay: ['tuition'], money: ['tuition'], much: ['tuition'], afford: ['tuition'],
+  cuanto: ['colegiatura'], cobran: ['colegiatura'],
+  park: ['parking'], parking: ['location'], estacionan: ['estacionamiento'], estacionar: ['estacionamiento'], estaciono: ['estacionamiento'], address: ['location'],
+  sleep: ['nap'], dormir: ['siesta'], kid: ['child'], son: ['child'], daughter: ['child'], hijo: ['niño'], hija: ['niño'],
   costo: ['colegiatura'], precio: ['colegiatura'], cuesta: ['colegiatura'], pagar: ['colegiatura'],
   sick: ['illness', 'fever'], fever: ['illness'], enfermo: ['enfermedad', 'fiebre'], fiebre: ['enfermedad'],
   baby: ['infant'], babies: ['infant'], bebe: ['infant'], toddler: ['ratio', 'age'],
@@ -44,7 +48,8 @@ docs.forEach((d) => d.tf.forEach((_, t) => df.set(t, (df.get(t) ?? 0) + 1)));
 const idf = (t: string) => Math.log(1 + (docs.length - (df.get(t) ?? 0) + 0.5) / ((df.get(t) ?? 0) + 0.5));
 
 export function search(question: string) {
-  const q = expand(tokens(question));
+  const original = tokens(question);
+  const q = expand(original);
   const k1 = 1.4, b = 0.7;
   return docs
     .map((d) => {
@@ -54,7 +59,9 @@ export function search(question: string) {
         if (!f) continue;
         score += idf(t) * ((f * (k1 + 1)) / (f + k1 * (1 - b + (b * d.len) / avgLen)));
       }
-      return { item: d.item, score };
+      // coverage: share of the parent's own words this answer actually addresses
+      const hit = original.filter((t) => d.tf.has(t) || (SYN[t] ?? []).some((s) => d.tf.has(stem(s)))).length;
+      return { item: d.item, score, coverage: original.length ? hit / original.length : 0 };
     })
     .filter((r) => r.score > 0)
     .sort((a, b) => b.score - a.score);
@@ -68,13 +75,13 @@ const COPY = {
   en: {
     greet: 'Hello! I can answer questions about hours, ratios, tuition, meals, naps, safety and more. What would you like to know?',
     thanks: 'You’re very welcome. Anything else I can help with?',
-    unsure: 'I don’t have a confident answer to that one, and I’d rather not guess about your child. Our director, Elena, answers every question personally on a tour or by phone.',
+    unsure: 'I don’t have a confident answer to that one, and I’d rather not guess. Our director, Elena, answers every question personally on a tour or by phone.',
     alsoAsked: 'Families also ask:',
   },
   es: {
     greet: '¡Hola! Puedo responder preguntas sobre horario, proporción de maestros, colegiatura, comidas, siestas, seguridad y más. ¿Qué le gustaría saber?',
     thanks: 'Con mucho gusto. ¿Le ayudo con algo más?',
-    unsure: 'No tengo una respuesta segura para eso, y prefiero no adivinar cuando se trata de su hijo. Nuestra directora, Elena, responde cada pregunta en persona durante una visita o por teléfono.',
+    unsure: 'No tengo una respuesta segura para eso, y prefiero no adivinar. Nuestra directora, Elena, responde cada pregunta en persona durante una visita o por teléfono.',
     alsoAsked: 'Otras familias preguntan:',
   },
 };
@@ -108,7 +115,9 @@ export const localFaqProvider: AssistantProvider = {
 
     const results = search(question);
     const top = results[0];
-    if (!top || top.score < 2.2) {
+    // Decline rather than guess: low score, or the best answer ignores most of the question
+    // (e.g. "can I bring a puppy to the tour" matches "tour" but nothing about pets).
+    if (!top || top.score < 2.2 || top.coverage < 0.5) {
       yield* stream(c.unsure, ctx);
       yield { type: 'handoff' };
       yield { type: 'suggestions', items: FAQ.slice(0, 3).map((x) => x.q[lang]) };

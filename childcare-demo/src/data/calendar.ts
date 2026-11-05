@@ -21,7 +21,7 @@ export const EVENTS: SunroomEvent[] = [
   { date: '2027-03-05', kind: 'class', title: { en: 'Little Rodeo day', es: 'Día del pequeño rodeo' }, note: { en: 'Boots welcome. Stick horses provided.', es: 'Se valen las botas. Nosotros ponemos los caballitos de palo.' } },
   { date: '2027-04-16', kind: 'community', title: { en: 'Mini Fiesta parade', es: 'Desfile de Mini Fiesta' }, note: { en: 'Our own Fiesta: flower crowns and a lap of the block.', es: 'Nuestra propia Fiesta: coronas de flores y una vuelta a la cuadra.' } },
   { date: '2027-05-07', kind: 'family', title: { en: 'Family tea in the garden', es: 'Té familiar en el jardín' }, note: { en: 'Children host; grown-ups are guests.', es: 'Los niños son anfitriones; los adultos, invitados.' } },
-  { date: '2027-06-04', kind: 'family', title: { en: 'Kestrels sunset send-off', es: 'Despedida al atardecer de los Kestrels' }, note: { en: 'Prekínder graduation at golden hour.', es: 'Graduación de Prekínder a la hora dorada.' } },
+  { date: '2027-06-04', kind: 'family', title: { en: 'Kestrels sunset send-off', es: 'Despedida al atardecer de los Kestrels' }, note: { en: 'Pre-K graduation at golden hour.', es: 'Graduación de prekínder a la hora dorada.' } },
 ];
 
 export type Allergen = 'dairy' | 'egg' | 'wheat' | 'soy' | 'fish';
@@ -102,7 +102,7 @@ export const DAY: DayChapter[] = [
     title: { en: 'Morning circle', es: 'Círculo de la mañana' },
     body: {
       en: 'A song in English, a song in Spanish, and the most important question of the day: “What do we want to find out?” For the youngest it lasts five minutes. For Pre-K it is a real class meeting, run by a different child each week.',
-      es: 'Una canción en inglés, otra en español y la pregunta más importante del día: “¿Qué queremos descubrir?”. Para los más pequeños dura cinco minutos. En Prekínder es una asamblea de verdad, dirigida por un niño distinto cada semana.',
+      es: 'Una canción en inglés, otra en español y la pregunta más importante del día: “¿Qué queremos descubrir?”. Para los más pequeños dura cinco minutos. En prekínder es una asamblea de verdad, dirigida por un niño distinto cada semana.',
     },
     learning: { en: 'Listening · bilingual vocabulary · turn-taking', es: 'Escuchar · vocabulario bilingüe · respetar turnos' },
   },
@@ -120,7 +120,7 @@ export const DAY: DayChapter[] = [
     title: { en: 'Lunch at the long table', es: 'Almuerzo en la mesa larga' },
     body: {
       en: 'Rosa cooks from scratch every morning in our nut-free kitchen. Children serve themselves from small pitchers and bowls, teachers eat with them, and conversation is the main course.',
-      es: 'Rosa cocina desde cero cada mañana en nuestra cocina libre de nueces. Los niños se sirven solos con jarritas y tazones pequeños, las maestras comen con ellos y la plática es el plato fuerte.',
+      es: 'Rosa cocina desde cero cada mañana en nuestra cocina sin nueces ni cacahuates. Los niños se sirven solos con jarritas y tazones pequeños, las maestras comen con ellos y la plática es el plato fuerte.',
     },
     learning: { en: 'Fine motor · nutrition · conversation', es: 'Motricidad fina · nutrición · conversación' },
   },

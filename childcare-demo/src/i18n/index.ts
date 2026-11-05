@@ -120,7 +120,7 @@ export const ui = dict(
       hours: 'Horario',
       hoursValue: 'Lunes a viernes, 7:00 a. m. a 6:00 p. m.',
       closed: 'Cerrado fines de semana y días festivos principales',
-      explore: 'Explore',
+      explore: 'Explorar',
       families: 'Familias',
       follow: 'Síganos',
       mapLabel: 'Mapa ilustrado: Sunroom está en Arbor Light Lane, a dos cuadras de Olmos Park.',

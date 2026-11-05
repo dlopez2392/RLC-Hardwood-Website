@@ -23,7 +23,7 @@ const T = {
     perMonth: 'Colegiatura mensual estimada', weekly: 'por semana', annual: 'por año',
     breakdown: 'Cómo se calcula', discount: 'Descuento de hermanos (10 %)', fees: 'Cuotas únicas y anuales',
     reg: 'Inscripción (solo al aceptar un lugar)', materials: 'Cuota anual de materiales',
-    sample: 'Tarifas de muestra de un centro ficticio', join: 'Unirse a la lista de espera', tour: 'Agende una visita',
+    sample: 'Tarifas de muestra de un centro ficticio', join: 'Únase a la lista de espera', tour: 'Agende una visita',
     note: 'El descuento aplica a cada hijo adicional; la colegiatura más alta se cobra completa.',
     d: (n: number) => `${n} días`,
   },

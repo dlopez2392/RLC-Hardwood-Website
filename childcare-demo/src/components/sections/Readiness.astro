@@ -28,7 +28,7 @@ const c = dict(
       <h2 id="ready-title" class="display-md mt-4">{c.title}</h2>
       <p class="lede mt-5">{c.lede}</p>
       <p class="mt-8 flex items-baseline gap-4">
-        <span class="font-display text-[clamp(4.5rem,10vw,7.5rem)] leading-none text-[var(--color-sun-ink)]" style="font-weight:400">{READINESS.headline}%</span>
+        <span class="font-display text-[clamp(4.5rem,10vw,7.5rem)] leading-none text-[var(--color-sun-ink)]" style="font-weight:400">{READINESS.headline}{lang === 'es' ? ' %' : '%'}</span>
         <span class="max-w-[14rem] font-semibold leading-snug">{READINESS.cohort[lang]} {c.big}</span>
       </p>
       <p class="mt-5 flex flex-wrap items-center gap-2 text-sm text-[var(--color-ink-soft)]"><span class="sample-badge">{t.sample}</span>{c.method}</p>
@@ -36,9 +36,9 @@ const c = dict(
     <ul class="paper space-y-6 p-7 sm:p-9" data-reveal data-readiness>
       {READINESS.domains.map((d) => (
         <li>
-          <div class="flex justify-between gap-4 font-semibold"><span>{d.label[lang]}</span><span class="tabular-nums">{d.value}%</span></div>
+          <div class="flex justify-between gap-4 font-semibold"><span>{d.label[lang]}</span><span class="tabular-nums">{d.value}{lang === 'es' ? ' %' : '%'}</span></div>
           <div class="mt-2 h-3 overflow-hidden rounded-full bg-[var(--color-shadow)]" role="presentation">
-            <div class="readiness-bar h-full rounded-full bg-[linear-gradient(90deg,var(--color-moss),var(--color-sage))]" style={`--w:${d.value}%`}></div>
+            <div class="readiness-bar h-full rounded-full bg-[linear-gradient(90deg,var(--color-moss),var(--color-sage))]" style={`--w:${d.value}{lang === 'es' ? ' %' : '%'}`}></div>
           </div>
         </li>
       ))}

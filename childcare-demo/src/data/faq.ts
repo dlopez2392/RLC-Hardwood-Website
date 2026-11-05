@@ -35,7 +35,7 @@ export const FAQ: FaqItem[] = [
     q: { en: 'What are your teacher-to-child ratios?', es: '¿Cuántos niños hay por maestro?' },
     a: {
       en: 'Ours are well below Texas minimums: 1:3 for infants (Texas allows 1:4), 1:4 for toddlers (Texas: 1:5), 1:7 for preschool (Texas: 1:11), 1:9 for Pre-K (Texas: 1:18) and 1:12 for school-age (Texas: 1:22). Floaters cover breaks, so ratios hold all day.',
-      es: 'Están muy por debajo del mínimo de Texas: 1:3 en bebés (Texas permite 1:4), 1:4 en niños pequeños (Texas: 1:5), 1:7 en preescolar (Texas: 1:11), 1:9 en Prekínder (Texas: 1:18) y 1:12 en edad escolar (Texas: 1:22). Contamos con maestras de apoyo para los descansos, así que la proporción se mantiene todo el día.',
+      es: 'Están muy por debajo del mínimo de Texas: 1:3 en bebés (Texas permite 1:4), 1:4 en niños pequeños (Texas: 1:5), 1:7 en preescolar (Texas: 1:11), 1:9 en prekínder (Texas: 1:18) y 1:12 en edad escolar (Texas: 1:22). Contamos con maestras de apoyo para los descansos, así que la proporción se mantiene todo el día.',
     },
     keywords: ['ratio', 'ratios', 'teachers', 'children', 'per', 'staff', 'class size', 'group', 'proporción', 'maestros', 'niños', 'cuántos', 'grupo', 'tamaño'],
   },
@@ -44,7 +44,7 @@ export const FAQ: FaqItem[] = [
     q: { en: 'How much is tuition?', es: '¿Cuánto cuesta la colegiatura?' },
     a: {
       en: 'Full-time (5-day) sample rates are $1,980/month for infants, $1,840 for toddlers, $1,560 for preschool, $1,420 for Pre-K and $640 for after-school. Part-time options run from 2 to 4 days. Siblings get 10% off. Meals, diapers and enrichment are included. Try the estimator on our Tuition page.',
-      es: 'Las tarifas de muestra de tiempo completo (5 días) son $1,980 al mes para bebés, $1,840 para niños pequeños, $1,560 para preescolar, $1,420 para Prekínder y $640 para después de clases. Hay opciones de medio tiempo de 2 a 4 días. Los hermanos reciben 10 % de descuento. Las comidas, los pañales y las actividades de enriquecimiento están incluidos. Pruebe la calculadora en nuestra página de Colegiatura.',
+      es: 'Las tarifas de muestra de tiempo completo (5 días) son $1,980 al mes para bebés, $1,840 para niños pequeños, $1,560 para preescolar, $1,420 para prekínder y $640 para después de clases. Hay opciones de medio tiempo de 2 a 4 días. Los hermanos reciben 10 % de descuento. Las comidas, los pañales y las actividades de enriquecimiento están incluidos. Pruebe la calculadora en nuestra página de Colegiatura.',
     },
     keywords: ['tuition', 'cost', 'price', 'how much', 'fee', 'fees', 'monthly', 'pay', 'expensive', 'rate', 'colegiatura', 'costo', 'precio', 'cuánto', 'cuesta', 'cuota', 'mensual', 'pagar'],
   },
@@ -71,7 +71,7 @@ export const FAQ: FaqItem[] = [
     q: { en: 'What is your illness policy?', es: '¿Cuál es su política de enfermedad?' },
     a: {
       en: 'Children stay home with a fever of 100.4°F or higher, vomiting, diarrhea, or a contagious rash, and return after 24 hours symptom-free without fever-reducing medicine. If symptoms start at school, we call you, keep your child comfortable in our quiet room with our nurse, and ask for pick-up within an hour.',
-      es: 'Los niños se quedan en casa si tienen fiebre de 100.4 °F o más, vómito, diarrea o un sarpullido contagioso, y regresan tras 24 horas sin síntomas y sin medicamento para la fiebre. Si los síntomas empiezan aquí, le llamamos, su hijo descansa cómodo en nuestro cuarto tranquilo con nuestra enfermera, y le pedimos recogerlo en menos de una hora.',
+      es: 'Los niños se quedan en casa si tienen fiebre de 100.4 °F o más, vómito, diarrea o un sarpullido contagioso, y regresan tras 24 horas sin síntomas y sin medicamento para la fiebre. Si los síntomas empiezan aquí, le llamamos, su hijo descansa cómodo en nuestro cuarto tranquilo con nuestra enfermera, y le pedimos que lo recoja en menos de una hora.',
     },
     keywords: ['sick', 'illness', 'fever', 'ill', 'vomit', 'diarrhea', 'contagious', 'stay home', 'temperature', 'cold', 'flu', 'enfermo', 'enfermedad', 'fiebre', 'vómito', 'diarrea', 'contagioso', 'gripa', 'temperatura'],
   },
@@ -80,7 +80,7 @@ export const FAQ: FaqItem[] = [
     q: { en: 'How do you handle food allergies?', es: '¿Cómo manejan las alergias alimentarias?' },
     a: {
       en: 'Our kitchen is nut-free. Every child with an allergy has a care plan reviewed by our RN, a photo allergy card in their room and the kitchen, and color-coded plates. Epinephrine auto-injectors travel with the child, including outdoors and on walks, and every teacher is trained to use them.',
-      es: 'Nuestra cocina es libre de nueces. Cada niño con alergia tiene un plan de cuidado revisado por nuestra enfermera, una tarjeta con foto en su salón y en la cocina, y platos con código de color. Los autoinyectores de epinefrina acompañan al niño a todas partes, incluso afuera y en paseos, y todas las maestras saben usarlos.',
+      es: 'En nuestra cocina no se usan nueces ni cacahuates. Cada niño con alergia tiene un plan de cuidado revisado por nuestra enfermera, una tarjeta con foto en su salón y en la cocina, y platos con código de color. Los autoinyectores de epinefrina acompañan al niño a todas partes, incluso afuera y en paseos, y todos los maestros saben usarlos.',
     },
     keywords: ['allergy', 'allergies', 'nut', 'peanut', 'epipen', 'epinephrine', 'anaphylaxis', 'food', 'gluten', 'alergia', 'alergias', 'nueces', 'cacahuate', 'maní', 'epinefrina'],
   },
@@ -89,16 +89,16 @@ export const FAQ: FaqItem[] = [
     q: { en: 'How secure is the building?', es: '¿Qué tan seguro es el edificio?' },
     a: {
       en: 'Entry is by fingerprint for authorized adults only, and every pick-up is matched against a photo-ID list you control in the app. Classrooms have interior windows, cameras cover entrances and shared spaces, and we run monthly fire, shelter and lockdown drills.',
-      es: 'Solo los adultos autorizados entran con su huella digital, y cada salida se verifica con una lista de personas con identificación con foto que usted controla en la app. Los salones tienen ventanas interiores, hay cámaras en las entradas y áreas comunes, y hacemos simulacros mensuales de incendio, refugio y encierro.',
+      es: 'Solo los adultos autorizados entran con su huella digital, y cada vez que alguien recoge a un niño, verificamos su identificación con foto en la lista de personas autorizadas que usted administra en la app. Los salones tienen ventanas interiores, hay cámaras en las entradas y áreas comunes, y hacemos simulacros mensuales de incendio, refugio y encierro.',
     },
     keywords: ['secure', 'security', 'safe', 'safety', 'door', 'entry', 'camera', 'cameras', 'pickup', 'who can pick up', 'lockdown', 'drill', 'seguro', 'seguridad', 'puerta', 'entrada', 'cámaras', 'quién puede recoger', 'simulacro'],
   },
   {
     id: 'cpr', category: 'health', source: 'safety',
-    q: { en: 'Are teachers trained in CPR and first aid?', es: '¿Las maestras están capacitadas en RCP y primeros auxilios?' },
+    q: { en: 'Are teachers trained in CPR and first aid?', es: '¿Los maestros están capacitados en RCP y primeros auxilios?' },
     a: {
       en: 'Every staff member — including our cook and front desk — holds current pediatric CPR and First Aid certification, renewed every two years. Our Health & Wellness Coordinator is a registered nurse.',
-      es: 'Todo el personal —incluidas la cocinera y la recepción— tiene certificación vigente en RCP pediátrica y primeros auxilios, renovada cada dos años. Nuestra coordinadora de salud y bienestar es enfermera titulada.',
+      es: 'Todo el personal —incluidas la cocinera y la recepcionista— tiene certificación vigente en RCP pediátrica y primeros auxilios, renovada cada dos años. Nuestra coordinadora de salud y bienestar es enfermera titulada.',
     },
     keywords: ['cpr', 'first aid', 'training', 'certified', 'nurse', 'emergency', 'qualified', 'rcp', 'primeros auxilios', 'capacitación', 'certificado', 'enfermera', 'emergencia'],
   },
@@ -134,7 +134,7 @@ export const FAQ: FaqItem[] = [
     q: { en: 'What curriculum do you use?', es: '¿Qué plan de estudios usan?' },
     a: {
       en: 'Our approach is Reggio-inspired and play-based, aligned with the Texas Prekindergarten Guidelines. Projects grow from children’s questions; teachers plan intentionally for language, math, science, art and social-emotional growth. Pre-K includes a kindergarten-readiness portfolio.',
-      es: 'Nuestro enfoque se inspira en Reggio Emilia y se basa en el juego, alineado con las Guías de Prekínder de Texas. Los proyectos nacen de las preguntas de los niños; las maestras planean con intención el lenguaje, las matemáticas, la ciencia, el arte y el desarrollo socioemocional. En Prekínder incluimos un portafolio de preparación para el kínder.',
+      es: 'Nuestro enfoque se inspira en Reggio Emilia y se basa en el juego, alineado con las Guías de Prekínder de Texas. Los proyectos nacen de las preguntas de los niños; las maestras planean con intención el lenguaje, las matemáticas, la ciencia, el arte y el desarrollo socioemocional. En prekínder incluimos un portafolio de preparación para el kínder.',
     },
     keywords: ['curriculum', 'learn', 'learning', 'reggio', 'montessori', 'play-based', 'academic', 'kindergarten', 'ready', 'readiness', 'plan de estudios', 'aprender', 'aprendizaje', 'juego', 'kínder', 'preparación'],
   },
@@ -152,7 +152,7 @@ export const FAQ: FaqItem[] = [
     q: { en: 'How will I know how my child’s day went?', es: '¿Cómo sabré cómo le fue a mi hijo?' },
     a: {
       en: 'Through the Sunroom family app: meals and how much was eaten, naps, diapers or potty, photos, and a real note from the teacher, updated through the day. You can message teachers directly, and we answer within the hour during the school day.',
-      es: 'Con la app familiar de Sunroom: qué comió y cuánto, siestas, pañales o idas al baño, fotos y una nota de verdad de la maestra, actualizado durante el día. Puede escribirles directamente a las maestras, y respondemos en menos de una hora durante el horario escolar.',
+      es: 'Con la app familiar de Sunroom: qué comió y cuánto, siestas, pañales o idas al baño, fotos y una nota de verdad de la maestra, todo actualizado durante el día. Puede escribirles directamente a las maestras, y respondemos en menos de una hora durante el horario escolar.',
     },
     keywords: ['app', 'report', 'daily report', 'photos', 'updates', 'communication', 'message', 'portal', 'know', 'reporte', 'fotos', 'aplicación', 'mensaje', 'comunicación'],
   },

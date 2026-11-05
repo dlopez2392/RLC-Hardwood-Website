@@ -127,7 +127,7 @@ export const PROGRAMS: Program[] = [
     id: 'prek',
     room: 'Kestrels',
     bird: 'cernícalos',
-    name: { en: 'Prekínder', es: 'Prekínder' },
+    name: { en: 'Pre-K', es: 'Prekínder' },
     ages: { en: '4 – 5 years', es: '4 a 5 años' },
     ratio: 9,
     texasMin: 18,

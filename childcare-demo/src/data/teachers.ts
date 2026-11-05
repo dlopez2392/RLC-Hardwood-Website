@@ -74,14 +74,14 @@ export const TEACHERS: Teacher[] = [
     credentials: ['B.A. Child Development', 'Reggio Emilia study tour', 'CPR / First Aid'],
     quote: {
       en: 'I try never to answer a question a child can still enjoy wondering about.',
-      es: 'Intento nunca responder una pregunta que un niño todavía puede disfrutar preguntándose.',
+      es: 'Procuro no contestar nunca una pregunta que a un niño todavía le divierte descifrar por su cuenta.',
     },
     loves: { en: 'The light table, and anything made of clay.', es: 'La mesa de luz y todo lo que se pueda hacer con barro.' },
     portrait: { skin: '#6E4530', hair: '#120C0A', style: 'wrap', bg: '#E7EDDD', top: '#E2683C' },
   },
   {
     name: 'Marcus Bell',
-    role: { en: 'Lead Teacher, Prekínder', es: 'Maestro titular, Prekínder' },
+    role: { en: 'Lead Teacher, Pre-K', es: 'Maestro titular, prekínder' },
     room: 'Kestrels',
     years: 8,
     languages: { en: 'English · Spanish', es: 'Inglés · español' },

@@ -95,7 +95,7 @@ export const STORIES: Story[] = [
     pull: { en: '“June walked into kindergarten like she owned the place.”', es: '“June entró al kínder como si fuera su casa.”' },
     quote: {
       en: 'The readiness portrait they gave us in May was more useful than anything from our pediatrician. June walked into kindergarten like she owned the place, and her teacher asked where she had learned to run a class meeting. Wes still begs to go to Swifts on half-days.',
-      es: 'El retrato de preparación que nos dieron en mayo fue más útil que cualquier cosa del pediatra. June entró al kínder como si fuera su casa, y su maestra preguntó dónde había aprendido a dirigir una asamblea. Wes todavía ruega ir a Swifts los días de medio turno.',
+      es: 'El retrato de preparación que nos dieron en mayo fue más útil que cualquier cosa del pediatra. June entró al kínder como si fuera su casa, y su maestra preguntó dónde había aprendido a dirigir una asamblea. Wes todavía ruega ir a Swifts los días de salida temprano.',
     },
     tone: '#CFE0E3',
   },

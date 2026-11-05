@@ -18,7 +18,7 @@ const T = {
     childName: 'Nombre del niño', dob: 'Fecha de nacimiento o fecha probable de parto', dobHint: '¿Espera un bebé? Use la fecha probable de parto: muchas familias se inscriben antes del nacimiento.',
     start: 'Mes ideal para empezar', program: 'Programa', auto: 'Sugerido según la edad', days: 'Días por semana',
     parent: 'Su nombre', email: 'Correo electrónico', phone: 'Teléfono (opcional)', langPref: 'Idioma preferido para avisos', en: 'Inglés', es: 'Español',
-    notes: '¿Algo que debamos saber? (opcional)', next: 'Continuar', back: 'Regresar', submit: 'Unirse a la lista de espera',
+    notes: '¿Algo que debamos saber? (opcional)', next: 'Continuar', back: 'Regresar', submit: 'Únase a la lista de espera',
     errTitle: 'Por favor corrija lo siguiente:', required: 'Este campo es obligatorio.', emailBad: 'Escriba un correo como nombre@ejemplo.com.', dateBad: 'Escriba una fecha válida.',
     doneTitle: 'Ya está en la lista.', done: (n: string) => `Le escribiremos a ${n} en menos de un día hábil con su lugar en la lista y algunos horarios para visitarnos.`,
     ref: 'Referencia', demo: 'Solo demostración: no se envió ni guardó nada. En producción esto llegaría al sistema del centro.', again: 'Agregar otro hijo',

@@ -29,7 +29,7 @@ const T = {
     perMo: '/mes, tiempo completo',
     tour: 'Próxima visita disponible',
     see: 'Vea su día',
-    book: 'Agendar esta visita',
+    book: 'Agende esta visita',
     sample: 'Tarifa de muestra',
   },
 };
