@@ -45,6 +45,15 @@ The site is plain static files in `dist/`, so it deploys to any static host with
 
 > This folder lives inside the RLC Hardwood repository only for convenience. It has no dependency on the rest of the repo and can be moved to its own repository unchanged.
 
+### Portable preview export
+
+`node scripts/export-artifact.mjs` (after `npm run build`) writes `.artifact/`, a self-contained copy that runs under **any base path**. It makes three changes:
+- Rewrites root-relative URLs to relative ones with explicit `index.html` files.
+- Inlines the fonts and grain texture.
+- Renames `_astro/` to `assets/`.
+
+Client-side links stay portable through a `<meta name="site-root">` tag that `href()` reads at runtime. Normal builds are unaffected. This is how the private preview was published.
+
 ## Project structure
 
 ```

@@ -33,13 +33,22 @@ export default function AssistantLauncher({ lang }: { lang: Lang }) {
   useEffect(() => {
     const targets = document.querySelectorAll('footer, [data-fab-avoid]');
     if (!targets.length || !('IntersectionObserver' in window)) return;
+    // Watch only the button's own corner (bottom-right ~300×110 px): it steps aside
+    // when a form, CTA band or the footer actually sits underneath it, not merely on screen.
+    let io: IntersectionObserver | null = null;
     const seen = new Set<Element>();
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => (e.isIntersecting ? seen.add(e.target) : seen.delete(e.target)));
-      setAside(seen.size > 0);
-    }, { rootMargin: '0px 0px -40px 0px' });
-    targets.forEach((t) => io.observe(t));
-    return () => io.disconnect();
+    const observe = () => {
+      io?.disconnect(); seen.clear();
+      const top = Math.max(0, innerHeight - 110), left = Math.max(0, innerWidth - 300);
+      io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => (e.isIntersecting ? seen.add(e.target) : seen.delete(e.target)));
+        setAside(seen.size > 0);
+      }, { rootMargin: `-${top}px 0px 0px -${left}px` });
+      targets.forEach((t) => io!.observe(t));
+    };
+    observe();
+    addEventListener('resize', observe);
+    return () => { io?.disconnect(); removeEventListener('resize', observe); };
   }, []);
 
   // Any element with [data-ask] (e.g. FAQ page buttons) can open the assistant with a question.

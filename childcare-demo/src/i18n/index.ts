@@ -31,7 +31,14 @@ export const ROUTES = {
 } as const satisfies Record<string, Bi<string>>;
 export type RouteKey = keyof typeof ROUTES;
 
-export const href = (key: RouteKey, lang: Lang, hash = '') => ROUTES[key][lang] + (hash ? `#${hash}` : '');
+/**
+ * Client-side root for portable static exports (e.g. a preview hosted under an unknown
+ * base path): when the page carries <meta name="site-root" content="../">, links are
+ * built relative to it with explicit index.html files. Normal builds are unaffected.
+ */
+const SITE_ROOT = typeof document !== 'undefined' ? document.querySelector<HTMLMetaElement>('meta[name="site-root"]')?.content : undefined;
+const localize = (path: string) => (SITE_ROOT === undefined ? path : SITE_ROOT + path.slice(1) + (path.endsWith('/') ? 'index.html' : ''));
+export const href = (key: RouteKey, lang: Lang, hash = '') => localize(ROUTES[key][lang]) + (hash ? `#${hash}` : '');
 
 export const ui = dict(
   {

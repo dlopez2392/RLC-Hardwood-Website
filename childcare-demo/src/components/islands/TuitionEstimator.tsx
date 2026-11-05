@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
-import { fmtMoney, type Lang } from '@/i18n';
+import { fmtMoney, href, type Lang } from '@/i18n';
 import { PROGRAMS, type ProgramId } from '@/data/programs';
 import { TUITION } from '@/data/site';
 
@@ -132,7 +132,7 @@ export default function TuitionEstimator({ lang }: { lang: Lang }) {
         )}
       </div>
 
-      <aside ref={totalRef} data-fab-avoid class="on-dark grain overflow-hidden rounded-[1.75rem] bg-[var(--color-ink)] text-[var(--color-cream)] lg:sticky lg:top-28" aria-labelledby="est-total-label">
+      <aside ref={totalRef} class="on-dark grain overflow-hidden rounded-[1.75rem] bg-[var(--color-ink)] text-[var(--color-cream)] lg:sticky lg:top-28" aria-labelledby="est-total-label">
         <div class="relative z-[2] p-6 sm:p-8">
           <p id="est-total-label" class="eyebrow">{t.perMonth}</p>
           <p class="mt-3 font-display text-[clamp(3rem,7vw,4.5rem)] leading-none tabular-nums" style="font-weight:420" aria-hidden="true">{fmtMoney(shown, lang)}</p>
@@ -165,7 +165,7 @@ export default function TuitionEstimator({ lang }: { lang: Lang }) {
           </ul>
           <div class="mt-7 flex flex-wrap gap-3">
             <a href="#waitlist" class="btn bg-[var(--color-cream)] text-[var(--color-ink)] hover:bg-white">{t.join}</a>
-            <a href={lang === 'en' ? '/tour/' : '/es/visita/'} class="btn btn-ghost">{t.tour}</a>
+            <a href={href('tour', lang)} class="btn btn-ghost">{t.tour}</a>
           </div>
         </div>
       </aside>
