@@ -3,7 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import PageHero from '@/components/ui/PageHero.astro';
 import Portrait from '@/components/brand/Portrait.astro';
 import CtaBand from '@/components/sections/CtaBand.astro';
-import { TEACHERS } from '@/data/teachers';
+import { CREDENTIAL_ES, TEACHERS } from '@/data/teachers';
 import { dict, ui, type Lang } from '@/i18n';
 import { breadcrumb } from '@/lib/schema';
 interface Props { lang: Lang }
@@ -71,7 +71,7 @@ const c = dict(
             <p class="font-semibold text-[var(--color-sun-ink)]">{p.role[lang]}{p.room && <span class="text-[var(--color-ink-soft)]"> · {p.room}</span>}</p>
             <p class="mt-1 text-[0.875rem] text-[var(--color-ink-soft)]">{c.years(p.years)} · {p.languages[lang]}</p>
             <ul class="mt-4 flex flex-wrap gap-1.5" aria-label={lang === 'en' ? 'Credentials' : 'Credenciales'}>
-              {p.credentials.map((cr) => <li class="rounded-full bg-[var(--color-sage-soft)] px-2.5 py-1 text-[0.75rem] font-semibold">{cr}</li>)}
+              {p.credentials.map((cr) => <li class="rounded-full bg-[var(--color-sage-soft)] px-2.5 py-1 text-[0.75rem] font-semibold">{lang === 'es' ? (CREDENTIAL_ES[cr] ?? cr) : cr}</li>)}
             </ul>
             <blockquote class="mt-5 flex-1 border-l-2 border-[var(--color-apricot)] pl-4 font-display text-[1.125rem] leading-snug" style="font-style:italic">“{p.quote[lang]}”</blockquote>
             <details class="group/d mt-5 rounded-2xl bg-[var(--color-paper)] [&_summary::-webkit-details-marker]:hidden">

@@ -12,7 +12,7 @@ const T = {
     program: 'Program', days: 'Days per week', remove: 'Remove', add: 'Add a sibling',
     perMonth: 'Estimated monthly tuition', weekly: 'per week', annual: 'per year',
     breakdown: 'How we got there', discount: 'Sibling discount (10%)', fees: 'One-time & annual fees',
-    reg: 'Registration (due only when a space is accepted)', materials: 'Annual materials fee',
+    reg: 'Registration (due only when a space is accepted)', materials: 'Annual materials fee (per child)',
     sample: 'Sample rates for a fictional center', join: 'Join the waitlist', tour: 'Book a tour',
     note: 'Discount applies to each additional child; the highest tuition is charged in full.',
     d: (n: number) => `${n} days`,
@@ -22,7 +22,7 @@ const T = {
     program: 'Programa', days: 'Días por semana', remove: 'Quitar', add: 'Agregar un hermano',
     perMonth: 'Colegiatura mensual estimada', weekly: 'por semana', annual: 'por año',
     breakdown: 'Cómo se calcula', discount: 'Descuento de hermanos (10 %)', fees: 'Cuotas únicas y anuales',
-    reg: 'Inscripción (solo al aceptar un lugar)', materials: 'Cuota anual de materiales',
+    reg: 'Inscripción (solo al aceptar un lugar)', materials: 'Cuota anual de materiales (por niño)',
     sample: 'Tarifas de muestra de un centro ficticio', join: 'Únase a la lista de espera', tour: 'Agende una visita',
     note: 'El descuento aplica a cada hijo adicional; la colegiatura más alta se cobra completa.',
     d: (n: number) => `${n} días`,
@@ -71,6 +71,20 @@ export default function TuitionEstimator({ lang }: { lang: Lang }) {
     return { lines, discount, monthly, weekly: Math.round((monthly * 12) / TUITION.weeksPerYear), annual: monthly * 12 };
   }, [kids]);
   const shown = useCountUp(calc.monthly);
+  // On small screens the total lives below the inputs; keep it visible in a sticky bar meanwhile.
+  const inputsRef = useRef<HTMLDivElement>(null);
+  const totalRef = useRef<HTMLElement>(null);
+  const [showBar, setShowBar] = useState(false);
+  useEffect(() => {
+    if (!('IntersectionObserver' in window) || !inputsRef.current || !totalRef.current) return;
+    let inputs = false, total = false;
+    const io = new IntersectionObserver((es) => {
+      es.forEach((e) => { if (e.target === inputsRef.current) inputs = e.isIntersecting; else total = e.isIntersecting; });
+      setShowBar(inputs && !total);
+    });
+    io.observe(inputsRef.current); io.observe(totalRef.current);
+    return () => io.disconnect();
+  }, []);
 
   const update = (key: number, patch: Partial<Child>) => setKids((ks) => ks.map((k) => (k.key === key ? { ...k, ...patch } : k)));
   const add = () => setKids((ks) => (ks.length >= 4 ? ks : [...ks, { key: nextKey.current++, program: 'preschool', days: 5 }]));
@@ -78,7 +92,7 @@ export default function TuitionEstimator({ lang }: { lang: Lang }) {
 
   return (
     <div class="grid gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
-      <div class="space-y-4">
+      <div ref={inputsRef} class="space-y-4">
         {kids.map((k, i) => (
           <fieldset key={k.key} class="paper p-5 sm:p-6">
             <legend class="sr-only">{t.child(i + 1)}</legend>
@@ -94,7 +108,7 @@ export default function TuitionEstimator({ lang }: { lang: Lang }) {
               <div>
                 <label class="field-label" for={`prog-${k.key}`}>{t.program}</label>
                 <select id={`prog-${k.key}`} class="field-input" value={k.program} onChange={(e) => update(k.key, { program: (e.target as HTMLSelectElement).value as ProgramId })}>
-                  {PROGRAMS.map((p) => <option key={p.id} value={p.id}>{p.room} · {p.name[lang]} ({p.ages[lang]})</option>)}
+                  {PROGRAMS.map((p) => <option key={p.id} value={p.id}>{p.room} · {p.name[lang]}</option>)}
                 </select>
               </div>
               <div role="radiogroup" aria-labelledby={`days-${k.key}`}>
@@ -118,7 +132,7 @@ export default function TuitionEstimator({ lang }: { lang: Lang }) {
         )}
       </div>
 
-      <aside class="on-dark grain overflow-hidden rounded-[1.75rem] bg-[var(--color-ink)] text-[var(--color-cream)] lg:sticky lg:top-28" aria-labelledby="est-total-label">
+      <aside ref={totalRef} data-fab-avoid class="on-dark grain overflow-hidden rounded-[1.75rem] bg-[var(--color-ink)] text-[var(--color-cream)] lg:sticky lg:top-28" aria-labelledby="est-total-label">
         <div class="relative z-[2] p-6 sm:p-8">
           <p id="est-total-label" class="eyebrow">{t.perMonth}</p>
           <p class="mt-3 font-display text-[clamp(3rem,7vw,4.5rem)] leading-none tabular-nums" style="font-weight:420" aria-hidden="true">{fmtMoney(shown, lang)}</p>
@@ -155,6 +169,15 @@ export default function TuitionEstimator({ lang }: { lang: Lang }) {
           </div>
         </div>
       </aside>
+      <a
+        href="#est-total-label"
+        aria-hidden={!showBar}
+        tabIndex={showBar ? 0 : -1}
+        class={`fixed inset-x-3 bottom-3 z-30 flex items-center justify-between gap-3 rounded-2xl bg-[var(--color-ink)] py-3 pr-20 pl-5 text-[var(--color-cream)] shadow-[0_18px_40px_-16px_rgb(31_58_51/.8)] transition-[transform,opacity] duration-300 lg:hidden ${showBar ? 'opacity-100' : 'pointer-events-none translate-y-6 opacity-0'}`}
+      >
+        <span class="text-[0.8125rem] font-semibold">{t.perMonth}</span>
+        <span class="font-display text-[1.5rem] tabular-nums" style="font-weight:450">{fmtMoney(shown, lang)}</span>
+      </a>
     </div>
   );
 }

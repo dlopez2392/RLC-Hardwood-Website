@@ -160,8 +160,8 @@ export const FAQ: FaqItem[] = [
     id: 'tour', category: 'enrollment', source: 'tour',
     q: { en: 'Can I visit before enrolling?', es: '¿Puedo visitar antes de inscribir a mi hijo?' },
     a: {
-      en: 'Please do. Tours run Tuesday through Thursday at 9:30 and 10:30 a.m. (when classrooms are busiest) and 4:00 p.m. They take about 45 minutes, and your child is welcome. Virtual tours are available too. Book in three taps on our Tour page.',
-      es: '¡Claro que sí! Las visitas son de martes a jueves a las 9:30 y 10:30 a. m. (cuando los salones están más activos) y a las 4:00 p. m. Duran unos 45 minutos, y su hijo es bienvenido. También hay visitas virtuales. Agéndela en tres pasos en nuestra página de Visitas.',
+      en: 'Tours run Tuesday through Thursday at 9:30 and 10:30 a.m. (when classrooms are busiest) and 4:00 p.m.; we are closed on weekends. They take about 45 minutes, and your child is welcome to come. Virtual tours are available too. Book in three taps on our Tour page.',
+      es: 'Las visitas son de martes a jueves a las 9:30 y 10:30 a. m. (cuando los salones están más activos) y a las 4:00 p. m.; los fines de semana está cerrado. Duran unos 45 minutos, y su hijo es bienvenido. También hay visitas virtuales. Agéndela en tres pasos en nuestra página de Visitas.',
     },
     keywords: ['tour', 'visit', 'see', 'look around', 'appointment', 'virtual', 'book', 'schedule a tour', 'visita', 'visitar', 'conocer', 'cita', 'agendar', 'recorrido'],
   },

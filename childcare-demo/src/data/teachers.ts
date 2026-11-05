@@ -23,6 +23,29 @@ export interface Teacher {
 }
 
 /** Fictional staff. Credentials are realistic in form, invented in fact. */
+/** Spanish renderings of credentials (degree abbreviations and program names stay as issued). */
+export const CREDENTIAL_ES: Record<string, string> = {
+  'CPR / First Aid': 'RCP / Primeros auxilios',
+  'M.Ed. Early Childhood': 'Maestría en Educación Temprana (M.Ed.)',
+  'Texas Director Credential': 'Credencial de Directora de Texas',
+  'CDA, Infant/Toddler': 'CDA, bebés y niños pequeños',
+  'RIE Foundations': 'Fundamentos RIE',
+  'Safe Sleep certified': 'Certificada en sueño seguro',
+  'B.S. Human Development': 'Lic. en Desarrollo Humano',
+  'B.A. Child Development': 'Lic. en Desarrollo Infantil',
+  'Reggio Emilia study tour': 'Viaje de estudio a Reggio Emilia',
+  'B.A. Early Childhood Ed.': 'Lic. en Educación Temprana',
+  'Texas EC-6 Certified': 'Certificación EC-6 de Texas',
+  'B.F.A. Studio Art': 'Lic. en Artes Plásticas',
+  'Forest School Leader, Level 3': 'Líder de Forest School, nivel 3',
+  'Wilderness First Aid': 'Primeros auxilios en la naturaleza',
+  'Registered Nurse (BSN)': 'Enfermera titulada (BSN)',
+  'Pediatric First Aid Instructor': 'Instructora de primeros auxilios pediátricos',
+  'Allergy & Anaphylaxis trainer': 'Capacitadora en alergias y anafilaxia',
+  'ServSafe Manager': 'Gerente certificada ServSafe',
+  'Pediatric nutrition course': 'Curso de nutrición pediátrica',
+};
+
 export const TEACHERS: Teacher[] = [
   {
     name: 'Elena Ruiz-Whitaker',

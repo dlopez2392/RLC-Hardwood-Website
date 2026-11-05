@@ -56,7 +56,12 @@ const hours = DAY.map((d) => d.hour);
         <div class="sticky top-[6.5rem] pb-10">
           <div class="relative mx-auto max-w-[30rem]">
             <div class="grain relative aspect-[600/680] rounded-t-full" data-sky style="--sun-x: 120px; --sun-y: 420px; --sky-top:#F6C49A; --sky-bottom:#FBF6EE">
-              <HeroScene label={c.scene} />
+              <HeroScene label={c.scene} bare />
+              <div class="absolute inset-x-[10%] bottom-[16%] z-[2] aspect-square" aria-hidden="true">
+                {DAY.map((d, i) => (
+                  <div class:list={['day-big absolute inset-0 transition-[opacity,transform] duration-700', i !== 0 && 'opacity-0 translate-y-3']} data-big={d.id}><Illo name={d.scene} class="h-full w-full" /></div>
+                ))}
+              </div>
             </div>
             <div class="paper relative z-[3] -mt-14 mx-6 flex items-center gap-4 p-4">
               <div class="relative size-20 shrink-0">
@@ -123,6 +128,7 @@ const hours = DAY.map((d) => d.hour);
     const clock = root.querySelector<HTMLElement>('[data-clock]');
     const title = root.querySelector<HTMLElement>('[data-active-title]');
     const scenes = [...root.querySelectorAll<HTMLElement>('[data-scene]')];
+    const bigs = [...root.querySelectorAll<HTMLElement>('[data-big]')];
     const chapters = [...root.querySelectorAll<HTMLElement>('.day-chapter')];
     const rail = document.querySelector<HTMLElement>('.day-rail');
     const railTime = rail?.querySelector<HTMLElement>('[data-rail-time]');
@@ -130,18 +136,22 @@ const hours = DAY.map((d) => d.hour);
     const first = hours[0] ?? 7, last = 18;
     let active = 0;
 
+    // The sun and sky move continuously; the clock always shows the active chapter's own time.
+    const times = chapters.map((ch) => ch.querySelector('span')?.textContent ?? '');
     const setHour = (h: number) => {
       if (sky) applySky(sky, h);
-      const hh = Math.floor(h), mm = Math.floor(((h - hh) * 60) / 5) * 5;
-      const label = `${((hh + 11) % 12) + 1}:${String(mm).padStart(2, '0')}`;
-      if (clock) clock.textContent = label;
-      if (railTime) railTime.textContent = label;
       rail?.style.setProperty('--p', `${((h - first) / (last - first)) * 100}%`);
+    };
+    const setClock = (i: number) => {
+      if (clock) clock.textContent = times[i] ?? '';
+      if (railTime) railTime.textContent = times[i] ?? '';
     };
     const setActive = (i: number) => {
       if (i === active) return;
       active = i;
+      setClock(i);
       scenes.forEach((s, j) => s.classList.toggle('opacity-0', j !== i));
+      bigs.forEach((s, j) => { s.classList.toggle('opacity-0', j !== i); s.classList.toggle('translate-y-3', j !== i); });
       if (title) title.textContent = chapters[i]?.querySelector('h2')?.textContent ?? '';
     };
 
@@ -175,5 +185,6 @@ const hours = DAY.map((d) => d.hour);
       );
     }
     setHour(first);
+    setClock(0);
   }
 </script>

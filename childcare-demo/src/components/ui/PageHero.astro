@@ -11,7 +11,14 @@ const { eyebrow, title, lede, illo, tone = 'var(--color-paper)', id = 'page-titl
       {lede && <p class="lede mt-6 max-w-2xl">{lede}</p>}
       <slot />
     </div>
-    {illo && <div class="hidden size-48 md:block lg:size-60" aria-hidden="true"><Illo name={illo} class="h-full w-full" /></div>}
+    {illo && (
+      <div class="relative hidden aspect-[4/5] w-56 overflow-hidden rounded-t-full border-[5px] border-[var(--color-ink)] bg-[var(--color-cream)] shadow-[var(--shadow-lift)] md:block lg:w-72" aria-hidden="true">
+        <div class="absolute inset-x-0 bottom-0 h-[38%] bg-[var(--color-sage)]"></div>
+        <div class="absolute inset-x-0 bottom-0 h-[22%] bg-[var(--color-moss)]"></div>
+        <div class="absolute top-[14%] right-[16%] size-12 rounded-full bg-[var(--color-sun)] opacity-90"></div>
+        <div class="absolute inset-x-[12%] bottom-[10%] aspect-square"><Illo name={illo} class="h-full w-full" /></div>
+      </div>
+    )}
   </div>
   <svg class="block w-full text-[var(--color-cream)]" viewBox="0 0 1440 40" preserveAspectRatio="none" aria-hidden="true" height="28"><path d="M0 40V22c120-14 260-20 420-12s300 18 460 10 360-26 560-8v28Z" fill="currentColor" /></svg>
 </section>

@@ -1,4 +1,8 @@
 /** Mock tour availability shared by the home personaliser and the scheduler. */
+import { EVENTS } from '@/data/calendar';
+
+const CLOSED = EVENTS.filter((e) => e.kind === 'closed').map((e) => [e.date, e.end ?? e.date] as const);
+export const isClosed = (d: Date) => { const k = isoDay(d); return CLOSED.some(([a, b]) => k >= a && k <= b); };
 export const TOUR_TIMES = ['9:30', '10:30', '16:00'] as const;
 export type TourTime = (typeof TOUR_TIMES)[number];
 export const TOUR_DAYS = [2, 3, 4]; // Tue, Wed, Thu
@@ -14,7 +18,7 @@ export function upcomingTourDays(from = new Date(), count = 10): Date[] {
   const out: Date[] = [];
   const d = new Date(from.getFullYear(), from.getMonth(), from.getDate() + 1);
   while (out.length < count) {
-    if (TOUR_DAYS.includes(d.getDay())) out.push(new Date(d));
+    if (TOUR_DAYS.includes(d.getDay()) && !isClosed(d)) out.push(new Date(d));
     d.setDate(d.getDate() + 1);
   }
   return out;
@@ -34,5 +38,5 @@ export const fmtTime = (t: TourTime, lang: 'en' | 'es') => {
 };
 
 /** yyyy-mm-dd in local time (toISOString would shift the day in some timezones). */
-export const isoDay = (d: Date) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+export function isoDay(d: Date) { return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; }
 export const parseIsoDay = (s: string) => { const [y, m, d] = s.split('-').map(Number) as [number, number, number]; return new Date(y, m - 1, d); };

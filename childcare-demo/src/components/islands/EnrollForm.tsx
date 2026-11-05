@@ -51,10 +51,12 @@ export default function EnrollForm({ lang }: { lang: Lang }) {
   const touched = useRef(false);
 
   useEffect(() => { const s = suggest(v.dob); if (s) setV((x) => ({ ...x, program: s })); }, [v.dob]);
-  useEffect(() => { if (Object.keys(errors).length) summary.current?.focus(); }, [errors]);
   useEffect(() => { if (touched.current) heading.current?.focus(); touched.current = true; }, [step, done]);
 
-  const set = (k: keyof typeof v) => (e: Event) => setV((x) => ({ ...x, [k]: (e.target as HTMLInputElement).value }));
+  const set = (k: keyof typeof v) => (e: Event) => {
+    setV((x) => ({ ...x, [k]: (e.target as HTMLInputElement).value }));
+    setErrors((er) => { if (!(k in er)) return er; const n = { ...er }; delete n[k as Field]; return n; });
+  };
 
   const validate = (s: number): Errors => {
     const e: Errors = {};
@@ -73,7 +75,7 @@ export default function EnrollForm({ lang }: { lang: Lang }) {
     e.preventDefault();
     const errs = validate(step);
     setErrors(errs);
-    if (Object.keys(errs).length) return;
+    if (Object.keys(errs).length) { requestAnimationFrame(() => summary.current?.focus()); return; }
     if (step === 0) { setStep(1); return; }
     setDone(`SR-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`);
   };
@@ -103,7 +105,7 @@ export default function EnrollForm({ lang }: { lang: Lang }) {
   }
 
   return (
-    <form noValidate onSubmit={onSubmit} class="paper p-6 sm:p-9">
+    <form noValidate onSubmit={onSubmit} data-fab-avoid class="paper p-6 sm:p-9">
       <div class="flex items-center gap-3" aria-hidden="true">
         {t.steps.map((s, i) => (
           <div key={s} class="flex flex-1 items-center gap-2">

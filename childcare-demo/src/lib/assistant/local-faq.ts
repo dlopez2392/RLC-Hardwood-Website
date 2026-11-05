@@ -114,6 +114,11 @@ export const localFaqProvider: AssistantProvider = {
     if (THANKS.test(f) && f.split(' ').length <= 4) { yield* stream(c.thanks, ctx); return; }
 
     const results = search(question);
+    // Weekend questions: the truthful answer is always "we're closed", whatever else matches.
+    if (/\b(saturday|sunday|weekend|weekends|sabado|sabados|domingo|domingos|fin de semana|fines de semana)\b/.test(f)) {
+      const hours = results.find((r) => r.item.id === 'hours') ?? { item: FAQ.find((x) => x.id === 'hours')!, score: 9, coverage: 1 };
+      results.unshift(hours);
+    }
     const top = results[0];
     // Decline rather than guess: low score, or the best answer ignores most of the question
     // (e.g. "can I bring a puppy to the tour" matches "tour" but nothing about pets).

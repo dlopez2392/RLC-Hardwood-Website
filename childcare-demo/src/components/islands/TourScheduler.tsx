@@ -67,6 +67,7 @@ export default function TourScheduler({ lang }: { lang: Lang }) {
     if (qt && (TOUR_TIMES as readonly string[]).includes(qt)) setTime(qt);
   }, []);
   useEffect(() => { if (booked) doneRef.current?.focus(); }, [booked]);
+  useEffect(() => { setError(''); }, [date, time, name, email]);
 
   const dateObj = date ? parseIsoDay(date) : null;
   const longDate = dateObj ? new Intl.DateTimeFormat(locale, { weekday: 'long', month: 'long', day: 'numeric' }).format(dateObj) : '';
@@ -107,7 +108,7 @@ export default function TourScheduler({ lang }: { lang: Lang }) {
   }
 
   return (
-    <form noValidate onSubmit={submit} class="grid gap-6 lg:grid-cols-[1.25fr_0.75fr] lg:items-start [&>*]:min-w-0">
+    <form noValidate onSubmit={submit} data-fab-avoid class="grid gap-6 lg:grid-cols-[1.25fr_0.75fr] lg:items-start [&>*]:min-w-0">
       <div class="space-y-6">
         <fieldset class="paper p-5 sm:p-7">
           <legend class="float-left mb-4 flex w-full items-center gap-3 font-display text-[1.5rem]" style="font-weight:450">

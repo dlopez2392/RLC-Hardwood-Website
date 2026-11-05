@@ -97,3 +97,26 @@ The review also caught *Prekínder* leaking into three English strings, which ha
 - Overflow: none on 21 routes × 4 widths.
 - axe: 0 violations on 21 routes × 2 widths.
 - Assistant: 9/9 test questions answered correctly or declined appropriately.
+
+## 5. Final cold review (full site, independent agent) and resolution
+
+Reviewer's first-5-seconds verdict at 1440 px: *"It lands… boutique, not template."*
+
+| Finding | Resolution | Verified |
+|---|---|---|
+| Thanksgiving (Nov 26) was bookable while the calendar said "Closed" | Tour days now exclude every `closed` event from the shared calendar | Nov 26 absent from the date strip |
+| "Choose a day and time first" stayed visible after choosing | The hint clears whenever date, time, name or email change | Hint count 1 → 0 |
+| Waitlist errors stayed after fields were fixed; focus did not move on an empty submit | Errors clear per field on input; focus moves to the error summary on submit | Both pass |
+| Assistant (ES) answered yes to "¿Tienen visitas los sábados?" | Weekend questions route to the hours answer ("closed weekends"); the tour answer no longer opens with an unconditional yes | Returns the hours/closed answer |
+| "Reggio Emilia study tour" left in English on `/es/maestros/` | All 19 credentials have Spanish renderings | No English credentials remain |
+| Day clock (7:10, 8:40…) disagreed with the chapter badges | The sun moves continuously; the clock shows the active chapter's own time | 4/4 chapters match |
+| Materials fee doubled with a sibling but was labelled annual | Labelled "per child"; footnote reads "per family / per child, per year" | — |
+| Day story reused one scene for all chapters | Each chapter's scene now fills the arch and crossfades | Screenshot reviewed |
+| Interior heroes had a small spot icon and empty space | Framed arch vignettes (sky, hills, sun) at 224–288 px | Screenshot reviewed |
+| Floating assistant covered CTAs and form submits | Fades out of the way over the footer, CTA bands, forms and the estimator total | Opacity 0 over the CTA band |
+| On mobile the estimator total was only visible after all inputs | Sticky total bar while the inputs are on screen; shorter select labels | — |
+
+Post-fix regression:
+- No overflow on 21 routes × 4 widths.
+- axe: 0 violations.
+- Lighthouse mobile 100 · 100 · 100 · 100 (CLS 0) on `/`, `/a-day/`, `/tuition/`, `/tour/` and `/safety/`.

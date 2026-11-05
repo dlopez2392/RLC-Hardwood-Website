@@ -24,7 +24,7 @@ export default function ContactForm({ lang }: { lang: Lang }) {
     <div class="paper p-8 text-center"><p ref={doneRef} tabIndex={-1} class="font-display text-[1.75rem] outline-none">{t.done}</p><p class="mt-3 text-[0.875rem] text-[var(--color-ink-soft)]">{t.demo}</p></div>
   );
   return (
-    <form noValidate onSubmit={submit} class="paper space-y-5 p-6 sm:p-9">
+    <form noValidate onSubmit={submit} data-fab-avoid class="paper space-y-5 p-6 sm:p-9">
       <h2 class="text-[2rem]">{t.title}</h2>
       <div class="grid gap-5 sm:grid-cols-2">
         <div><label class="field-label" for="c-name">{t.name}</label><input id="c-name" class="field-input" autoComplete="name" value={v.name} onInput={set('name')} aria-invalid={err && !v.name.trim() ? 'true' : undefined} /></div>

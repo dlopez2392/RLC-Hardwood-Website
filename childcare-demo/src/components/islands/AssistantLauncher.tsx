@@ -28,6 +28,20 @@ export default function AssistantLauncher({ lang }: { lang: Lang }) {
   };
   const openPanel = async (q?: string) => { setInitial(q); await load(); setOpen(true); };
 
+  // Step aside (fade out) while the footer, a CTA band or a form's submit area is on screen.
+  const [aside, setAside] = useState(false);
+  useEffect(() => {
+    const targets = document.querySelectorAll('footer, [data-fab-avoid]');
+    if (!targets.length || !('IntersectionObserver' in window)) return;
+    const seen = new Set<Element>();
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => (e.isIntersecting ? seen.add(e.target) : seen.delete(e.target)));
+      setAside(seen.size > 0);
+    }, { rootMargin: '0px 0px -40px 0px' });
+    targets.forEach((t) => io.observe(t));
+    return () => io.disconnect();
+  }, []);
+
   // Any element with [data-ask] (e.g. FAQ page buttons) can open the assistant with a question.
   useEffect(() => {
     const onClick = (e: Event) => {
@@ -51,7 +65,9 @@ export default function AssistantLauncher({ lang }: { lang: Lang }) {
         onFocus={() => void load()}
         aria-expanded={open}
         aria-haspopup="dialog"
-        class="assistant-fab group fixed right-4 bottom-4 z-40 inline-flex min-h-14 items-center gap-2.5 rounded-full bg-[var(--color-ink)] p-2 sm:pr-5 text-[var(--color-cream)] shadow-[0_18px_40px_-16px_rgb(31_58_51/.7)] ring-2 ring-[rgb(251_246_238/.55)] transition-transform duration-300 hover:-translate-y-0.5 sm:right-6 sm:bottom-6"
+        tabIndex={aside && !open ? -1 : 0}
+        aria-hidden={aside && !open ? true : undefined}
+        class={`assistant-fab group fixed right-4 bottom-4 z-40 inline-flex min-h-14 items-center gap-2.5 rounded-full bg-[var(--color-ink)] p-2 text-[var(--color-cream)] shadow-[0_18px_40px_-16px_rgb(31_58_51/.7)] ring-2 ring-[rgb(251_246_238/.55)] transition-[transform,opacity] duration-300 sm:right-6 sm:bottom-6 sm:pr-5 ${aside && !open ? 'pointer-events-none translate-y-6 opacity-0' : 'opacity-100 hover:-translate-y-0.5'}`}
       >
         <span class="relative inline-flex size-10 items-center justify-center rounded-full bg-[var(--color-sun)]">
           <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
