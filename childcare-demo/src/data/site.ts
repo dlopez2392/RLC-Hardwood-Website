@@ -56,7 +56,7 @@ export const INCLUDED: Bi<string[]> = {
 };
 
 export interface Story {
-  family: string;
+  family: Bi<string>;
   child: Bi<string>;
   since: Bi<string>;
   quote: Bi<string>;
@@ -67,7 +67,7 @@ export interface Story {
 /** SAMPLE family stories — fictional families, clearly labelled. */
 export const STORIES: Story[] = [
   {
-    family: 'The Okonkwo-García family',
+    family: { en: 'The Okonkwo-García family', es: 'Familia Okonkwo-García' },
     child: { en: 'Ada, Larks room', es: 'Ada, salón Larks' },
     since: { en: 'Families since 2023', es: 'Familia desde 2023' },
     pull: { en: '“I know what she ate, how long she slept, and what made her laugh.”', es: '“Sé qué comió, cuánto durmió y qué la hizo reír.”' },
@@ -78,7 +78,7 @@ export const STORIES: Story[] = [
     tone: '#E7EDDD',
   },
   {
-    family: 'Marisol & Dev Patel-Ruiz',
+    family: { en: 'Marisol & Dev Patel-Ruiz', es: 'Marisol y Dev Patel-Ruiz' },
     child: { en: 'Theo, Wrens room', es: 'Theo, salón Wrens' },
     since: { en: 'Families since 2025', es: 'Familia desde 2025' },
     pull: { en: '“They followed our feeding schedule from day one.”', es: '“Siguieron nuestro horario de comidas desde el primer día.”' },
@@ -89,7 +89,7 @@ export const STORIES: Story[] = [
     tone: '#F2CDBF',
   },
   {
-    family: 'The Whitaker family',
+    family: { en: 'The Whitaker family', es: 'Familia Whitaker' },
     child: { en: 'June & Wes, Kestrels and Swifts', es: 'June y Wes, salones Kestrels y Swifts' },
     since: { en: 'Families since 2021', es: 'Familia desde 2021' },
     pull: { en: '“June walked into kindergarten like she owned the place.”', es: '“June entró al kínder como si fuera su casa.”' },

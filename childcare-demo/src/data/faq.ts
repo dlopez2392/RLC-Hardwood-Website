@@ -35,7 +35,7 @@ export const FAQ: FaqItem[] = [
     q: { en: 'What are your teacher-to-child ratios?', es: '¿Cuántos niños hay por maestro?' },
     a: {
       en: 'Ours are well below Texas minimums: 1:3 for infants (Texas allows 1:4), 1:4 for toddlers (Texas: 1:5), 1:7 for preschool (Texas: 1:11), 1:9 for Pre-K (Texas: 1:18) and 1:12 for school-age (Texas: 1:22). Floaters cover breaks, so ratios hold all day.',
-      es: 'Están muy por debajo del mínimo de Texas: 1:3 en bebés (Texas permite 1:4), 1:4 en niños pequeños (Texas: 1:5), 1:7 en preescolar (Texas: 1:11), 1:9 en Pre-K (Texas: 1:18) y 1:12 en edad escolar (Texas: 1:22). Contamos con maestras de apoyo para los descansos, así que la proporción se mantiene todo el día.',
+      es: 'Están muy por debajo del mínimo de Texas: 1:3 en bebés (Texas permite 1:4), 1:4 en niños pequeños (Texas: 1:5), 1:7 en preescolar (Texas: 1:11), 1:9 en Prekínder (Texas: 1:18) y 1:12 en edad escolar (Texas: 1:22). Contamos con maestras de apoyo para los descansos, así que la proporción se mantiene todo el día.',
     },
     keywords: ['ratio', 'ratios', 'teachers', 'children', 'per', 'staff', 'class size', 'group', 'proporción', 'maestros', 'niños', 'cuántos', 'grupo', 'tamaño'],
   },
@@ -44,7 +44,7 @@ export const FAQ: FaqItem[] = [
     q: { en: 'How much is tuition?', es: '¿Cuánto cuesta la colegiatura?' },
     a: {
       en: 'Full-time (5-day) sample rates are $1,980/month for infants, $1,840 for toddlers, $1,560 for preschool, $1,420 for Pre-K and $640 for after-school. Part-time options run from 2 to 4 days. Siblings get 10% off. Meals, diapers and enrichment are included. Try the estimator on our Tuition page.',
-      es: 'Las tarifas de muestra de tiempo completo (5 días) son $1,980 al mes para bebés, $1,840 para niños pequeños, $1,560 para preescolar, $1,420 para Pre-K y $640 para después de clases. Hay opciones de medio tiempo de 2 a 4 días. Los hermanos reciben 10 % de descuento. Las comidas, los pañales y las actividades de enriquecimiento están incluidos. Pruebe la calculadora en nuestra página de Colegiatura.',
+      es: 'Las tarifas de muestra de tiempo completo (5 días) son $1,980 al mes para bebés, $1,840 para niños pequeños, $1,560 para preescolar, $1,420 para Prekínder y $640 para después de clases. Hay opciones de medio tiempo de 2 a 4 días. Los hermanos reciben 10 % de descuento. Las comidas, los pañales y las actividades de enriquecimiento están incluidos. Pruebe la calculadora en nuestra página de Colegiatura.',
     },
     keywords: ['tuition', 'cost', 'price', 'how much', 'fee', 'fees', 'monthly', 'pay', 'expensive', 'rate', 'colegiatura', 'costo', 'precio', 'cuánto', 'cuesta', 'cuota', 'mensual', 'pagar'],
   },
@@ -134,7 +134,7 @@ export const FAQ: FaqItem[] = [
     q: { en: 'What curriculum do you use?', es: '¿Qué plan de estudios usan?' },
     a: {
       en: 'Our approach is Reggio-inspired and play-based, aligned with the Texas Prekindergarten Guidelines. Projects grow from children’s questions; teachers plan intentionally for language, math, science, art and social-emotional growth. Pre-K includes a kindergarten-readiness portfolio.',
-      es: 'Nuestro enfoque se inspira en Reggio Emilia y se basa en el juego, alineado con las Guías de Prekínder de Texas. Los proyectos nacen de las preguntas de los niños; las maestras planean con intención el lenguaje, las matemáticas, la ciencia, el arte y el desarrollo socioemocional. En Pre-K incluimos un portafolio de preparación para el kínder.',
+      es: 'Nuestro enfoque se inspira en Reggio Emilia y se basa en el juego, alineado con las Guías de Prekínder de Texas. Los proyectos nacen de las preguntas de los niños; las maestras planean con intención el lenguaje, las matemáticas, la ciencia, el arte y el desarrollo socioemocional. En Prekínder incluimos un portafolio de preparación para el kínder.',
     },
     keywords: ['curriculum', 'learn', 'learning', 'reggio', 'montessori', 'play-based', 'academic', 'kindergarten', 'ready', 'readiness', 'plan de estudios', 'aprender', 'aprendizaje', 'juego', 'kínder', 'preparación'],
   },
@@ -179,7 +179,7 @@ export const FAQ: FaqItem[] = [
     q: { en: 'What ages do you serve?', es: '¿Qué edades atienden?' },
     a: {
       en: 'From 6 weeks to 10 years: Infants (6 weeks–12 months), Toddlers (12–24 months), Preschool (2–4 years), Pre-K (4–5 years), and After-School & Summer (5–10 years).',
-      es: 'Desde las 6 semanas hasta los 10 años: Bebés (6 semanas a 12 meses), Niños pequeños (12 a 24 meses), Preescolar (2 a 4 años), Pre-K (4 a 5 años) y Después de clases y verano (5 a 10 años).',
+      es: 'Desde las 6 semanas hasta los 10 años: Bebés (6 semanas a 12 meses), Niños pequeños (12 a 24 meses), Preescolar (2 a 4 años), Prekínder (4 a 5 años) y Después de clases y verano (5 a 10 años).',
     },
     keywords: ['age', 'ages', 'old', 'infant', 'baby', 'toddler', 'preschool', 'pre-k', 'school-age', 'after school', 'summer', 'edad', 'edades', 'bebé', 'años', 'meses', 'verano'],
   },

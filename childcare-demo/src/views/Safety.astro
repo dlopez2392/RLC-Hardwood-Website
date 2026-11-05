@@ -1,0 +1,170 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/ui/PageHero.astro';
+import Illo from '@/components/brand/Illo.astro';
+import CtaBand from '@/components/sections/CtaBand.astro';
+import { PROGRAMS } from '@/data/programs';
+import { SITE } from '@/data/site';
+import { dict, ui, type Lang } from '@/i18n';
+import { breadcrumb } from '@/lib/schema';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = ui[lang];
+const c = dict(
+  {
+    title: 'Safety & Licensing', desc: 'Secure fingerprint entry, ratios well below Texas minimums, 100% CPR-certified staff, a step-by-step allergy protocol, safe sleep and our illness policy. (Fictional demo.)',
+    eyebrow: 'Safety & licensing', h1: 'Safety is a list of <em class="italic-sun">specific things we do</em>, every day.',
+    lede: '“Your child’s safety is our top priority” means nothing on its own. Here is exactly what we do, how often, and who checks.',
+    badge: { title: 'Licensed child care center', state: 'Texas Health & Human Services, Child Care Regulation', lic: 'License no.', placeholder: 'placeholder number for this demo', inspect: 'View state inspection history', inspectNote: 'Demo link: in production this would open the HHSC public record.', last: 'Last routine inspection', lastVal: 'September 2026: no deficiencies (sample)' },
+    ratioTitle: 'Ratios: ours vs. the Texas minimum',
+    ratioCaption: 'Children per teacher. Lower is better. We staff floaters so these hold through breaks and nap.',
+    cols: ['Room', 'Ages', 'Sunroom', 'Texas minimum', 'Max group'],
+    source: 'Texas minimums summarized from 26 TAC Chapter 746 (licensed centers), using the youngest age in each group. Confirm current HHSC rules before relying on these figures.',
+    cards: [
+      { illo: 'door', title: 'Secure entry & pick-up', items: ['Fingerprint entry for authorized adults only', 'Every pick-up checked against a photo-ID list you manage in the app', 'A two-adult rule for releasing a child to someone new', 'Cameras at entrances, hallways and the yard; interior windows in every room'] },
+      { illo: 'heart-hands', title: 'Trained hands', items: ['100% of staff hold pediatric CPR & First Aid, renewed every two years', 'A registered nurse on staff, Monday–Friday', 'Annual training in abuse prevention, safe sleep and medication handling', 'FBI fingerprint background checks for every employee and volunteer'] },
+      { illo: 'rest', title: 'Safe sleep', items: ['Infants always placed on their backs in a bare crib', 'Visual sleep checks every 10 minutes, logged', 'No blankets, bumpers or pillows under 12 months', 'Room temperature kept between 68 and 72 °F'] },
+      { illo: 'shield', title: 'Emergency ready', items: ['Monthly fire drills; shelter-in-place and lockdown drills every quarter', 'Go-bags with medical forms and medications for every room', 'A reunification site two blocks away, shared with families', 'Text alerts to families within 15 minutes of any incident'] },
+    ],
+    allergyTitle: 'Our allergy protocol, step by step',
+    allergy: [
+      ['Plan', 'Before day one, our RN reviews your child’s allergy action plan with you and your pediatrician’s orders.'],
+      ['Post', 'A photo allergy card goes up in the classroom, the kitchen and the go-bag. Substitutes read it at check-in.'],
+      ['Plate', 'Meals are prepared in a nut-free kitchen and served on color-coded plates, double-checked by the cook and the teacher.'],
+      ['Carry', 'Epinephrine travels with your child everywhere: the yard, walks, field trips. Two trained adults are always nearby.'],
+      ['Act', 'If a reaction occurs: epinephrine first, then 911, then you. We drill this scenario twice a year.'],
+    ],
+    illnessTitle: 'Illness policy',
+    illnessLede: 'Keeping one sick child home keeps twelve healthy children in school. Children stay home, or go home, with:',
+    illness: ['Fever of 100.4 °F or higher', 'Vomiting or diarrhea (two or more episodes)', 'A rash with fever or behavior change', 'Eye discharge with redness (until evaluated)', 'Any illness that keeps them from joining the day'],
+    returnRule: 'Return after 24 hours symptom-free without fever-reducing medicine. If symptoms start here, your child rests with our nurse in a quiet room and we ask for pick-up within an hour.',
+  },
+  {
+    title: 'Seguridad y licencia', desc: 'Entrada segura con huella digital, proporciones muy por debajo del mínimo de Texas, personal 100 % certificado en RCP, protocolo de alergias paso a paso, sueño seguro y nuestra política de enfermedad. (Demo ficticio).',
+    eyebrow: 'Seguridad y licencia', h1: 'La seguridad es una lista de <em class="italic-sun">cosas concretas que hacemos</em>, todos los días.',
+    lede: '“La seguridad de su hijo es nuestra prioridad” no significa nada por sí solo. Esto es exactamente lo que hacemos, con qué frecuencia y quién lo revisa.',
+    badge: { title: 'Centro de cuidado infantil con licencia', state: 'Salud y Servicios Humanos de Texas, Regulación de Cuidado Infantil', lic: 'Licencia n.º', placeholder: 'número de muestra para este demo', inspect: 'Ver historial de inspecciones del estado', inspectNote: 'Enlace de demostración: en producción abriría el registro público de HHSC.', last: 'Última inspección de rutina', lastVal: 'Septiembre de 2026: sin deficiencias (muestra)' },
+    ratioTitle: 'Proporciones: las nuestras frente al mínimo de Texas',
+    ratioCaption: 'Niños por maestro. Menos es mejor. Contamos con maestras de apoyo para mantenerlas durante descansos y siestas.',
+    cols: ['Salón', 'Edades', 'Sunroom', 'Mínimo en Texas', 'Grupo máximo'],
+    source: 'Mínimos de Texas resumidos del Título 26, Capítulo 746 del Código Administrativo de Texas (centros con licencia), usando la edad menor de cada grupo. Confirme las reglas vigentes de HHSC antes de basarse en estas cifras.',
+    cards: [
+      { illo: 'door', title: 'Entrada y salida seguras', items: ['Entrada con huella digital solo para adultos autorizados', 'Cada salida se verifica con una lista de identificaciones con foto que usted maneja en la app', 'Regla de dos adultos para entregar a un niño a alguien nuevo', 'Cámaras en entradas, pasillos y patio; ventanas interiores en cada salón'] },
+      { illo: 'heart-hands', title: 'Manos capacitadas', items: ['100 % del personal con RCP pediátrica y primeros auxilios, renovados cada dos años', 'Una enfermera titulada en el personal, de lunes a viernes', 'Capacitación anual en prevención de abuso, sueño seguro y manejo de medicamentos', 'Revisión de antecedentes con huellas del FBI para cada empleado y voluntario'] },
+      { illo: 'rest', title: 'Sueño seguro', items: ['Los bebés siempre duermen boca arriba en una cuna sin objetos', 'Revisión visual del sueño cada 10 minutos, registrada', 'Sin cobijas, protectores ni almohadas antes de los 12 meses', 'Temperatura del salón entre 68 y 72 °F'] },
+      { illo: 'shield', title: 'Listos para emergencias', items: ['Simulacros de incendio mensuales; de refugio y encierro cada trimestre', 'Mochilas de emergencia con formularios médicos y medicamentos en cada salón', 'Un punto de reencuentro a dos cuadras, que conocen las familias', 'Alertas por mensaje a las familias en menos de 15 minutos ante cualquier incidente'] },
+    ],
+    allergyTitle: 'Nuestro protocolo de alergias, paso a paso',
+    allergy: [
+      ['Planear', 'Antes del primer día, nuestra enfermera revisa con usted el plan de acción para alergias y las indicaciones de su pediatra.'],
+      ['Publicar', 'Una tarjeta de alergias con foto se coloca en el salón, en la cocina y en la mochila de emergencia. Las suplentes la leen al llegar.'],
+      ['Servir', 'Las comidas se preparan en una cocina libre de nueces y se sirven en platos con código de color, revisados por la cocinera y la maestra.'],
+      ['Llevar', 'La epinefrina acompaña a su hijo a todas partes: el patio, los paseos y las excursiones. Siempre hay dos adultos capacitados cerca.'],
+      ['Actuar', 'Si hay una reacción: primero epinefrina, luego el 911 y después usted. Practicamos este escenario dos veces al año.'],
+    ],
+    illnessTitle: 'Política de enfermedad',
+    illnessLede: 'Mantener en casa a un niño enfermo mantiene en la escuela a doce niños sanos. Los niños se quedan en casa, o se van a casa, si tienen:',
+    illness: ['Fiebre de 100.4 °F o más', 'Vómito o diarrea (dos o más veces)', 'Sarpullido con fiebre o cambio de comportamiento', 'Secreción en los ojos con enrojecimiento (hasta ser evaluado)', 'Cualquier malestar que les impida participar en el día'],
+    returnRule: 'Regresan tras 24 horas sin síntomas y sin medicamento para la fiebre. Si los síntomas empiezan aquí, su hijo descansa con nuestra enfermera en un cuarto tranquilo y le pedimos recogerlo en menos de una hora.',
+  },
+)[lang];
+---
+<BaseLayout lang={lang} route="safety" title={c.title} description={c.desc} schema={[breadcrumb(Astro.site!, lang, 'safety', c.title)]}>
+  <PageHero eyebrow={c.eyebrow} title={c.h1} lede={c.lede} illo="shield" tone="var(--color-sky)" />
+
+  <section class="container-x pt-14" aria-labelledby="license-title">
+    <div class="grid overflow-hidden rounded-[1.75rem] border-2 border-dashed border-[rgb(31_58_51/.3)] bg-[#fffdf9] md:grid-cols-[auto_1fr]" data-reveal>
+      <div class="grid place-items-center bg-[var(--color-ink)] p-8 text-[var(--color-cream)]">
+        <svg width="132" height="132" viewBox="0 0 120 120" aria-hidden="true">
+          <circle cx="60" cy="60" r="56" fill="none" stroke="#F6C49A" stroke-width="2" stroke-dasharray="3 5" />
+          <circle cx="60" cy="60" r="44" fill="#F6C49A" />
+          <path d="M60 30l7 14 15 2-11 11 3 15-14-7-14 7 3-15-11-11 15-2Z" fill="#1F3A33" />
+          <text x="60" y="96" text-anchor="middle" font-size="9" font-weight="700" fill="#1F3A33" font-family="system-ui" letter-spacing="1">TEXAS</text>
+        </svg>
+      </div>
+      <div class="p-7 sm:p-9">
+        <span class="sample-badge">{t.sample}</span>
+        <h2 id="license-title" class="mt-3 text-[2rem]">{c.badge.title}</h2>
+        <p class="mt-1 text-[var(--color-ink-soft)]">{c.badge.state}</p>
+        <dl class="mt-5 grid gap-4 sm:grid-cols-2">
+          <div><dt class="text-[0.75rem] font-bold uppercase tracking-[0.1em] text-[var(--color-ink-soft)]">{c.badge.lic}</dt><dd class="mt-1 font-mono text-[1.375rem] font-bold tracking-wider">{SITE.license}</dd><dd class="text-[0.8125rem] text-[var(--color-ink-soft)]">{c.badge.placeholder}</dd></div>
+          <div><dt class="text-[0.75rem] font-bold uppercase tracking-[0.1em] text-[var(--color-ink-soft)]">{c.badge.last}</dt><dd class="mt-1 font-semibold">{c.badge.lastVal}</dd></div>
+        </dl>
+        <p class="mt-5 inline-flex items-center gap-2 rounded-full border border-dashed border-[rgb(31_58_51/.35)] px-4 py-2 font-semibold">{c.badge.inspect} <span aria-hidden="true">↗</span></p>
+        <p class="mt-2 text-[0.8125rem] text-[var(--color-ink-soft)]">{c.badge.inspectNote}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-y" aria-labelledby="ratio-title">
+    <div class="container-x">
+      <h2 id="ratio-title" class="display-md max-w-3xl" data-reveal>{c.ratioTitle}</h2>
+      <div class="paper mt-10 overflow-x-auto" data-reveal tabindex="0" role="region" aria-label={lang === 'en' ? 'Ratio comparison table (scrolls sideways on small screens)' : 'Tabla comparativa de proporciones (se desplaza en pantallas pequeñas)'}>
+        <table class="w-full min-w-[36rem] border-collapse text-left">
+          <caption class="px-6 pt-5 text-left text-[0.9375rem] text-[var(--color-ink-soft)]">{c.ratioCaption}</caption>
+          <thead>
+            <tr class="border-b border-[rgb(31_58_51/.12)] text-[0.75rem] uppercase tracking-[0.1em]">
+              {c.cols.map((h) => <th scope="col" class="px-6 py-4 font-bold">{h}</th>)}
+            </tr>
+          </thead>
+          <tbody>
+            {PROGRAMS.map((p) => (
+              <tr class="border-b border-[rgb(31_58_51/.08)] last:border-0">
+                <th scope="row" class="px-6 py-4 font-display text-[1.25rem] font-normal">{p.room} <span class="font-sans text-sm text-[var(--color-ink-soft)]">· {p.name[lang]}</span></th>
+                <td class="px-6 py-4">{p.ages[lang]}</td>
+                <td class="px-6 py-4"><span class="inline-flex items-center gap-2 font-bold"><span class="h-2 rounded-full bg-[var(--color-moss)]" style={`width:${p.ratio * 5}px`} aria-hidden="true"></span>1 : {p.ratio}</span></td>
+                <td class="px-6 py-4 text-[var(--color-ink-soft)]"><span class="inline-flex items-center gap-2"><span class="h-2 rounded-full bg-[var(--color-shadow)]" style={`width:${p.texasMin * 5}px`} aria-hidden="true"></span>1 : {p.texasMin}</span></td>
+                <td class="px-6 py-4">{p.groupMax}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-4 max-w-3xl text-[0.8125rem] text-[var(--color-ink-soft)]">{c.source}</p>
+    </div>
+  </section>
+
+  <section class="cv-auto bg-[var(--color-paper)] section-y" aria-label={lang === 'en' ? 'Safety practices' : 'Prácticas de seguridad'}>
+    <ul class="container-x grid gap-6 md:grid-cols-2">
+      {c.cards.map((card, i) => (
+        <li class="paper p-7 sm:p-8" data-reveal data-reveal-delay={(i % 2) * 90}>
+          <div class="flex items-center gap-4"><div class="size-16 shrink-0"><Illo name={card.illo as any} class="h-full w-full" /></div><h2 class="text-[1.75rem]">{card.title}</h2></div>
+          <ul class="mt-5 space-y-2.5">
+            {card.items.map((it) => <li class="flex gap-3"><svg class="mt-1 shrink-0" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#6F8A64" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" /></svg>{it}</li>)}
+          </ul>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="cv-auto section-y" aria-labelledby="allergy-title">
+    <div class="container-x">
+      <h2 id="allergy-title" class="display-md max-w-3xl" data-reveal>{c.allergyTitle}</h2>
+      <ol class="mt-12 grid gap-4 md:grid-cols-5">
+        {c.allergy.map(([h, b], i) => (
+          <li class="relative rounded-[var(--radius-paper)] bg-[var(--color-sage-soft)] p-6" data-reveal data-reveal-delay={i * 70}>
+            <span class="grid size-11 place-items-center rounded-full bg-[var(--color-ink)] font-bold text-[var(--color-cream)]" aria-hidden="true">{i + 1}</span>
+            <h3 class="mt-4 text-[1.5rem]"><span class="sr-only">{i + 1}. </span>{h}</h3>
+            <p class="mt-2 text-[0.9375rem]">{b}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section id="illness" class="cv-auto section-y bg-[var(--color-blush)]" aria-labelledby="illness-title">
+    <div class="container-x grid gap-10 lg:grid-cols-2">
+      <div data-reveal>
+        <h2 id="illness-title" class="display-md">{c.illnessTitle}</h2>
+        <p class="lede mt-5">{c.illnessLede}</p>
+      </div>
+      <div class="paper p-7 sm:p-8" data-reveal>
+        <ul class="space-y-3">
+          {c.illness.map((x) => <li class="flex gap-3 text-[1.0625rem]"><span class="mt-2 size-2.5 shrink-0 rounded-full bg-[var(--color-sun)]" aria-hidden="true"></span>{x}</li>)}
+        </ul>
+        <p class="mt-6 border-t border-[rgb(31_58_51/.12)] pt-5 font-semibold">{c.returnRule}</p>
+      </div>
+    </div>
+  </section>
+  <div class="pt-[var(--section-y)]"><CtaBand lang={lang} /></div>
+</BaseLayout>

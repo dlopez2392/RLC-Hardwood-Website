@@ -3,10 +3,10 @@ import { ui, type Lang } from '@/i18n';
 interface Props { lang: Lang }
 const t = ui[Astro.props.lang];
 ---
-<div class="bg-[var(--color-ink)] text-[var(--color-cream)] on-dark no-print" role="note">
+<aside class="bg-[var(--color-ink)] text-[var(--color-cream)] on-dark no-print" aria-label={Astro.props.lang === 'en' ? 'Demo notice' : 'Aviso de demostración'}>
   <p class="container-x flex items-center justify-center gap-2 py-2 text-center text-[0.8125rem] leading-snug">
     <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" class="shrink-0"><circle cx="12" cy="12" r="5" fill="#E2683C" /><g stroke="#F6C49A" stroke-width="2" stroke-linecap="round"><path d="M12 2v3M12 19v3M2 12h3M19 12h3" /></g></svg>
     <span class="hidden md:inline">{t.demo.text}</span>
     <span class="md:hidden">{t.demo.short}</span>
   </p>
-</div>
+</aside>

@@ -5,8 +5,10 @@
 @font-face { font-family: "Fraunces"; src: url("/fonts/fraunces-italic.woff2") format("woff2"); font-weight: 300 600; font-style: italic; font-display: swap; }
 @font-face { font-family: "Instrument Sans"; src: url("/fonts/instrument-sans.woff2") format("woff2"); font-weight: 400 700; font-style: normal; font-display: swap; }
 /* Metric-matched fallbacks keep layout shift near zero while fonts load. */
-@font-face { font-family: "Fraunces Fallback"; src: local("Georgia"); size-adjust: 104%; ascent-override: 92%; descent-override: 24%; }
-@font-face { font-family: "Instrument Sans Fallback"; src: local("Arial"); size-adjust: 98%; ascent-override: 96%; descent-override: 25%; }
+/* Overrides computed from the real font files (scripts/subset-fonts.sh notes). */
+@font-face { font-family: "Fraunces Fallback G"; src: local("Georgia"); size-adjust: 88.78%; ascent-override: 110.16%; descent-override: 28.72%; line-gap-override: 0%; }
+@font-face { font-family: "Fraunces Fallback T"; src: local("Times New Roman"), local("Liberation Serif"), local("Tinos"), local("Times"); size-adjust: 98.97%; ascent-override: 98.82%; descent-override: 25.77%; line-gap-override: 0%; }
+@font-face { font-family: "Instrument Sans Fallback"; src: local("Arial"), local("Liberation Sans"), local("Arimo"), local("Helvetica"); size-adjust: 104.56%; ascent-override: 92.77%; descent-override: 23.91%; line-gap-override: 0%; }
 
 /* ──────────────────────────────────────────────────────────────
    Sunroom design tokens — "Sunlit Atelier"
@@ -30,7 +32,7 @@
   --color-sky: #cfe0e3;
   --color-blush: #f2cdbf;
 
-  --font-display: "Fraunces", "Fraunces Fallback", Georgia, serif;
+  --font-display: "Fraunces", "Fraunces Fallback G", "Fraunces Fallback T", serif;
   --font-sans: "Instrument Sans", "Instrument Sans Fallback", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
 
   --radius-paper: 1.25rem;
@@ -48,7 +50,7 @@
   :root {
     color-scheme: light;
     --gutter: clamp(1rem, 4vw, 2.5rem);
-    --section-y: clamp(4.5rem, 10vw, 8.5rem);
+    --section-y: clamp(4rem, 8vw, 7rem);
   }
   html {
     -webkit-text-size-adjust: 100%;
@@ -85,6 +87,7 @@
 
   a { color: inherit; }
   img, svg { max-width: 100%; }
+  fieldset { min-inline-size: 0; }
 }
 
 /* ── Paper grain (risograph texture) ──────────────────────────── */
@@ -96,9 +99,9 @@
     inset: 0;
     pointer-events: none;
     z-index: 1;
-    opacity: 0.28;
-    mix-blend-mode: multiply;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .12  0 0 0 0 .2  0 0 0 0 .18  0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    opacity: 0.26;
+    background-image: url("/noise.png");
+    background-size: 96px 96px;
     border-radius: inherit;
   }
 
@@ -109,6 +112,8 @@
     padding-inline: var(--gutter);
   }
   .section-y { padding-block: var(--section-y); }
+  .bleed-x { width: 100%; padding-inline: max(var(--gutter), calc((100% - 82rem) / 2 + var(--gutter))); scroll-padding-inline: max(var(--gutter), calc((100% - 82rem) / 2 + var(--gutter))); }
+  .cv-auto { content-visibility: auto; contain-intrinsic-size: auto 900px; }
 
   .eyebrow {
     font-family: var(--font-sans);
@@ -199,9 +204,9 @@
     text-transform: uppercase;
     padding: 0.2rem 0.55rem;
     border-radius: 999px;
-    background: var(--color-butter);
-    color: var(--color-ink);
-    border: 1px dashed rgb(31 58 51 / 0.45);
+    background: rgb(255 253 249 / .7);
+    color: var(--color-ink-soft);
+    border: 1px dashed rgb(31 58 51 / 0.4);
     white-space: nowrap;
   }
 
@@ -225,6 +230,27 @@
   .js [data-reveal].is-in { opacity: 1; transform: none; transition: opacity .8s var(--ease-soft), transform .8s var(--ease-soft); }
 
   .scroll-x { position: relative; scroll-padding-inline: var(--gutter); scrollbar-width: thin; scrollbar-color: var(--color-sage) transparent; }
+
+  /* Forms */
+  .field-label { display: block; font-weight: 700; font-size: .9375rem; margin-bottom: .4rem; }
+  .field-hint { display: block; font-size: .8125rem; color: var(--color-ink-soft); margin-top: .35rem; }
+  .field-input {
+    width: 100%; min-height: 3rem; border-radius: .9rem; background: #fff;
+    border: 1.5px solid rgb(31 58 51 / .28); padding: .7rem 1rem; font-size: 1rem; color: var(--color-ink);
+    transition: border-color .2s ease, box-shadow .2s ease;
+  }
+  .field-input:hover { border-color: rgb(31 58 51 / .5); }
+  .field-input:focus-visible { outline: none; border-color: var(--color-sun-ink); box-shadow: 0 0 0 3px rgb(168 67 29 / .25); }
+  .field-input[aria-invalid="true"] { border-color: #b3261e; background: #fff8f7; }
+  .field-error { display: flex; gap: .4rem; align-items: center; color: #9f1f17; font-weight: 600; font-size: .875rem; margin-top: .4rem; }
+  select.field-input { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%231F3A33' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem; }
+  .seg { display: inline-flex; gap: .25rem; padding: .25rem; border-radius: 999px; background: var(--color-paper); }
+  .seg label { position: relative; }
+  .seg input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
+  .seg span { display: inline-flex; min-height: 2.75rem; min-width: 2.75rem; align-items: center; justify-content: center; padding: 0 1rem; border-radius: 999px; font-weight: 700; transition: background-color .2s ease, color .2s ease; }
+  .seg input:checked + span { background: var(--color-ink); color: var(--color-cream); }
+  .seg input:focus-visible + span { outline: 3px solid var(--color-sun-ink); outline-offset: 2px; }
+  .seg label:hover input:not(:checked) + span { background: #fffdf9; }
 
   .sr-only-focusable:not(:focus):not(:focus-within) {
     position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;

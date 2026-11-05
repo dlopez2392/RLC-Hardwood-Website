@@ -10,7 +10,7 @@ const c = dict(
   { eyebrow: 'Historias de familias', title: 'Historias largas, no reseñas de <em class="italic-sun">una línea</em>.', note: 'Estas familias son ficticias. Sus historias muestran el nivel de detalle que deberían tener las reseñas reales.' },
 )[lang];
 ---
-<section class="section-y" aria-labelledby="stories-title">
+<section class="cv-auto section-y" aria-labelledby="stories-title">
   <div class="container-x">
     <SectionHead eyebrow={c.eyebrow} title={c.title} id="stories-title">
       <p class="mt-5 flex flex-wrap items-center gap-2 text-sm text-[var(--color-ink-soft)]"><span class="sample-badge">{t.sample}</span>{c.note}</p>
@@ -19,14 +19,13 @@ const c = dict(
       {STORIES.map((s, i) => (
         <li data-reveal data-reveal-delay={i * 100}>
           <figure class="relative flex h-full flex-col rounded-[var(--radius-paper)] p-7 sm:p-8" style={`background:${s.tone}`}>
-            <span class="sample-badge absolute top-5 right-5">{t.sampleShort}</span>
             <svg width="44" height="34" viewBox="0 0 44 34" aria-hidden="true" class="text-[var(--color-sun)]"><path d="M0 34V20C0 8 7 1 18 0v7c-6 1-9 5-9 11h9v16Zm26 0V20C26 8 33 1 44 0v7c-6 1-9 5-9 11h9v16Z" fill="currentColor" /></svg>
             <blockquote class="mt-5 flex-1">
               <p class="font-display text-[1.5rem] leading-snug" style="font-weight:450">{s.pull[lang]}</p>
               <p class="mt-4 text-[0.9875rem] leading-relaxed">{s.quote[lang]}</p>
             </blockquote>
             <figcaption class="mt-6 border-t border-[rgb(31_58_51/.15)] pt-4">
-              <p class="font-bold">{s.family}</p>
+              <p class="font-bold">{s.family[lang]}</p>
               <p class="text-[0.875rem]">{s.child[lang]} · {s.since[lang]}</p>
             </figcaption>
           </figure>

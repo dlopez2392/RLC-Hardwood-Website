@@ -1,0 +1,61 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/ui/PageHero.astro';
+import { FAQ, FAQ_CATEGORIES, type FaqCategory } from '@/data/faq';
+import { dict, href, type Lang } from '@/i18n';
+import { breadcrumb } from '@/lib/schema';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const c = dict(
+  {
+    title: 'Frequently Asked Questions', desc: 'Answers about hours, ratios, tuition, illness policy, meals, naps, potty training, bilingual learning and tours at Sunroom. (Fictional demo.)',
+    eyebrow: 'FAQ', h1: 'Questions parents <em class="italic-sun">actually</em> ask.',
+    lede: 'Still wondering about something? Ask our assistant: it answers from these same pages, in English or Spanish.',
+    ask: 'Ask the assistant', more: 'Read more',
+  },
+  {
+    title: 'Preguntas frecuentes', desc: 'Respuestas sobre horario, proporción de maestros, colegiatura, política de enfermedad, comidas, siestas, dejar el pañal, aprendizaje bilingüe y visitas en Sunroom. (Demo ficticio).',
+    eyebrow: 'Preguntas frecuentes', h1: 'Las preguntas que los papás <em class="italic-sun">de verdad</em> hacen.',
+    lede: '¿Le queda alguna duda? Pregúntele a nuestro asistente: responde con base en estas mismas páginas, en inglés o en español.',
+    ask: 'Preguntarle al asistente', more: 'Más información',
+  },
+)[lang];
+const cats = Object.keys(FAQ_CATEGORIES) as FaqCategory[];
+const faqLd = {
+  '@context': 'https://schema.org', '@type': 'FAQPage',
+  mainEntity: FAQ.map((f) => ({ '@type': 'Question', name: f.q[lang], acceptedAnswer: { '@type': 'Answer', text: f.a[lang] } })),
+};
+---
+<BaseLayout lang={lang} route="faq" title={c.title} description={c.desc} schema={[faqLd, breadcrumb(Astro.site!, lang, 'faq', c.title)]}>
+  <PageHero eyebrow={c.eyebrow} title={c.h1} lede={c.lede} illo="leaf-sprig">
+    <button type="button" class="btn btn-ink mt-7" data-ask="">{c.ask}</button>
+  </PageHero>
+  <div class="container-x section-y !pt-12 grid gap-12 lg:grid-cols-[14rem_1fr]">
+    <nav aria-label={lang === 'en' ? 'FAQ topics' : 'Temas'} class="lg:sticky lg:top-28 lg:self-start">
+      <ul class="flex flex-wrap gap-2 lg:flex-col">
+        {cats.map((k) => <li><a href={`#cat-${k}`} class="inline-flex min-h-11 items-center rounded-full px-4 font-semibold hover:bg-[var(--color-paper)] lg:w-full">{FAQ_CATEGORIES[k][lang]}</a></li>)}
+      </ul>
+    </nav>
+    <div class="space-y-14">
+      {cats.map((k) => (
+        <section id={`cat-${k}`} class="scroll-mt-28" aria-labelledby={`cat-${k}-h`}>
+          <h2 id={`cat-${k}-h`} class="display-md">{FAQ_CATEGORIES[k][lang]}</h2>
+          <div class="mt-6 divide-y divide-[rgb(31_58_51/.12)] border-y border-[rgb(31_58_51/.12)]">
+            {FAQ.filter((f) => f.category === k).map((f) => (
+              <details id={f.id} class="group [&_summary::-webkit-details-marker]:hidden">
+                <summary class="flex min-h-16 cursor-pointer list-none items-center justify-between gap-6 py-4 text-[1.125rem] font-semibold">
+                  {f.q[lang]}
+                  <span class="grid size-9 shrink-0 place-items-center rounded-full border-[1.5px] border-[var(--color-ink)] transition-transform duration-300 group-open:rotate-45 group-open:bg-[var(--color-ink)] group-open:text-[var(--color-cream)]" aria-hidden="true">+</span>
+                </summary>
+                <div class="max-w-3xl pb-6 text-[1.0625rem] leading-relaxed text-[var(--color-ink-soft)]">
+                  <p>{f.a[lang]}</p>
+                  <p class="mt-3"><a href={href(f.source, lang)} class="link-draw text-[0.9375rem]">{c.more} <span aria-hidden="true">→</span></a></p>
+                </div>
+              </details>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

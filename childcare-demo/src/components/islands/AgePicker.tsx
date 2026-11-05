@@ -56,15 +56,15 @@ export default function AgePicker({ lang }: { lang: Lang }) {
   const tourHref = p && slot ? `${href('tour', lang)}?program=${p.id}&date=${isoDay(slot.date)}&time=${slot.time}` : href('tour', lang);
 
   return (
-    <div class="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+    <div class="grid gap-8 lg:grid-cols-[1fr_1fr] lg:items-center">
       <fieldset>
         <legend class="font-display text-[clamp(1.875rem,3.4vw,3rem)] leading-[1.05]" style="font-weight:420">{t.q}</legend>
         <p class="mt-3 max-w-md text-[var(--color-ink-soft)]">{t.hint}</p>
-        <div class="mt-6 flex flex-wrap gap-2.5">
+        <div class="mt-6 flex flex-wrap gap-2">
           {PROGRAMS.map((x) => (
             <label key={x.id} class="age-chip">
               <input type="radio" name="age" value={x.id} checked={sel === x.id} onChange={() => choose(x.id)} class="peer sr-only" />
-              <span class="inline-flex min-h-12 cursor-pointer items-center rounded-full border-[1.5px] border-[var(--color-ink)] px-5 text-[1rem] font-semibold transition peer-checked:border-[var(--color-sun-ink)] peer-checked:bg-[var(--color-sun-ink)] peer-checked:text-[var(--color-cream)] peer-focus-visible:outline-3 peer-focus-visible:outline-offset-3 peer-focus-visible:outline-[var(--color-sun-ink)] hover:bg-[var(--color-paper)] peer-checked:hover:bg-[var(--color-sun-deep)]">
+              <span class="inline-flex min-h-12 cursor-pointer items-center rounded-full border-[1.5px] border-[var(--color-ink)] px-4 text-[1rem] font-semibold transition peer-checked:border-[var(--color-sun-ink)] peer-checked:bg-[var(--color-sun-ink)] peer-checked:text-[var(--color-cream)] peer-focus-visible:outline-3 peer-focus-visible:outline-offset-3 peer-focus-visible:outline-[var(--color-sun-ink)] hover:bg-[var(--color-paper)] peer-checked:hover:bg-[var(--color-sun-deep)]">
                 {t.options[x.id]}
               </span>
             </label>

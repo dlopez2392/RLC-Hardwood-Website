@@ -1,0 +1,32 @@
+---
+import Portrait from '@/components/brand/Portrait.astro';
+import { TEACHERS } from '@/data/teachers';
+import { dict, href, type Lang } from '@/i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const c = dict(
+  { eyebrow: 'Meet the grown-ups', title: 'Your child will know them by name by Friday.', all: 'Meet all eight teachers', yrs: 'years here' },
+  { eyebrow: 'Conozca a los adultos', title: 'Para el viernes, su hijo ya sabrá sus nombres.', all: 'Conozca a los ocho maestros', yrs: 'años aquí' },
+)[lang];
+const people = [TEACHERS[0]!, TEACHERS[1]!, TEACHERS[4]!, TEACHERS[7]!];
+---
+<section class="cv-auto section-y" aria-labelledby="team-strip-title">
+  <div class="container-x">
+    <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between" data-reveal>
+      <div>
+        <p class="eyebrow">{c.eyebrow}</p>
+        <h2 id="team-strip-title" class="display-md mt-4 max-w-2xl">{c.title}</h2>
+      </div>
+      <a href={href('teachers', lang)} class="link-draw shrink-0">{c.all} <span aria-hidden="true">→</span></a>
+    </div>
+    <ul class="mt-12 grid grid-cols-2 gap-x-5 gap-y-10 lg:grid-cols-4">
+      {people.map((p, i) => (
+        <li class="group" data-reveal data-reveal-delay={i * 80}>
+          <div class="tilt mx-auto w-full max-w-[13rem]"><Portrait p={p.portrait} label={lang === 'en' ? `Illustrated portrait of ${p.name}` : `Retrato ilustrado de ${p.name}`} class="h-auto w-full" /></div>
+          <h3 class="mt-4 text-center text-[1.375rem] leading-tight">{p.name}</h3>
+          <p class="text-center text-[0.9375rem] text-[var(--color-ink-soft)]">{p.role[lang]} · {p.years} {c.yrs}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

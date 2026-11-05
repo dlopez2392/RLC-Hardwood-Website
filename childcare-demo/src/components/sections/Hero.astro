@@ -39,10 +39,10 @@ const ssrLine = NOW_LINES[3]!.text[lang]; // mid-morning default
 ---
 <section class="relative overflow-hidden" aria-labelledby="hero-title">
   <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(60rem_40rem_at_10%_-10%,rgb(246_196_154/.35),transparent_70%)]" aria-hidden="true"></div>
-  <div class="container-x relative grid items-center gap-10 pt-10 pb-16 md:pt-14 lg:grid-cols-[1.08fr_0.92fr] lg:gap-14 lg:pt-16 lg:pb-24">
+  <div class="container-x relative grid items-center gap-10 pt-10 pb-16 md:pt-14 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14 lg:pt-12 lg:pb-20">
     <div class="relative z-[2]">
       <p class="eyebrow hero-in" style="--d:0">{c.eyebrow}</p>
-      <h1 id="hero-title" class="display-xl mt-5" style="view-transition-name: page-title">
+      <h1 id="hero-title" class="mt-5 text-[clamp(2.75rem,6.2vw,5.25rem)]" style="view-transition-name: page-title">
         {c.h1a} <span class="italic-sun whitespace-nowrap">{c.h1b}</span><br class="hidden sm:block" /> {c.h1c}
       </h1>
       <p class="lede mt-6 max-w-[36rem] hero-in" style="--d:2">{c.lede}</p>
@@ -67,12 +67,12 @@ const ssrLine = NOW_LINES[3]!.text[lang]; // mid-morning default
       </div>
     </div>
 
-    <div class="relative mx-auto w-full max-w-[34rem] lg:max-w-none">
+    <div class="relative mx-auto w-full max-w-[34rem] lg:max-w-[33rem]">
       <div class="hero-window-wrap grain relative aspect-[600/680] rounded-t-full" data-hero>
         <HeroScene label={c.sceneLabel} />
       </div>
       <div
-        class="paper relative z-[3] mx-4 -mt-16 p-5 sm:absolute sm:-bottom-8 sm:-left-8 sm:mx-0 sm:mt-0 sm:w-[21rem] lg:-left-14"
+        class="paper relative z-[3] mx-4 -mt-16 p-5 sm:absolute sm:-bottom-8 sm:-left-8 sm:mx-0 sm:mt-0 sm:w-[21rem] lg:bottom-5 lg:left-1/2 lg:w-[86%] lg:max-w-[24rem] lg:-translate-x-1/2"
         data-now
         data-lines={JSON.stringify(lines)}
         data-weekend={WEEKEND_LINE[lang]}
@@ -101,46 +101,11 @@ const ssrLine = NOW_LINES[3]!.text[lang]; // mid-morning default
 </style>
 
 <script>
-  import { animate } from 'motion';
-
+  import { applySky } from '@/lib/sky';
   type Line = { from: number; to: number; text: string };
   const card = document.querySelector<HTMLElement>('[data-now]');
   const wrap = document.querySelector<HTMLElement>('[data-hero]');
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  // Sky keyframes by hour (San Antonio local time).
-  const SKY: [number, string, string, string][] = [
-    // hour, top, bottom, window light
-    [0, '#1f2a44', '#3B4A6B', '#F7DFA6'],
-    [5.5, '#3B4A6B', '#F2CDBF', '#F7DFA6'],
-    [7, '#F6C49A', '#FBF6EE', '#CFE0E3'],
-    [9, '#CFE0E3', '#FBF6EE', '#CFE0E3'],
-    [15, '#CFE0E3', '#F7EEDC', '#CFE0E3'],
-    [17.5, '#F6C49A', '#F2CDBF', '#F7DFA6'],
-    [19, '#3B4A6B', '#E2683C', '#F7DFA6'],
-    [20.5, '#1f2a44', '#3B4A6B', '#F7DFA6'],
-    [24, '#1f2a44', '#3B4A6B', '#F7DFA6'],
-  ];
-  const hex = (h: string) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16));
-  const mix = (a: string, b: string, t: number) =>
-    '#' + hex(a).map((v, i) => Math.round(v + (hex(b)[i]! - v) * t).toString(16).padStart(2, '0')).join('');
-
-  function skyAt(h: number) {
-    for (let i = 0; i < SKY.length - 1; i++) {
-      const [h0, t0, b0, w0] = SKY[i]!; const [h1, t1, b1, w1] = SKY[i + 1]!;
-      if (h >= h0 && h <= h1) { const t = (h - h0) / (h1 - h0); return [mix(t0, t1, t), mix(b0, b1, t), mix(w0, w1, t)] as const; }
-    }
-    return [SKY[0]![1], SKY[0]![2], SKY[0]![3]] as const;
-  }
-  /** Sun follows a half-ellipse from 6:00 (left horizon) to 19:00 (right horizon). */
-  function sunAt(h: number) {
-    const night = h < 6 || h > 19.5;
-    const p = Math.min(1, Math.max(0, (h - 6) / 13));
-    const ang = Math.PI * (1 - p);
-    if (night) return { x: 420, y: 180, night: 1 };
-    const fade = h > 19 ? (h - 19) / 0.5 : 0;
-    return { x: 300 + Math.cos(ang) * 230, y: 470 - Math.sin(ang) * 330, night: fade };
-  }
 
   function sanAntonioNow() {
     const parts = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Chicago', hour: 'numeric', minute: 'numeric', weekday: 'short', hour12: false }).formatToParts(new Date());
@@ -162,24 +127,14 @@ const ssrLine = NOW_LINES[3]!.text[lang]; // mid-morning default
     card.querySelector('[data-clock]')!.textContent = clock;
     if (line) card.querySelector('[data-line]')!.textContent = line;
 
-    const [top, bottom, win] = skyAt(now.decimal);
-    const sun = sunAt(now.decimal);
-    wrap.style.setProperty('--sky-top', top);
-    wrap.style.setProperty('--sky-bottom', bottom);
-    wrap.style.setProperty('--window', win);
-    wrap.style.setProperty('--night', String(sun.night));
-    if (first && !reduce && !sun.night) {
-      // the sun rises into place on first paint
-      animate(0, 1, {
-        duration: 1.8, ease: [0.22, 1, 0.36, 1], delay: 0.25,
-        onUpdate: (t) => {
-          wrap.style.setProperty('--sun-x', `${sun.x}px`);
-          wrap.style.setProperty('--sun-y', `${sun.y + (1 - t) * 260}px`);
-        },
-      });
-    } else {
-      wrap.style.setProperty('--sun-x', `${sun.x}px`);
-      wrap.style.setProperty('--sun-y', `${sun.y}px`);
+    const sun = applySky(wrap, now.decimal);
+    const sunEl = wrap.querySelector<SVGGElement>('.hero-sun');
+    if (first && !reduce && !sun.night && sunEl?.animate) {
+      // the sun rises into place once, animating only its own transform
+      sunEl.animate(
+        [{ transform: `translate(${sun.x}px, ${sun.y + 260}px)` }, { transform: `translate(${sun.x}px, ${sun.y}px)` }],
+        { duration: 1800, delay: 250, easing: 'cubic-bezier(0.22, 1, 0.36, 1)', fill: 'backwards' },
+      );
     }
   }
   render(true);

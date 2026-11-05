@@ -51,7 +51,7 @@ export default function AssistantLauncher({ lang }: { lang: Lang }) {
         onFocus={() => void load()}
         aria-expanded={open}
         aria-haspopup="dialog"
-        class="assistant-fab group fixed right-4 bottom-4 z-40 inline-flex min-h-14 items-center gap-2.5 rounded-full bg-[var(--color-ink)] p-2 sm:pr-5 text-[var(--color-cream)] shadow-[0_18px_40px_-16px_rgb(31_58_51/.7)] transition-transform duration-300 hover:-translate-y-0.5 sm:right-6 sm:bottom-6"
+        class="assistant-fab group fixed right-4 bottom-4 z-40 inline-flex min-h-14 items-center gap-2.5 rounded-full bg-[var(--color-ink)] p-2 sm:pr-5 text-[var(--color-cream)] shadow-[0_18px_40px_-16px_rgb(31_58_51/.7)] ring-2 ring-[rgb(251_246_238/.55)] transition-transform duration-300 hover:-translate-y-0.5 sm:right-6 sm:bottom-6"
       >
         <span class="relative inline-flex size-10 items-center justify-center rounded-full bg-[var(--color-sun)]">
           <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">

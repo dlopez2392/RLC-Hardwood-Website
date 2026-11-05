@@ -19,10 +19,10 @@ const mobileExtra: { key: RouteKey; label: string }[] = [
   { key: 'contact', label: t.nav.contact },
 ];
 ---
-<header class="sticky top-0 z-40 border-b border-[rgb(31_58_51/0.08)] bg-[rgb(251_246_238/0.86)] backdrop-blur-md no-print" data-header>
+<header class="sticky top-0 z-40 border-b border-[rgb(31_58_51/0.08)] bg-[rgb(251_246_238/0.94)] backdrop-blur-md no-print" data-header>
   <div class="container-x flex h-[4.5rem] items-center justify-between gap-4">
-    <a href={href('home', lang)} class="shrink-0 rounded-lg" aria-label={`${t.brandFull} — ${t.breadcrumbHome}`}>
-      <Logo size={38} />
+    <a href={href('home', lang)} class="shrink-0 rounded-lg">
+      <Logo size={38} /><span class="sr-only"> — {t.breadcrumbHome}</span>
     </a>
 
     <nav aria-label={t.nav.primary} class="hidden xl:block">
@@ -58,8 +58,7 @@ const mobileExtra: { key: RouteKey; label: string }[] = [
       >
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18" /></svg>
         <span class="hidden sm:inline">{t.lang.label}</span>
-        <span class="sm:hidden" aria-hidden="true">{t.lang.short}</span>
-        <span class="sr-only sm:hidden">{t.lang.label}</span>
+        <span class="sm:hidden">{t.lang.short}<span class="sr-only"> · {t.lang.label}</span></span>
       </a>
       <a href={href('tour', lang)} class="btn btn-primary hidden !min-h-11 !px-5 !text-[0.9375rem] sm:inline-flex">
         {t.nav.tour}
@@ -76,6 +75,8 @@ const mobileExtra: { key: RouteKey; label: string }[] = [
       </button>
     </div>
   </div>
+
+</header>
 
   <div id="mobile-nav" class="fixed inset-0 z-50 hidden bg-[var(--color-cream)] xl:hidden" data-menu-panel role="dialog" aria-modal="true" aria-label={t.nav.menu}>
     <div class="container-x flex h-[4.5rem] items-center justify-between">
@@ -103,7 +104,6 @@ const mobileExtra: { key: RouteKey; label: string }[] = [
       <a href={href('tour', lang)} class="btn btn-primary mt-8 w-full">{t.nav.tour}</a>
     </nav>
   </div>
-</header>
 
 <script>
   const openBtn = document.querySelector<HTMLButtonElement>('[data-menu-open]');

@@ -81,7 +81,7 @@ export const TEACHERS: Teacher[] = [
   },
   {
     name: 'Marcus Bell',
-    role: { en: 'Lead Teacher, Pre-K', es: 'Maestro titular, Pre-K' },
+    role: { en: 'Lead Teacher, Prekínder', es: 'Maestro titular, Prekínder' },
     room: 'Kestrels',
     years: 8,
     languages: { en: 'English · Spanish', es: 'Inglés · español' },

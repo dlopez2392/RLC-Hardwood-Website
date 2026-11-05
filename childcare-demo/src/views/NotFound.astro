@@ -1,0 +1,24 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Illo from '@/components/brand/Illo.astro';
+import { dict, href, type Lang } from '@/i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const c = dict(
+  { title: 'Page not found', desc: 'This page wandered off to the garden.', h1: 'This page wandered off <em class="italic-sun">to the garden</em>.', body: 'It happens to the best of us. Let’s get you back inside.', home: 'Back to the home page', faq: 'Ask a question' },
+  { title: 'Página no encontrada', desc: 'Esta página se fue al jardín.', h1: 'Esta página se fue <em class="italic-sun">al jardín</em>.', body: 'Nos pasa a todos. Lo llevamos de regreso adentro.', home: 'Volver al inicio', faq: 'Hacer una pregunta' },
+)[lang];
+---
+<BaseLayout lang={lang} route="404" title={c.title} description={c.desc}>
+  <section class="container-x grid min-h-[70vh] place-items-center py-20 text-center">
+    <div>
+      <div class="mx-auto size-48"><Illo name="garden" class="h-full w-full" /></div>
+      <h1 class="display-lg mt-8" set:html={c.h1} />
+      <p class="lede mx-auto mt-4 max-w-md">{c.body}</p>
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
+        <a href={href('home', lang)} class="btn btn-primary">{c.home}</a>
+        <a href={href('faq', lang)} class="btn btn-ghost">{c.faq}</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

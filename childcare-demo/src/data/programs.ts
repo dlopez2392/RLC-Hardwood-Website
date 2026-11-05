@@ -5,6 +5,8 @@ export type ProgramId = 'infants' | 'toddlers' | 'preschool' | 'prek' | 'schoola
 export interface Program {
   id: ProgramId;
   room: string; // classroom name — proper noun, same in both languages
+  /** Spanish name of the bird, shown as a gloss on Spanish pages */
+  bird: string;
   name: Bi<string>;
   ages: Bi<string>;
   /** Sunroom ratio: 1 teacher for N children */
@@ -26,6 +28,7 @@ export const PROGRAMS: Program[] = [
   {
     id: 'infants',
     room: 'Wrens',
+    bird: 'reyezuelos',
     name: { en: 'Infants', es: 'Bebés' },
     ages: { en: '6 weeks – 12 months', es: '6 semanas a 12 meses' },
     ratio: 3,
@@ -57,6 +60,7 @@ export const PROGRAMS: Program[] = [
   {
     id: 'toddlers',
     room: 'Finches',
+    bird: 'pinzones',
     name: { en: 'Toddlers', es: 'Niños pequeños' },
     ages: { en: '12 – 24 months', es: '12 a 24 meses' },
     ratio: 4,
@@ -89,6 +93,7 @@ export const PROGRAMS: Program[] = [
   {
     id: 'preschool',
     room: 'Larks',
+    bird: 'alondras',
     name: { en: 'Preschool', es: 'Preescolar' },
     ages: { en: '2 – 4 years', es: '2 a 4 años' },
     ratio: 7,
@@ -121,7 +126,8 @@ export const PROGRAMS: Program[] = [
   {
     id: 'prek',
     room: 'Kestrels',
-    name: { en: 'Pre-K', es: 'Pre-K' },
+    bird: 'cernícalos',
+    name: { en: 'Prekínder', es: 'Prekínder' },
     ages: { en: '4 – 5 years', es: '4 a 5 años' },
     ratio: 9,
     texasMin: 18,
@@ -153,6 +159,7 @@ export const PROGRAMS: Program[] = [
   {
     id: 'schoolage',
     room: 'Swifts',
+    bird: 'vencejos',
     name: { en: 'After-School & Summer', es: 'Después de clases y verano' },
     ages: { en: '5 – 10 years', es: '5 a 10 años' },
     ratio: 12,

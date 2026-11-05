@@ -1,18 +1,25 @@
-import { inView } from 'motion';
-
 /**
- * Progressive reveal: elements with [data-reveal] fade/slide in once.
- * `data-reveal-delay` (ms) staggers siblings. Without JS or with reduced motion,
- * content is simply visible (see global.css).
+ * Progressive reveal: elements with [data-reveal] fade/slide in once, via a single
+ * IntersectionObserver (no animation library needed for this). `data-reveal-delay`
+ * (ms) staggers siblings. Without JS or with reduced motion, content is simply visible.
  */
-const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const els = document.querySelectorAll<HTMLElement>('[data-reveal]');
-if (reduce) {
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (reduce || !('IntersectionObserver' in window)) {
   els.forEach((el) => el.classList.add('is-in'));
 } else {
-  els.forEach((el) => {
-    const delay = Number(el.dataset.revealDelay ?? 0);
-    if (delay) el.style.transitionDelay = `${delay}ms`;
-    inView(el, () => { el.classList.add('is-in'); }, { margin: '0px 0px -8% 0px', amount: 0.15 });
-  });
+  const io = new IntersectionObserver(
+    (entries) => {
+      for (const e of entries) {
+        if (!e.isIntersecting) continue;
+        const el = e.target as HTMLElement;
+        const delay = Number(el.dataset.revealDelay ?? 0);
+        if (delay) el.style.transitionDelay = `${delay}ms`;
+        el.classList.add('is-in');
+        io.unobserve(el);
+      }
+    },
+    { rootMargin: '0px 0px -8% 0px', threshold: 0.12 },
+  );
+  els.forEach((el) => io.observe(el));
 }

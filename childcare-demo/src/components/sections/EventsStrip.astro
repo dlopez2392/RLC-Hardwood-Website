@@ -23,7 +23,7 @@ const fmtW = new Intl.DateTimeFormat(LOCALE[lang], { weekday: 'long', timeZone: 
 const fmtFull = new Intl.DateTimeFormat(LOCALE[lang], { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
 const kindTone: Record<string, string> = { family: '#F6C49A', closed: '#EADFCF', class: '#E7EDDD', community: '#F2CDBF' };
 ---
-<section class="section-y bg-[var(--color-sage-soft)]" aria-labelledby="events-title">
+<section class="cv-auto section-y bg-[var(--color-sage-soft)]" aria-labelledby="events-title">
   <div class="container-x flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
     <div data-reveal>
       <p class="eyebrow">{c.eyebrow}</p>
@@ -38,7 +38,7 @@ const kindTone: Record<string, string> = { family: '#F6C49A', closed: '#EADFCF',
       </button>
     </div>
   </div>
-  <ol class="scroll-x container-x mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4" aria-label={c.list} tabindex="0" data-events>
+  <ol class="scroll-x bleed-x mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4" aria-label={c.list} tabindex="0" data-events>
     {EVENTS.filter((e) => new Date((e.end ?? e.date) + "T23:59:59Z").getTime() >= Date.now() - 864e5).map((e) => {
       const d = new Date(e.date + 'T12:00:00Z');
       return (

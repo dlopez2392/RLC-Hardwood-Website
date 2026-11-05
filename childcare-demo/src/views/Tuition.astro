@@ -1,0 +1,85 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/ui/PageHero.astro';
+import TuitionEstimator from '@/components/islands/TuitionEstimator';
+import EnrollForm from '@/components/islands/EnrollForm';
+import { INCLUDED, TUITION } from '@/data/site';
+import { PROGRAMS } from '@/data/programs';
+import { dict, fmtMoney, ui, type Lang } from '@/i18n';
+import { breadcrumb } from '@/lib/schema';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = ui[lang];
+const c = dict(
+  {
+    title: 'Tuition & Enrollment', desc: 'Published sample tuition for every program, an instant estimator with sibling discounts, and a two-minute waitlist form. (Fictional demo.)',
+    eyebrow: 'Tuition & enrollment', h1: 'The number, <em class="italic-sun">up front</em>.',
+    lede: 'Most centers make you call for pricing. We think you should be able to plan your family budget in under a minute, so here is the estimator.',
+    estTitle: 'Estimate your tuition', included: 'Included in every program', table: 'Full-time monthly rates', partTime: 'Part-time days are billed at 48%, 68% or 86% of the full-time rate for 2, 3 or 4 days.',
+    waitTitle: 'Join the waitlist', waitLede: 'Free, two minutes, no obligation. Infant spaces usually wait 4–6 months; other rooms often open within a month.',
+    help: 'Paying with a Texas childcare scholarship or a dependent-care FSA? We accept both, and provide year-end statements.',
+    cols: ['Program', 'Ages', 'Monthly, 5 days'],
+  },
+  {
+    title: 'Colegiatura e inscripción', desc: 'Colegiatura de muestra publicada para cada programa, calculadora instantánea con descuento de hermanos y una lista de espera de dos minutos. (Demo ficticio).',
+    eyebrow: 'Colegiatura e inscripción', h1: 'El precio, <em class="italic-sun">desde el principio</em>.',
+    lede: 'La mayoría de los centros le piden llamar para saber el precio. Creemos que usted debe poder planear el presupuesto familiar en menos de un minuto; para eso está la calculadora.',
+    estTitle: 'Calcule su colegiatura', included: 'Incluido en todos los programas', table: 'Tarifas mensuales de tiempo completo', partTime: 'Los días de medio tiempo se cobran al 48 %, 68 % u 86 % de la tarifa completa por 2, 3 o 4 días.',
+    waitTitle: 'Únase a la lista de espera', waitLede: 'Gratis, en dos minutos y sin compromiso. Los lugares para bebés suelen tardar de 4 a 6 meses; en los demás salones a menudo hay lugar en menos de un mes.',
+    help: '¿Paga con una beca de cuidado infantil de Texas o con una cuenta FSA para dependientes? Aceptamos ambas y entregamos estados de cuenta anuales.',
+    cols: ['Programa', 'Edades', 'Mensual, 5 días'],
+  },
+)[lang];
+---
+<BaseLayout lang={lang} route="tuition" title={c.title} description={c.desc} schema={[breadcrumb(Astro.site!, lang, 'tuition', c.title)]}>
+  <PageHero eyebrow={c.eyebrow} title={c.h1} lede={c.lede} illo="books" tone="var(--color-butter)">
+    <p class="mt-5 flex flex-wrap items-center gap-2 text-sm"><span class="sample-badge">{t.sample}</span>{lang === 'en' ? 'All rates are fictional sample figures.' : 'Todas las tarifas son cifras ficticias de muestra.'}</p>
+  </PageHero>
+
+  <section class="section-y !pt-14" aria-labelledby="est-title">
+    <div class="container-x">
+      <h2 id="est-title" class="display-md" data-reveal>{c.estTitle}</h2>
+      <div class="mt-8"><TuitionEstimator client:load lang={lang} /></div>
+    </div>
+  </section>
+
+  <section class="cv-auto bg-[var(--color-paper)] section-y" aria-labelledby="inc-title">
+    <div class="container-x grid gap-12 lg:grid-cols-2">
+      <div data-reveal>
+        <h2 id="inc-title" class="display-md">{c.included}</h2>
+        <ul class="mt-8 grid gap-3 sm:grid-cols-2">
+          {INCLUDED[lang].map((x) => <li class="flex gap-3 rounded-2xl bg-[#fffdf9] p-4"><svg class="mt-1 shrink-0" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#6F8A64" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" /></svg>{x}</li>)}
+        </ul>
+        <p class="mt-6 text-[var(--color-ink-soft)]">{c.help}</p>
+      </div>
+      <div data-reveal>
+        <div class="paper overflow-hidden">
+          <table class="w-full border-collapse text-left">
+            <caption class="px-6 pt-5 text-left font-display text-[1.5rem]">{c.table}</caption>
+            <thead><tr class="border-b border-[rgb(31_58_51/.12)] text-[0.75rem] uppercase tracking-[0.1em]">{c.cols.map((h) => <th scope="col" class="px-6 py-3 font-bold">{h}</th>)}</tr></thead>
+            <tbody>
+              {PROGRAMS.map((p) => (
+                <tr class="border-b border-[rgb(31_58_51/.08)] last:border-0">
+                  <th scope="row" class="px-6 py-3.5 font-semibold">{p.room} · {p.name[lang]}</th>
+                  <td class="px-6 py-3.5 text-[0.9375rem]">{p.ages[lang]}</td>
+                  <td class="px-6 py-3.5 font-bold tabular-nums">{fmtMoney(p.monthly, lang)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-4 text-[0.875rem] text-[var(--color-ink-soft)]">{c.partTime} {lang === 'en' ? `Registration ${fmtMoney(TUITION.registrationFee, lang)}; materials ${fmtMoney(TUITION.annualMaterials, lang)}/year.` : `Inscripción ${fmtMoney(TUITION.registrationFee, lang)}; materiales ${fmtMoney(TUITION.annualMaterials, lang)} al año.`}</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="waitlist" class="section-y scroll-mt-24" aria-labelledby="wait-title">
+    <div class="container-x grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+      <div data-reveal>
+        <h2 id="wait-title" class="display-md">{c.waitTitle}</h2>
+        <p class="lede mt-5">{c.waitLede}</p>
+      </div>
+      <EnrollForm client:visible lang={lang} />
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,105 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/ui/PageHero.astro';
+import Portrait from '@/components/brand/Portrait.astro';
+import CtaBand from '@/components/sections/CtaBand.astro';
+import { TEACHERS } from '@/data/teachers';
+import { dict, ui, type Lang } from '@/i18n';
+import { breadcrumb } from '@/lib/schema';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = ui[lang];
+const avg = (TEACHERS.reduce((s, x) => s + x.years, 0) / TEACHERS.length).toFixed(1);
+const c = dict(
+  {
+    title: 'Our Teachers', desc: 'Meet the (fictional) Sunroom teaching team: credentials, years with us, languages spoken and the philosophy each brings to the classroom.',
+    eyebrow: 'Our teachers', h1: 'The people your child will <em class="italic-sun">talk about at dinner</em>.',
+    lede: 'Great early education is a relationship, so we invest in keeping great teachers. Every person below is fictional; the standards are not.',
+    stats: [[`${avg} yrs`, 'average time at Sunroom'], ['100%', 'CPR & First Aid certified'], ['7', 'languages spoken by our staff'], ['40 hrs', 'paid training per teacher, every year']],
+    years: (n: number) => `${n} years at Sunroom`, room: 'Room', joy: 'One small joy',
+    howTitle: 'How we keep great teachers',
+    how: [
+      ['Pay that respects the work', 'Lead teachers earn at or above San Antonio public pre-K salaries, with health coverage and paid planning time.'],
+      ['Real time to plan', 'Every teacher gets five paid planning hours a week, outside of ratio, to document and prepare.'],
+      ['Careful hiring', 'FBI fingerprint background checks, three references and a paid working interview in the classroom.'],
+      ['Growth, not burnout', 'Funded CDA and degree coursework, a mentor for every new hire, and a closed week each winter.'],
+    ],
+    sampleNote: 'Staff, credentials and statistics on this page are sample content.',
+  },
+  {
+    title: 'Nuestros maestros', desc: 'Conozca al equipo (ficticio) de Sunroom: credenciales, años con nosotros, idiomas y la filosofía que cada quien lleva al salón.',
+    eyebrow: 'Nuestros maestros', h1: 'Las personas de las que su hijo <em class="italic-sun">hablará en la cena</em>.',
+    lede: 'La buena educación temprana es una relación, por eso invertimos en conservar a los buenos maestros. Todas las personas de esta página son ficticias; los estándares no.',
+    stats: [[`${avg.replace('.', ',')} años`, 'en promedio en Sunroom'], ['100 %', 'certificado en RCP y primeros auxilios'], ['7', 'idiomas que habla nuestro personal'], ['40 h', 'de capacitación pagada por maestro, cada año']],
+    years: (n: number) => `${n} años en Sunroom`, room: 'Salón', joy: 'Una pequeña alegría',
+    howTitle: 'Cómo conservamos a los buenos maestros',
+    how: [
+      ['Un sueldo que respeta el trabajo', 'Las maestras titulares ganan igual o más que en el pre-K público de San Antonio, con seguro médico y tiempo pagado de planeación.'],
+      ['Tiempo real para planear', 'Cada maestro tiene cinco horas pagadas de planeación a la semana, fuera de la proporción, para documentar y prepararse.'],
+      ['Contratación cuidadosa', 'Revisión de antecedentes con huellas del FBI, tres referencias y una entrevista práctica pagada en el salón.'],
+      ['Crecer sin quemarse', 'Pagamos cursos de CDA y de licenciatura, damos un mentor a cada persona nueva y cerramos una semana cada invierno.'],
+    ],
+    sampleNote: 'El personal, las credenciales y las cifras de esta página son contenido de muestra.',
+  },
+)[lang];
+---
+<BaseLayout lang={lang} route="teachers" title={c.title} description={c.desc} schema={[breadcrumb(Astro.site!, lang, 'teachers', c.title)]}>
+  <PageHero eyebrow={c.eyebrow} title={c.h1} lede={c.lede} illo="heart-hands" tone="var(--color-blush)">
+    <p class="mt-5 flex flex-wrap items-center gap-2 text-sm"><span class="sample-badge">{t.sample}</span>{c.sampleNote}</p>
+  </PageHero>
+
+  <section class="container-x pt-12" aria-label={lang === 'en' ? 'Team at a glance' : 'El equipo en cifras'}>
+    <dl class="grid grid-cols-2 gap-6 md:grid-cols-4">
+      {c.stats.map(([k, v]) => (
+        <div class="border-l-[3px] border-[var(--color-sun)] pl-4" data-reveal>
+          <dt class="sr-only">{v}</dt>
+          <dd class="font-display text-[2.25rem] leading-none" style="font-weight:450">{k}</dd>
+          <dd class="mt-2 text-[0.9375rem] text-[var(--color-ink-soft)]" aria-hidden="true">{v}</dd>
+        </div>
+      ))}
+    </dl>
+  </section>
+
+  <section class="section-y" aria-labelledby="team-title">
+    <h2 id="team-title" class="sr-only">{c.title}</h2>
+    <ul class="container-x grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      {TEACHERS.map((p, i) => (
+        <li class="paper lift group flex flex-col overflow-hidden" data-reveal data-reveal-delay={(i % 4) * 80}>
+          <div class="tilt mx-auto mt-6 w-44"><Portrait p={p.portrait} label={lang === 'en' ? `Illustrated portrait of ${p.name}` : `Retrato ilustrado de ${p.name}`} class="h-auto w-full" /></div>
+          <div class="flex flex-1 flex-col p-6 pt-5">
+            <h3 class="text-[1.625rem]">{p.name}</h3>
+            <p class="font-semibold text-[var(--color-sun-ink)]">{p.role[lang]}{p.room && <span class="text-[var(--color-ink-soft)]"> · {p.room}</span>}</p>
+            <p class="mt-1 text-[0.875rem] text-[var(--color-ink-soft)]">{c.years(p.years)} · {p.languages[lang]}</p>
+            <ul class="mt-4 flex flex-wrap gap-1.5" aria-label={lang === 'en' ? 'Credentials' : 'Credenciales'}>
+              {p.credentials.map((cr) => <li class="rounded-full bg-[var(--color-sage-soft)] px-2.5 py-1 text-[0.75rem] font-semibold">{cr}</li>)}
+            </ul>
+            <blockquote class="mt-5 flex-1 border-l-2 border-[var(--color-apricot)] pl-4 font-display text-[1.125rem] leading-snug" style="font-style:italic">“{p.quote[lang]}”</blockquote>
+            <details class="group/d mt-5 rounded-2xl bg-[var(--color-paper)] [&_summary::-webkit-details-marker]:hidden">
+              <summary class="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 px-4 text-[0.9375rem] font-bold">
+                {c.joy}
+                <span class="grid size-6 place-items-center rounded-full bg-[var(--color-ink)] text-[var(--color-cream)] transition-transform group-open/d:rotate-45" aria-hidden="true">+</span>
+              </summary>
+              <p class="px-4 pb-4 text-[0.9375rem]">{p.loves[lang]}</p>
+            </details>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="cv-auto section-y bg-[var(--color-sage-soft)]" aria-labelledby="keep-title">
+    <div class="container-x">
+      <h2 id="keep-title" class="display-md max-w-2xl" data-reveal>{c.howTitle}</h2>
+      <ul class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        {c.how.map(([h, b], i) => (
+          <li data-reveal data-reveal-delay={i * 80}>
+            <span class="font-display text-[3rem] leading-none text-[var(--color-moss)]" aria-hidden="true">0{i + 1}</span>
+            <h3 class="mt-3 text-[1.5rem]">{h}</h3>
+            <p class="mt-2 text-[var(--color-ink-soft)]">{b}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+  <div class="pt-[var(--section-y)]"><CtaBand lang={lang} /></div>
+</BaseLayout>

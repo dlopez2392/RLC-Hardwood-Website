@@ -1,0 +1,205 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/ui/PageHero.astro';
+import Illo from '@/components/brand/Illo.astro';
+import CtaBand from '@/components/sections/CtaBand.astro';
+import { dict, ui, type Lang } from '@/i18n';
+import { breadcrumb } from '@/lib/schema';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = ui[lang];
+const c = dict(
+  {
+    title: 'Parent App Preview', desc: 'A preview of the Sunroom family app: meals, naps, diaper and potty log, photos and a real note from your child’s teacher, every day. (Fictional demo.)',
+    eyebrow: 'The family app', h1: 'It’s 3:12 p.m. <em class="italic-sun">You already know</em> how the day went.',
+    lede: 'Every Sunroom family gets a live daily report. Below is a realistic preview: tap through it.',
+    tabs: ['Today', 'This week', 'Messages'], appLabel: 'Preview of the Sunroom family app',
+    child: 'Maya R.', room: 'Finches · 19 months', mood: 'Mood today', moodVal: 'Curious & cheerful',
+    timeline: [
+      { time: '7:42', kind: 'in', title: 'Checked in by Dad', detail: 'Fingerprint entry · Ms. Sofía greeted her' },
+      { time: '8:05', kind: 'meal', title: 'Breakfast: oatmeal & stewed apples', amount: 75, detail: 'Ate most' },
+      { time: '9:30', kind: 'diaper', title: 'Diaper change', detail: 'Wet · cream applied' },
+      { time: '9:50', kind: 'photo', title: 'Filled the watering can by herself', scene: 'garden', detail: 'Photo' },
+      { time: '11:20', kind: 'meal', title: 'Lunch: chicken caldo & tortilla', amount: 100, detail: 'Ate all, asked for more tortilla' },
+      { time: '12:05', kind: 'nap', title: 'Nap', minutes: 107, detail: '12:05–1:52 · 1 h 47 min' },
+      { time: '2:10', kind: 'potty', title: 'Potty try', detail: 'Success! Sticker chosen: a kestrel' },
+      { time: '2:40', kind: 'photo', title: 'First watercolor in the atelier', scene: 'studio', detail: 'Photo' },
+    ],
+    noteTitle: 'Note from Ms. Sofía',
+    note: 'Maya said “agua” and then “water” at the fountain today, then pointed and said both again, just to be sure. She’s putting her two languages side by side. Ask her about the snail we found.',
+    weekTitle: 'This week at a glance', sleep: 'Nap length', meals: 'Meals eaten', days: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+    milestones: 'Milestones noticed', ms: ['Two-word phrases in both languages', 'Climbs the low steps alternating feet', 'Helps set the table for lunch'],
+    msgs: [
+      { from: 'me', text: 'She had a rough night. Teething, we think. Extra cuddles today?' },
+      { from: 'them', text: 'Absolutely. We’ll offer the cold teether at circle and let you know how her nap goes.', who: 'Ms. Sofía · 8:14' },
+      { from: 'them', text: 'Update: long nap, happy wake-up. She’s in the sandbox now. ☀️', who: 'Ms. Sofía · 1:58' },
+    ],
+    why: [
+      ['No more “nothing”', 'Pick-up conversations start with specifics: the snail, the watercolor, the second tortilla.'],
+      ['Real sentences, not stickers', 'Teachers write at least one genuine observation per child, per day. We train for it.'],
+      ['Health at a glance', 'Meals, naps and diapers are logged in the moment, so patterns show up early.'],
+    ],
+    whyTitle: 'Why families love it',
+  },
+  {
+    title: 'Vista previa de la app familiar', desc: 'Vista previa de la app familiar de Sunroom: comidas, siestas, registro de pañales y baño, fotos y una nota de verdad de la maestra, todos los días. (Demo ficticio).',
+    eyebrow: 'La app familiar', h1: 'Son las 3:12 p. m. <em class="italic-sun">Usted ya sabe</em> cómo le fue en el día.',
+    lede: 'Cada familia de Sunroom recibe un reporte diario en vivo. Abajo hay una vista previa realista: explórela.',
+    tabs: ['Hoy', 'Esta semana', 'Mensajes'], appLabel: 'Vista previa de la app familiar de Sunroom',
+    child: 'Maya R.', room: 'Finches · 19 meses', mood: 'Ánimo de hoy', moodVal: 'Curiosa y contenta',
+    timeline: [
+      { time: '7:42', kind: 'in', title: 'Llegó con papá', detail: 'Entrada con huella · la recibió la maestra Sofía' },
+      { time: '8:05', kind: 'meal', title: 'Desayuno: avena y manzana cocida', amount: 75, detail: 'Comió casi todo' },
+      { time: '9:30', kind: 'diaper', title: 'Cambio de pañal', detail: 'Mojado · se aplicó crema' },
+      { time: '9:50', kind: 'photo', title: 'Llenó la regadera ella solita', scene: 'garden', detail: 'Foto' },
+      { time: '11:20', kind: 'meal', title: 'Almuerzo: caldo de pollo y tortilla', amount: 100, detail: 'Comió todo y pidió más tortilla' },
+      { time: '12:05', kind: 'nap', title: 'Siesta', minutes: 107, detail: '12:05–1:52 · 1 h 47 min' },
+      { time: '2:10', kind: 'potty', title: 'Intento en la bacinica', detail: '¡Lo logró! Eligió una calcomanía de cernícalo' },
+      { time: '2:40', kind: 'photo', title: 'Su primera acuarela en el atelier', scene: 'studio', detail: 'Foto' },
+    ],
+    noteTitle: 'Nota de la maestra Sofía',
+    note: 'Hoy Maya dijo “agua” y luego “water” en la fuente, y después señaló y volvió a decir las dos, para estar segura. Está acomodando sus dos idiomas lado a lado. Pregúntele por el caracol que encontramos.',
+    weekTitle: 'La semana de un vistazo', sleep: 'Duración de la siesta', meals: 'Comidas', days: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie'],
+    milestones: 'Logros observados', ms: ['Frases de dos palabras en ambos idiomas', 'Sube los escalones bajos alternando los pies', 'Ayuda a poner la mesa para el almuerzo'],
+    msgs: [
+      { from: 'me', text: 'Tuvo una noche difícil. Creemos que le están saliendo dientes. ¿Le pueden dar apapachos extra hoy?' },
+      { from: 'them', text: 'Claro que sí. Le ofreceremos la mordedera fría en el círculo y le avisamos cómo le va en la siesta.', who: 'Maestra Sofía · 8:14' },
+      { from: 'them', text: 'Actualización: siesta larga y despertó contenta. Ahora está en el arenero. ☀️', who: 'Maestra Sofía · 1:58' },
+    ],
+    why: [
+      ['Se acabó el “nada”', 'Las pláticas a la salida empiezan con detalles: el caracol, la acuarela, la segunda tortilla.'],
+      ['Frases de verdad, no calcomanías', 'Las maestras escriben al menos una observación genuina por niño, cada día. Las capacitamos para ello.'],
+      ['La salud de un vistazo', 'Comidas, siestas y pañales se registran al momento, así los patrones se notan a tiempo.'],
+    ],
+    whyTitle: 'Por qué a las familias les encanta',
+  },
+)[lang];
+const sleep = [95, 82, 110, 74, 107];
+const meals = [80, 90, 70, 95, 88];
+const kindTone: Record<string, string> = { in: '#CFE0E3', meal: '#F7DFA6', diaper: '#E7EDDD', photo: '#F2CDBF', nap: '#3B4A6B', potty: '#F6C49A' };
+const icon: Record<string, string> = {
+  in: 'M8 12h8M12 8l4 4-4 4', meal: 'M7 4v7a3 3 0 0 0 6 0V4M10 4v16M17 4c-2 2-2 6 0 8v8', diaper: 'M4 8h16l-2 8a4 4 0 0 1-4 3h-4a4 4 0 0 1-4-3Z',
+  photo: 'M4 8h4l2-3h4l2 3h4v11H4ZM12 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z', nap: 'M18 14A7 7 0 0 1 10 6a7 7 0 1 0 8 8Z', potty: 'M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19l1-5.8-4.3-4.1 5.9-.9Z',
+};
+---
+<BaseLayout lang={lang} route="portal" title={c.title} description={c.desc} schema={[breadcrumb(Astro.site!, lang, 'portal', c.title)]}>
+  <PageHero eyebrow={c.eyebrow} title={c.h1} lede={c.lede} tone="var(--color-sky)">
+    <p class="mt-5 flex flex-wrap items-center gap-2 text-sm"><span class="sample-badge">{t.sample}</span>{lang === 'en' ? 'Maya and her day are fictional.' : 'Maya y su día son ficticios.'}</p>
+  </PageHero>
+
+  <section class="section-y !pt-14" aria-label={c.appLabel}>
+    <div class="container-x grid items-start gap-12 lg:grid-cols-[minmax(0,26rem)_1fr] lg:gap-20">
+      <!-- the phone -->
+      <div class="mx-auto w-full max-w-[25rem] rounded-[3rem] bg-[var(--color-ink)] p-3 shadow-[0_40px_80px_-30px_rgb(31_58_51/.6)]" data-reveal>
+        <div class="overflow-hidden rounded-[2.4rem] bg-[#fffdf9]">
+          <div class="flex items-center justify-between px-6 pt-4 text-[0.75rem] font-bold" aria-hidden="true"><span>3:12</span><span class="h-5 w-24 rounded-full bg-[var(--color-ink)]"></span><span>●●●</span></div>
+          <div class="flex items-center gap-3 px-5 pt-4 pb-3">
+            <div class="grid size-12 place-items-center rounded-full bg-[var(--color-butter)] font-display text-[1.25rem]" aria-hidden="true">M</div>
+            <div class="flex-1">
+              <p class="font-bold leading-tight">{c.child}</p>
+              <p class="text-[0.8125rem] text-[var(--color-ink-soft)]">{c.room}</p>
+            </div>
+            <div class="text-right"><p class="text-[0.6875rem] font-bold uppercase tracking-[0.1em] text-[var(--color-ink-soft)]">{c.mood}</p><p class="text-[0.8125rem] font-semibold">{c.moodVal}</p></div>
+          </div>
+          <div data-tabs>
+            <div role="tablist" aria-label={c.appLabel} class="mx-4 grid grid-cols-3 gap-1 rounded-full bg-[var(--color-paper)] p-1">
+              {c.tabs.map((tab, i) => (
+                <button type="button" role="tab" id={`pt-${i}`} aria-controls={`pp-${i}`} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1}
+                  class="min-h-10 rounded-full text-[0.875rem] font-bold transition aria-selected:bg-[var(--color-ink)] aria-selected:text-[var(--color-cream)]">{tab}</button>
+              ))}
+            </div>
+
+            <div id="pp-0" role="tabpanel" aria-labelledby="pt-0" tabindex="0" class="h-[34rem] overflow-y-auto px-4 pt-4 pb-6 scroll-x">
+              <ol class="relative space-y-3">
+                {c.timeline.map((e) => (
+                  <li class="flex gap-3">
+                    <span class="w-10 shrink-0 pt-2.5 text-right text-[0.75rem] font-bold tabular-nums text-[var(--color-ink-soft)]">{e.time}</span>
+                    <div class="flex-1 rounded-2xl border border-[rgb(31_58_51/.08)] bg-white p-3">
+                      <div class="flex items-start gap-2.5">
+                        <span class="grid size-8 shrink-0 place-items-center rounded-full" style={`background:${kindTone[e.kind]}`} aria-hidden="true">
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={e.kind === 'nap' ? '#FBF6EE' : '#1F3A33'} stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d={icon[e.kind]} /></svg>
+                        </span>
+                        <div class="min-w-0 flex-1">
+                          <p class="text-[0.9375rem] font-semibold leading-snug">{e.title}</p>
+                          <p class="text-[0.8125rem] text-[var(--color-ink-soft)]">{e.detail}</p>
+                          {'amount' in e && e.amount !== undefined && (
+                            <div class="mt-2 h-2 rounded-full bg-[var(--color-shadow)]" role="img" aria-label={`${e.amount}%`}><div class="h-full rounded-full bg-[var(--color-sun)]" style={`width:${e.amount}%`}></div></div>
+                          )}
+                          {'minutes' in e && e.minutes !== undefined && (
+                            <div class="mt-2 h-2 rounded-full bg-[var(--color-shadow)]" aria-hidden="true"><div class="h-full rounded-full bg-[var(--color-dusk)]" style={`width:${Math.min(100, (e.minutes / 150) * 100)}%`}></div></div>
+                          )}
+                          {'scene' in e && e.scene && (
+                            <div class="mt-2 grid aspect-[4/3] place-items-center rounded-xl bg-[var(--color-sage-soft)] p-4"><Illo name={e.scene as any} class="h-full w-auto" label={e.title} /></div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+              <div class="mt-4 rounded-2xl bg-[var(--color-butter)] p-4">
+                <p class="text-[0.75rem] font-bold uppercase tracking-[0.1em]">{c.noteTitle}</p>
+                <p class="mt-1.5 font-display text-[1.0625rem] leading-snug" style="font-style:italic">“{c.note}”</p>
+              </div>
+            </div>
+
+            <div id="pp-1" role="tabpanel" aria-labelledby="pt-1" tabindex="0" hidden class="h-[34rem] overflow-y-auto px-5 pt-5 pb-6">
+              <h3 class="font-sans text-[1rem] font-bold tracking-normal">{c.weekTitle}</h3>
+              <p class="mt-4 text-[0.8125rem] font-bold uppercase tracking-[0.1em] text-[var(--color-ink-soft)]">{c.sleep}</p>
+              <ul class="mt-2 flex h-32 items-end gap-3">
+                {sleep.map((m, i) => (
+                  <li class="flex flex-1 flex-col items-center gap-1.5">
+                    <span class="text-[0.6875rem] font-semibold tabular-nums">{Math.floor(m / 60)}h{String(m % 60).padStart(2, '0')}</span>
+                    <span class="w-full rounded-t-lg bg-[var(--color-dusk)]" style={`height:${(m / 120) * 80}px`} aria-hidden="true"></span>
+                    <span class="text-[0.75rem] font-bold">{c.days[i]}</span>
+                  </li>
+                ))}
+              </ul>
+              <p class="mt-6 text-[0.8125rem] font-bold uppercase tracking-[0.1em] text-[var(--color-ink-soft)]">{c.meals}</p>
+              <ul class="mt-2 flex h-32 items-end gap-3">
+                {meals.map((m, i) => (
+                  <li class="flex flex-1 flex-col items-center gap-1.5">
+                    <span class="text-[0.6875rem] font-semibold tabular-nums">{m}%</span>
+                    <span class="w-full rounded-t-lg bg-[var(--color-sun)]" style={`height:${(m / 100) * 80}px`} aria-hidden="true"></span>
+                    <span class="text-[0.75rem] font-bold">{c.days[i]}</span>
+                  </li>
+                ))}
+              </ul>
+              <p class="mt-6 text-[0.8125rem] font-bold uppercase tracking-[0.1em] text-[var(--color-ink-soft)]">{c.milestones}</p>
+              <ul class="mt-2 space-y-2">{c.ms.map((m) => <li class="flex gap-2 rounded-xl bg-[var(--color-sage-soft)] px-3 py-2 text-[0.875rem]"><span aria-hidden="true">✦</span>{m}</li>)}</ul>
+            </div>
+
+            <div id="pp-2" role="tabpanel" aria-labelledby="pt-2" tabindex="0" hidden class="h-[34rem] overflow-y-auto px-4 pt-5 pb-6">
+              <ul class="space-y-3">
+                {c.msgs.map((m) => (
+                  <li class:list={['flex flex-col', m.from === 'me' ? 'items-end' : 'items-start']}>
+                    <p class:list={['max-w-[85%] rounded-2xl px-4 py-2.5 text-[0.9375rem]', m.from === 'me' ? 'rounded-br-md bg-[var(--color-sun-ink)] text-[var(--color-cream)]' : 'rounded-bl-md bg-[var(--color-paper)]']}>{m.text}</p>
+                    {'who' in m && <p class="mt-1 text-[0.75rem] text-[var(--color-ink-soft)]">{m.who}</p>}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- why it matters -->
+      <div class="lg:pt-10">
+        <h2 class="display-md" data-reveal>{c.whyTitle}</h2>
+        <ul class="mt-10 space-y-8">
+          {c.why.map(([h, b], i) => (
+            <li class="flex gap-5" data-reveal data-reveal-delay={i * 90}>
+              <span class="grid size-14 shrink-0 place-items-center rounded-2xl bg-[var(--color-paper)]"><Illo name={(['phone-sun', 'heart-hands', 'leaf-sprig'] as const)[i]!} class="size-10" /></span>
+              <div><h3 class="text-[1.625rem]">{h}</h3><p class="mt-1.5 text-[var(--color-ink-soft)]">{b}</p></div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+  <CtaBand lang={lang} />
+</BaseLayout>
+
+<script>
+  import '@/scripts/tabs';
+</script>

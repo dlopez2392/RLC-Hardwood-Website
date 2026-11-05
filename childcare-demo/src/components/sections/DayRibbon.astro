@@ -11,7 +11,7 @@ const c = dict(
   { eyebrow: 'Un día en Sunroom', title: 'Del primer saludo a la hora dorada.', cta: 'Recorra un día completo', list: 'La forma de un día en Sunroom' },
 )[lang];
 ---
-<section class="section-y overflow-hidden" aria-labelledby="ribbon-title">
+<section class="cv-auto section-y overflow-hidden" aria-labelledby="ribbon-title">
   <div class="container-x">
     <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between" data-reveal>
       <div>
@@ -23,7 +23,7 @@ const c = dict(
   </div>
   <div class="relative mt-14">
     <div class="pointer-events-none absolute inset-x-0 top-[6.4rem] h-[3px] bg-[repeating-linear-gradient(90deg,var(--color-sun)_0_10px,transparent_10px_18px)] opacity-60" aria-hidden="true"></div>
-    <ol class="scroll-x container-x flex snap-x gap-4 overflow-x-auto pb-6" aria-label={c.list} tabindex="0">
+    <ol class="scroll-x bleed-x flex snap-x gap-4 overflow-x-auto pb-6" aria-label={c.list} tabindex="0">
       {DAY.map((d, i) => (
         <li class="w-[13.5rem] shrink-0 snap-start" data-reveal data-reveal-delay={i * 60}>
           <a href={href('day', lang, d.id)} class="group block rounded-[var(--radius-paper)] p-2 focus-visible:outline-offset-0">

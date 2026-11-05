@@ -1,0 +1,179 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import HeroScene from '@/components/sections/HeroScene.astro';
+import Illo from '@/components/brand/Illo.astro';
+import CtaBand from '@/components/sections/CtaBand.astro';
+import { DAY } from '@/data/calendar';
+import { dict, href, LOCALE, type Lang } from '@/i18n';
+import { breadcrumb } from '@/lib/schema';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const c = dict(
+  {
+    title: 'A Day in the Life', desc: 'Scroll through a full Sunroom day, from 7:00 drop-off to golden-hour pick-up: circle time, outdoor play, family-style lunch, rest and the atelier. (Fictional demo.)',
+    eyebrow: 'A day in the life', h1: 'Seven o’clock to six. <em class="italic-sun">Scroll slowly.</em>',
+    lede: 'This is the rhythm your child will live inside. Watch the light move across the studio as the day unfolds.',
+    learning: 'What they are learning', scene: 'The Sunroom studio; the sky follows the time of the chapter you are reading.',
+    chapters: 'Chapters of the day', progress: 'Time of day',
+    next: 'See what each room’s day looks like', programs: 'Compare programs',
+  },
+  {
+    title: 'Un día en Sunroom', desc: 'Recorra un día completo en Sunroom, desde la llegada a las 7:00 hasta la salida a la hora dorada: círculo, juego al aire libre, almuerzo familiar, descanso y atelier. (Demo ficticio).',
+    eyebrow: 'Un día en Sunroom', h1: 'De las siete a las seis. <em class="italic-sun">Avance despacio.</em>',
+    lede: 'Este es el ritmo en el que vivirá su hijo. Vea cómo la luz recorre el estudio mientras avanza el día.',
+    learning: 'Lo que están aprendiendo', scene: 'El estudio Sunroom; el cielo sigue la hora del capítulo que está leyendo.',
+    chapters: 'Capítulos del día', progress: 'Hora del día',
+    next: 'Vea cómo es el día en cada salón', programs: 'Comparar programas',
+  },
+)[lang];
+const hours = DAY.map((d) => d.hour);
+---
+<BaseLayout lang={lang} route="day" title={c.title} description={c.desc} schema={[breadcrumb(Astro.site!, lang, 'day', c.title)]}>
+  <section class="relative overflow-hidden bg-[linear-gradient(180deg,#F6C49A_0%,#F2CDBF_45%,var(--color-cream)_100%)]" aria-labelledby="page-title">
+    <div class="container-x pt-16 pb-20 text-center md:pt-24 md:pb-28">
+      <p class="eyebrow">{c.eyebrow}</p>
+      <h1 id="page-title" class="display-xl mx-auto mt-5 max-w-4xl" style="view-transition-name: page-title" set:html={c.h1} />
+      <p class="lede mx-auto mt-6 max-w-xl">{c.lede}</p>
+      <svg class="mx-auto mt-10 h-14 w-8 text-[var(--color-sun-ink)] anim-bob" viewBox="0 0 32 56" aria-hidden="true"><rect x="2" y="2" width="28" height="52" rx="14" fill="none" stroke="currentColor" stroke-width="2.5" /><circle cx="16" cy="16" r="4" fill="currentColor" /></svg>
+    </div>
+  </section>
+
+  <!-- mobile / reduced-motion progress rail -->
+  <div class="day-rail sticky top-[4.5rem] z-20 border-b border-[rgb(31_58_51/.08)] bg-[rgb(251_246_238/.94)] backdrop-blur lg:hidden" aria-hidden="true">
+    <div class="container-x flex items-center gap-4 py-3">
+      <span class="w-16 shrink-0 font-display text-[1.375rem] tabular-nums" style="font-weight:450" data-rail-time>7:00</span>
+      <div class="relative h-1.5 flex-1 rounded-full bg-[var(--color-shadow)]">
+        <span class="absolute inset-y-0 left-0 rounded-full bg-[linear-gradient(90deg,var(--color-apricot),var(--color-sun),var(--color-sun-ink))]" style="width: var(--p, 0%)" data-rail-fill></span>
+        <span class="absolute top-1/2 size-5 -translate-x-1/2 -translate-y-1/2 rounded-full border-[3px] border-[var(--color-cream)] bg-[var(--color-sun)] shadow" style="left: var(--p, 0%)" data-rail-sun></span>
+      </div>
+    </div>
+  </div>
+
+  <section class="relative" aria-label={c.chapters} data-day data-hours={JSON.stringify(hours)} data-locale={LOCALE[lang]}>
+    <div class="container-x grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-20">
+      <!-- pinned visual (desktop, motion allowed) -->
+      <div class="day-sticky hidden lg:block">
+        <div class="sticky top-[6.5rem] pb-10">
+          <div class="relative mx-auto max-w-[30rem]">
+            <div class="grain relative aspect-[600/680] rounded-t-full" data-sky style="--sun-x: 120px; --sun-y: 420px; --sky-top:#F6C49A; --sky-bottom:#FBF6EE">
+              <HeroScene label={c.scene} />
+            </div>
+            <div class="paper relative z-[3] -mt-14 mx-6 flex items-center gap-4 p-4">
+              <div class="relative size-20 shrink-0">
+                {DAY.map((d, i) => (
+                  <div class:list={['day-scene absolute inset-0 transition-opacity duration-500', i !== 0 && 'opacity-0']} data-scene={d.id}><Illo name={d.scene} class="h-full w-full" /></div>
+                ))}
+              </div>
+              <div aria-hidden="true">
+                <p class="font-display text-[2rem] leading-none tabular-nums text-[var(--color-sun-ink)]" style="font-weight:450" data-clock>7:00</p>
+                <p class="font-display text-[1.5rem] leading-tight" style="font-weight:450" data-active-title>{DAY[0]!.title[lang]}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- chapters -->
+      <ol class="relative">
+        {DAY.map((d, i) => (
+          <li id={d.id} class="day-chapter flex min-h-[auto] flex-col justify-center py-14 scroll-mt-32 lg:min-h-[86vh] lg:py-20" data-chapter={i} data-hour={d.hour}>
+            <div class="day-inline mb-6 grid aspect-[16/10] place-items-center rounded-[var(--radius-paper)] bg-[var(--color-paper)] p-6 lg:hidden">
+              <Illo name={d.scene} class="h-full max-h-48 w-auto" />
+            </div>
+            <p class="flex items-center gap-3">
+              <span class="rounded-full bg-[var(--color-ink)] px-3.5 py-1 font-bold tabular-nums text-[var(--color-cream)]">{d.time}</span>
+              <span class="text-[0.8125rem] font-bold uppercase tracking-[0.12em] text-[var(--color-ink-soft)]">{String(i + 1).padStart(2, '0')} / {String(DAY.length).padStart(2, '0')}</span>
+            </p>
+            <h2 class="display-md mt-5">{d.title[lang]}</h2>
+            <p class="mt-5 text-[1.125rem] leading-relaxed text-[var(--color-ink-soft)]">{d.body[lang]}</p>
+            <p class="mt-6 inline-flex w-fit flex-wrap items-center gap-2 rounded-2xl bg-[var(--color-sage-soft)] px-4 py-2.5 text-[0.9375rem]">
+              <strong class="font-bold">{c.learning}:</strong> {d.learning[lang]}
+            </p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="container-x pb-12 text-center">
+    <p class="font-display text-[1.75rem]" style="font-style:italic">{c.next}</p>
+    <a href={href('programs', lang)} class="btn btn-ghost mt-5">{c.programs} <span aria-hidden="true">→</span></a>
+  </section>
+  <div class="pt-10"><CtaBand lang={lang} /></div>
+</BaseLayout>
+
+<style>
+  /* Reduced motion: no pinned, animated visual — the same content as a static, illustrated timeline. */
+  @media (prefers-reduced-motion: reduce) {
+    .day-sticky { display: none !important; }
+    .day-inline { display: grid !important; }
+    .day-rail { position: static; }
+    [data-day] .grid { grid-template-columns: minmax(0, 1fr) !important; max-width: 46rem; }
+  }
+</style>
+
+<script>
+  import { scroll } from 'motion';
+  import { applySky } from '@/lib/sky';
+
+  const root = document.querySelector<HTMLElement>('[data-day]');
+  if (root) {
+    const hours: number[] = JSON.parse(root.dataset.hours ?? '[]');
+    const sky = root.querySelector<HTMLElement>('[data-sky]');
+    const clock = root.querySelector<HTMLElement>('[data-clock]');
+    const title = root.querySelector<HTMLElement>('[data-active-title]');
+    const scenes = [...root.querySelectorAll<HTMLElement>('[data-scene]')];
+    const chapters = [...root.querySelectorAll<HTMLElement>('.day-chapter')];
+    const rail = document.querySelector<HTMLElement>('.day-rail');
+    const railTime = rail?.querySelector<HTMLElement>('[data-rail-time]');
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const first = hours[0] ?? 7, last = 18;
+    let active = 0;
+
+    const setHour = (h: number) => {
+      if (sky) applySky(sky, h);
+      const hh = Math.floor(h), mm = Math.floor(((h - hh) * 60) / 5) * 5;
+      const label = `${((hh + 11) % 12) + 1}:${String(mm).padStart(2, '0')}`;
+      if (clock) clock.textContent = label;
+      if (railTime) railTime.textContent = label;
+      rail?.style.setProperty('--p', `${((h - first) / (last - first)) * 100}%`);
+    };
+    const setActive = (i: number) => {
+      if (i === active) return;
+      active = i;
+      scenes.forEach((s, j) => s.classList.toggle('opacity-0', j !== i));
+      if (title) title.textContent = chapters[i]?.querySelector('h2')?.textContent ?? '';
+    };
+
+    // Which chapter is in the reading band (middle of the viewport)?
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => { if (e.isIntersecting) setActive(Number((e.target as HTMLElement).dataset.chapter)); }),
+      { rootMargin: '-45% 0px -45% 0px' },
+    );
+    chapters.forEach((ch) => io.observe(ch));
+
+    if (reduce) {
+      // step the clock per chapter instead of animating continuously
+      const io2 = new IntersectionObserver(
+        (entries) => entries.forEach((e) => { if (e.isIntersecting) setHour(Number((e.target as HTMLElement).dataset.hour)); }),
+        { rootMargin: '-45% 0px -45% 0px' },
+      );
+      chapters.forEach((ch) => io2.observe(ch));
+    } else {
+      // Continuous: scroll progress through the chapter list → hour of day (Motion `scroll`).
+      const list = root.querySelector('ol')!;
+      scroll(
+        (p: number) => {
+          const span = hours.length; // last chapter eases into closing time
+          const x = Math.max(0, p * span - 0.5); // chapter centred → its own hour
+          const i = Math.min(span - 1, Math.floor(x));
+          const t = x - i;
+          const h0 = hours[i]!, h1 = i + 1 < hours.length ? hours[i + 1]! : last;
+          setHour(h0 + (h1 - h0) * t);
+        },
+        { target: list, offset: ['start 55%', 'end 55%'] },
+      );
+    }
+    setHour(first);
+  }
+</script>

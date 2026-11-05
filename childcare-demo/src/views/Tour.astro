@@ -1,0 +1,30 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/ui/PageHero.astro';
+import TourScheduler from '@/components/islands/TourScheduler';
+import { SITE } from '@/data/site';
+import { dict, type Lang } from '@/i18n';
+import { breadcrumb } from '@/lib/schema';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const c = dict(
+  {
+    title: 'Book a Tour', desc: 'Book a 45-minute tour of Sunroom in three taps: pick a day, a time, and tell us who is coming. In person or by video. (Fictional demo.)',
+    eyebrow: 'Book a tour', h1: 'Three taps. <em class="italic-sun">Forty-five minutes.</em> All your questions.',
+    lede: 'Tours run Tuesday through Thursday, when the rooms are at their liveliest. Prefer to talk first?', call: 'Call',
+  },
+  {
+    title: 'Agende una visita', desc: 'Agende una visita de 45 minutos a Sunroom en tres pasos: elija día, hora y díganos quién viene. En persona o por video. (Demo ficticio).',
+    eyebrow: 'Agende una visita', h1: 'Tres pasos. <em class="italic-sun">Cuarenta y cinco minutos.</em> Todas sus preguntas.',
+    lede: 'Las visitas son de martes a jueves, cuando los salones tienen más vida. ¿Prefiere platicar primero?', call: 'Llame al',
+  },
+)[lang];
+---
+<BaseLayout lang={lang} route="tour" title={c.title} description={c.desc} schema={[breadcrumb(Astro.site!, lang, 'tour', c.title)]}>
+  <PageHero eyebrow={c.eyebrow} title={c.h1} illo="door" tone="var(--color-sage-soft)">
+    <p class="lede mt-6 max-w-2xl">{c.lede} <a href={SITE.phoneHref} class="link-draw whitespace-nowrap">{c.call} {SITE.phone}</a></p>
+  </PageHero>
+  <section class="container-x section-y !pt-12" aria-label={c.title}>
+    <TourScheduler client:load lang={lang} />
+  </section>
+</BaseLayout>
