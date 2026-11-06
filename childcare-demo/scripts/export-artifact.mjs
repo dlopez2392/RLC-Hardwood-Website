@@ -54,6 +54,8 @@ for (const f of files.filter(keep)) {
   html = html.replace(/<link rel="preload" href="\/fonts\/[^"]+"[^>]*>/g, '');
   html = html.replace(/<link rel="(manifest|sitemap|apple-touch-icon)"[^>]*>/g, '').replace(/<link rel="icon" href="\/favicon\.ico"[^>]*>/g, '');
   html = html.replace(/\s(href|src|component-url|renderer-url|before-hydration-url)="(\/[^"/][^"]*|\/)"/g, (_, a, u) => ` ${a}="${localize(u, prefix)}"`);
+  // srcset holds several "url width" pairs — localize each URL.
+  html = html.replace(/\s(srcset|imagesrcset)="([^"]*)"/g, (_, a, v) => ` ${a}="${v.split(',').map((part) => { const [u, ...rest] = part.trim().split(/\s+/); return [localize(u, prefix), ...rest].join(' '); }).join(', ')}"`);
   html = inlineAssets(html);
   html = html.replace('<head>', `<head><meta name="site-root" content="${prefix}">`);
 
