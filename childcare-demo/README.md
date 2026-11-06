@@ -14,6 +14,14 @@ A production-quality, fully static website for a premium bilingual (English/Span
 
 ---
 
+## Live demo
+
+**https://sunroom-childcare-demo.vercel.app** (Vercel project `sunroom-childcare-demo`, public, Node 22).
+
+- The project is linked to this repo with Root Directory `childcare-demo`. "Affected projects" builds are on, so changes outside this folder (the lumber site) never trigger a demo build.
+- Production follows the repo's production branch (`main`). Pushes to other branches get preview URLs. Until this folder is merged to `main`, redeploy production from the feature branch in the Vercel dashboard ("Redeploy") or with the Vercel MCP/CLI.
+- `SITE_URL` is set on the project, so canonical URLs, `hreflang`, Open Graph images and the sitemap use the live domain.
+
 ## Quick start
 
 ```bash

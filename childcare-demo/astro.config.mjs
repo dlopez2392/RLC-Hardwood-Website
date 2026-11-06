@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
 // Fictional demo domain. Replace with the real domain at deploy time.
-const SITE = process.env.SITE_URL ?? 'https://sunroom-demo.example.com';
+const SITE = process.env.SITE_URL ?? 'https://sunroom-childcare-demo.vercel.app';
 
 export default defineConfig({
   site: SITE,

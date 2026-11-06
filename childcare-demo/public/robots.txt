@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sunroom-demo.example.com/sitemap-index.xml
+Sitemap: https://sunroom-childcare-demo.vercel.app/sitemap-index.xml
