@@ -52,7 +52,7 @@ Every text/background pair was verified at 4.5:1 or better. Bright Sun fails as 
 2. It never shows a real-looking child or adult who doesn't exist. For a fictional demo this is an ethical line, and it also avoids the uncanny quality of AI-generated faces.
 3. It renders at any size for almost no bytes.
 
-For a real client, photography slots in exactly where it matters (see the README).
+**Update: photography added.** Twelve AI-generated documentary frames (Higgsfield API) now sit *inside* the arched window, with the cut-paper sun collaged on top. The time-aware hero and the scroll story keep working, and the sun's arc is compressed into the top third of each frame so it crosses walls and windows, never people. Casting was corrected to reflect San Antonio families. Children appear from behind or as hands at work. Teachers keep their cut-paper portraits so no fictional employee is presented as a real-looking person.
 
 **Voice.** Calm, specific and quietly confident, like a great head teacher talking to a parent. It uses concrete numbers instead of adjectives ("1 teacher for every 3 infants; Texas allows 4") and contains no exclamation points.
 

@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import HeroScene from '@/components/sections/HeroScene.astro';
+import PhotoArch from '@/components/sections/PhotoArch.astro';
+import { Picture } from 'astro:assets';
+import { PHOTOS } from '@/data/photos';
 import Illo from '@/components/brand/Illo.astro';
 import CtaBand from '@/components/sections/CtaBand.astro';
 import { DAY } from '@/data/calendar';
@@ -55,13 +57,8 @@ const hours = DAY.map((d) => d.hour);
       <div class="day-sticky hidden lg:block">
         <div class="sticky top-[6.5rem] pb-10">
           <div class="relative mx-auto max-w-[30rem]">
-            <div class="grain relative aspect-[600/680] rounded-t-full" data-sky style="--sun-x: 120px; --sun-y: 420px; --sky-top:#F6C49A; --sky-bottom:#FBF6EE">
-              <HeroScene label={c.scene} bare />
-              <div class="absolute inset-x-[10%] bottom-[16%] z-[2] aspect-square" aria-hidden="true">
-                {DAY.map((d, i) => (
-                  <div class:list={['day-big absolute inset-0 transition-[opacity,transform] duration-700', i !== 0 && 'opacity-0 translate-y-3']} data-big={d.id}><Illo name={d.scene} class="h-full w-full" /></div>
-                ))}
-              </div>
+            <div class="grain relative rounded-t-full" data-sky style="--sun-x: 120px; --sun-y: 420px; --sky-top:#F6C49A; --sky-bottom:#FBF6EE">
+              <PhotoArch photos={DAY.map((d) => ({ key: d.id as any, id: d.id }))} lang={lang} sizes="30rem" />
             </div>
             <div class="paper relative z-[3] -mt-14 mx-6 flex items-center gap-4 p-4">
               <div class="relative size-20 shrink-0">
@@ -82,8 +79,8 @@ const hours = DAY.map((d) => d.hour);
       <ol class="relative">
         {DAY.map((d, i) => (
           <li id={d.id} class="day-chapter flex min-h-[auto] flex-col justify-center py-14 scroll-mt-32 lg:min-h-[86vh] lg:py-20" data-chapter={i} data-hour={d.hour}>
-            <div class="day-inline mb-6 grid aspect-[16/10] md:aspect-[16/7] place-items-center rounded-[var(--radius-paper)] bg-[var(--color-paper)] p-6 lg:hidden">
-              <Illo name={d.scene} class="h-full max-h-48 w-auto" />
+            <div class="day-inline mb-6 overflow-hidden rounded-[var(--radius-paper)] lg:hidden">
+              <Picture src={PHOTOS[d.id as keyof typeof PHOTOS].src} alt={PHOTOS[d.id as keyof typeof PHOTOS].alt[lang]} formats={['avif', 'webp']} widths={[400, 640, 960]} sizes="(min-width: 768px) 46rem, 92vw" loading="lazy" decoding="async" class="aspect-[16/10] h-auto w-full object-cover md:aspect-[16/8]" />
             </div>
             <p class="flex items-center gap-3">
               <span class="rounded-full bg-[var(--color-ink)] px-3.5 py-1 font-bold tabular-nums text-[var(--color-cream)]">{d.time}</span>
@@ -128,7 +125,7 @@ const hours = DAY.map((d) => d.hour);
     const clock = root.querySelector<HTMLElement>('[data-clock]');
     const title = root.querySelector<HTMLElement>('[data-active-title]');
     const scenes = [...root.querySelectorAll<HTMLElement>('[data-scene]')];
-    const bigs = [...root.querySelectorAll<HTMLElement>('[data-big]')];
+    const bigs = [...root.querySelectorAll<HTMLElement>('[data-photo]')];
     const chapters = [...root.querySelectorAll<HTMLElement>('.day-chapter')];
     const rail = document.querySelector<HTMLElement>('.day-rail');
     const railTime = rail?.querySelector<HTMLElement>('[data-rail-time]');
@@ -151,7 +148,7 @@ const hours = DAY.map((d) => d.hour);
       active = i;
       setClock(i);
       scenes.forEach((s, j) => s.classList.toggle('opacity-0', j !== i));
-      bigs.forEach((s, j) => { s.classList.toggle('opacity-0', j !== i); s.classList.toggle('translate-y-3', j !== i); });
+      bigs.forEach((s, j) => s.classList.toggle('opacity-0', j !== i));
       if (title) title.textContent = chapters[i]?.querySelector('h2')?.textContent ?? '';
     };
 

@@ -7,7 +7,7 @@ import { mkdirSync, writeFileSync, existsSync } from 'node:fs';
 
 const API = 'https://api.higgsfield.ai';
 const MODEL = process.env.HF_MODEL ?? 'bytedance/seedream/v4/text-to-image';
-const OUT = 'src/assets/photos/raw';
+const OUT = process.env.OUT ?? 'src/assets/photos/raw';
 const auth = process.env.HF_KEY ? { Authorization: `Key ${process.env.HF_KEY}` } : {};
 
 const STYLE =
@@ -15,20 +15,20 @@ const STYLE =
 
 export const SHOTS = [
   { id: 1, slot: 'hero', aspect: '3:4', prompt: 'Sunlit early-learning classroom, two toddlers seen from behind at a low oak table stacking natural wooden blocks, a teacher\'s hands helping, tall arched window' },
-  { id: 2, slot: 'day-arrival', aspect: '3:2', prompt: 'Parent kneeling to hug a preschooler goodbye at a classroom cubby with name labels, morning light, seen from the side' },
-  { id: 3, slot: 'day-circle', aspect: '3:2', prompt: 'Small group of preschoolers sitting on a round woven rug seen from behind, a smiling teacher with a guitar facing them' },
+  { id: 2, slot: 'day-arrival', aspect: '3:2', prompt: 'Black father kneeling to hug his preschool daughter goodbye at a classroom cubby with name labels, morning light, seen from the side' },
+  { id: 3, slot: 'day-circle', aspect: '3:2', prompt: 'Diverse small group of preschoolers (Latino, Black, Asian and white children) sitting on a round woven rug seen from behind, a smiling Latina teacher with a guitar facing them' },
   { id: 4, slot: 'day-outdoors', aspect: '3:2', prompt: 'Children in rain boots at a wooden mud kitchen under a large pecan tree in a garden yard, seen from behind' },
   { id: 5, slot: 'day-lunch', aspect: '3:2', prompt: 'Long low oak table set family style, small hands pouring water from a little glass pitcher, bowls of soup and warm tortillas' },
   { id: 6, slot: 'day-rest', aspect: '3:2', prompt: 'Quiet nap room with low cots and linen sheets, curtains drawn, warm dim light, a teacher reading softly in a chair' },
-  { id: 7, slot: 'day-studio', aspect: '3:2', prompt: 'Child\'s hands painting with watercolor at an easel in a bright art studio, jars of brushes, paint palette' },
-  { id: 8, slot: 'day-pickup', aspect: '3:2', prompt: 'Golden-hour light, a parent and toddler walking hand in hand away from a cream building with an arched blue door' },
-  { id: 9, slot: 'program-infants', aspect: '4:3', prompt: 'Teacher in her forties gently holding a baby during floor play on a sage mat beside a wooden mirror, soft light' },
-  { id: 10, slot: 'safety', aspect: '4:3', prompt: 'Calm teacher checking a photo-ID pickup list on a tablet at a bright entry with a blue door, parent in soft focus' },
-  { id: 11, slot: 'portal-photo', aspect: '1:1', prompt: 'Toddler\'s hands holding a small watering can over a raised garden bed, water droplets catching the light' },
+  { id: 7, slot: 'day-studio', aspect: '3:2', prompt: 'Small hands of a four-year-old child painting with watercolor at a low easel in a bright art studio, child-sized brush, jars of brushes, paint palette, close crop on the small hand' },
+  { id: 8, slot: 'day-pickup', aspect: '3:2', prompt: 'Golden-hour light, a Latino father and his toddler walking hand in hand away from a cream building with an arched blue door, seen from behind' },
+  { id: 9, slot: 'program-infants', aspect: '4:3', prompt: 'South Asian woman teacher in her thirties gently holding a smiling baby during floor play on a sage mat beside a low wooden mirror, soft light' },
+  { id: 10, slot: 'safety', aspect: '4:3', prompt: 'Calm Black male teacher in his thirties checking a photo-ID pickup list on a tablet at a bright entry with a blue door, a parent in soft focus' },
+  { id: 11, slot: 'portal-photo', aspect: '1:1', prompt: 'Close-up of a toddler\'s small chubby hands holding a tiny child-sized watering can over a raised garden bed, seedlings, water droplets catching the light' },
   { id: 12, slot: 'gallery', aspect: '16:9', prompt: 'Wide view of a light-filled classroom with low shelves of natural materials and plants, children at play in soft focus' },
 ];
 
-const body = (s) => ({ prompt: `${s.prompt}. ${STYLE}`, aspect_ratio: s.aspect, resolution: '2K' });
+const body = (s) => ({ prompt: `${s.prompt}. ${STYLE}`, aspect_ratio: s.aspect, ...(MODEL.includes('soul') ? { resolution: '1080p' } : {}) });
 const call = async (method, path, data) => {
   const r = await fetch(API + path, { method, headers: { 'Content-Type': 'application/json', ...auth }, body: data ? JSON.stringify(data) : undefined });
   const text = await r.text();

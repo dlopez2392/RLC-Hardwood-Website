@@ -21,7 +21,7 @@ const c = dict(
 )[lang];
 ---
 <BaseLayout lang={lang} route="tour" title={c.title} description={c.desc} schema={[breadcrumb(Astro.site!, lang, 'tour', c.title)]}>
-  <PageHero eyebrow={c.eyebrow} title={c.h1} illo="door" tone="var(--color-sage-soft)">
+  <PageHero photo="arrival" lang={lang} eyebrow={c.eyebrow} title={c.h1} illo="door" tone="var(--color-sage-soft)">
     <p class="lede mt-6 max-w-2xl">{c.lede} <a href={SITE.phoneHref} class="link-draw whitespace-nowrap">{c.call} {SITE.phone}</a></p>
   </PageHero>
   <section class="container-x section-y !pt-12" aria-label={c.title}>

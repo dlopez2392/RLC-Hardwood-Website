@@ -44,7 +44,7 @@ const c = dict(
 )[lang];
 ---
 <BaseLayout lang={lang} route="teachers" title={c.title} description={c.desc} schema={[breadcrumb(Astro.site!, lang, 'teachers', c.title)]}>
-  <PageHero eyebrow={c.eyebrow} title={c.h1} lede={c.lede} illo="heart-hands" tone="var(--color-blush)">
+  <PageHero photo="circle" lang={lang} eyebrow={c.eyebrow} title={c.h1} lede={c.lede} illo="heart-hands" tone="var(--color-blush)">
     <p class="mt-5 flex flex-wrap items-center gap-2 text-sm"><span class="sample-badge">{t.sample}</span>{c.sampleNote}</p>
   </PageHero>
 

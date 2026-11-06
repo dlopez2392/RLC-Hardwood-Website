@@ -2,6 +2,8 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import PageHero from '@/components/ui/PageHero.astro';
 import Illo from '@/components/brand/Illo.astro';
+import { Picture } from 'astro:assets';
+import { PHOTOS } from '@/data/photos';
 import CtaBand from '@/components/sections/CtaBand.astro';
 import { dict, ui, type Lang } from '@/i18n';
 import { breadcrumb } from '@/lib/schema';
@@ -83,7 +85,7 @@ const icon: Record<string, string> = {
 };
 ---
 <BaseLayout lang={lang} route="portal" title={c.title} description={c.desc} schema={[breadcrumb(Astro.site!, lang, 'portal', c.title)]}>
-  <PageHero eyebrow={c.eyebrow} title={c.h1} lede={c.lede} tone="var(--color-sky)">
+  <PageHero photo="portal" lang={lang} eyebrow={c.eyebrow} title={c.h1} lede={c.lede} tone="var(--color-sky)">
     <p class="mt-5 flex flex-wrap items-center gap-2 text-sm"><span class="sample-badge">{t.sample}</span>{lang === 'en' ? 'Maya and her day are fictional.' : 'Maya y su día son ficticios.'}</p>
   </PageHero>
 
@@ -129,7 +131,7 @@ const icon: Record<string, string> = {
                             <div class="mt-2 h-2 rounded-full bg-[var(--color-shadow)]" aria-hidden="true"><div class="h-full rounded-full bg-[var(--color-dusk)]" style={`width:${Math.min(100, (e.minutes / 150) * 100)}%`}></div></div>
                           )}
                           {'scene' in e && e.scene && (
-                            <div class="mt-2 grid aspect-[4/3] place-items-center rounded-xl bg-[var(--color-sage-soft)] p-4"><Illo name={e.scene as any} class="h-full w-auto" label={e.title} /></div>
+                            <Picture src={PHOTOS[e.scene === 'garden' ? 'portal' : 'studio'].src} alt={PHOTOS[e.scene === 'garden' ? 'portal' : 'studio'].alt[lang]} formats={['avif', 'webp']} widths={[320, 560]} sizes="20rem" loading="lazy" decoding="async" class="mt-2 aspect-[4/3] h-auto w-full rounded-xl object-cover" />
                           )}
                         </div>
                       </div>

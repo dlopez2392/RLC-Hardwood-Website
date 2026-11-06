@@ -27,7 +27,7 @@ const faqLd = {
 };
 ---
 <BaseLayout lang={lang} route="faq" title={c.title} description={c.desc} schema={[faqLd, breadcrumb(Astro.site!, lang, 'faq', c.title)]}>
-  <PageHero eyebrow={c.eyebrow} title={c.h1} lede={c.lede} illo="leaf-sprig">
+  <PageHero photo="outdoors" lang={lang} eyebrow={c.eyebrow} title={c.h1} lede={c.lede} illo="leaf-sprig">
     <button type="button" class="btn btn-ink mt-7" data-ask="">{c.ask}</button>
   </PageHero>
   <div class="container-x section-y !pt-12 grid gap-12 lg:grid-cols-[14rem_1fr]">

@@ -32,7 +32,7 @@ const c = dict(
 )[lang];
 ---
 <BaseLayout lang={lang} route="tuition" title={c.title} description={c.desc} schema={[breadcrumb(Astro.site!, lang, 'tuition', c.title)]}>
-  <PageHero eyebrow={c.eyebrow} title={c.h1} lede={c.lede} illo="books" tone="var(--color-butter)">
+  <PageHero photo="lunch" lang={lang} eyebrow={c.eyebrow} title={c.h1} lede={c.lede} illo="books" tone="var(--color-butter)">
     <p class="mt-5 flex flex-wrap items-center gap-2 text-sm"><span class="sample-badge">{t.sample}</span>{lang === 'en' ? 'All rates are fictional sample figures.' : 'Todas las tarifas son cifras ficticias de muestra.'}</p>
   </PageHero>
 

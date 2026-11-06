@@ -1,0 +1,56 @@
+---
+/**
+ * Photography inside the brand's arched window, with the cut-paper sun collaged on top.
+ * Sky tint and sun position use the same CSS custom properties as HeroScene
+ * (--sky-top, --night, --sun-x, --sun-y), so the time-aware hero and the
+ * A Day in the Life scroll story drive it unchanged. Several photos crossfade
+ * via [data-photo] (only the first is visible at rest).
+ */
+import { Picture } from 'astro:assets';
+import { PHOTOS, type PhotoKey } from '@/data/photos';
+import type { Lang } from '@/i18n';
+interface Props {
+  photos: { key: PhotoKey; id?: string }[];
+  lang: Lang;
+  eager?: boolean;
+  sizes?: string;
+  sun?: boolean;
+  class?: string;
+}
+const { photos, lang, eager = false, sizes = '(min-width: 1024px) 34rem, 92vw', sun = true, class: cls = '' } = Astro.props;
+---
+<div class:list={['photo-arch relative aspect-[600/680] w-full overflow-hidden rounded-t-full bg-[var(--color-shadow)]', cls]}>
+  {photos.map((p, i) => (
+    <div class:list={['photo-layer absolute inset-0 transition-opacity duration-700', i !== 0 && 'opacity-0']} data-photo={p.id ?? p.key}>
+      <Picture
+        src={PHOTOS[p.key].src}
+        alt={PHOTOS[p.key].alt[lang]}
+        formats={['avif', 'webp']}
+        widths={[480, 720, 960, 1200]}
+        sizes={sizes}
+        loading={eager && i === 0 ? 'eager' : 'lazy'}
+        fetchpriority={eager && i === 0 ? 'high' : 'auto'}
+        decoding="async"
+        class="h-full w-full object-cover"
+      />
+    </div>
+  ))}
+  <!-- time-of-day tint: warm at dawn/dusk, deep blue at night. In photo mode the sun's arc is compressed
+       into the top third (calc on --sun-y) so it crosses walls and windows, never the people. -->
+  <div class="pointer-events-none absolute inset-0" style="background: linear-gradient(180deg, var(--sky-top, #CFE0E3) 0%, transparent 58%); opacity: .5; mix-blend-mode: soft-light" aria-hidden="true"></div>
+  <div class="pointer-events-none absolute inset-0 bg-[#1f2a44]" style="opacity: calc(var(--night, 0) * .45)" aria-hidden="true"></div>
+  {sun && (
+    <svg viewBox="0 0 600 680" class="pointer-events-none absolute inset-0 h-full w-full" aria-hidden="true">
+      <g class="hero-sun" style="transform: translate(var(--sun-x, 470px), calc(var(--sun-y, 260px) * 0.5 - 20px)); filter: drop-shadow(0 4px 0 rgb(31 58 51 / .18))">
+        <g class="anim-rays" style="opacity: calc(1 - var(--night, 0))">
+          {Array.from({ length: 12 }).map((_, i) => (
+            <rect x="-4" y="-78" width="8" height="18" rx="4" fill="#E2683C" transform={`rotate(${i * 30})`} />
+          ))}
+        </g>
+        <circle r="46" fill="#E2683C" style="opacity: calc(1 - var(--night, 0))" />
+        <path d="M18 -40a42 42 0 1 0 22 74 36 36 0 0 1-22-74Z" fill="#F7DFA6" style="opacity: var(--night, 0)" />
+      </g>
+    </svg>
+  )}
+  <div class="pointer-events-none absolute inset-0 rounded-t-full ring-[6px] ring-inset ring-[var(--color-ink)]" aria-hidden="true"></div>
+</div>

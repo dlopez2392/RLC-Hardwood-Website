@@ -1,0 +1,21 @@
+---
+import { Picture } from 'astro:assets';
+import { PHOTOS } from '@/data/photos';
+import { dict, href, type Lang } from '@/i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const c = dict(
+  { label: 'Inside the studio', caption: 'Low shelves, real materials, and light from three sides.', cta: 'Walk through a whole day' },
+  { label: 'Dentro del estudio', caption: 'Repisas bajas, materiales de verdad y luz por tres lados.', cta: 'Recorra un día completo' },
+)[lang];
+---
+<section class="cv-auto container-x pt-4 pb-[var(--section-y)]" aria-label={c.label}>
+  <figure class="grain relative overflow-hidden rounded-[2rem]" data-reveal>
+    <Picture src={PHOTOS.gallery.src} alt={PHOTOS.gallery.alt[lang]} formats={['avif', 'webp']} widths={[640, 960, 1280, 1600]} sizes="(min-width: 1312px) 80rem, 96vw" loading="lazy" decoding="async" class="aspect-[16/9] h-auto w-full object-cover sm:aspect-[21/9]" />
+    <figcaption class="relative z-[2] flex flex-col gap-3 bg-[var(--color-ink)] p-5 text-[var(--color-cream)] on-dark sm:absolute sm:bottom-5 sm:left-5 sm:max-w-md sm:rounded-[1.25rem] sm:p-6">
+      <span class="eyebrow">{c.label}</span>
+      <span class="font-display text-[1.5rem] leading-snug" style="font-weight:450">{c.caption}</span>
+      <a href={href('day', lang)} class="link-draw w-fit">{c.cta} <span aria-hidden="true">→</span></a>
+    </figcaption>
+  </figure>
+</section>

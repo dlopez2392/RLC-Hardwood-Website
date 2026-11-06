@@ -1,5 +1,5 @@
 ---
-import HeroScene from './HeroScene.astro';
+import PhotoArch from './PhotoArch.astro';
 import { dict, href, ui, type Lang } from '@/i18n';
 import { NOW_LINES, WEEKEND_LINE } from '@/data/calendar';
 import { RATING } from '@/data/site';
@@ -68,8 +68,8 @@ const ssrLine = NOW_LINES[3]!.text[lang]; // mid-morning default
     </div>
 
     <div class="relative mx-auto w-full max-w-[34rem] lg:max-w-[33rem]">
-      <div class="hero-window-wrap grain relative aspect-[600/680] rounded-t-full" data-hero>
-        <HeroScene label={c.sceneLabel} />
+      <div class="hero-window-wrap grain relative rounded-t-full" data-hero>
+        <PhotoArch photos={[{ key: 'hero' }]} lang={lang} eager />
       </div>
       <div
         class="paper relative z-[3] mx-4 -mt-16 p-5 sm:absolute sm:-bottom-8 sm:-left-8 sm:mx-0 sm:mt-0 sm:w-[21rem] lg:bottom-5 lg:left-1/2 lg:w-[86%] lg:max-w-[24rem] lg:-translate-x-1/2"
@@ -132,7 +132,7 @@ const ssrLine = NOW_LINES[3]!.text[lang]; // mid-morning default
     if (first && !reduce && !sun.night && sunEl?.animate) {
       // the sun rises into place once, animating only its own transform
       sunEl.animate(
-        [{ transform: `translate(${sun.x}px, ${sun.y + 260}px)` }, { transform: `translate(${sun.x}px, ${sun.y}px)` }],
+        [{ transform: `translate(${sun.x}px, ${sun.y * 0.5 - 20 + 200}px)` }, { transform: `translate(${sun.x}px, ${sun.y * 0.5 - 20}px)` }],
         { duration: 1800, delay: 250, easing: 'cubic-bezier(0.22, 1, 0.36, 1)', fill: 'backwards' },
       );
     }

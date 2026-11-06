@@ -70,7 +70,7 @@ const c = dict(
 )[lang];
 ---
 <BaseLayout lang={lang} route="safety" title={c.title} description={c.desc} schema={[breadcrumb(Astro.site!, lang, 'safety', c.title)]}>
-  <PageHero eyebrow={c.eyebrow} title={c.h1} lede={c.lede} illo="shield" tone="var(--color-sky)" />
+  <PageHero photo="safety" lang={lang} eyebrow={c.eyebrow} title={c.h1} lede={c.lede} illo="shield" tone="var(--color-sky)" />
 
   <section class="container-x pt-14" aria-labelledby="license-title">
     <div class="grid overflow-hidden rounded-[1.75rem] border-2 border-dashed border-[rgb(31_58_51/.3)] bg-[#fffdf9] md:grid-cols-[auto_1fr]" data-reveal>

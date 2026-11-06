@@ -5,6 +5,7 @@ import AgePicker from '@/components/islands/AgePicker';
 import ValueProps from '@/components/sections/ValueProps.astro';
 import TrustBar from '@/components/sections/TrustBar.astro';
 import TeamStrip from '@/components/sections/TeamStrip.astro';
+import PhotoBand from '@/components/sections/PhotoBand.astro';
 import ProgramCards from '@/components/sections/ProgramCards.astro';
 import DayRibbon from '@/components/sections/DayRibbon.astro';
 import Stories from '@/components/sections/Stories.astro';
@@ -48,6 +49,7 @@ const events = EVENTS.filter((e) => e.kind !== 'closed').map((e) => ({
     </div>
   </section>
   <ValueProps lang={lang} />
+  <PhotoBand lang={lang} />
   <TrustBar lang={lang} />
   <ProgramCards lang={lang} />
   <TeamStrip lang={lang} />

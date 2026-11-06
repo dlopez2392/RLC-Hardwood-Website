@@ -120,3 +120,13 @@ Post-fix regression:
 - No overflow on 21 routes × 4 widths.
 - axe: 0 violations.
 - Lighthouse mobile 100 · 100 · 100 · 100 (CLS 0) on `/`, `/a-day/`, `/tuition/`, `/tour/` and `/safety/`.
+
+## 6. Photography (Higgsfield API)
+
+| Step | Result |
+|---|---|
+| Bake-off on the hero brief | Soul 2 missed the brief (older children, cluttered); Qwen 3 matched the palette but looked rendered; **Grok Imagine 2.0** was the most photographic. Selected Grok. |
+| First set (12 shots) | Cohesive light and palette, but casting was almost entirely white adults and two "child's hands" shots showed adult hands. **7 retakes** with explicit casting and child-scale hands, all approved. |
+| Integration | Hero and Day arch (with the sun's arc compressed to the top third), photo page heroes, portal photo cards, home studio band. Bilingual alt text for every image. |
+| Regression | No overflow on 21 routes × 4 widths. axe: 0 violations. Lighthouse mobile: Performance 99 on `/` (re-run), 98–100 on other pages, and 100 on A11y, BP and SEO. LCP about 2 s now that it is a real photo; CLS 0. Desktop 100 across the board. |
+| Spend | About $1.19 of the API balance, including the bake-off and retakes. |

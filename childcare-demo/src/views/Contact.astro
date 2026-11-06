@@ -33,7 +33,7 @@ const c = dict(
 )[lang];
 ---
 <BaseLayout lang={lang} route="contact" title={c.title} description={c.desc} schema={[breadcrumb(Astro.site!, lang, 'contact', c.title)]}>
-  <PageHero eyebrow={c.eyebrow} title={c.h1} lede={c.lede} illo="door" tone="var(--color-blush)" />
+  <PageHero photo="pickup" lang={lang} eyebrow={c.eyebrow} title={c.h1} lede={c.lede} illo="door" tone="var(--color-blush)" />
   <section class="container-x section-y !pt-12 grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
     <div class="space-y-8">
       <dl class="grid gap-6 sm:grid-cols-2">

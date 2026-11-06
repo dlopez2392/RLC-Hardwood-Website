@@ -26,7 +26,7 @@ const c = dict(
 )[lang];
 ---
 <BaseLayout lang={lang} route="programs" title={c.title} description={c.desc} schema={[breadcrumb(Astro.site!, lang, 'programs', c.title)]}>
-  <PageHero eyebrow={c.eyebrow} title={c.h1} lede={c.lede} illo="blocks" />
+  <PageHero photo="infants" lang={lang} eyebrow={c.eyebrow} title={c.h1} lede={c.lede} illo="blocks" />
 
   <nav aria-label={c.jump} class="sticky top-[4.5rem] z-30 border-b border-[rgb(31_58_51/.08)] bg-[rgb(251_246_238/.92)] backdrop-blur no-print">
     <ul class="scroll-x container-x flex gap-2 overflow-x-auto py-3">
