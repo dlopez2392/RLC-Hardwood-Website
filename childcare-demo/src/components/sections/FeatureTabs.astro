@@ -1,0 +1,96 @@
+---
+/**
+ * Photo-led feature section (replaces the three icon cards). One large photo in an
+ * asymmetric cut-paper mask, a proof chip collaged on top, and a short text card.
+ * Tabs follow the WAI-ARIA pattern (src/scripts/tabs.ts); without JS every panel shows.
+ */
+import { Picture } from 'astro:assets';
+import SectionHead from '@/components/ui/SectionHead.astro';
+import { PHOTOS, type PhotoKey } from '@/data/photos';
+import { dict, href, ui, type Lang, type RouteKey } from '@/i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = ui[lang];
+interface Item { tab: string; photo: PhotoKey; chipTop: string; chip: string; title: string; body: string; points: string[]; link: string; to: RouteKey; sample?: boolean }
+const c = dict(
+  {
+    eyebrow: 'Why families choose Sunroom',
+    title: 'Small rooms. <em class="italic-sun">Long</em> relationships. Nothing hidden.',
+    tabs: 'Reasons families choose Sunroom',
+    items: [
+      { tab: 'Teachers who stay', photo: 'infants', chipTop: 'Average time at Sunroom', chip: '8.5 years', sample: true,
+        title: 'Your child is known here.', body: 'Their fears, their jokes, the way they like their toast cut. That only happens when teachers stay, so we pay and plan for it.',
+        points: ['Lead teachers paid at public pre-K scale', 'Five paid planning hours every week', 'One primary caregiver for every infant'], link: 'Meet the teachers', to: 'teachers' },
+      { tab: 'Two languages', photo: 'circle', chipTop: 'Today’s circle song', chip: '“De colores”',
+        title: 'English and Spanish, the natural way.', body: 'Every classroom has a Spanish-speaking teacher. Children pick up both languages through songs, stories and lunch-table talk, not flash cards.',
+        points: ['A Spanish-speaking teacher in every room', 'Bilingual stories and songs daily', 'Family updates in the language you choose'], link: 'See the programs', to: 'programs' },
+      { tab: 'You see their day', photo: 'portal', chipTop: '9:50 a.m. · from Ms. Sofía', chip: '“Filled the watering can by herself.”',
+        title: 'In your pocket before pick-up.', body: 'Meals, naps, photos and one real sentence from their teacher. No more “What did you do today?” “Nothing.”',
+        points: ['Meals, naps and diapers logged as they happen', 'At least one real observation a day', 'Message teachers; replies within the hour'], link: 'Preview the family app', to: 'portal' },
+    ] as Item[],
+  },
+  {
+    eyebrow: 'Por qué las familias eligen Sunroom',
+    title: 'Salones pequeños. Relaciones <em class="italic-sun">largas</em>. Nada escondido.',
+    tabs: 'Razones por las que las familias eligen Sunroom',
+    items: [
+      { tab: 'Maestros que se quedan', photo: 'infants', chipTop: 'Tiempo promedio en Sunroom', chip: '8.5 años', sample: true,
+        title: 'Aquí conocen a su hijo.', body: 'Sus miedos, sus chistes y cómo le gusta que le corten el pan tostado. Eso solo pasa cuando los maestros se quedan, y por eso pagamos y planeamos para lograrlo.',
+        points: ['Maestros titulares con sueldo de prekínder público', 'Cinco horas pagadas de planeación cada semana', 'Una cuidadora principal para cada bebé'], link: 'Conozca a los maestros', to: 'teachers' },
+      { tab: 'Dos idiomas', photo: 'circle', chipTop: 'La canción del círculo de hoy', chip: '“De colores”',
+        title: 'Inglés y español, de forma natural.', body: 'Cada salón tiene una maestra que habla español. Los niños aprenden ambos idiomas con canciones, cuentos y la plática a la hora de comer, no con tarjetas.',
+        points: ['Una maestra que habla español en cada salón', 'Cuentos y canciones bilingües todos los días', 'Avisos a la familia en el idioma que usted elija'], link: 'Vea los programas', to: 'programs' },
+      { tab: 'Usted ve su día', photo: 'portal', chipTop: '9:50 a. m. · de la maestra Sofía', chip: '“Llenó la regadera ella solita.”',
+        title: 'En su bolsillo antes de la salida.', body: 'Comidas, siestas, fotos y una frase de verdad de su maestra. Se acabó el “¿qué hiciste hoy?”, “nada”.',
+        points: ['Comidas, siestas y pañales registrados al momento', 'Al menos una observación de verdad al día', 'Escriba a las maestras; respondemos en menos de una hora'], link: 'Vea la app familiar', to: 'portal' },
+    ] as Item[],
+  },
+)[lang];
+const masks = ['rounded-[2rem] rounded-tl-[11rem]', 'rounded-[2rem] rounded-tr-[11rem]', 'rounded-[2rem] rounded-br-[11rem]'];
+const discs = ['var(--color-blush)', 'var(--color-butter)', 'var(--color-sky)'];
+---
+<section class="cv-auto section-y" aria-labelledby="why-title">
+  <div class="container-x" data-tabs>
+    <div class="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+      <SectionHead eyebrow={c.eyebrow} title={c.title} id="why-title" />
+      <div role="tablist" aria-label={c.tabs} class="scroll-x -mx-[var(--gutter)] flex shrink-0 gap-1 overflow-x-auto px-[var(--gutter)] sm:mx-0 sm:w-fit sm:rounded-full sm:bg-[var(--color-paper)] sm:p-1.5" data-reveal>
+        {c.items.map((it, i) => (
+          <button type="button" role="tab" id={`why-tab-${i}`} aria-controls={`why-panel-${i}`} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1}
+            class="min-h-11 shrink-0 rounded-full border-[1.5px] border-[rgb(31_58_51/.25)] px-4 text-[0.9375rem] font-bold whitespace-nowrap transition aria-selected:border-[var(--color-ink)] aria-selected:bg-[var(--color-ink)] aria-selected:text-[var(--color-cream)] hover:border-[var(--color-ink)] sm:border-transparent sm:px-5">
+            {it.tab}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    {c.items.map((it, i) => (
+      <div id={`why-panel-${i}`} role="tabpanel" aria-labelledby={`why-tab-${i}`} tabindex="0" hidden={i !== 0} class="why-panel mt-10 grid items-center gap-10 lg:mt-14 lg:grid-cols-[1.12fr_0.88fr] lg:gap-16">
+        <div class="relative">
+          <div class="pointer-events-none absolute -bottom-8 -left-8 size-48 rounded-full sm:size-64" style={`background:${discs[i]}`} aria-hidden="true"></div>
+          <div class:list={['grain relative overflow-hidden shadow-[var(--shadow-lift)]', masks[i]]}>
+            <Picture src={PHOTOS[it.photo].src} alt={PHOTOS[it.photo].alt[lang]} formats={['avif', 'webp']} widths={[480, 720, 960, 1200]} sizes="(min-width: 1024px) 44rem, 92vw" loading="lazy" decoding="async" class="aspect-[4/3] h-auto w-full object-cover" />
+          </div>
+          <div class="paper absolute right-3 -bottom-6 z-[2] max-w-[17rem] p-4 sm:right-8 sm:max-w-[19rem] sm:p-5">
+            <p class="text-[0.75rem] font-bold uppercase tracking-[0.1em] text-[var(--color-ink-soft)]">{it.chipTop}</p>
+            <p class="mt-1.5 flex flex-wrap items-center gap-x-2.5 gap-y-1 font-display text-[1.375rem] leading-snug sm:text-[1.5rem]" style="font-weight:450">{it.chip}{it.sample && <span class="sample-badge font-sans">{t.sampleShort}</span>}</p>
+          </div>
+        </div>
+        <div class="max-lg:pt-4">
+          <h3 class="display-md">{it.title}</h3>
+          <p class="lede mt-5">{it.body}</p>
+          <ul class="mt-6 space-y-3">
+            {it.points.map((x) => (
+              <li class="flex gap-3 font-semibold"><span class="mt-0.5 grid size-6 shrink-0 place-items-center rounded-full bg-[var(--color-sage-soft)]"><svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#1F3A33" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" /></svg></span>{x}</li>
+            ))}
+          </ul>
+          <a href={href(it.to, lang)} class="btn btn-ink mt-8">{it.link} <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    ))}
+  </div>
+  <noscript><style>{`.why-panel[hidden]{display:grid!important}`}</style></noscript>
+</section>
+
+<script>
+  import '@/scripts/tabs';
+</script>

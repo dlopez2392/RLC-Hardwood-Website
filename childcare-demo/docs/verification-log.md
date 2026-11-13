@@ -130,3 +130,14 @@ Post-fix regression:
 | Integration | Hero and Day arch (with the sun's arc compressed to the top third), photo page heroes, portal photo cards, home studio band. Bilingual alt text for every image. |
 | Regression | No overflow on 21 routes × 4 widths. axe: 0 violations. Lighthouse mobile: Performance 99 on `/` (re-run), 98–100 on other pages, and 100 on A11y, BP and SEO. LCP about 2 s now that it is a real photo; CLS 0. Desktop 100 across the board. |
 | Spend | About $1.19 of the API balance, including the bake-off and retakes. |
+
+## 7. Design review, round two
+
+| Step | Result |
+|---|---|
+| Reference capture | Rendered screenshots of 9 leading sites (3 more blocked automated visits) compared side by side with our live site. |
+| Changes | New hero with faces and a sun disc behind the arch; photo-led tabbed feature; photo program cards; terracotta statement band; arch-framed day timeline; photo + list safety band; featured family story; kitchen photo; program photos on the Programs page. |
+| Layout shift regression | The sun disc was first positioned with `left`/`top`, which Lighthouse scored as CLS 0.74 (Performance 70). Repositioned with a transform in container units: **CLS 0**. |
+| Regression | No overflow on 21 routes × 4 widths. axe: 0 violations. Assistant 9/9. |
+| Lighthouse | Mobile: `/` 99, `/es/` 99, `/programs/` 100, `/tuition/` 100, `/portal/` 99, `/a-day/` 99, all with 100 for Accessibility, Best Practices and SEO. Desktop `/`: 100 across the board. |
+| Photo spend | 6 new frames, about $0.36 of the API balance. All six approved on first take. |

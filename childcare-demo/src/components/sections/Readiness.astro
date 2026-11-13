@@ -21,14 +21,14 @@ const c = dict(
   },
 )[lang];
 ---
-<section class="cv-auto section-y bg-[var(--color-paper)]" aria-labelledby="ready-title">
+<section class="cv-auto section-y bg-[var(--color-sky)]" aria-labelledby="ready-title">
   <div class="container-x grid gap-12 lg:grid-cols-2 lg:items-center">
     <div data-reveal>
-      <p class="eyebrow">{c.eyebrow}</p>
+      <p class="eyebrow !text-[var(--color-sun-deep)]">{c.eyebrow}</p>
       <h2 id="ready-title" class="display-md mt-4">{c.title}</h2>
       <p class="lede mt-5">{c.lede}</p>
       <p class="mt-8 flex items-baseline gap-4">
-        <span class="font-display text-[clamp(4.5rem,10vw,7.5rem)] leading-none text-[var(--color-sun-ink)]" style="font-weight:400">{READINESS.headline}{lang === 'es' ? ' %' : '%'}</span>
+        <span class="font-display text-[clamp(4.5rem,10vw,7.5rem)] leading-none text-[var(--color-sun-deep)]" style="font-weight:400">{READINESS.headline}{lang === 'es' ? ' %' : '%'}</span>
         <span class="max-w-[14rem] font-semibold leading-snug">{READINESS.cohort[lang]} {c.big}</span>
       </p>
       <p class="mt-5 flex flex-wrap items-center gap-2 text-sm text-[var(--color-ink-soft)]"><span class="sample-badge">{t.sample}</span>{c.method}</p>

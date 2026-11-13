@@ -2,10 +2,9 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Hero from '@/components/sections/Hero.astro';
 import AgePicker from '@/components/islands/AgePicker';
-import ValueProps from '@/components/sections/ValueProps.astro';
+import FeatureTabs from '@/components/sections/FeatureTabs.astro';
+import Statement from '@/components/sections/Statement.astro';
 import TrustBar from '@/components/sections/TrustBar.astro';
-import TeamStrip from '@/components/sections/TeamStrip.astro';
-import PhotoBand from '@/components/sections/PhotoBand.astro';
 import ProgramCards from '@/components/sections/ProgramCards.astro';
 import DayRibbon from '@/components/sections/DayRibbon.astro';
 import Stories from '@/components/sections/Stories.astro';
@@ -44,16 +43,15 @@ const events = EVENTS.filter((e) => e.kind !== 'closed').map((e) => ({
 <BaseLayout lang={lang} route="home" title={m.title} description={m.desc} schema={events}>
   <Hero lang={lang} />
   <section class="container-x pt-4 md:pt-6" aria-label={lang === 'en' ? 'Find your child’s program' : 'Encuentre el programa de su hijo'}>
-    <div class="grain rounded-[2rem] bg-[var(--color-paper)] p-6 sm:p-10 lg:p-14">
+    <div class="on-dark grain rounded-[2rem] bg-[var(--color-ink)] p-6 text-[var(--color-cream)] sm:p-10 lg:p-14">
       <div class="relative z-[2]"><AgePicker client:idle lang={lang} /></div>
     </div>
   </section>
-  <ValueProps lang={lang} />
-  <PhotoBand lang={lang} />
-  <TrustBar lang={lang} />
+  <FeatureTabs lang={lang} />
   <ProgramCards lang={lang} />
-  <TeamStrip lang={lang} />
+  <Statement lang={lang} />
   <DayRibbon lang={lang} />
+  <TrustBar lang={lang} />
   <Stories lang={lang} />
   <Readiness lang={lang} />
   <EventsStrip lang={lang} />

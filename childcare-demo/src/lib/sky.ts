@@ -45,6 +45,8 @@ export function applySky(el: HTMLElement, h: number) {
   el.style.setProperty('--night', String(sun.night));
   el.style.setProperty('--sun-x', `${sun.x}px`);
   el.style.setProperty('--sun-y', `${sun.y}px`);
+  el.style.setProperty('--sun-fx', String(sun.x / 600));
+  el.style.setProperty('--sun-fy', String(sun.y / 680));
   return sun;
 }
 

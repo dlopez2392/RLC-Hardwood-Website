@@ -1,5 +1,6 @@
 ---
-import Illo from '@/components/brand/Illo.astro';
+import { Picture } from 'astro:assets';
+import { PHOTOS, PROGRAM_PHOTO } from '@/data/photos';
 import SectionHead from '@/components/ui/SectionHead.astro';
 import { PROGRAMS } from '@/data/programs';
 import { dict, fmtMoney, href, ui, type Lang } from '@/i18n';
@@ -36,13 +37,15 @@ const c = dict(
     <ul class="scroll-x -mx-[var(--gutter)] mt-12 grid snap-x snap-mandatory auto-cols-[76%] grid-flow-col gap-4 overflow-x-auto px-[var(--gutter)] pb-3 sm:mx-0 sm:auto-cols-auto sm:grid-flow-row sm:grid-cols-2 sm:overflow-visible sm:px-0 lg:grid-cols-3 xl:grid-cols-5">
       {PROGRAMS.map((p, i) => (
         <li class="lift group relative flex snap-start flex-col overflow-hidden rounded-[var(--radius-paper)] shadow-[var(--shadow-paper)]" style={`background:${p.tone.bg}`} data-reveal data-reveal-delay={i * 80}>
-          <div class="relative px-6 pt-6">
-            <p class="text-[0.8125rem] font-bold uppercase tracking-[0.12em]">{p.ages[lang]}</p>
-            <h3 class="mt-2 text-[2rem]">{p.room}{lang === 'es' && <span class="ml-2 font-sans text-[0.875rem] font-semibold italic tracking-normal">({p.bird})</span>}</h3>
-            <p class="font-semibold">{p.name[lang]}</p>
+          <div class="relative aspect-[4/3] overflow-hidden">
+            <Picture src={PHOTOS[PROGRAM_PHOTO[p.id]].src} alt={PHOTOS[PROGRAM_PHOTO[p.id]].alt[lang]} formats={['avif', 'webp']} widths={[320, 480, 640]} sizes="(min-width: 1280px) 16rem, (min-width: 640px) 45vw, 76vw" loading="lazy" decoding="async" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            <p class="absolute top-3 left-3 rounded-full px-3 py-1 text-[0.75rem] font-bold uppercase tracking-[0.1em]" style={`background:${p.tone.bg}`}>{p.ages[lang]}</p>
           </div>
-          <div class="tilt mx-auto my-3 size-28 sm:my-4 sm:size-36"><Illo name={p.illo} class="h-full w-full" /></div>
-          <div class="mt-auto flex items-end justify-between gap-3 border-t border-[rgb(31_58_51/.12)] bg-[rgb(255_253_249/.55)] px-6 py-4">
+          <div class="px-5 pt-4 pb-3">
+            <h3 class="text-[1.875rem] leading-none">{p.room}{lang === 'es' && <span class="ml-2 font-sans text-[0.8125rem] font-semibold italic tracking-normal">({p.bird})</span>}</h3>
+            <p class="mt-1.5 font-semibold">{p.name[lang]}</p>
+          </div>
+          <div class="mt-auto flex items-end justify-between gap-3 border-t border-[rgb(31_58_51/.12)] bg-[rgb(255_253_249/.55)] px-5 py-3.5">
             <div>
               <p class="text-[0.75rem] font-bold uppercase tracking-[0.1em]">{c.ratio}</p>
               <p class="font-display text-[1.375rem] leading-tight" style="font-weight:450">1 : {p.ratio}</p>

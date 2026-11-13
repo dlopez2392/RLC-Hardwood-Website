@@ -18,7 +18,7 @@ const hairBack: Record<P['style'], string> = {
   waves: 'M54 134c-8-44 8-88 46-88s54 44 46 88c-6-4-10-14-10-28-10-16-22-24-36-24s-26 8-36 24c0 14-4 24-10 28Z',
 };
 ---
-<svg viewBox="0 0 200 220" class={cls} role="img" aria-label={label} focusable="false">
+<svg viewBox="0 0 200 220" class={cls} role={label ? 'img' : undefined} aria-label={label || undefined} aria-hidden={label ? undefined : 'true'} focusable="false">
   <path d="M14 220V96C14 48 52 12 100 12s86 36 86 84v124Z" fill={p.bg} />
   <g style={shadow}>
     <path d={hairBack[p.style]} fill={p.hair} />

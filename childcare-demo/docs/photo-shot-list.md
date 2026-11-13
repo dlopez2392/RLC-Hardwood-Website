@@ -5,6 +5,7 @@
 > - Seven frames were retaken for representative casting and child-scale hands.
 > - Graded with `scripts/grade-photos.mjs`. Raw frames are in `src/assets/photos/raw/` and graded frames in `src/assets/photos/`.
 > - Total API spend was about **$1.19**, including the bake-off and retakes.
+> - **Round two** (design review): shots 13–18 added a hero with faces, one photo for each remaining program, and the kitchen, for about $0.36 more. Their prompts are in `scripts/higgsfield-shots.mjs`.
 > - To regenerate: `NODE_USE_ENV_PROXY=1 HF_MODEL=xai/grok-imagine-image-2.0 node scripts/higgsfield-shots.mjs run 1,2,3`, then `node scripts/grade-photos.mjs`.
 
 Generate these when the Higgsfield workspace has credits. The estimated cost is **about 12 credits**, at 1 credit per image with `gpt_image_2_6`, `quality: medium`, `resolution: 2k`. Budget **15** to allow for retakes.

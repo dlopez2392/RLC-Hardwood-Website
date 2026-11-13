@@ -1,0 +1,38 @@
+---
+/**
+ * The one saturated moment on the page: a full-bleed terracotta band carrying the
+ * school's philosophy in a single sentence, signed by the people who teach it.
+ */
+import Portrait from '@/components/brand/Portrait.astro';
+import { TEACHERS } from '@/data/teachers';
+import { dict, href, type Lang } from '@/i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const avg = (TEACHERS.reduce((s, x) => s + x.years, 0) / TEACHERS.length).toFixed(1);
+const c = dict(
+  { eyebrow: 'What we believe', quote: 'Children learn best when <em>nobody is in a hurry.</em>', by: 'Elena Ruiz-Whitaker, founder & director', team: `and seven teachers who have stayed an average of ${avg} years`, cta: 'Meet the teachers' },
+  { eyebrow: 'Lo que creemos', quote: 'Los niños aprenden mejor cuando <em>nadie tiene prisa.</em>', by: 'Elena Ruiz-Whitaker, fundadora y directora', team: `y siete maestros que llevan en promedio ${avg} años aquí`, cta: 'Conozca a los maestros' },
+)[lang];
+const faces = [TEACHERS[0]!, TEACHERS[4]!, TEACHERS[1]!, TEACHERS[7]!, TEACHERS[3]!];
+---
+<section class="cv-auto on-dark grain relative overflow-hidden bg-[var(--color-sun-ink)] text-[var(--color-cream)]" aria-labelledby="belief-title">
+  <svg class="pointer-events-none absolute -right-24 -bottom-40 w-[34rem] max-w-none opacity-90 sm:-right-10 lg:right-[4%]" viewBox="0 0 400 400" aria-hidden="true">
+    <g class="anim-rays" style="transform-origin: 200px 200px">
+      {Array.from({ length: 16 }).map((_, i) => <rect x="194" y="6" width="12" height="46" rx="6" fill="#E2683C" transform={`rotate(${i * 22.5} 200 200)`} />)}
+    </g>
+    <circle cx="200" cy="200" r="128" fill="#E2683C" />
+  </svg>
+  <div class="container-x relative z-[2] py-20 md:py-28">
+    <p id="belief-title" class="eyebrow !text-[var(--color-butter)]" data-reveal>{c.eyebrow}</p>
+    <blockquote class="mt-6 max-w-[18ch] font-display text-[clamp(2.5rem,6.4vw,5.5rem)] leading-[1.02] tracking-[-0.02em] [&_em]:text-[var(--color-butter)]" style="font-weight:420" data-reveal set:html={c.quote} />
+    <div class="mt-10 flex flex-col gap-6 sm:flex-row sm:items-center" data-reveal>
+      <ul class="flex -space-x-3" aria-hidden="true">
+        {faces.map((p) => (
+          <li class="size-14 overflow-hidden rounded-full ring-[3px] ring-[var(--color-sun-ink)]"><Portrait p={p.portrait} label="" class="h-auto w-full" /></li>
+        ))}
+      </ul>
+      <p class="max-w-md leading-snug"><strong class="block text-[1.0625rem]">{c.by}</strong>{c.team}</p>
+      <a href={href('teachers', lang)} class="btn bg-[var(--color-cream)] text-[var(--color-ink)] hover:bg-white sm:ml-auto">{c.cta} <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>

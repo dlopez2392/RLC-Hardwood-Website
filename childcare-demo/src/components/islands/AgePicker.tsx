@@ -59,12 +59,13 @@ export default function AgePicker({ lang }: { lang: Lang }) {
     <div class="grid gap-8 lg:grid-cols-[1fr_1fr] lg:items-center">
       <fieldset>
         <legend class="font-display text-[clamp(1.875rem,3.4vw,3rem)] leading-[1.05]" style="font-weight:420">{t.q}</legend>
-        <p class="mt-3 max-w-md text-[var(--color-ink-soft)]">{t.hint}</p>
+        <p class="mt-3 max-w-md text-[#e6ddcd]">{t.hint}</p>
         <div class="mt-6 flex flex-wrap gap-2">
           {PROGRAMS.map((x) => (
             <label key={x.id} class="age-chip">
               <input type="radio" name="age" value={x.id} checked={sel === x.id} onChange={() => choose(x.id)} class="peer sr-only" />
-              <span class="inline-flex min-h-12 cursor-pointer items-center rounded-full border-[1.5px] border-[var(--color-ink)] px-4 text-[1rem] font-semibold transition peer-checked:border-[var(--color-sun-ink)] peer-checked:bg-[var(--color-sun-ink)] peer-checked:text-[var(--color-cream)] peer-focus-visible:outline-3 peer-focus-visible:outline-offset-3 peer-focus-visible:outline-[var(--color-sun-ink)] hover:bg-[var(--color-paper)] peer-checked:hover:bg-[var(--color-sun-deep)]">
+              <span class="inline-flex min-h-12 cursor-pointer items-center rounded-full bg-[var(--color-cream)] px-4 text-[1rem] font-semibold text-[var(--color-ink)] transition peer-checked:bg-[var(--color-butter)] peer-checked:ring-[3px] peer-checked:ring-[var(--color-sun)] peer-focus-visible:outline-3 peer-focus-visible:outline-offset-4 peer-focus-visible:outline-[var(--color-apricot)] hover:bg-white peer-checked:hover:bg-[var(--color-butter)]">
+                {sel === x.id && <svg class="mr-1.5" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#1F3A33" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" /></svg>}
                 {t.options[x.id]}
               </span>
             </label>
@@ -74,7 +75,7 @@ export default function AgePicker({ lang }: { lang: Lang }) {
 
       <div aria-live="polite" class="min-h-[15rem]">
         {p ? (
-          <div class="paper grid gap-5 p-6 sm:grid-cols-2 sm:p-7" style={{ background: p.tone.bg }}>
+          <div class="on-light paper grid gap-5 p-6 text-[var(--color-ink)] sm:grid-cols-2 sm:p-7" style={{ background: p.tone.bg }}>
             <div class="sm:col-span-2 flex flex-wrap items-baseline justify-between gap-2">
               <p class="font-display text-[2rem] leading-none" style="font-weight:450">
                 {p.room} <span class="text-[1.125rem] font-sans font-semibold">· {p.name[lang]}</span>
@@ -106,8 +107,8 @@ export default function AgePicker({ lang }: { lang: Lang }) {
             </div>
           </div>
         ) : (
-          <div class="grid h-full min-h-[15rem] place-items-center rounded-[var(--radius-paper)] border-2 border-dashed border-[rgb(31_58_51/.2)] p-8 text-center">
-            <p class="max-w-xs font-display text-[1.5rem] leading-snug text-[var(--color-ink-soft)]" style="font-style:italic">
+          <div class="grid h-full min-h-[15rem] place-items-center rounded-[var(--radius-paper)] border-2 border-dashed border-[rgb(251_246_238/.35)] p-8 text-center">
+            <p class="max-w-xs font-display text-[1.5rem] leading-snug text-[#e6ddcd]" style="font-style:italic">
               {lang === 'en' ? 'Their room, ratio, tuition and next tour will appear here.' : 'Aquí aparecerán su salón, la proporción, la colegiatura y la próxima visita.'}
             </p>
           </div>

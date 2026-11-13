@@ -26,6 +26,13 @@ export const SHOTS = [
   { id: 10, slot: 'safety', aspect: '4:3', prompt: 'Calm Black male teacher in his thirties checking a photo-ID pickup list on a tablet at a bright entry with a blue door, a parent in soft focus' },
   { id: 11, slot: 'portal-photo', aspect: '1:1', prompt: 'Close-up of a toddler\'s small chubby hands holding a tiny child-sized watering can over a raised garden bed, seedlings, water droplets catching the light' },
   { id: 12, slot: 'gallery', aspect: '16:9', prompt: 'Wide view of a light-filled classroom with low shelves of natural materials and plants, children at play in soft focus' },
+  // Round 2 (design review): faces in the hero, one photo per program, the kitchen.
+  { id: 13, slot: 'hero-face', aspect: '3:4', prompt: 'A Latina teacher in her thirties and a four-year-old girl laughing together at a low oak table with natural wooden blocks, the girl\'s joyful face clearly visible looking up at her teacher, tall arched window behind them' },
+  { id: 14, slot: 'program-toddlers', aspect: '4:3', prompt: 'A curly-haired toddler about eighteen months old carefully pouring water between two small glass pitchers at a low wooden table, concentrated happy expression, a teacher\'s hands steadying the tray' },
+  { id: 15, slot: 'program-preschool', aspect: '4:3', prompt: 'A three-year-old Black girl with clay-covered hands shaping a small clay bowl at an art studio table, smiling with pride, a glowing light table and jars of brushes behind her' },
+  { id: 16, slot: 'program-prek', aspect: '4:3', prompt: 'Two five-year-old children, an Asian boy and a Latina girl, writing letters with pencils at a classroom play post office with small wooden mailboxes and envelopes, focused and happy' },
+  { id: 17, slot: 'program-schoolage', aspect: '4:3', prompt: 'Three children aged seven to nine of different ethnicities building a small robot from wooden parts and wires at an after-school workshop table, laughing together' },
+  { id: 18, slot: 'kitchen', aspect: '3:2', prompt: 'Close view of a cook\'s hands ladling chicken and vegetable soup from a large pot into small ceramic bowls on a kitchen counter, warm corn tortillas in a cloth, fresh cilantro and limes, rising steam' },
 ];
 
 const body = (s) => ({ prompt: `${s.prompt}. ${STYLE}`, aspect_ratio: s.aspect, ...(MODEL.includes('soul') ? { resolution: '1080p' } : {}) });

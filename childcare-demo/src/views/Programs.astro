@@ -2,6 +2,8 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import PageHero from '@/components/ui/PageHero.astro';
 import Illo from '@/components/brand/Illo.astro';
+import { Picture } from 'astro:assets';
+import { PHOTOS, PROGRAM_PHOTO } from '@/data/photos';
 import CtaBand from '@/components/sections/CtaBand.astro';
 import { PROGRAMS } from '@/data/programs';
 import { dict, fmtMoney, href, type Lang } from '@/i18n';
@@ -76,7 +78,11 @@ const c = dict(
           </div>
         </div>
 
-        <div class="paper p-6 sm:p-8 lg:self-start" data-reveal data-reveal-delay="120">
+        <div class="space-y-6 lg:self-start" data-reveal data-reveal-delay="120">
+          <div class:list={['overflow-hidden shadow-[var(--shadow-paper)]', i % 2 ? 'rounded-[2rem] rounded-tl-[8rem]' : 'rounded-[2rem] rounded-tr-[8rem]']}>
+            <Picture src={PHOTOS[PROGRAM_PHOTO[p.id]].src} alt={PHOTOS[PROGRAM_PHOTO[p.id]].alt[lang]} formats={['avif', 'webp']} widths={[480, 720, 960]} sizes="(min-width: 1024px) 36rem, 92vw" loading="lazy" decoding="async" class="aspect-[16/10] h-auto w-full object-cover" />
+          </div>
+          <div class="paper p-6 sm:p-8">
           <h3 class="flex items-center justify-between gap-3 text-[1.5rem]">{c.day}<span class="chip" style={`background:${p.tone.bg}`}>{p.room}</span></h3>
           <ol class="relative mt-6 space-y-0">
             <span class="absolute top-2 bottom-2 left-[3.35rem] w-[2px] bg-[repeating-linear-gradient(180deg,var(--color-sun)_0_6px,transparent_6px_12px)] opacity-60" aria-hidden="true"></span>
@@ -87,6 +93,7 @@ const c = dict(
               </li>
             ))}
           </ol>
+          </div>
         </div>
       </div>
     </section>

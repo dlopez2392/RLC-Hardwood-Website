@@ -1,5 +1,6 @@
 ---
-import Illo from '@/components/brand/Illo.astro';
+import { Picture } from 'astro:assets';
+import { PHOTOS, type PhotoKey } from '@/data/photos';
 import { DAY } from '@/data/calendar';
 import { dict, href, type Lang } from '@/i18n';
 interface Props { lang: Lang }
@@ -25,12 +26,12 @@ const c = dict(
     <div class="pointer-events-none absolute inset-x-0 top-[6.4rem] h-[3px] bg-[repeating-linear-gradient(90deg,var(--color-sun)_0_10px,transparent_10px_18px)] opacity-60" aria-hidden="true"></div>
     <ol class="scroll-x bleed-x flex snap-x gap-4 overflow-x-auto pb-6" aria-label={c.list} tabindex="0">
       {DAY.map((d, i) => (
-        <li class="w-[13.5rem] shrink-0 snap-start" data-reveal data-reveal-delay={i * 60}>
+        <li class="w-[14rem] shrink-0 snap-start" data-reveal data-reveal-delay={i * 60}>
           <a href={href('day', lang, d.id)} class="group block rounded-[var(--radius-paper)] p-2 focus-visible:outline-offset-0">
             <span class="mx-auto block w-fit rounded-full bg-[var(--color-ink)] px-3 py-1 text-sm font-bold tabular-nums text-[var(--color-cream)]">{d.time}</span>
             <span class="relative z-[1] mx-auto mt-5 block size-14 rounded-full border-[3px] border-[var(--color-cream)] shadow-[var(--shadow-paper)] transition-transform duration-500 group-hover:scale-110" style={`background:${dot(d.hour)}; transform: translateY(${30 - arc(d.hour)}px)`} aria-hidden="true"></span>
-            <span class="mt-10 block aspect-square rounded-[var(--radius-paper)] bg-[var(--color-paper)] p-5 transition duration-500 group-hover:-translate-y-1 group-hover:bg-[var(--color-sage-soft)]">
-              <Illo name={d.scene} class="h-full w-full" />
+            <span class="mt-10 block aspect-[4/5] overflow-hidden rounded-t-full rounded-b-[1.25rem] shadow-[var(--shadow-paper)] transition duration-500 group-hover:-translate-y-1 group-hover:shadow-[var(--shadow-lift)]">
+              <Picture src={PHOTOS[d.id as PhotoKey].src} alt="" formats={['avif', 'webp']} widths={[240, 400]} sizes="14rem" loading="lazy" decoding="async" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
             </span>
             <span class="mt-3 block text-center font-display text-[1.375rem] leading-tight" style="font-weight:450">{d.title[lang]}</span>
           </a>

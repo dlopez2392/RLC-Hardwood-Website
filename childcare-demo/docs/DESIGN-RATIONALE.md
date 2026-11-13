@@ -109,3 +109,18 @@ The register is a respectful *usted*, with Texas usage parents actually use (*k√
 - Real reviews with permission. A live state inspection link.
 - Form and CRM integration, live tour availability, and the assistant connected to an LLM endpoint grounded in their handbook.
 - An interactive map loaded after consent.
+
+## 7. Design review, round two: what the best sites taught us
+
+After launch we compared the live site side by side with rendered screenshots of Lovevery, Goddard, Primrose, Vivvi, KinderCare, Guidepost, Wonderschool and Kido. Four things separated them from us, and each one led to a change.
+
+| What the best sites do | Where Sunroom fell short | What changed |
+|---|---|---|
+| **Lead with a child's face, large.** Lovevery, Goddard, Primrose, KinderCare and Kido all open on one. | The hero showed two children from behind in a small arch, with a card covering a third of the photo. | New hero photo of a teacher and a four-year-old laughing together. The arch is larger, and a small round inset keeps the "hands at work" shot. On phones the photo now sits in the first screen, between the buttons and the copy. |
+| **One confident, saturated colour.** Vivvi is orange, Goddard navy, Primrose olive, Lovevery cobalt. | Cream, beige and pale pastels nearly top to bottom. | The sun left the photo and became a large terracotta disc rising behind the arched window, so the hero is the logo at full scale. It still follows San Antonio time (left in the morning, right by evening, a pale moon at night). A full-width terracotta band carries the school's belief in one sentence. The age finder moved onto deep green, the featured family story onto dusk blue, and the readiness results onto sky. |
+| **Photo-led sections with bold shapes.** Primrose pairs a big masked photo with a short text card. | Three small icon cards, and clip-art where we already had photographs. | "Why families choose Sunroom" is now three tabs. Each has a large photo in an asymmetric cut-paper mask, a caption card collaged on top (the average tenure, today's circle song, a real note from a teacher) and three proof points. Program cards and the day timeline use photographs, the timeline in arch frames. |
+| **Varied rhythm.** Goddard breaks the page with a statement band; Lovevery sets a stat beside a photo. | The same label, serif headline and row of cards about twelve times. | The page alternates light and dark bands. Safety is a photo beside a list of specifics. Family stories are one featured story with a photo plus two supporting ones, in place of three equal cards. |
+
+What we deliberately kept: the arch, the sun, the Fraunces and Instrument Sans pairing, the time-aware hero, published tuition, and illustrated portraits for named teachers.
+
+Six photographs were added through the Higgsfield API: the new hero, one for each of the four programs that had none, and the kitchen.

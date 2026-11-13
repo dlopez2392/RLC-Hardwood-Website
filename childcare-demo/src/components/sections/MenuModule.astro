@@ -1,5 +1,6 @@
 ---
-import Illo from '@/components/brand/Illo.astro';
+import { Picture } from 'astro:assets';
+import { PHOTOS } from '@/data/photos';
 import { ALLERGEN_LABEL, MENU, MENU_WEEK } from '@/data/calendar';
 import { dict, type Lang } from '@/i18n';
 interface Props { lang: Lang; id?: string }
@@ -24,7 +25,7 @@ const meals = ['breakfast', 'lunch', 'snack'] as const;
       <p class="eyebrow">{c.eyebrow} · {MENU_WEEK[lang]}</p>
       <h2 id={`${id}-title`} class="display-md mt-4">{c.title}</h2>
       <p class="lede mt-5">{c.lede}</p>
-      <div class="mt-8 size-40"><Illo name="bowl" class="h-full w-full" /></div>
+      <div class="mt-8 overflow-hidden rounded-[2rem] rounded-bl-[7rem] shadow-[var(--shadow-paper)]"><Picture src={PHOTOS.kitchen.src} alt={PHOTOS.kitchen.alt[lang]} formats={['avif', 'webp']} widths={[400, 640, 880]} sizes="(min-width: 1024px) 30rem, 92vw" loading="lazy" decoding="async" class="aspect-[3/2] h-auto w-full object-cover" /></div>
     </div>
     <div class="paper p-3 sm:p-4" data-reveal data-menu>
       <div role="tablist" aria-label={c.tabs} class="grid grid-cols-5 gap-1 rounded-[1rem] bg-[var(--color-paper)] p-1">

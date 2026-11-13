@@ -181,6 +181,11 @@
   }
   .link-draw:hover { background-size: 0% 1.5px; background-position: 100% 100%; }
   .on-dark .link-draw { color: var(--color-apricot); }
+  /* A light card nested inside a dark band goes back to dark-on-light controls. */
+  .on-dark .on-light .btn-ghost { color: var(--color-ink); box-shadow: inset 0 0 0 1.5px var(--color-ink); }
+  .on-dark .on-light .btn-ghost:hover { background: var(--color-ink); color: var(--color-cream); }
+  .on-dark .on-light :focus-visible { outline-color: var(--color-sun-ink); }
+  .on-dark .on-light .link-draw { color: var(--color-sun-ink); }
 
   /* Paper card */
   .paper {

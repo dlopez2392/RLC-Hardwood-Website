@@ -1,5 +1,7 @@
 ---
 import PhotoArch from './PhotoArch.astro';
+import { Picture } from 'astro:assets';
+import { PHOTOS } from '@/data/photos';
 import { dict, href, ui, type Lang } from '@/i18n';
 import { NOW_LINES, WEEKEND_LINE } from '@/data/calendar';
 import { RATING } from '@/data/site';
@@ -38,41 +40,49 @@ const lines = NOW_LINES.map((l) => ({ from: l.from, to: l.to, text: l.text[lang]
 const ssrLine = NOW_LINES[3]!.text[lang]; // mid-morning default
 ---
 <section class="relative overflow-hidden" aria-labelledby="hero-title">
-  <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(60rem_40rem_at_10%_-10%,rgb(246_196_154/.35),transparent_70%)]" aria-hidden="true"></div>
-  <div class="container-x relative grid items-center gap-10 pt-10 pb-16 md:pt-14 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14 lg:pt-12 lg:pb-20">
-    <div class="relative z-[2]">
-      <p class="eyebrow hero-in" style="--d:0">{c.eyebrow}</p>
-      <h1 id="hero-title" class="mt-5 text-[clamp(2.75rem,6.2vw,5.25rem)]" style="view-transition-name: page-title">
+  <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(60rem_40rem_at_10%_-10%,rgb(246_196_154/.4),transparent_70%)]" aria-hidden="true"></div>
+  <div class="container-x relative grid items-center gap-x-14 pt-8 pb-16 md:pt-12 lg:grid-cols-[1.05fr_0.95fr] lg:pt-10 lg:pb-28">
+    <!-- On phones this column dissolves (display: contents) so the photo can sit between the buttons and the copy. -->
+    <div class="relative z-[2] max-lg:contents">
+      <p class="eyebrow hero-in max-lg:order-1" style="--d:0">{c.eyebrow}</p>
+      <h1 id="hero-title" class="mt-4 text-[clamp(2.75rem,6.2vw,5.25rem)] max-lg:order-1 lg:mt-5" style="view-transition-name: page-title">
         {c.h1a} <span class="italic-sun whitespace-nowrap">{c.h1b}</span><br class="hidden sm:block" /> {c.h1c}
       </h1>
-      <p class="lede mt-6 max-w-[36rem] hero-in" style="--d:2">{c.lede}</p>
-      <div class="mt-8 flex flex-wrap items-center gap-3 hero-in" style="--d:3">
+      <p class="lede mt-6 max-w-[36rem] hero-in max-lg:order-4 max-lg:mt-10" style="--d:2">{c.lede}</p>
+      <div class="mt-6 flex flex-wrap items-center gap-3 hero-in max-lg:order-2 lg:mt-8" style="--d:3">
         <a href={href('tour', lang)} class="btn btn-primary">
           <svg class="btn-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5" fill="currentColor" /><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" /></g></svg>
           {t.cta.tour}
         </a>
         <a href={href('tuition', lang)} class="btn btn-ghost">{t.cta.tuition}</a>
       </div>
-      <ul class="mt-9 grid max-w-[30rem] grid-cols-2 gap-x-5 gap-y-2.5 text-[0.9375rem] font-semibold hero-in" style="--d:4">
+      <ul class="mt-8 grid max-w-[30rem] grid-cols-2 gap-x-5 gap-y-2.5 text-[0.9375rem] font-semibold hero-in max-lg:order-5 lg:mt-9" style="--d:4">
         {c.trust.map((x) => (
           <li class="inline-flex items-center gap-2">
             <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#6F8A64" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" /></svg>{x}
           </li>
         ))}
       </ul>
-      <div class="mt-7 inline-flex items-center gap-2.5 rounded-full bg-[#fffdf9] py-2 pr-3 pl-4 shadow-[var(--shadow-paper)] hero-in" style="--d:5">
+      <div class="mt-7 inline-flex w-fit items-center gap-2.5 rounded-full bg-[#fffdf9] py-2 pr-3 pl-4 shadow-[var(--shadow-paper)] hero-in max-lg:order-6" style="--d:5">
         <span class="flex text-[var(--color-sun-ink)]" aria-hidden="true">{'★★★★★'}</span>
         <span class="text-[0.9375rem] font-semibold"><span class="sr-only">{c.ratingLabel}</span><span aria-hidden="true">{RATING.value} · {RATING.count} {lang === 'en' ? 'reviews' : 'reseñas'}</span></span>
         <span class="sample-badge">{t.sampleShort}</span>
       </div>
     </div>
 
-    <div class="relative mx-auto w-full max-w-[34rem] lg:max-w-[33rem]">
-      <div class="hero-window-wrap grain relative rounded-t-full" data-hero>
-        <PhotoArch photos={[{ key: 'hero' }]} lang={lang} eager />
+    <!-- The logo at full scale: a sun rising behind the arched window. The disc follows San Antonio time. -->
+    <div class="relative mx-auto w-full max-w-[24rem] hero-media max-lg:order-3 max-lg:mt-14 sm:max-w-[30rem] lg:max-w-[35rem]" data-hero>
+      <div class="hero-disc pointer-events-none absolute aspect-square w-[58%] rounded-full bg-[var(--color-sun)]" aria-hidden="true">
+        <div class="absolute inset-0 rounded-full bg-[var(--color-butter)]" style="opacity: var(--night, 0)"></div>
+      </div>
+      <div class="hero-window-wrap grain relative rounded-t-full">
+        <PhotoArch photos={[{ key: 'heroFace' }]} lang={lang} eager sun={false} sizes="(min-width: 1024px) 35rem, (min-width: 640px) 30rem, 24rem" />
+      </div>
+      <div class="absolute bottom-[26%] -left-5 z-[2] hidden size-36 overflow-hidden rounded-full shadow-[var(--shadow-lift)] ring-[6px] ring-[var(--color-cream)] sm:block lg:-left-12 lg:size-44">
+        <Picture src={PHOTOS.hero.src} alt={PHOTOS.hero.alt[lang]} formats={['avif', 'webp']} widths={[200, 360]} sizes="11rem" loading="eager" decoding="async" class="h-full w-full object-cover" />
       </div>
       <div
-        class="paper relative z-[3] mx-4 -mt-16 p-5 sm:absolute sm:-bottom-8 sm:-left-8 sm:mx-0 sm:mt-0 sm:w-[21rem] lg:bottom-5 lg:left-1/2 lg:w-[86%] lg:max-w-[24rem] lg:-translate-x-1/2"
+        class="paper relative z-[3] mx-3 -mt-10 p-4 sm:absolute sm:-right-4 sm:-bottom-10 sm:mx-0 sm:mt-0 sm:w-[19.5rem] sm:p-5 lg:-right-6"
         data-now
         data-lines={JSON.stringify(lines)}
         data-weekend={WEEKEND_LINE[lang]}
@@ -94,6 +104,14 @@ const ssrLine = NOW_LINES[3]!.text[lang]; // mid-morning default
 
 <style>
   .hero-window-wrap { filter: drop-shadow(0 30px 40px rgb(31 58 51 / 0.18)); }
+  /* Sun disc: x follows the hour across the top of the arch; it peeks out from behind the window. */
+  /* The disc is placed with a transform in container units, never left/top, so moving it to the
+     current hour is not a layout shift. On phones it sits lower so it never rides over the buttons. */
+  .hero-media { container-type: inline-size; }
+  .hero-disc { left: 0; top: 0; translate: calc(var(--sun-fx, 0.63) * 108cqw - 4cqw - 50%) calc(var(--sun-fy, 0.3) * 45cqw + 10cqw - 50%); transition: translate 1.2s var(--ease-soft); }
+  @media (min-width: 1024px) { .hero-disc { translate: calc(var(--sun-fx, 0.63) * 124cqw - 12cqw - 50%) calc(var(--sun-fy, 0.3) * 54cqw - 10cqw - 50%); } }
+  :global(.js) .hero-disc { animation: disc-rise 1.6s var(--ease-soft) 0.15s backwards; }
+  @keyframes disc-rise { from { transform: translateY(45%); opacity: 0.4; } }
   .hero-window-wrap::after { border-radius: 999px 999px 0 0; }
   :global(.js) .hero-in { opacity: 0; transform: translateY(16px); animation: hero-in 0.9s var(--ease-soft) forwards; animation-delay: calc(var(--d) * 90ms + 80ms); }
   @keyframes hero-in { to { opacity: 1; transform: none; } }
@@ -105,7 +123,6 @@ const ssrLine = NOW_LINES[3]!.text[lang]; // mid-morning default
   type Line = { from: number; to: number; text: string };
   const card = document.querySelector<HTMLElement>('[data-now]');
   const wrap = document.querySelector<HTMLElement>('[data-hero]');
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function sanAntonioNow() {
     const parts = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Chicago', hour: 'numeric', minute: 'numeric', weekday: 'short', hour12: false }).formatToParts(new Date());
@@ -114,7 +131,7 @@ const ssrLine = NOW_LINES[3]!.text[lang]; // mid-morning default
     return { hour, minute, decimal: hour + minute / 60, weekend: ['Sat', 'Sun'].includes(get('weekday')) };
   }
 
-  function render(first = false) {
+  function render() {
     if (!card || !wrap) return;
     const now = sanAntonioNow();
     const lang = card.dataset.lang === 'es' ? 'es-US' : 'en-US';
@@ -127,16 +144,8 @@ const ssrLine = NOW_LINES[3]!.text[lang]; // mid-morning default
     card.querySelector('[data-clock]')!.textContent = clock;
     if (line) card.querySelector('[data-line]')!.textContent = line;
 
-    const sun = applySky(wrap, now.decimal);
-    const sunEl = wrap.querySelector<SVGGElement>('.hero-sun');
-    if (first && !reduce && !sun.night && sunEl?.animate) {
-      // the sun rises into place once, animating only its own transform
-      sunEl.animate(
-        [{ transform: `translate(${sun.x}px, ${sun.y * 0.5 - 20 + 200}px)` }, { transform: `translate(${sun.x}px, ${sun.y * 0.5 - 20}px)` }],
-        { duration: 1800, delay: 250, easing: 'cubic-bezier(0.22, 1, 0.36, 1)', fill: 'backwards' },
-      );
-    }
+    applySky(wrap, now.decimal);
   }
-  render(true);
+  render();
   setInterval(render, 60_000);
 </script>
